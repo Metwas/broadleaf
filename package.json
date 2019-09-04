@@ -4,7 +4,8 @@
   "description": "common js extensions and helper functionality",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
     "helpers",
@@ -13,5 +14,16 @@
     "common"
   ],
   "author": "metwas",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Metwas/broadleaf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Metwas/broadleaf/issues"
+  },
+  "homepage": "https://github.com/Metwas/broadleaf#readme",
+  "devDependencies": {
+    "typescript": "^3.6.2"
+  }
 }

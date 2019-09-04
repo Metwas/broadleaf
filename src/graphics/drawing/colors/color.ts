@@ -778,28 +778,6 @@ class Color {
 	}
 
 	/**
-	 * Constructs a color object with the provided rgb values
-	 * 
-	 * @param {number} red The red channel value
-	 * @param {number} green The green channel value
-	 * @param {number} blue The blue channel value
-	 * @param {number} alpha The alpha / transparency channel value
-	 * @returns {Color} Color
-	 */
-	constructor(red: number | string, green?: number, blue?: number, alpha: number = 255) {
-
-		if (green === undefined && blue === undefined) {
-
-			this.setHex(red);
-
-		}
-
-		return this.setRGB(Number(red), green, blue);
-
-	}
-
-
-	/**
 	 * An arbitary name for this color instance
 	 */
 	public name: string;
@@ -824,6 +802,32 @@ class Color {
 	 */
 	public alpha: number;
 
+	/**
+	 * Constructs a color object with the provided rgb values
+	 * 
+	 * @param {number} red The red channel value
+	 * @param {number} green The green channel value
+	 * @param {number} blue The blue channel value
+	 * @param {number} alpha The alpha / transparency channel value
+	 * @returns {Color} Color
+	 */
+	constructor(red: number | string, green?: number, blue?: number, alpha: number = 255) {
+
+		this.name = "";
+		this.red = 0;
+		this.green = 0;
+		this.blue = 0;
+		this.alpha = 255;
+
+		if (green === undefined && blue === undefined) {
+
+			this.setHex(red);
+
+		}
+
+		return this.setRGB(Number(red), Number(green), Number(blue));
+
+	}
 
 	/**
 	 * Constructs a color object with the provided RGB values
@@ -902,11 +906,7 @@ class Color {
 
 		} else {
 
-			let _red = hex;
-			let _green = parseInt(_hexValues[2], 16);
-			let _blue = parseInt(_hexValues[3], 16);
-
-			_color = new Color(_red, _green, _blue);
+			
 
 		}
 

@@ -20,6 +20,8 @@ class Vector2 {
 
           this.x = x;
           this.y = y;
+          this._height = 0;
+          this._width = 0;
 
      }
 

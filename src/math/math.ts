@@ -125,30 +125,30 @@ var math = {
      },
 
      /**
-      * Swaps the coordinates if coordinate 1 is greater than coordinate 0
+      * Ensures the provided vectors are in-order
       *
-      * @param {Object} coordinate0 The first set of coordinates
-      * @param {Object} coordinate1 The second set of coordinates
-      * @returns {Object} returns a object containing the coordinates in a normailized manor
+      * @param {Vector2} vector0 The first vector
+      * @param {Vector2} vector1 The second vector
+      * @returns {Object} returns a object containing the vectors in a normailized manor
       */
-     normalizeCoordinates: function (coordinate0, coordinate1) {
+     normalizeVectors: function (vector0: Vector2, vector1: Vector2) {
 
-          var _delta0 = coordinate0.x + coordinate0.y;
-          var _delta1 = coordinate1.x + coordinate1.y;
+          var _delta0 = vector0.x + vector0.y;
+          var _delta1 = vector1.x + vector1.y;
 
           if (_delta0 >= _delta1) {
 
                // swap the vectors
-               var _temp = coordinate0;
-               coordinate0 = coordinate1;
-               coordinate1 = _temp;
+               var _temp = vector0;
+               vector0 = vector1;
+               vector1 = _temp;
 
           }
 
           return {
 
-               coordinate0: coordinate0,
-               coordinate1: coordinate1
+               coordinate0: vector0,
+               coordinate1: vector1
 
           };
 
@@ -164,11 +164,11 @@ var math = {
       * @param {Number} maxTo The maximum end value
       * @returns {Number} a new value thats mapped correspondingly between the provided parameters
       */
-     map: function (value, minFrom, maxFrom, minTo, maxTo) {
+     map: function (value: number, minFrom: number, maxFrom: number, minTo: number, maxTo: number): number {
 
           if (utils.isNullOrUndefined(value)) {
 
-               return;
+               return -1;
 
           }
 
@@ -183,7 +183,7 @@ var math = {
       * @param {Number} max A maximum value
       * @returns {Number} A new random integer which falls between the given ranges
       */
-     rand: function (min, max) {
+     rand: function (min: number, max: number): number {
 
           var rand = Math.random();
 
@@ -219,7 +219,7 @@ var math = {
       * @param {Number | String} hex The hexidecimal number or string e.g can be prefix with '#' #ffffff
       * @returns {Object} returns an object containing the parsed red, green, blue values respectively
       */
-     HexToRGB: function (hex) {
+     HexToRGB: function (hex: string | number): Color {
 
           // ensure hex is a hex string
           hex = hex.toString(16).replace("0x", "#");
@@ -233,16 +233,24 @@ var math = {
 
           });
 
-          var _hexValues = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          var hexMatch = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
           // parse the hexidecimal value to an integer
-          return _hexValues ? {
 
-               red: parseInt(_hexValues[1], 16),
-               green: parseInt(_hexValues[2], 16),
-               blue: parseInt(_hexValues[3], 16)
+          let color = null;
 
-          } : null;
+          if (hexMatch) {
+
+               const red = parseInt(hexMatch[1], 16);
+               const green = parseInt(hexMatch[2], 16);
+               const blue = parseInt(hexMatch[3], 16);
+
+               return Color.fromRGB(red, green, blue);
+
+          }
+
+          // return black
+          return Color.fromRGB(0, 0, 0);
 
      },
 
@@ -250,25 +258,25 @@ var math = {
      /**
       * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided coordinates
       *
-      * @param {Number | String} r The start positional coordinates
-      * @param {Number | String} g The start positional coordinates
-      * @param {Number | String} b The start positional coordinates
-      * @returns {Object} The values for each component in the formulae
+      * @param {Number} red The red channel
+      * @param {Number} green The green channel
+      * @param {Number} blue The blue channel
+      * @returns {String} The gexidecimal format from the mixin color channels provided
       */
-     RGBToHex: function (r, g, b) {
+     RGBToHex: function (red: number, green: number, blue: number): string {
 
-          return "#" + ((r << 16) + (g << 8) + b).toString(16);
+          return "#" + ((red << 16) + (green << 8) + blue).toString(16);
 
      },
 
      /**
-      * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided coordinates
+      * Converts a decimal value into its hexidecimal format
       *
-      * @param {Number} value The start positional coordinates
+      * @param {Number} value
       * @param {Number} baseFactor The base factor size for the return value
       * @returns {String} The string hexidecimal version for the provided number
       */
-     toHex: function (value, baseFactor) {
+     toHex: function (value: number, baseFactor: number): string {
 
           if (isNaN(value) || !isFinite(value)) {
 
@@ -296,13 +304,13 @@ var math = {
       * @param {Number} value The number to be converted to a binary string
       * @returns {String} Returns a binary string representation for the provided value
       */
-     getBinaryString: function (value) {
+     getBinaryString: function (value: number): string {
 
           var _bin = "";
 
           if (typeof value !== "number") {
 
-               return;
+               return "";
 
           }
 
@@ -319,12 +327,12 @@ var math = {
      /**
       * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided coordinates
       *
-      * @param {Vector} from The start positional coordinates
-      * @param {Vector} to The end positional coordinates
+      * @param {Vector2} from The start positional vector
+      * @param {Vector2} to The end positional vector
       * @remarks The line graph formulae goes as follows: y = f(x) = mx + c
       * @returns {Object} The values for each component in the formulae
       */
-     getlineGraphComponents: function (from, to) {
+     getlineGraphComponents: function (from: Vector2, to: Vector2): Object {
 
           let _gradient = 0;
           let _yIntercept = 0;
@@ -378,7 +386,7 @@ var math = {
       * @param {Number} width The total width to calculate over
       * @returns {Number} The index of the corresponding element within a one dimensional array
       */
-     getMatrixIndex2D: function (x, y, width) {
+     getMatrixIndex2D: function (x: number, y: number, width: number): number {
 
           return y * width + x;
 
@@ -391,7 +399,7 @@ var math = {
       * @param {Number} height The maximum oscillating distance
       * @returns {Number} a value thats mapped from the padding and amplitude to values between -1 to 1
       */
-     oscillate: function (angle, height) {
+     oscillate: function (angle: number, height: number) {
 
           return math.map(Math.sin(angle), -1, 1, -height, height);
 
@@ -407,7 +415,7 @@ var math = {
       * @param {Boolean} border Option to loop back if a coordinate is greater than the dimension
       * @returns {Object} The element at the calculate index
       */
-     getMatricesIndex: function (x, y, width, array, border) {
+     getMatricesIndex: function (x: number, y: number, width: number, array: Array<any>, border: boolean): Object | null {
 
           if (array === null || !Array.isArray(array)) {
 
@@ -442,13 +450,13 @@ var math = {
       * @param {Array} array An array
       * @returns {Number} A random element within the array
       */
-     randArray: function (array) {
+     randArray: function (array: Array<any>): number | null {
 
           var rand = Math.random();
 
           if (utils.isNullOrUndefined(array) || !Array.isArray(array)) {
 
-               return;
+               return null;
 
           }
 
@@ -462,7 +470,7 @@ var math = {
       * @param {Number} degrees A degree value to be converted to radians
       * @returns {Number} The new radian value
       */
-     degreesToRadians: function (degrees) {
+     degreesToRadians: function (degrees: number): number {
 
           return degrees * math.DEGTORAD;
 
@@ -474,7 +482,7 @@ var math = {
       * @param {Number} radian A radian value to be converted to degrees
       * @returns {Number} The new degree value
       */
-     radiansToDegrees: function (radian) {
+     radiansToDegrees: function (radian: number): number {
 
           return radian * math.RADTODEG;
 

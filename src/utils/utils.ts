@@ -15,11 +15,11 @@ var isNullOrUndefined = function (obj: Object): Boolean {
  * Have a look at q library https://github.com/kriskowal/q/blob/master/q.js on node npm packages where I got this idea from
  */
 var _caller = Function.call;
-var function_call = function (fn: Function): Function {
+var function_call = function (fn: any, ...args: any): Function {
 
      return function (): any {
 
-          return _caller.apply(fn, arguments);
+          return _caller.apply(fn, args);
 
      };
 
@@ -32,7 +32,7 @@ var array_splice = function_call(Array.prototype.splice);
  * Clones the provided array
  *
  * @param {Array} array The array to be cloned
- * @returns {Array|null} The cloned array
+ * @returns {Array} The cloned array or an empty array if the clone procedure failed
  */
 var array_clone = function (array: Array<any>): Array<any> {
 
@@ -42,7 +42,7 @@ var array_clone = function (array: Array<any>): Array<any> {
 
      }
 
-     return null;
+     return [];
 
 };
 
@@ -102,7 +102,7 @@ var array_filter = function (array: Array<any>, callback: Function): Array<any> 
 
      if (typeof callback !== "function") {
 
-          callback = function (element, index, array) { return true; };
+          callback = function (element: any, index: number, array: Array<any>) { return true; };
 
      }
 
@@ -141,7 +141,7 @@ var hasOwnProperty = function (obj: Object, property: string): Boolean {
 
      if (isNullOrUndefined(obj)) {
 
-          obj = this;
+          return false;
 
      }
 
@@ -211,7 +211,8 @@ var object_keys = function (obj: Object, callback: Function): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
-          return null;
+          return [];
+
      }
 
      var _tempArray = [];
