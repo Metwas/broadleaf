@@ -1,8 +1,8 @@
 {
   "name": "broadleaf",
   "version": "1.0.0",
-  "description": "common js extensions and helper functionality",
-  "main": "index.js",
+  "description": "Common javascript extensions and helper functionality",
+  "main": "./lib/broadleaf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
