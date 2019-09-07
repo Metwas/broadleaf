@@ -1,11 +1,17 @@
 import utils from "./utils/utils";
 import math from "./math/math";
-import drawing from "./graphics/drawing/drawingModule";
+import Color from "./graphics/drawing/colors/color";
+import conversions from "./text/conversions";
 
 export default {
 
      utils: utils,
      math: math,
-     graphics: drawing,
+     text: {
+          conversions: conversions
+     },
+     drawing: {
+          color: Color
+     },
 
 }

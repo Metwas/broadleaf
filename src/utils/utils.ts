@@ -5,7 +5,7 @@
  * @param {Object} obj 
  * @returns {boolean}
  */
-var isNullOrUndefined = function (obj: Object): Boolean {
+const isNullOrUndefined = function (obj: Object): Boolean {
 
      return obj === null || typeof obj === "undefined";
 
@@ -14,8 +14,8 @@ var isNullOrUndefined = function (obj: Object): Boolean {
 /**
  * Have a look at q library https://github.com/kriskowal/q/blob/master/q.js on node npm packages where I got this idea from
  */
-var _caller = Function.call;
-var function_call = function (fn: any, ...args: any): Function {
+const _caller = Function.call;
+const function_call = function (fn: any, ...args: any): Function {
 
      return function (): any {
 
@@ -25,8 +25,8 @@ var function_call = function (fn: any, ...args: any): Function {
 
 };
 
-var array_slice = function_call(Array.prototype.slice);
-var array_splice = function_call(Array.prototype.splice);
+const array_slice = function_call(Array.prototype.slice);
+const array_splice = function_call(Array.prototype.splice);
 
 /**
  * Clones the provided array
@@ -34,7 +34,7 @@ var array_splice = function_call(Array.prototype.splice);
  * @param {Array} array The array to be cloned
  * @returns {Array} The cloned array or an empty array if the clone procedure failed
  */
-var array_clone = function (array: Array<any>): Array<any> {
+const array_clone = function (array: Array<any>): Array<any> {
 
      if (Array.isArray(array)) {
 
@@ -54,7 +54,7 @@ var array_clone = function (array: Array<any>): Array<any> {
  * @param {Object} propertyValue The property value which must be matched to
  * @returns {Boolean} Returns whether the element with that property exists in the array
  */
-var array_contains = function (array: Array<any>, propertyKey: any, propertyValue: any): Boolean {
+const array_contains = function (array: Array<any>, propertyKey: any, propertyValue: any): Boolean {
 
      if (Array.isArray(array)) {
 
@@ -98,7 +98,7 @@ var array_contains = function (array: Array<any>, propertyKey: any, propertyValu
  * @param {Function} callback The callback filter function
  * @returns {Array} The filtered referenced array
  */
-var array_filter = function (array: Array<any>, callback: Function): Array<any> {
+const array_filter = function (array: Array<any>, callback: Function): Array<any> {
 
      if (typeof callback !== "function") {
 
@@ -137,7 +137,7 @@ var array_filter = function (array: Array<any>, callback: Function): Array<any> 
  * @param {Object} property The property which is defined in the provided object
  * @returns {Boolean} returns whether the property does exist and is owned by the provided object
  */
-var hasOwnProperty = function (obj: Object, property: string): Boolean {
+const hasOwnProperty = function (obj: Object, property: string): Boolean {
 
      if (isNullOrUndefined(obj)) {
 
@@ -158,7 +158,7 @@ var hasOwnProperty = function (obj: Object, property: string): Boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-var object_assign = Object.assign || function (target: any, args: Array<any>): Object {
+const object_assign = Object.assign || function (target: any, args: Array<any>): Object {
 
      "use scrict;";
 
@@ -180,7 +180,7 @@ var object_assign = Object.assign || function (target: any, args: Array<any>): O
           // the next object within the arguments array
           var _nextObj = arguments[_index];
 
-          if (_nextObj !== null) {
+          if (!isNullOrUndefined(_nextObj)) {
 
                // iterate through the object to obtain each property
                for (var _key in _nextObj) {
@@ -207,7 +207,7 @@ var object_assign = Object.assign || function (target: any, args: Array<any>): O
  * @param {Object} obj The object from which to yield each property
  * @returns {Array} An array of property objects
  */
-var object_keys = function (obj: Object, callback: Function): Array<any> {
+const object_keys = function (obj: Object, callback: Function): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
@@ -238,7 +238,7 @@ var object_keys = function (obj: Object, callback: Function): Array<any> {
  * @param {Array} enumerable An array
  * @param {Function} callback The callback function to be called on each element within the provided array
  */
-var forEach = function (enumerable: Array<any>, callback: Function): void {
+const forEach = function (enumerable: Array<any>, callback: Function): void {
 
      if (typeof callback !== "function") {
 
@@ -262,35 +262,6 @@ var forEach = function (enumerable: Array<any>, callback: Function): void {
 
 };
 
-/**
- * Prepends a charactor over a provided iteration count to the current string instance
- *
- * @param {String} char The charactor to prepend to the current string instance
- * @param {Number} count The length of padding to prepend
- * @returns {String} returns a readable string format of the current system time, e.g: 11:48:20
- */
-var padLeft = function (value: string, char: string, count: number): string {
-
-     var _char = "";
-     var _lengthToAttach = 0;
-
-     if (value.length < count) {
-
-          _lengthToAttach = count - value.length;
-
-          for (var i = 0; i < _lengthToAttach; i++) {
-
-               _char += char;
-
-          }
-
-          value = _char.concat(value);
-     }
-
-     return value;
-
-};
-
 export default {
 
      isNullOrUndefined: isNullOrUndefined,
@@ -300,7 +271,6 @@ export default {
      contains: array_contains,
      assign: object_assign,
      keys: object_keys,
-     forEach: forEach,
-     padLeft: padLeft
+     forEach: forEach
 
 };

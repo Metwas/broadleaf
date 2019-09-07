@@ -12,6 +12,5 @@ declare const _default: {
     };
     keys: (obj: Object, callback: Function) => any[];
     forEach: (enumerable: any[], callback: Function) => void;
-    padLeft: (value: string, char: string, count: number) => string;
 };
 export default _default;

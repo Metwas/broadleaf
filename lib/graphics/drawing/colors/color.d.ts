@@ -1,5 +1,5 @@
 /**
- * Represents a color object with information such as RGB, HEX and does allow full conversion between the data types
+ * Represents a color object with information such as RGB, HEX and does allow full conversion between the base types
  */
 declare class Color {
     /**
@@ -613,6 +613,25 @@ declare class Color {
      */
     static fromRGBA(red: number, green: number, blue: number, alpha: number): Color;
     /**
+      * Builds the current color instance into a hexidecimal format
+      *
+     * @param {number} red The red channel value
+     * @param {number} green The green channel value
+     * @param {number} blue The blue channel value
+     * @param {number} alpha The alpha / transparency channel value
+      * @returns {Color} Color
+      */
+    static toHexString(red: number, green: number, blue: number, alpha?: number): string;
+    /**
+     * Linear interpolates a hexidecimal color value, this allows for a fade effect transition between each steps of colors
+     *
+     * @param from The initial starting color
+     * @param to The final resting color
+     * @param increment Resolution of steps to take before making a rest to the defined end color
+     * @returns {Color}
+     */
+    static lerp(from: Color, to: Color, increment: number): Color;
+    /**
      * An arbitary name for this color instance
      */
     name: string;
@@ -633,6 +652,10 @@ declare class Color {
      */
     alpha: number;
     /**
+     * The hexidecimal representation for this color instance
+     */
+    private _hex;
+    /**
      * Constructs a color object with the provided rgb values
      *
      * @param {number} red The red channel value
@@ -642,6 +665,10 @@ declare class Color {
      * @returns {Color} Color
      */
     constructor(red: number | string, green?: number, blue?: number, alpha?: number);
+    /**
+     * Gets the hexidecimal value for the current color instance
+     */
+    readonly hex: number;
     /**
      * Constructs a color object with the provided RGB values
      *
@@ -669,14 +696,19 @@ declare class Color {
      */
     setHex(hex: number | string): Color;
     /**
-      *
-      *
-     * @param {number} red The red channel value
-     * @param {number} green The green channel value
-     * @param {number} blue The blue channel value
-     * @param {number} alpha The alpha / transparency channel value
-      * @returns {Color} Color
-      */
-    RGBToHex(red: number, green: number, blue: number, alpha?: number): string;
+     * Linear interpolates to a new color by a defined amount of steps
+     *
+     * @param to The final resting color
+     * @param increment Resolution of steps to take before making a rest to the defined end color
+     * @returns {Color}
+     */
+    lerp(to: Color, increment: number): Color;
+    /**
+     * Builds a string representation for the current color instance
+     *
+     * @param {Boolean} hexidecimal The option to output the current color into hexidecimal format, rather than RGBA
+     */
+    toString(hexidecimal?: boolean): string;
+    private _updateHex;
 }
 export default Color;

@@ -1,6 +1,7 @@
+import utils from "../../../utils/utils";
 
 /**
- * Represents a color object with information such as RGB, HEX and does allow full conversion between the data types
+ * Represents a color object with information such as RGB, HEX and does allow full conversion between the base types
  */
 class Color {
 
@@ -778,6 +779,59 @@ class Color {
 	}
 
 	/**
+      * Builds the current color instance into a hexidecimal format
+      *
+	 * @param {number} red The red channel value
+	 * @param {number} green The green channel value
+	 * @param {number} blue The blue channel value
+	 * @param {number} alpha The alpha / transparency channel value
+      * @returns {Color} Color
+      */
+	static toHexString(red: number, green: number, blue: number, alpha?: number) {
+
+		let _hexString = "";
+
+		if (alpha === undefined) {
+
+			_hexString = "#" + ((red << 16) + (green << 8) + blue).toString(16);
+
+		} else {
+
+			_hexString = "#" + ((red << 24) + (green << 16) + (blue << 8) + alpha).toString(16);
+
+		}
+
+		return _hexString;
+
+	}
+
+	/**
+	 * Linear interpolates a hexidecimal color value, this allows for a fade effect transition between each steps of colors
+	 * 
+	 * @param from The initial starting color
+	 * @param to The final resting color
+	 * @param increment Resolution of steps to take before making a rest to the defined end color
+	 * @returns {Color}
+	 */
+	static lerp(from: Color, to: Color, increment: number): Color {
+
+		if (utils.isNullOrUndefined(from)) {
+
+			throw new Error("The initial start color was not provided");
+
+		}
+
+		if (utils.isNullOrUndefined(to)) {
+
+			throw new Error("The finally transition color was not provided!");
+
+		}
+
+		return from.lerp(to, increment);
+
+	}
+
+	/**
 	 * An arbitary name for this color instance
 	 */
 	public name: string;
@@ -803,6 +857,11 @@ class Color {
 	public alpha: number;
 
 	/**
+	 * The hexidecimal representation for this color instance
+	 */
+	private _hex: number;
+
+	/**
 	 * Constructs a color object with the provided rgb values
 	 * 
 	 * @param {number} red The red channel value
@@ -818,6 +877,7 @@ class Color {
 		this.green = 0;
 		this.blue = 0;
 		this.alpha = 255;
+		this._hex = 0x00;
 
 		if (green === undefined && blue === undefined) {
 
@@ -826,6 +886,15 @@ class Color {
 		}
 
 		return this.setRGB(Number(red), Number(green), Number(blue));
+
+	}
+
+	/**
+	 * Gets the hexidecimal value for the current color instance
+	 */
+	get hex(): number {
+
+		return this._hex;
 
 	}
 
@@ -843,7 +912,6 @@ class Color {
 
 	}
 
-
 	/**
 	 * Constructs a color object with the provided RGBA values
 	 * 
@@ -859,6 +927,7 @@ class Color {
 		this.green = red;
 		this.blue = red;
 		this.alpha = alpha;
+		this._updateHex();
 
 		return this;
 
@@ -873,6 +942,13 @@ class Color {
 	setHex(hex: number | string): Color {
 
 		let _color = null;
+
+		// hex is a number, convert it to a string
+		if (typeof hex === "number") {
+
+			hex = String(hex);
+
+		}
 
 		if (typeof (hex) === "string") {
 
@@ -892,21 +968,23 @@ class Color {
 
 			});
 
-			var _hexValues = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex);
+			var hexMatch = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex);
 
-			if (_hexValues) {
+			let nRed = 0;
+			let nGreen = 0;
+			let nBlue = 0;
 
-				let _red = parseInt(_hexValues[1], 16);
-				let _green = parseInt(_hexValues[2], 16);
-				let _blue = parseInt(_hexValues[3], 16);
+			if (hexMatch) {
 
-				_color = new Color(_red, _green, _blue);
+				nRed = parseInt(hexMatch[1], 16);
+				nGreen = parseInt(hexMatch[2], 16);
+				nBlue = parseInt(hexMatch[3], 16);
+
+				this.setRGB(nRed, nGreen, nBlue);
 
 			}
 
-		} else {
-
-			
+			this.setRGB(nRed, nGreen, nBlue);
 
 		}
 
@@ -915,29 +993,61 @@ class Color {
 	}
 
 	/**
-      * 
-      *
-	 * @param {number} red The red channel value
-	 * @param {number} green The green channel value
-	 * @param {number} blue The blue channel value
-	 * @param {number} alpha The alpha / transparency channel value
-      * @returns {Color} Color
-      */
-	RGBToHex(red: number, green: number, blue: number, alpha?: number) {
+	 * Linear interpolates to a new color by a defined amount of steps
+	 * 
+	 * @param to The final resting color
+	 * @param increment Resolution of steps to take before making a rest to the defined end color
+	 * @returns {Color}
+	 */
+	lerp(to: Color, increment: number): Color {
 
-		let _hexString = "";
+		const currentHexValue = this.hex;
+		const toHexValue = to.hex;
 
-		if (alpha === undefined) {
+		const cRed = currentHexValue >> 24;
+		const cGreen = currentHexValue >> 16;
+		const cBlue = currentHexValue >> 8;
+		const cAlpha = currentHexValue | 0;
 
-			_hexString = "#" + ((red << 16) + (green << 8) + blue).toString(16);
+		const tRed = toHexValue >> 24;
+		const tGreen = toHexValue >> 16;
+		const tBlue = toHexValue >> 8;
+		const tAlpha = toHexValue | 0;
 
-		} else {
+		const nRed = cRed + increment * (tRed - cRed);
+		const nGreen = cGreen + increment * (tGreen - cGreen);
+		const nBlue = cBlue + increment * (tBlue - cBlue);
+		const nAlpha = cAlpha + increment * (tAlpha - cAlpha);
 
-			_hexString = "#" + ((red << 24) + (green << 16) + (blue << 8) + alpha).toString(16);
+		this.setRGBA(nRed, nGreen, nBlue, nAlpha);
+
+		return this;
+
+	}
+
+	/**
+	 * Builds a string representation for the current color instance
+	 * 
+	 * @param {Boolean} hexidecimal The option to output the current color into hexidecimal format, rather than RGBA
+	 */
+	toString(hexidecimal?: boolean): string {
+
+		const { red, green, blue, alpha } = this;
+
+		if (!!hexidecimal) {
+
+			return Color.toHexString(red, green, blue, alpha);
 
 		}
 
-		return _hexString;
+		return `rgba(${red},${green},${blue},${alpha})`;
+
+	}
+
+	private _updateHex(): void {
+
+		const { red, green, blue, alpha } = this;
+		this._hex = (red << 24) + (green << 16) + (blue << 8) + (alpha | 0);
 
 	}
 
