@@ -151,7 +151,7 @@ const normalizeVectors = function (vector0: Vector2, vector1: Vector2) {
 };
 
 /**
- * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided coordinates
+ * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided vectors
  *
  * @param {Vector2} from The start positional vector
  * @param {Vector2} to The end positional vector
@@ -163,7 +163,7 @@ const getlineGraphComponents = function (from: Vector2, to: Vector2): Object {
      let _gradient = 0;
      let _yIntercept = 0;
 
-     var _solve = function () {
+     const _solve = function () {
 
           /*
               To solve for m (the gradient) the formulae is as follows:
@@ -211,7 +211,7 @@ const getlineGraphComponents = function (from: Vector2, to: Vector2): Object {
 * @param {Number} amplitude
 * @returns {Number} a value thats mapped from the padding and amplitude to values between -1 to 1
 */
-const oscillate = function (angle: number, amplitude: number) {
+const oscillate = function (angle: number, amplitude: number): number {
 
      return map(Math.sin(angle), -1, 1, -amplitude, amplitude);
 
