@@ -45,6 +45,146 @@ const DEFAULT_TABLE = (function (): any {
 })();
 
 /**
+ * No operation function
+ */
+const noop = function () { };
+
+/**
+ * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
+ * e.g '[object String]'
+ * 
+ * @param value 
+ */
+const toString = function (value: any): string {
+
+     return Object.prototype.toString.call(value);
+
+};
+
+/**
+ * Checks the value parameter is of type 'String'
+ * 
+ * @param value 
+ */
+const isString = function (value: any): boolean {
+
+     return toString(value) === "[object String]";
+
+};
+
+/**
+ * Checks the value parameter is of type 'Number'
+ * 
+ * @param value 
+ */
+const isNumber = function (value: any): boolean {
+
+     return toString(value) === "[object Number]";
+
+};
+
+/**
+ * Checks the value parameter is of type 'Object'
+ * 
+ * @param value 
+ */
+const isObject = function (value: any): boolean {
+
+     return toString(value) === "[object Object]";
+
+};
+
+
+/**
+ * Checks the value parameter is a valid function
+ * 
+ * @param value 
+ */
+const isFunction = function (value: any): boolean {
+
+     return typeof value === "function" || toString(value) === "[object Function]";
+
+};
+
+/**
+ * Checks the value parameter if it is null
+ * 
+ * @param value 
+ */
+const isNull = function (value: any): boolean {
+
+     return value === null;
+
+};
+
+/**
+ * Checks the value parameter is of type 'Object'
+ * 
+ * @param value 
+ */
+const isUndefined = function (value: any): boolean {
+
+     return value === void 0;
+
+};
+
+/**
+ * Validates a provided object to see if it is null or undefined
+ * 
+ * @param {Object} value 
+ * @returns {boolean}
+ */
+const isNullOrUndefined = function (value: any): boolean {
+
+     return isNull(value) || isUndefined(value);
+
+};
+
+/**
+ * Checks the value parameter is of type 'Boolean'
+ * 
+ * @param value 
+ */
+const isBoolean = function (value: any): boolean {
+
+     return value === true || value === false || toString(value) === "[object Boolean]";
+
+};
+
+/**
+ * Checks the value parameter is of type 'Array'
+ * 
+ * @param value 
+ */
+const isArray = function (value: any): boolean {
+
+     return toString(value) === "[object Array]";
+
+};
+
+/**
+ * Checks the value parameter is a valid number and finite
+ * 
+ * @param value 
+ */
+const isFinite = function (value: any): boolean {
+
+     return !isNaN(value) && isFinite(value);
+
+};
+
+/**
+ * Checks the value parameter is a valid regular expression
+ * 
+ * @param value 
+ */
+const isRegExp = function (value: any): boolean {
+
+     return toString(value) === "[object RegExp]";
+
+};
+
+/**
  * Obtains the base type for the given object parameter
  * 
  * @param {Object} obj 
@@ -91,18 +231,6 @@ const __default = function (type: string) {
      }
 
      return DEFAULT_TABLE[stringType];
-
-};
-
-/**
- * Validates a provided object to see if it is null or undefined
- * 
- * @param {Object} obj 
- * @returns {boolean}
- */
-const isNullOrUndefined = function (obj: Object): Boolean {
-
-     return obj === null || typeof obj === "undefined";
 
 };
 
@@ -495,6 +623,18 @@ const forEach = function (enumerable: Array<any> | Object, callback: Function): 
 export default {
 
      isNullOrUndefined: isNullOrUndefined,
+     isNull: isNull,
+     isUndefined: isUndefined,
+     isObject: isObject,
+     isNumber: isNumber,
+     isFinite: isFinite,
+     isArray: isArray,
+     isBoolean: isBoolean,
+     isFunction: isFunction,
+     isRegExp: isRegExp,
+     isString: isString,
+     toString: toString,
+     noop: noop,
      has: hasOwnProperty,
      filter: array_filter,
      arrayClone: array_clone,
