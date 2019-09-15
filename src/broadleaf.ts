@@ -3,15 +3,25 @@ import math from "./math/math";
 import Color from "./graphics/drawing/colors/color";
 import conversions from "./text/conversions";
 
-export default {
+// text module namespace
+const text = {
 
-     utils: utils,
-     math: math,
-     text: {
-          conversions: conversions
-     },
-     drawing: {
-          color: Color
-     },
+     conversions: conversions
 
-}
+};
+
+// drawing module namespace
+const drawing = {
+
+     color: Color
+
+};
+
+export {
+
+     utils,
+     math,
+     text,
+     drawing
+
+};

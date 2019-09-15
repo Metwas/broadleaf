@@ -28,5 +28,7 @@ declare const _default: {
     };
     getMatrixIndex2D: (x: number, y: number, width: number) => number;
     getMatrixIndex: (x: number, y: number, width: number, array: any[], border: boolean) => Object | null;
+    getlineGraphComponents: (from: Vector2, to: Vector2) => Object;
+    oscillate: (angle: number, amplitude: number) => number;
 };
 export default _default;

@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Metwas/broadleaf#readme",
   "devDependencies": {
+    "chalk": "^2.4.2",
     "typescript": "^3.6.2"
   }
 }

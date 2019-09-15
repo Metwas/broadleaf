@@ -276,9 +276,9 @@ const array_clone = function (array: Array<any>): Array<any> {
  * @param {Object} propertyValue The property value which must be matched to
  * @returns {Boolean} Returns whether the element with that property exists in the array
  */
-const array_contains = function (arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean {
+const contains = function (arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean {
 
-     if (Array.isArray(arrayOrObject)) {
+     if (isArray(arrayOrObject)) {
 
           var _index = 0;
           var _length = arrayOrObject.length;
@@ -287,7 +287,7 @@ const array_contains = function (arrayOrObject: Array<any> | any, propertyKey: a
 
                var _element = arrayOrObject[_index];
 
-               if (isNullOrUndefined(propertyValue) && typeof _element === "string" || typeof _element === "number") {
+               if (isNullOrUndefined(propertyValue) && isString(_element) || isNumber(_element)) {
 
                     if (_element === propertyKey) {
 
@@ -301,18 +301,40 @@ const array_contains = function (arrayOrObject: Array<any> | any, propertyKey: a
 
      } else {
 
-          const keys: Array<any> = Object.keys(arrayOrObject);
-          forEach(keys, (element: any) => {
+          if (isObject(arrayOrObject)) {
 
-               const propertyValue: any = arrayOrObject[element];
+               // attempt to retrieve the specified key
+               const value = arrayOrObject[propertyKey];
 
-               if (!isNullOrUndefined(propertyValue) && propertyValue === propertyValue) {
+               if (isNullOrUndefined(propertyValue) && !isNullOrUndefined(value)) {
 
                     return true;
 
+               } else if (!(isNullOrUndefined(propertyValue) && isNullOrUndefined(propertyKey))) {
+
+                    // match both the key and the value
+                    return value === propertyValue;
+
+               }
+               else {
+
+                    // loop through every key matching the specified property value
+                    const keys: Array<any> = Object.keys(arrayOrObject);
+                    forEach(keys, (element: any) => {
+
+                         const value: any = arrayOrObject[element];
+
+                         if (!isNullOrUndefined(value) && propertyKey === value) {
+
+                              return true;
+
+                         }
+
+                    });
+
                }
 
-          });
+          }
 
      }
 
@@ -328,7 +350,7 @@ const array_contains = function (arrayOrObject: Array<any> | any, propertyKey: a
  * @param {Function} callback The callback filter function
  * @returns {Array} The filtered referenced array
  */
-const array_filter = function (array: Array<any>, callback: Function): Array<any> {
+const array_filter = function (array: Array<any>, callback: (element: any, index: number, array: Array<any>) => boolean): Array<any> {
 
      if (typeof callback !== "function") {
 
@@ -405,7 +427,7 @@ const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
  * @param {Object} property The property which is defined in the provided object
  * @returns {Boolean} returns whether the property does exist and is owned by the provided object
  */
-const hasOwnProperty = function (obj: Object, property: string): Boolean {
+const hasOwnProperty = function (obj: Object, property: string): boolean {
 
      if (isNullOrUndefined(obj)) {
 
@@ -553,11 +575,17 @@ const object_value = function (obj: any, key: string, ownProperty?: boolean): an
  * @throws {Error} Throws an error if the object parameter returned null
  * @returns {Array} An array of property objects
  */
-const object_keys = function (obj: Object, callback: (key: string) => void): Array<any> {
+const object_keys = function (obj: Object, callback: (key: string) => void = noop): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
           throw new Error("Object provided cannot be null");
+
+     }
+
+     if (!isFunction(callback)) {
+
+          callback = noop;
 
      }
 
@@ -583,7 +611,7 @@ const object_keys = function (obj: Object, callback: (key: string) => void): Arr
  * @param {Array | Object} enumerable An array
  * @param {Function} callback The callback function to be called on each element within the provided array
  */
-const forEach = function (enumerable: Array<any> | Object, callback: Function): void {
+const forEach = function (enumerable: Array<any> | Object, callback: (element: any) => void): void {
 
      if (isNullOrUndefined(enumerable)) {
 
@@ -637,7 +665,7 @@ export default {
      has: hasOwnProperty,
      filter: array_filter,
      arrayClone: array_clone,
-     contains: array_contains,
+     contains: contains,
      assign: object_assign,
      keys: object_keys,
      forEach: forEach,
@@ -645,6 +673,6 @@ export default {
      __default: __default,
      toArray: toArray,
      values: object_values,
-     value: object_value,
+     value: object_value
 
 };
