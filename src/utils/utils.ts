@@ -94,7 +94,6 @@ const isObject = function (value: any): boolean {
 
 };
 
-
 /**
  * Checks the value parameter is a valid function
  * 
@@ -118,7 +117,7 @@ const isNull = function (value: any): boolean {
 };
 
 /**
- * Checks the value parameter is of type 'Object'
+ * Checks the value parameter if it is undefined
  * 
  * @param value 
  */
