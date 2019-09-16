@@ -228,7 +228,7 @@ const __default = function (type: string) {
           stringType = getType(type);
 
      }
-
+     stringType = type.toLowerCase();
      return DEFAULT_TABLE[stringType];
 
 };

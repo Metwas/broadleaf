@@ -38,3 +38,8 @@ test("object contains key", objContains, `testObj contains '${key}'`);
 const keyAge = "age";
 const objContainsValue = utils.contains(testObj, keyAge, 24);
 test("object contains key and value", objContainsValue, `testObj contains and value '${keyAge}'`);
+
+// default type
+const type = "Number";
+const _defaultValue = utils.__default("Number");
+log(`Default value for type: ${type} = ${_defaultValue}`);
