@@ -26,11 +26,13 @@ import Vector2 from "./vectors/vector2";
 import Color from "../graphics/drawing/colors/color";
 import utils from "../utils/utils";
 
-const MAX_NIBBLE = 1 << 4;
-const MAX_BYTE = 1 << 8;
-const MAX_16BIT = 1 << 16;
-const MAX_24BIT = 1 << 24;
-const MAX_32BIT = 1 << 32;
+const MAX_NIBBLE = (1 << 4) - 1;
+const MAX_BYTE = (1 << 8) - 1;
+const MAX_16BIT = (1 << 16) - 1;
+const MAX_24BIT = (1 << 24) - 1;
+
+// unsigned 32 bit number
+const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
 const INFINITY = (function () {
 
      return Number.POSITIVE_INFINITY;
@@ -383,7 +385,7 @@ export default {
      MAX_BYTE: MAX_BYTE,
      MAX_16BIT: MAX_16BIT,
      MAX_24BIT: MAX_24BIT,
-     MAX_32BIT: MAX_32BIT,
+     MAX_UNSIGNED_32BIT: MAX_UNSIGNED_32BIT,
      INFINITY: INFINITY,
      DEGTORAD: DEGTORAD,
      RADTODEG: RADTODEG,

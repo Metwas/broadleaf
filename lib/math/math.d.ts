@@ -7,7 +7,7 @@ declare const _default: {
     MAX_BYTE: number;
     MAX_16BIT: number;
     MAX_24BIT: number;
-    MAX_32BIT: number;
+    MAX_UNSIGNED_32BIT: number;
     INFINITY: number;
     DEGTORAD: number;
     RADTODEG: number;
