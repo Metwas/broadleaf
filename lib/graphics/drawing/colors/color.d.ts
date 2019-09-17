@@ -710,5 +710,11 @@ declare class Color {
      */
     toString(hexidecimal?: boolean): string;
     private _updateHex;
+    /**
+     * Js removes any beginning zeros once converted to hexidecimal, therefore check to see if it must be added back
+     *
+     * @param {String} value
+     */
+    private static addZeroPadding;
 }
 export default Color;

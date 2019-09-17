@@ -23,6 +23,7 @@
 */
 
 import utils from "../../../utils/utils";
+import math from "../../../math/math";
 
 /**
  * Represents a color object with information such as RGB, HEX and does allow full conversion between the base types
@@ -817,11 +818,11 @@ class Color {
 
 		if (alpha === undefined) {
 
-			_hexString = "#" + ((red << 16) + (green << 8) + blue).toString(16);
+			_hexString = "#" + Color.addZeroPadding(((red << 16) + (green << 8) + blue).toString(16));
 
 		} else {
 
-			_hexString = "#" + ((red << 24) + (green << 16) + (blue << 8) + alpha).toString(16);
+			_hexString = "#" + Color.addZeroPadding(((red << 24) + (green << 16) + (blue << 8) + alpha).toString(16));
 
 		}
 
@@ -901,15 +902,18 @@ class Color {
 		this.green = 0;
 		this.blue = 0;
 		this.alpha = 255;
-		this._hex = 0x00;
+		this._hex = math.MAX_UNSIGNED_32BIT;
 
-		if (green === undefined && blue === undefined) {
+		if (utils.isUndefined(green) && utils.isUndefined(blue)) {
 
+			// only default to the first parameter
 			this.setHex(red);
 
-		}
+		} else {
 
-		return this.setRGB(Number(red), Number(green), Number(blue));
+			this.setRGB(Number(red), Number(green), Number(blue));
+
+		}
 
 	}
 
@@ -948,8 +952,8 @@ class Color {
 	setRGBA(red: number, green: number, blue: number, alpha: number): Color {
 
 		this.red = red;
-		this.green = red;
-		this.blue = red;
+		this.green = green;
+		this.blue = blue;
 		this.alpha = alpha;
 		this._updateHex();
 
@@ -965,52 +969,42 @@ class Color {
 	 */
 	setHex(hex: number | string): Color {
 
-		let _color = null;
+		let color = null;
+		// default to black
+		let colorHex = utils.isNumber(hex) ? hex.toString(16) : (utils.isString(hex) ? hex as string : "#000");
 
-		// hex is a number, convert it to a string
-		if (typeof hex === "number") {
+		colorHex = Color.addZeroPadding(colorHex);
+		colorHex = colorHex.replace("0x", "#");
 
-			hex = String(hex);
+		if (!(colorHex.indexOf("#") > -1)) {
+
+			// prepend the hash delimiter
+			colorHex = "#" + colorHex;
+
+		}
+
+		// shorthand initialization #fff -> #ffffff
+		const shorthandHex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+		colorHex = colorHex.replace(shorthandHex, function (m, r, g, b) {
+
+			return "#" + r + r + g + g + b + b;
+
+		});
+
+		var hexMatch = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colorHex);
+		let nRed = 0;
+		let nGreen = 0;
+		let nBlue = 0;
+
+		if (hexMatch) {
+
+			nRed = parseInt(hexMatch[1], 16);
+			nGreen = parseInt(hexMatch[2], 16);
+			nBlue = parseInt(hexMatch[3], 16);
 
 		}
 
-		if (typeof (hex) === "string") {
-
-			// attempt to parse the hexidecimal color object
-			let _hex = String(hex);
-
-			// ensure hex is a hex string
-			_hex = _hex.replace("0x", "#");
-			_hex = _hex.indexOf("#") > -1 ? hex : "#" + hex;
-
-			// shorthand initialization #fff -> #ffffff
-			var _shorthandHex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-
-			_hex = _hex.replace(_shorthandHex, function (m, r, g, b) {
-
-				return "#" + r + r + g + g + b + b;
-
-			});
-
-			var hexMatch = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex);
-
-			let nRed = 0;
-			let nGreen = 0;
-			let nBlue = 0;
-
-			if (hexMatch) {
-
-				nRed = parseInt(hexMatch[1], 16);
-				nGreen = parseInt(hexMatch[2], 16);
-				nBlue = parseInt(hexMatch[3], 16);
-
-				this.setRGB(nRed, nGreen, nBlue);
-
-			}
-
-			this.setRGB(nRed, nGreen, nBlue);
-
-		}
+		this.setRGB(nRed, nGreen, nBlue);
 
 		return this;
 
@@ -1071,7 +1065,18 @@ class Color {
 	private _updateHex(): void {
 
 		const { red, green, blue, alpha } = this;
-		this._hex = (red << 24) + (green << 16) + (blue << 8) + (alpha | 0);
+		this._hex = (red << 24) + (green << 16) + (blue << 8) + (alpha);
+
+	}
+
+	/**
+	 * Js removes any beginning zeros once converted to hexidecimal, therefore check to see if it must be added back
+	 * 
+	 * @param {String} value 
+	 */
+	private static addZeroPadding(value: string): string {
+
+		return (value.length === 2 || value.length === 5 || value.length === 7) ? ("0" + value) : value;
 
 	}
 
