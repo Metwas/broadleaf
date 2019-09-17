@@ -814,19 +814,21 @@ class Color {
       */
 	static toHexString(red: number, green: number, blue: number, alpha?: number) {
 
-		let _hexString = "";
+		let hex = "";
 
-		if (alpha === undefined) {
+		if (alpha === void 0) {
 
-			_hexString = "#" + Color.addZeroPadding(((red << 16) + (green << 8) + blue).toString(16));
+			const value = ((red << 16) + (green << 8) + blue).toString(16);
+			hex = "#" + Color.addZeroPadding(value);
 
 		} else {
 
-			_hexString = "#" + Color.addZeroPadding(((red << 24) + (green << 16) + (blue << 8) + alpha).toString(16));
+			const value = ((red << 24 >>> 0) + (green << 16) + (blue << 8) + alpha).toString(16);
+			hex = "#" + Color.addZeroPadding(value);
 
 		}
 
-		return _hexString;
+		return hex;
 
 	}
 
@@ -883,6 +885,8 @@ class Color {
 
 	/**
 	 * The hexidecimal representation for this color instance
+	 * 
+	 * @private
 	 */
 	private _hex: number;
 
@@ -971,7 +975,7 @@ class Color {
 
 		let color = null;
 		// default to black
-		let colorHex = utils.isNumber(hex) ? hex.toString(16) : (utils.isString(hex) ? hex as string : "#000");
+		let colorHex = utils.isNumber(hex) ? hex.toString(16) : (utils.isString(hex) ? hex as string : "#000").replace("0x", "");
 
 		colorHex = Color.addZeroPadding(colorHex);
 		colorHex = colorHex.replace("0x", "#");
@@ -1052,7 +1056,7 @@ class Color {
 
 		const { red, green, blue, alpha } = this;
 
-		if (!!hexidecimal) {
+		if (hexidecimal === true) {
 
 			return Color.toHexString(red, green, blue, alpha);
 
@@ -1072,6 +1076,7 @@ class Color {
 	/**
 	 * Js removes any beginning zeros once converted to hexidecimal, therefore check to see if it must be added back
 	 * 
+	 * @private
 	 * @param {String} value 
 	 */
 	private static addZeroPadding(value: string): string {

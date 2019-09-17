@@ -7,6 +7,9 @@ const chalk = require("chalk");
 log(header("#### Color Testing ####"));
 
 const color = new drawing.color(255, 255, 255);
-color.setHex(0x010101);
+color.setHex("fef");
+color.alpha = 10;
 log(color.toString(true));
 test("Color test", color.red === 255);
+
+

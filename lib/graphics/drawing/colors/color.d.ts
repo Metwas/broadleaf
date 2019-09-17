@@ -653,6 +653,8 @@ declare class Color {
     alpha: number;
     /**
      * The hexidecimal representation for this color instance
+     *
+     * @private
      */
     private _hex;
     /**
@@ -713,6 +715,7 @@ declare class Color {
     /**
      * Js removes any beginning zeros once converted to hexidecimal, therefore check to see if it must be added back
      *
+     * @private
      * @param {String} value
      */
     private static addZeroPadding;
