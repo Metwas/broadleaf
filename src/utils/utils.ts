@@ -184,6 +184,17 @@ const isRegExp = function (value: any): boolean {
 };
 
 /**
+ * Checks for native JSON support
+ * 
+ * @returns {Boolean}
+ */
+const isJSONSupported = function (): boolean {
+
+     return (JSON && isFunction(JSON.parse) && isFunction(JSON.stringify));
+
+};
+
+/**
  * Obtains the base type for the given object parameter
  * 
  * @param {Object} obj 
@@ -253,18 +264,27 @@ const array_splice = function_call(Array.prototype.splice);
 /**
  * Clones the provided array
  *
- * @param {Array} array The array to be cloned
+ * @param {Array|any} array The array or object to be cloned
  * @returns {Array} The cloned array or an empty array if the clone procedure failed
  */
-const array_clone = function (array: Array<any>): Array<any> {
+const clone = function (arrayOrObject: Array<any> | any): Array<any> | any {
 
-     if (Array.isArray(array)) {
+     if (Array.isArray(arrayOrObject)) {
 
-          return array_slice(array, 0);
+          return array_slice(arrayOrObject, 0);
+
+     } else {
+
+          // default to deep cloning an object
+          if (isJSONSupported()) {
+
+               return JSON.parse(JSON.stringify(arrayOrObject));
+
+          }
 
      }
 
-     return [];
+     return null;
 
 };
 
@@ -350,7 +370,7 @@ const contains = function (arrayOrObject: Array<any> | any, propertyKey: any, pr
  * @param {Function} callback The callback filter function
  * @returns {Array} The filtered referenced array
  */
-const array_filter = function (array: Array<any>, callback: (element: any, index: number, array: Array<any>) => boolean): Array<any> {
+const filter = function (array: Array<any>, callback: (element: any, index: number, array: Array<any>) => boolean): Array<any> {
 
      if (typeof callback !== "function") {
 
@@ -404,7 +424,7 @@ const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
           if (!!parseKeys) {
 
                const objKeys = Object.keys(obj);
-               keys = array_filter(objKeys, (element: any, index: number, array: Array<any>) => { return hasOwnProperty(obj, element); });
+               keys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return hasOwnProperty(obj, element); });
 
           } else {
 
@@ -659,12 +679,13 @@ export default {
      isBoolean: isBoolean,
      isFunction: isFunction,
      isRegExp: isRegExp,
+     isJSONSupported: isJSONSupported,
      isString: isString,
      toString: toString,
      noop: noop,
      has: hasOwnProperty,
-     filter: array_filter,
-     arrayClone: array_clone,
+     filter: filter,
+     arrayClone: clone,
      contains: contains,
      assign: object_assign,
      keys: object_keys,

@@ -767,6 +767,16 @@ class Color {
 	static YellowGreen: Color = Color.fromHex(0x9ACD32);
 
 	/**
+	 * Regular expression for the hexidecimal match sequence
+	 */
+	private static _hexRegex: RegExp = /([a-f\d]{2})/g;
+
+	/**
+	 * Shorthand regular expression for the hexidecimal match sequence
+	 */
+	private static _shortHexRegex: RegExp = /^#([a-f\d])([a-f\d])([a-f\d])$/g;
+
+	/**
 	 * Constructs a color object with the provided hexidecimal value
 	 * 
 	 * @param {number} hex A 24 bit hexidecimal value. e.g: 0xFFFFFF
@@ -812,7 +822,7 @@ class Color {
 	 * @param {number} alpha The alpha / transparency channel value
       * @returns {Color} Color
       */
-	static toHexString(red: number, green: number, blue: number, alpha?: number) {
+	static toHexString(red: number, green: number, blue: number, alpha?: number): string {
 
 		let hex = "";
 
@@ -905,7 +915,7 @@ class Color {
 		this.red = 0;
 		this.green = 0;
 		this.blue = 0;
-		this.alpha = 255;
+		this.alpha = alpha;
 		this._hex = math.MAX_UNSIGNED_32BIT;
 
 		if (utils.isUndefined(green) && utils.isUndefined(blue)) {
@@ -974,42 +984,67 @@ class Color {
 	setHex(hex: number | string): Color {
 
 		let color = null;
-		// default to black
 		let colorHex = utils.isNumber(hex) ? hex.toString(16) : (utils.isString(hex) ? hex as string : "#000").replace("0x", "");
 
 		colorHex = Color.addZeroPadding(colorHex);
 		colorHex = colorHex.replace("0x", "#");
 
-		if (!(colorHex.indexOf("#") > -1)) {
+		const index = colorHex.indexOf("#");
+		if (!(index === 0)) {
 
 			// prepend the hash delimiter
 			colorHex = "#" + colorHex;
 
 		}
 
-		// shorthand initialization #fff -> #ffffff
-		const shorthandHex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-		colorHex = colorHex.replace(shorthandHex, function (m, r, g, b) {
+		// match any shorthand hexidecimal values, such as: #fff => #ffffff
+		colorHex = colorHex.replace(Color._shortHexRegex, function (m, r, g, b) {
 
 			return "#" + r + r + g + g + b + b;
 
 		});
 
-		var hexMatch = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(colorHex);
-		let nRed = 0;
-		let nGreen = 0;
-		let nBlue = 0;
+		// should return either a group of 3 or 4 byte sequences
+		const results = colorHex.match(Color._hexRegex);
+		if (typeof results === "undefined" || results === null) {
 
-		if (hexMatch) {
-
-			nRed = parseInt(hexMatch[1], 16);
-			nGreen = parseInt(hexMatch[2], 16);
-			nBlue = parseInt(hexMatch[3], 16);
+			// dont change the current color instance
+			return this;
 
 		}
 
-		this.setRGB(nRed, nGreen, nBlue);
+		let group: Array<any> = [];
+		let length: number = 3;
 
+		if (results.length >= 4) {
+
+			length = 4;
+
+		}
+
+		// iterate through the results, skipping the first indexed position
+		let i = 0;
+		for (; i < length; i++) {
+
+			let hex: number = 0;
+			const result: any = results[i];
+			if (!utils.isNullOrUndefined(result)) {
+
+				// convert to decimal
+				const value: number = parseInt(result, 16);
+				if (utils.isNumber(hex)) {
+
+					hex = value;
+
+				} 
+
+			}
+
+			group.push(hex);
+
+		}
+
+		this.setRGBA(group[0], group[1], group[2], group.length === 4 ? group[3] : this.alpha);
 		return this;
 
 	}
@@ -1017,8 +1052,8 @@ class Color {
 	/**
 	 * Linear interpolates to a new color by a defined amount of steps
 	 * 
-	 * @param to The final resting color
-	 * @param increment Resolution of steps to take before making a rest to the defined end color
+	 * @param {Color} to The final resting color
+	 * @param {Number} increment Resolution of steps to take before making a rest to the defined end color
 	 * @returns {Color}
 	 */
 	lerp(to: Color, increment: number): Color {

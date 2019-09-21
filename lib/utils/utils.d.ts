@@ -9,12 +9,13 @@ declare const _default: {
     isBoolean: (value: any) => boolean;
     isFunction: (value: any) => boolean;
     isRegExp: (value: any) => boolean;
+    isJSONSupported: () => boolean;
     isString: (value: any) => boolean;
     toString: (value: any) => string;
     noop: () => void;
     has: (obj: Object, property: string) => boolean;
     filter: (array: any[], callback: (element: any, index: number, array: any[]) => boolean) => any[];
-    arrayClone: (array: any[]) => any[];
+    arrayClone: (arrayOrObject: any) => any;
     contains: (arrayOrObject: any, propertyKey: any, propertyValue: any) => boolean;
     assign: {
         <T, U>(target: T, source: U): T & U;

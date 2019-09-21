@@ -591,6 +591,14 @@ declare class Color {
      */
     static YellowGreen: Color;
     /**
+     * Regular expression for the hexidecimal match sequence
+     */
+    private static _hexRegex;
+    /**
+     * Shorthand regular expression for the hexidecimal match sequence
+     */
+    private static _shortHexRegex;
+    /**
      * Constructs a color object with the provided hexidecimal value
      *
      * @param {number} hex A 24 bit hexidecimal value. e.g: 0xFFFFFF
@@ -700,8 +708,8 @@ declare class Color {
     /**
      * Linear interpolates to a new color by a defined amount of steps
      *
-     * @param to The final resting color
-     * @param increment Resolution of steps to take before making a rest to the defined end color
+     * @param {Color} to The final resting color
+     * @param {Number} increment Resolution of steps to take before making a rest to the defined end color
      * @returns {Color}
      */
     lerp(to: Color, increment: number): Color;

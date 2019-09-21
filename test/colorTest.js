@@ -3,13 +3,15 @@ const { table, test, printService } = require("./helpers/helper");
 const { log, header } = printService;
 const chalk = require("chalk");
 
+const color = drawing.color;
+
 // testing initialization
 log(header("#### Color Testing ####"));
 
-const color = new drawing.color(255, 255, 255);
-color.setHex("fef");
-color.alpha = 10;
-log(color.toString(true));
-test("Color test", color.red === 255);
+const black = new color(0, 0, 0);
+log(`Original: ${black.toString()}`);
+black.setHex("#aaa");
+log(`Modified: ${black.toString()}`);
+log(`Hexidecimal: ${black.toString(true)}`);
 
 
