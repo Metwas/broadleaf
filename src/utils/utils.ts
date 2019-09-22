@@ -184,6 +184,17 @@ const isRegExp = function (value: any): boolean {
 };
 
 /**
+ * Checks the provided parameter is an instance of type 'Error'
+ * 
+ * @param value 
+ */
+const isError = function (value: any): boolean {
+
+     return value instanceof Error && !isUndefined(value.message);
+
+};
+
+/**
  * Checks for native JSON support
  * 
  * @returns {Boolean}
