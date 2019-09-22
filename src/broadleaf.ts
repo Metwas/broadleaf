@@ -1,6 +1,6 @@
 import utils from "./utils/utils";
 import math from "./math/math";
-import Color from "./graphics/drawing/colors/color";
+import color from "./graphics/drawing/colors/color";
 import conversions from "./text/conversions";
 
 // text module namespace
@@ -10,10 +10,10 @@ const text = {
 
 };
 
-// drawing module namespace
+// drawing module
 const drawing = {
 
-     color: Color
+     color: color
 
 };
 

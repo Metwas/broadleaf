@@ -1,6 +1,6 @@
 import utils from "./utils/utils";
 import math from "./math/math";
-import Color from "./graphics/drawing/colors/color";
+import color from "./graphics/drawing/colors/color";
 declare const text: {
     conversions: {
         toHexidecimal: (value: number, baseFactor: number) => string;
@@ -9,6 +9,6 @@ declare const text: {
     };
 };
 declare const drawing: {
-    color: typeof Color;
+    color: typeof color;
 };
 export { utils, math, text, drawing };

@@ -7,11 +7,17 @@ const color = drawing.color;
 
 // testing initialization
 log(header("#### Color Testing ####"));
+const black = color.Black;
+log(`Decimal: ${black.toString()} Hexidecimal: ${black.toString(true)}`);
+black.setHex(0xF20000);
+log(`### Modified ###`);
+log(`Decimal: ${black.toString()} Hexidecimal: ${black.toString(true)}`);
 
-const black = new color(0, 0, 0);
-log(`Original: ${black.toString()}`);
-black.setHex("#aaa");
-log(`Modified: ${black.toString()}`);
-log(`Hexidecimal: ${black.toString(true)}`);
+
+log("\n\nLerp testing: ");
+
+const newColor = color.lerp(color.Thistle, color.Tomato, 0.3);
+log(`value: ${newColor}`);
+
 
 
