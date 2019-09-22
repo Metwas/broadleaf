@@ -23,7 +23,6 @@
 */
 
 import Vector2 from "./vectors/vector2";
-import Color from "../graphics/drawing/colors/color";
 import utils from "../utils/utils";
 
 const MAX_NIBBLE = (1 << 4) - 1;
