@@ -22,14 +22,14 @@
      SOFTWARE.
 */
 
-import utils from "../../../utils/utils";
-import math from "../../../math/math";
+import * as utils from "../../../utils/utils";
+import * as math from "../../../math/math";
 import conversions from "../../../text/conversions";
 
 /**
  * Represents a color object with information such as RGB, HEX and does allow full conversion between the base types
  */
-class Color {
+export class Color {
 
 	/**
 	 * Color: 'AliceBlue' HEX: '0xF0F8FF'
@@ -1723,5 +1723,3 @@ class Color {
 	}
 
 }
-
-export default Color;

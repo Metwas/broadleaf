@@ -23,25 +23,50 @@
 */
 
 import Vector2 from "./vectors/vector2";
-import utils from "../utils/utils";
+import * as utils from "../utils/utils";
 
+// maximum 4 bit size
 const MAX_NIBBLE = (1 << 4) - 1;
+
+// maximum 8 bit (1 byte) size
 const MAX_BYTE = (1 << 8) - 1;
+
+// maximum 16 bit (2 bytes) size
 const MAX_16BIT = (1 << 16) - 1;
+
+// maximum 24 bit (3 bytes) size
 const MAX_24BIT = (1 << 24) - 1;
 
-// unsigned 32 bit number
+// maximum unsigned 32 bit (4 bytes) size
 const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
-const INFINITY = (function () {
+
+// positive infinity
+const POSITIVE_INFINITY = (function () {
 
      return Number.POSITIVE_INFINITY;
 
 })();
 
+// negative infinity
+const NEGATIVE_INFINITY = (function () {
+
+     return Number.NEGATIVE_INFINITY;
+
+})();
+
+// PI constant
 const PI = Math.PI;
+
+// half PI
 const HALF_PI = PI / 2;
+
+// two times PI
 const TAU = PI * 2;
+
+// Converts degrees to radians
 const DEGTORAD = Math.PI / 180;
+
+// converts radians to degress
 const RADTODEG = 180 / Math.PI;
 
 /**
@@ -375,34 +400,35 @@ const radiansToDegrees = function (radian: number): number {
 
 };
 
-export default {
+export {
 
-     PI: PI,
-     HALF_PI: HALF_PI,
-     TAU: TAU,
-     MAX_NIBBLE: MAX_NIBBLE,
-     MAX_BYTE: MAX_BYTE,
-     MAX_16BIT: MAX_16BIT,
-     MAX_24BIT: MAX_24BIT,
-     MAX_UNSIGNED_32BIT: MAX_UNSIGNED_32BIT,
-     INFINITY: INFINITY,
-     DEGTORAD: DEGTORAD,
-     RADTODEG: RADTODEG,
-     vector2: Vector2,
-     degreesToRadians: degreesToRadians,
-     radiansToDegrees: radiansToDegrees,
-     lerp: lerp,
-     map: map,
-     square: square,
-     clamp: clamp,
-     distVector: distVector,
-     dist: dist,
-     random: random,
-     randomArray: randomArray,
-     normalizeVectors: normalizeVectors,
-     getMatrixIndex2D: getMatrixIndex2D,
-     getMatrixIndex: getMatrixIndex,
-     getlineGraphComponents: getlineGraphComponents,
-     oscillate: oscillate
+     PI,
+     HALF_PI,
+     TAU,
+     MAX_NIBBLE,
+     MAX_BYTE,
+     MAX_16BIT,
+     MAX_24BIT,
+     MAX_UNSIGNED_32BIT,
+     POSITIVE_INFINITY,
+     NEGATIVE_INFINITY,
+     DEGTORAD,
+     RADTODEG,
+     Vector2,
+     degreesToRadians,
+     radiansToDegrees,
+     lerp,
+     map,
+     square,
+     clamp,
+     distVector,
+     dist,
+     random,
+     randomArray,
+     normalizeVectors,
+     getMatrixIndex2D,
+     getMatrixIndex,
+     getlineGraphComponents,
+     oscillate
 
 };

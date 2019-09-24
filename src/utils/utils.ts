@@ -435,7 +435,7 @@ const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
           if (!!parseKeys) {
 
                const objKeys = Object.keys(obj);
-               keys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return hasOwnProperty(obj, element); });
+               keys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return has(obj, element); });
 
           } else {
 
@@ -458,7 +458,7 @@ const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
  * @param {Object} property The property which is defined in the provided object
  * @returns {Boolean} returns whether the property does exist and is owned by the provided object
  */
-const hasOwnProperty = function (obj: Object, property: string): boolean {
+const has = function (obj: Object, property: string): boolean {
 
      if (isNullOrUndefined(obj)) {
 
@@ -480,7 +480,7 @@ const hasOwnProperty = function (obj: Object, property: string): boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-const object_assign = Object.assign || function (target: any, args: Array<any>): Object {
+const assign = Object.assign || function (target: any, args: Array<any>): Object {
 
      "use scrict;";
 
@@ -508,7 +508,7 @@ const object_assign = Object.assign || function (target: any, args: Array<any>):
                for (var _key in _nextObj) {
 
                     // ensure the object declares this property
-                    if (hasOwnProperty(_nextObj, _key)) {
+                    if (has(_nextObj, _key)) {
 
                          _object[_key] = _nextObj[_key];
 
@@ -530,7 +530,7 @@ const object_assign = Object.assign || function (target: any, args: Array<any>):
  * @param {Boolean} ownProperty The option to only retrieve declared properties by the provided object
  * @returns {Array}
  */
-const object_values = function (obj: any, filterFn: (key: string, value: any, obj: any) => boolean, ownProperty?: boolean): Array<any> {
+const values = function (obj: any, filterFn: (key: string, value: any, obj: any) => boolean, ownProperty?: boolean): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
@@ -560,7 +560,7 @@ const object_values = function (obj: any, filterFn: (key: string, value: any, ob
 
                if (ownProperty === true) {
 
-                    if (hasOwnProperty(obj, key)) {
+                    if (has(obj, key)) {
 
                          return value;
 
@@ -586,7 +586,7 @@ const object_values = function (obj: any, filterFn: (key: string, value: any, ob
  * @param {Boolean} ownProperty The option to only retrieve declared properties by the provided object
  * @returns {Array}
  */
-const object_value = function (obj: any, key: string, ownProperty?: boolean): any {
+const value = function (obj: any, key: string, ownProperty?: boolean): any {
 
      const filterFn = function (key: string, value: any, obj: any): boolean {
 
@@ -594,8 +594,8 @@ const object_value = function (obj: any, key: string, ownProperty?: boolean): an
 
      };
 
-     const values = object_values(obj, (objKey: string, value: any, obj: any) => { return objKey === key }, ownProperty);
-     return Array.isArray(values) && values.length > 0 ? values[0] : null;
+     const objValues = values(obj, (objKey: string, value: any, obj: any) => { return objKey === key }, ownProperty);
+     return Array.isArray(objValues) && objValues.length > 0 ? objValues[0] : null;
 
 };
 
@@ -606,7 +606,7 @@ const object_value = function (obj: any, key: string, ownProperty?: boolean): an
  * @throws {Error} Throws an error if the object parameter returned null
  * @returns {Array} An array of property objects
  */
-const object_keys = function (obj: Object, callback: (key: string) => void = noop): Array<any> {
+const keys = function (obj: Object, callback: (key: string) => void = noop): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
@@ -623,7 +623,7 @@ const object_keys = function (obj: Object, callback: (key: string) => void = noo
      var _tempArray = [];
      for (var key in obj) {
 
-          if (hasOwnProperty(obj, key)) {
+          if (has(obj, key)) {
 
                _tempArray.push(key);
                callback(key);
@@ -678,33 +678,33 @@ const forEach = function (enumerable: Array<any> | Object, callback: (element: a
 
 };
 
-export default {
+export {
 
-     isNullOrUndefined: isNullOrUndefined,
-     isNull: isNull,
-     isUndefined: isUndefined,
-     isObject: isObject,
-     isNumber: isNumber,
-     isFinite: isFinite,
-     isArray: isArray,
-     isBoolean: isBoolean,
-     isFunction: isFunction,
-     isRegExp: isRegExp,
-     isJSONSupported: isJSONSupported,
-     isString: isString,
-     toString: toString,
-     noop: noop,
-     has: hasOwnProperty,
-     filter: filter,
-     arrayClone: clone,
-     contains: contains,
-     assign: object_assign,
-     keys: object_keys,
-     forEach: forEach,
-     getType: getType,
-     __default: __default,
-     toArray: toArray,
-     values: object_values,
-     value: object_value
+     isNullOrUndefined,
+     isNull,
+     isUndefined,
+     isObject,
+     isNumber,
+     isFinite,
+     isArray,
+     isBoolean,
+     isFunction,
+     isRegExp,
+     isJSONSupported,
+     isString,
+     toString,
+     noop,
+     has,
+     filter,
+     clone,
+     contains,
+     assign,
+     keys,
+     forEach,
+     getType,
+     __default,
+     toArray,
+     values,
+     value
 
 };
