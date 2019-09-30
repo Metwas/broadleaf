@@ -47,7 +47,7 @@ const DEFAULT_TABLE = (function (): any {
 /**
  * No operation function
  */
-const noop = function () { };
+export function noop() { };
 
 /**
  * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
@@ -55,7 +55,7 @@ const noop = function () { };
  * 
  * @param value 
  */
-const toString = function (value: any): string {
+export function toString(value: any): string {
 
      return Object.prototype.toString.call(value);
 
@@ -66,7 +66,7 @@ const toString = function (value: any): string {
  * 
  * @param value 
  */
-const isString = function (value: any): boolean {
+export function isString(value: any): boolean {
 
      return toString(value) === "[object String]";
 
@@ -77,7 +77,7 @@ const isString = function (value: any): boolean {
  * 
  * @param value 
  */
-const isNumber = function (value: any): boolean {
+export function isNumber(value: any): boolean {
 
      return toString(value) === "[object Number]";
 
@@ -88,7 +88,7 @@ const isNumber = function (value: any): boolean {
  * 
  * @param value 
  */
-const isObject = function (value: any): boolean {
+export function isObject(value: any): boolean {
 
      return toString(value) === "[object Object]";
 
@@ -99,7 +99,7 @@ const isObject = function (value: any): boolean {
  * 
  * @param value 
  */
-const isFunction = function (value: any): boolean {
+export function isFunction(value: any): boolean {
 
      return typeof value === "function" || toString(value) === "[object Function]";
 
@@ -110,7 +110,7 @@ const isFunction = function (value: any): boolean {
  * 
  * @param value 
  */
-const isNull = function (value: any): boolean {
+export function isNull(value: any): boolean {
 
      return value === null;
 
@@ -121,7 +121,7 @@ const isNull = function (value: any): boolean {
  * 
  * @param value 
  */
-const isUndefined = function (value: any): boolean {
+export function isUndefined(value: any): boolean {
 
      return value === void 0;
 
@@ -133,7 +133,7 @@ const isUndefined = function (value: any): boolean {
  * @param {Object} value 
  * @returns {boolean}
  */
-const isNullOrUndefined = function (value: any): boolean {
+export function isNullOrUndefined(value: any): boolean {
 
      return isNull(value) || isUndefined(value);
 
@@ -144,7 +144,7 @@ const isNullOrUndefined = function (value: any): boolean {
  * 
  * @param value 
  */
-const isBoolean = function (value: any): boolean {
+export function isBoolean(value: any): boolean {
 
      return value === true || value === false || toString(value) === "[object Boolean]";
 
@@ -155,7 +155,7 @@ const isBoolean = function (value: any): boolean {
  * 
  * @param value 
  */
-const isArray = function (value: any): boolean {
+export function isArray(value: any): boolean {
 
      return toString(value) === "[object Array]";
 
@@ -166,7 +166,7 @@ const isArray = function (value: any): boolean {
  * 
  * @param value 
  */
-const isFinite = function (value: any): boolean {
+export function isFinite(value: any): boolean {
 
      return !isNaN(value) && isFinite(value);
 
@@ -177,7 +177,7 @@ const isFinite = function (value: any): boolean {
  * 
  * @param value 
  */
-const isRegExp = function (value: any): boolean {
+export function isRegExp(value: any): boolean {
 
      return toString(value) === "[object RegExp]";
 
@@ -188,7 +188,7 @@ const isRegExp = function (value: any): boolean {
  * 
  * @param value 
  */
-const isError = function (value: any): boolean {
+export function isError(value: any): boolean {
 
      return value instanceof Error && !isUndefined(value.message);
 
@@ -199,7 +199,7 @@ const isError = function (value: any): boolean {
  * 
  * @returns {Boolean}
  */
-const isJSONSupported = function (): boolean {
+export function isJSONSupported(): boolean {
 
      return (JSON && isFunction(JSON.parse) && isFunction(JSON.stringify));
 
@@ -211,7 +211,7 @@ const isJSONSupported = function (): boolean {
  * @param {Object} obj 
  * @returns {String} The type evaluated as a string
  */
-const getType = function (obj: any): string {
+export function getType(obj: any): string {
 
      const type = typeof obj;
      if (type !== "object") {
@@ -241,7 +241,7 @@ const getType = function (obj: any): string {
  * @param {String} type The type name as a string
  * @returns {any} Returns a default value obtained from the default table lookup
  */
-const __default = function (type: string) {
+export function __default(type: string) {
 
      let stringType = "";
      if (type !== "string") {
@@ -278,7 +278,7 @@ const array_splice = function_call(Array.prototype.splice);
  * @param {Array|any} array The array or object to be cloned
  * @returns {Array} The cloned array or an empty array if the clone procedure failed
  */
-const clone = function (arrayOrObject: Array<any> | any): Array<any> | any {
+export function clone(arrayOrObject: Array<any> | any): Array<any> | any {
 
      if (Array.isArray(arrayOrObject)) {
 
@@ -307,7 +307,7 @@ const clone = function (arrayOrObject: Array<any> | any): Array<any> | any {
  * @param {Object} propertyValue The property value which must be matched to
  * @returns {Boolean} Returns whether the element with that property exists in the array
  */
-const contains = function (arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean {
+export function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean {
 
      if (isArray(arrayOrObject)) {
 
@@ -381,7 +381,7 @@ const contains = function (arrayOrObject: Array<any> | any, propertyKey: any, pr
  * @param {Function} callback The callback filter function
  * @returns {Array} The filtered referenced array
  */
-const filter = function (array: Array<any>, callback: (element: any, index: number, array: Array<any>) => boolean): Array<any> {
+export function filter(array: Array<any>, callback: (element: any, index: number, array: Array<any>) => boolean): Array<any> {
 
      if (typeof callback !== "function") {
 
@@ -421,7 +421,7 @@ const filter = function (array: Array<any>, callback: (element: any, index: numb
  * @throws {Error} Throws an error if the object parameter returned null
  * @returns {Array}
  */
-const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
+export function toArray(obj: Object, parseKeys?: boolean): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
@@ -432,7 +432,7 @@ const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
      const parseObjectKeys = function (): Array<any> {
 
           let keys: Array<any> = [];
-          if (!!parseKeys) {
+          if (parseKeys && parseKeys === true) {
 
                const objKeys = Object.keys(obj);
                keys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return has(obj, element); });
@@ -458,7 +458,7 @@ const toArray = function (obj: Object, parseKeys?: boolean): Array<any> {
  * @param {Object} property The property which is defined in the provided object
  * @returns {Boolean} returns whether the property does exist and is owned by the provided object
  */
-const has = function (obj: Object, property: string): boolean {
+export function has(obj: Object, property: string): boolean {
 
      if (isNullOrUndefined(obj)) {
 
@@ -480,7 +480,7 @@ const has = function (obj: Object, property: string): boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-const assign = Object.assign || function (target: any, args: Array<any>): Object {
+const assignFunction = function (target: any, args: Array<any>): Object {
 
      "use scrict;";
 
@@ -524,13 +524,37 @@ const assign = Object.assign || function (target: any, args: Array<any>): Object
 };
 
 /**
+ * Polyfill code for Object.assign invocation
+ *
+ * @param {Object} target obj
+ * @param {Array} args arguments to be passed to the object assignment
+ * @throws {Error} Throws an error if the target parameter returned null
+ * @returns {Object} A new object which has the properties assigned to it
+ * @remarks If not supported , it will create a poly fill code.
+ * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+ */
+export function assign(): Function {
+
+     if (Object.assign && isFunction(Object.assign)) {
+
+          return Object.assign;
+
+     } else {
+
+          return assignFunction;
+
+     }
+
+};
+
+/**
  * Obtains the property keys from a provided object parameter 
  *
  * @param {Object} obj
  * @param {Boolean} ownProperty The option to only retrieve declared properties by the provided object
  * @returns {Array}
  */
-const values = function (obj: any, filterFn: (key: string, value: any, obj: any) => boolean, ownProperty?: boolean): Array<any> {
+export function values(obj: any, filterFn: (key: string, value: any, obj: any) => boolean, ownProperty?: boolean): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
@@ -586,7 +610,7 @@ const values = function (obj: any, filterFn: (key: string, value: any, obj: any)
  * @param {Boolean} ownProperty The option to only retrieve declared properties by the provided object
  * @returns {Array}
  */
-const value = function (obj: any, key: string, ownProperty?: boolean): any {
+export function value(obj: any, key: string, ownProperty?: boolean): any {
 
      const filterFn = function (key: string, value: any, obj: any): boolean {
 
@@ -606,7 +630,7 @@ const value = function (obj: any, key: string, ownProperty?: boolean): any {
  * @throws {Error} Throws an error if the object parameter returned null
  * @returns {Array} An array of property objects
  */
-const keys = function (obj: Object, callback: (key: string) => void = noop): Array<any> {
+export function keys(obj: Object, callback: (key: string) => void = noop): Array<any> {
 
      if (isNullOrUndefined(obj)) {
 
@@ -642,7 +666,7 @@ const keys = function (obj: Object, callback: (key: string) => void = noop): Arr
  * @param {Array | Object} enumerable An array
  * @param {Function} callback The callback function to be called on each element within the provided array
  */
-const forEach = function (enumerable: Array<any> | Object, callback: (element: any) => void): void {
+export function forEach(enumerable: Array<any> | Object, callback: (element: any) => void): void {
 
      if (isNullOrUndefined(enumerable)) {
 
@@ -678,33 +702,4 @@ const forEach = function (enumerable: Array<any> | Object, callback: (element: a
 
 };
 
-export {
 
-     isNullOrUndefined,
-     isNull,
-     isUndefined,
-     isObject,
-     isNumber,
-     isFinite,
-     isArray,
-     isBoolean,
-     isFunction,
-     isRegExp,
-     isJSONSupported,
-     isString,
-     toString,
-     noop,
-     has,
-     filter,
-     clone,
-     contains,
-     assign,
-     keys,
-     forEach,
-     getType,
-     __default,
-     toArray,
-     values,
-     value
-
-};

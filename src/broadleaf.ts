@@ -24,9 +24,9 @@
 
 import * as utils from "./utils/utils";
 import * as math from "./math/math";
-import conversions from "./text/conversions";
+import * as conversions from "./text/conversions";
 import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./animation/timer";
+import { Timer } from "./events/common/timer";
 
 // text module namespace
 const text = {
@@ -47,6 +47,7 @@ export {
      utils,
      math,
      text,
+     Timer,
      drawing
 
 };
