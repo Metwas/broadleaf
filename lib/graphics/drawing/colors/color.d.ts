@@ -1,7 +1,7 @@
 /**
  * Represents a color object with information such as RGB, HEX and does allow full conversion between the base types
  */
-declare class Color {
+export declare class Color {
     /**
      * Color: 'AliceBlue' HEX: '0xF0F8FF'
      */
@@ -731,4 +731,3 @@ declare class Color {
      */
     private static addZeroPadding;
 }
-export default Color;

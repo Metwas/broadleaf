@@ -3,7 +3,7 @@ const { utils, math } = require("../../lib/broadleaf");
 const chalk = require("chalk");
 
 // custom styles
-const headerStyle = chalk.keyword("white").bold.bgYellow.inverse;
+const headerStyle = chalk.keyword("white").bold.bgYellow;
 const passStyle = chalk.keyword("green").bold;
 const failStyle = chalk.keyword("red").bold;
 const testStyle = chalk.keyword("black").bold;

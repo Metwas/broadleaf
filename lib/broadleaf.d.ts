@@ -1,14 +1,13 @@
-import utils from "./utils/utils";
-import math from "./math/math";
-import color from "./graphics/drawing/colors/color";
+import * as utils from "./utils/utils";
+import * as math from "./math/math";
+import * as conversions from "./text/conversions";
+import { Color } from "./graphics/drawing/colors/color";
+import { Timer } from "./events/common/timer";
+import { EventEmitter } from "./events/common/EventEmitter";
 declare const text: {
-    conversions: {
-        toHexidecimal: (value: number, baseFactor: number) => string;
-        toBinary: (value: number) => string;
-        padLeft: (value: string, char: string, count: number) => string;
-    };
+    conversions: typeof conversions;
 };
 declare const drawing: {
-    color: typeof color;
+    color: typeof Color;
 };
-export { utils, math, text, drawing };
+export { utils, math, text, Timer, EventEmitter, drawing };

@@ -1,7 +1,8 @@
-const { utils, math } = require("../lib/broadleaf");
-const { table, test, printService } = require("./helpers/helper");
-const { log, header } = printService;
+const { utils, math } = require("../../lib/broadleaf");
+const { table, test, printService } = require("../helpers/helper");
 const chalk = require("chalk");
+
+const { log, header } = printService;
 
 // testing initialization
 log(header("#### Math Testing ####"));

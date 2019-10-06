@@ -7,4 +7,4 @@ const { log, header } = printService;
 test("timer is not null or undefined", !utils.isNullOrUndefined(Timer));
 
 var timer = new Timer(5000);
-timer.start();
+timer.start("loop");
