@@ -22,34 +22,49 @@
      SOFTWARE.
 */
 
-import * as utils from "./utils/utils";
-import * as math from "./math/math";
-import * as conversions from "./text/conversions";
-import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./events/common/timer";
-import { EventEmitter } from "./events/common/EventEmitter";
+import { IListener } from "./IListener";
 
-// text module namespace
-const text = {
+/**
+ * Definition for a typed event emitter
+ */
+export interface ITypedEventEmitter<T> {
 
-     conversions: conversions
+     /**
+      * Registers an event listener to a listener store
+      * 
+      * @param {String} event
+      * @param {IListener} listener
+      */
+     on(event: string, listener: IListener<T>): void;
 
-};
+     /**
+      * Registers a listener to the once store
+      * 
+      * @param {String} event
+      * @param {IListener} listener
+      */
+     once(event: string, listener: IListener<T>): void;
 
-// drawing module
-const drawing = {
+     /**
+      * Removes a specified listener from a listener store
+      * 
+      * @param {String} event
+      * @param {IListener} listener
+      */
+     off(event: string): void;
 
-     color: Color
+     /**
+      * Fires off the specified event to all attached listeners
+      * 
+      * @param {String} event
+      */
+     emit(event: string, ...args: Array<any>): boolean;
+     
+     /**
+      * Pipes the current event emitter to another event emitter
+      * 
+      * @param {ITypedEventEmitter} emitter 
+      */
+     pipe(event: string, emitter: ITypedEventEmitter<T>): void;
 
-};
-
-export {
-
-     utils,
-     math,
-     text,
-     Timer,
-     EventEmitter,
-     drawing
-
-};
+}

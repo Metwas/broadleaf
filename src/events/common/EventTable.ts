@@ -22,34 +22,40 @@
      SOFTWARE.
 */
 
-import * as utils from "./utils/utils";
-import * as math from "./math/math";
-import * as conversions from "./text/conversions";
-import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./events/common/timer";
-import { EventEmitter } from "./events/common/EventEmitter";
+import { IListener } from "./IListener";
 
-// text module namespace
-const text = {
+/**
+ * Model for mapping an event name to a listener container
+ */
+export class EventTable<T>{
 
-     conversions: conversions
+     /**
+      * The name for this event
+      */
+     public name: string;
 
-};
+     /**
+      * The listener container associated with this event
+      */
+     public listeners: IListener<T>[];
 
-// drawing module
-const drawing = {
+     /**
+      * Option to keep the events persistent after emission
+      */
+     public persistent: boolean;
 
-     color: Color
+     /**
+      * Default constructor 
+      * 
+      * @param {String} name 
+      * @param {Boolean} persistent Optional - defaults to true
+      */
+     constructor(name: string, persistent?: boolean){
 
-};
+          this.name = name || "";
+          this.listeners = [];
+          this.persistent = persistent || true;
 
-export {
+     }
 
-     utils,
-     math,
-     text,
-     Timer,
-     EventEmitter,
-     drawing
-
-};
+}

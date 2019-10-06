@@ -22,34 +22,11 @@
      SOFTWARE.
 */
 
-import * as utils from "./utils/utils";
-import * as math from "./math/math";
-import * as conversions from "./text/conversions";
-import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./events/common/timer";
-import { EventEmitter } from "./events/common/EventEmitter";
+/**
+ * Type safe event listener
+ */
+export interface IListener<T> {
 
-// text module namespace
-const text = {
+     (event: T): any;
 
-     conversions: conversions
-
-};
-
-// drawing module
-const drawing = {
-
-     color: Color
-
-};
-
-export {
-
-     utils,
-     math,
-     text,
-     Timer,
-     EventEmitter,
-     drawing
-
-};
+}

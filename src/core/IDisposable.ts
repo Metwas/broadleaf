@@ -22,34 +22,11 @@
      SOFTWARE.
 */
 
-import * as utils from "./utils/utils";
-import * as math from "./math/math";
-import * as conversions from "./text/conversions";
-import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./events/common/timer";
-import { EventEmitter } from "./events/common/EventEmitter";
+/**
+ * Interface for exposing a dispose method
+ */
+export interface IDisposable {
 
-// text module namespace
-const text = {
+     dispose(): void;
 
-     conversions: conversions
-
-};
-
-// drawing module
-const drawing = {
-
-     color: Color
-
-};
-
-export {
-
-     utils,
-     math,
-     text,
-     Timer,
-     EventEmitter,
-     drawing
-
-};
+}
