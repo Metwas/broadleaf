@@ -29,7 +29,7 @@
  * @param {Number} baseFactor The base factor size for the return value
  * @returns {String} The string hexidecimal version for the provided number
  */
-const toHexidecimal = function (value: number, baseFactor: number): string {
+export function toHexidecimal(value: number, baseFactor: number): string {
 
      if (isNaN(value) || !isFinite(value)) {
 
@@ -57,7 +57,7 @@ const toHexidecimal = function (value: number, baseFactor: number): string {
  * @param {Number} value The number to be converted to a binary string
  * @returns {String} Returns a binary string representation for the provided value
  */
-const toBinary = function (value: number): string {
+export function toBinary(value: number): string {
 
      var _bin = "";
 
@@ -84,7 +84,7 @@ const toBinary = function (value: number): string {
  * @param {Number} count The length of padding to prepend
  * @returns {String} returns a readable string format of the current system time, e.g: 11:48:20
  */
-const padLeft = function (value: string, char: string, count: number): string {
+export function padLeft(value: string, char: string, count: number): string {
 
      var _char = "";
      var _lengthToAttach = 0;
@@ -105,12 +105,3 @@ const padLeft = function (value: string, char: string, count: number): string {
      return value;
 
 };
-
-
-export default {
-
-     toHexidecimal: toHexidecimal,
-     toBinary: toBinary,
-     padLeft: padLeft
-
-}
