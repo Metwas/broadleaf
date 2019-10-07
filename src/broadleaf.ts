@@ -24,7 +24,7 @@
 
 import * as utils from "./utils/utils";
 import * as math from "./math/math";
-import * as conversions from "./text/conversions";
+import * as conversions from "./utils/text/conversions";
 import { Color } from "./graphics/drawing/colors/color";
 import { Timer } from "./events/common/timer";
 import { EventEmitter } from "./events/common/EventEmitter";
