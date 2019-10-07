@@ -23,6 +23,16 @@
 */
 
 /**
+ * Export regex constants
+ */
+export const regex = import("./text/regexConstants");
+
+/**
+ * Export string conversions
+ */
+export const conversions = import("./text/conversions");
+
+/**
  * Lookup table for native JavaScript types and the associated default values
  * 
  * @returns {Object}
