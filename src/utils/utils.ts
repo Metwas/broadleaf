@@ -22,15 +22,8 @@
      SOFTWARE.
 */
 
-/**
- * Export regex constants
- */
-export const regex = import("./text/regexConstants");
-
-/**
- * Export string conversions
- */
-export const conversions = import("./text/conversions");
+import * as regex from "./text/regexConstants";
+import * as conversions from "./text/conversions";
 
 /**
  * Lookup table for native JavaScript types and the associated default values
@@ -709,6 +702,14 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
           forEach(keys, callback);
 
      }
+
+};
+
+// export text based helpers
+export {
+
+     regex,
+     conversions
 
 };
 
