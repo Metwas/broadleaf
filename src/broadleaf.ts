@@ -22,34 +22,20 @@
      SOFTWARE.
 */
 
-import * as utils from "./utils/utils";
-import * as math from "./math/math";
+import * as utilities from "./utils/utils";
+import * as maths from "./math/math";
 import * as conversions from "./utils/text/conversions";
-import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./events/common/timer";
-import { EventEmitter } from "./events/common/EventEmitter";
+import * as regexConstants from "./utils/text/regexConstants";
 
-// text module namespace
-const text = {
 
-     conversions: conversions
+export { Color } from "./graphics/drawing/colors/color";
+export { Timer } from "./events/common/timer";
+export { EventEmitter } from "./events/common/EventEmitter";
 
+export const text = {
+     conversions: conversions,
+     regex: regexConstants
 };
 
-// drawing module
-const drawing = {
-
-     color: Color
-
-};
-
-export {
-
-     utils,
-     math,
-     text,
-     Timer,
-     EventEmitter,
-     drawing
-
-};
+export const math = maths;
+export const utils = utilities;

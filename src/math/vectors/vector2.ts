@@ -27,7 +27,7 @@
  * 
  * @documentation https://en.wikipedia.org/wiki/Euclidean_vector
  */
-class Vector2 {
+export class Vector2 {
 
      private _width: number;
      private _height: number;
@@ -290,5 +290,3 @@ class Vector2 {
      }
 
 }
-
-export default Vector2;

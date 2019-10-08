@@ -25,7 +25,6 @@
 import * as utils from "../../utils/utils";
 import { TimerState } from "./timerState";
 import { ITimer } from "./ITimer";
-import { math } from "../../broadleaf";
 import { EventEmitter } from "./EventEmitter";
 
 /**

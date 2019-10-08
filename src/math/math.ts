@@ -22,52 +22,53 @@
      SOFTWARE.
 */
 
-import Vector2 from "./vectors/vector2";
+
 import * as utils from "../utils/utils";
+import { Vector2 } from "./vectors/vector2";
 
 // maximum 4 bit size
-const MAX_NIBBLE = (1 << 4) - 1;
+export const MAX_NIBBLE = (1 << 4) - 1;
 
 // maximum 8 bit (1 byte) size
-const MAX_BYTE = (1 << 8) - 1;
+export const MAX_BYTE = (1 << 8) - 1;
 
 // maximum 16 bit (2 bytes) size
-const MAX_16BIT = (1 << 16) - 1;
+export const MAX_16BIT = (1 << 16) - 1;
 
 // maximum 24 bit (3 bytes) size
-const MAX_24BIT = (1 << 24) - 1;
+export const MAX_24BIT = (1 << 24) - 1;
 
 // maximum unsigned 32 bit (4 bytes) size
-const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
+export const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
 
 // positive infinity
-const POSITIVE_INFINITY = (function () {
+export const POSITIVE_INFINITY = (function () {
 
      return Number.POSITIVE_INFINITY;
 
 })();
 
 // negative infinity
-const NEGATIVE_INFINITY = (function () {
+export const NEGATIVE_INFINITY = (function () {
 
      return Number.NEGATIVE_INFINITY;
 
 })();
 
 // PI constant
-const PI = Math.PI;
+export const PI = Math.PI;
 
 // half PI
-const HALF_PI = PI / 2;
+export const HALF_PI = PI / 2;
 
 // two times PI
-const TAU = PI * 2;
+export const TAU = PI * 2;
 
 // Converts degrees to radians
-const DEGTORAD = Math.PI / 180;
+export const DEGTORAD = Math.PI / 180;
 
 // converts radians to degress
-const RADTODEG = 180 / Math.PI;
+export const RADTODEG = 180 / Math.PI;
 
 /**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
@@ -78,7 +79,7 @@ const RADTODEG = 180 / Math.PI;
  * @remarks Documentation p5.js:https://p5js.org/examples/math-linear-interpolation.html and wiki: https://en.wikipedia.org/wiki/Linear_interpolation
  * @returns {Number} A new point which is a fraction (based off [t]) of the final x1 point
  */
-const lerp = function (x0: number, x1: number, t: number): number {
+export const lerp = function (x0: number, x1: number, t: number): number {
 
      return (1 - t) * x0 + t * x1;
 
@@ -92,7 +93,7 @@ const lerp = function (x0: number, x1: number, t: number): number {
  * @param {Number} max The maximum range for the value to fall under
  * @returns {Number} A new number which is now clamped between a given minimum and maximum range value
  */
-const clamp = function (val: number, min: number, max: number): number {
+export const clamp = function (val: number, min: number, max: number): number {
 
      return Math.max(min, Math.min(max, val));
 
@@ -104,7 +105,7 @@ const clamp = function (val: number, min: number, max: number): number {
  * @param {Number} value The value to be squared
  * @returns {Number} The newly squared value
  */
-const square = function (value: number): number {
+export const square = function (value: number): number {
 
      return Math.pow(value, 2);
 
@@ -117,7 +118,7 @@ const square = function (value: number): number {
  * @param {Number} x1 The end point
  * @returns {Number} The distance between these points
  */
-const dist = function (x0: number, x1: number): number {
+export const dist = function (x0: number, x1: number): number {
 
      return Math.sqrt((x0 - x1) * (x0 - x1));
 
@@ -132,7 +133,7 @@ const dist = function (x0: number, x1: number): number {
  * @param {Number} y1 The y end point
  * @returns {Number} The distance between these two vectors
  */
-const distVector = function (vector0: Vector2, vector1: Vector2): object {
+export const distVector = function (vector0: Vector2, vector1: Vector2): object {
 
      var _x = Math.sqrt((vector1.x - vector0.x) * (vector1.x - vector0.x));
      var _y = Math.sqrt((vector1.y - vector0.y) * (vector1.y - vector0.y));
@@ -153,7 +154,7 @@ const distVector = function (vector0: Vector2, vector1: Vector2): object {
  * @param {Vector2} vector1 The second vector
  * @returns {Object} returns a object containing the vectors in a normailized manor
  */
-const normalizeVectors = function (vector0: Vector2, vector1: Vector2) {
+export const normalizeVectors = function (vector0: Vector2, vector1: Vector2) {
 
      var _delta0 = vector0.x + vector0.y;
      var _delta1 = vector1.x + vector1.y;
@@ -184,7 +185,7 @@ const normalizeVectors = function (vector0: Vector2, vector1: Vector2) {
  * @remarks The line graph formulae goes as follows: y = f(x) = mx + c
  * @returns {Object} The values for each component in the formulae
  */
-const getlineGraphComponents = function (from: Vector2, to: Vector2): Object {
+export const getlineGraphComponents = function (from: Vector2, to: Vector2): Object {
 
      let _gradient = 0;
      let _yIntercept = 0;
@@ -237,7 +238,7 @@ const getlineGraphComponents = function (from: Vector2, to: Vector2): Object {
 * @param {Number} amplitude
 * @returns {Number} a value thats mapped from the padding and amplitude to values between -1 to 1
 */
-const oscillate = function (angle: number, amplitude: number): number {
+export const oscillate = function (angle: number, amplitude: number): number {
 
      return map(Math.sin(angle), -1, 1, -amplitude, amplitude);
 
@@ -253,7 +254,7 @@ const oscillate = function (angle: number, amplitude: number): number {
  * @param {Number} maxTo The maximum end value
  * @returns {Number} a new value thats mapped correspondingly between the provided parameters
  */
-const map = function (value: number, minFrom: number, maxFrom: number, minTo: number, maxTo: number): number {
+export const map = function (value: number, minFrom: number, maxFrom: number, minTo: number, maxTo: number): number {
 
      if (!(isNaN(value) && isFinite(value)) || typeof value === "undefined") {
 
@@ -272,7 +273,7 @@ const map = function (value: number, minFrom: number, maxFrom: number, minTo: nu
  * @param {Number} max A maximum value
  * @returns {Number} A new random integer which falls between the given ranges
  */
-const random = function (min: number, max: number): number {
+export const random = function (min: number, max: number): number {
 
      var rand = Math.random();
 
@@ -308,7 +309,7 @@ const random = function (min: number, max: number): number {
  * @param {Array} array An array
  * @returns {Number} A random element within the array
  */
-const randomArray = function (array: Array<any>): number | null {
+export const randomArray = function (array: Array<any>): number | null {
 
      var rand = Math.random();
 
@@ -331,7 +332,7 @@ const randomArray = function (array: Array<any>): number | null {
  * @param {Number} width The total width to calculate over
  * @returns {Number} The index of the corresponding element within a one dimensional array
  */
-const getMatrixIndex2D = function (x: number, y: number, width: number): number {
+export const getMatrixIndex2D = function (x: number, y: number, width: number): number {
 
      return y * width + x;
 
@@ -347,7 +348,7 @@ const getMatrixIndex2D = function (x: number, y: number, width: number): number 
  * @param {Boolean} border Option to loop back if a coordinate is greater than the dimension
  * @returns {Object} The element at the calculate index
  */
-const getMatrixIndex = function (x: number, y: number, width: number, array: Array<any>, border: boolean): Object | null {
+export const getMatrixIndex = function (x: number, y: number, width: number, array: Array<any>, border: boolean): Object | null {
 
      if (array === null || !Array.isArray(array)) {
 
@@ -382,7 +383,7 @@ const getMatrixIndex = function (x: number, y: number, width: number, array: Arr
  * @param {Number} degrees A degree value to be converted to radians
  * @returns {Number} The new radian value
  */
-const degreesToRadians = function (degrees: number): number {
+export const degreesToRadians = function (degrees: number): number {
 
      return degrees * DEGTORAD;
 
@@ -394,41 +395,10 @@ const degreesToRadians = function (degrees: number): number {
  * @param {Number} radian A radian value to be converted to degrees
  * @returns {Number} The new degree value
  */
-const radiansToDegrees = function (radian: number): number {
+export const radiansToDegrees = function (radian: number): number {
 
      return radian * RADTODEG;
 
 };
 
-export {
-
-     PI,
-     HALF_PI,
-     TAU,
-     MAX_NIBBLE,
-     MAX_BYTE,
-     MAX_16BIT,
-     MAX_24BIT,
-     MAX_UNSIGNED_32BIT,
-     POSITIVE_INFINITY,
-     NEGATIVE_INFINITY,
-     DEGTORAD,
-     RADTODEG,
-     Vector2,
-     degreesToRadians,
-     radiansToDegrees,
-     lerp,
-     map,
-     square,
-     clamp,
-     distVector,
-     dist,
-     random,
-     randomArray,
-     normalizeVectors,
-     getMatrixIndex2D,
-     getMatrixIndex,
-     getlineGraphComponents,
-     oscillate
-
-};
+export { Vector2 } from "./vectors/vector2";

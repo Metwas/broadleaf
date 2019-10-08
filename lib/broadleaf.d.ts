@@ -1,13 +1,13 @@
-import * as utils from "./utils/utils";
-import * as math from "./math/math";
-import * as conversions from "./text/conversions";
-import { Color } from "./graphics/drawing/colors/color";
-import { Timer } from "./events/common/timer";
-import { EventEmitter } from "./events/common/EventEmitter";
-declare const text: {
+import * as utilities from "./utils/utils";
+import * as maths from "./math/math";
+import * as conversions from "./utils/text/conversions";
+import * as regexConstants from "./utils/text/regexConstants";
+export { Color } from "./graphics/drawing/colors/color";
+export { Timer } from "./events/common/timer";
+export { EventEmitter } from "./events/common/EventEmitter";
+export declare const text: {
     conversions: typeof conversions;
+    regex: typeof regexConstants;
 };
-declare const drawing: {
-    color: typeof Color;
-};
-export { utils, math, text, Timer, EventEmitter, drawing };
+export declare const math: typeof maths;
+export declare const utils: typeof utilities;

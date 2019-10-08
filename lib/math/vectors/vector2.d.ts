@@ -3,7 +3,7 @@
  *
  * @documentation https://en.wikipedia.org/wiki/Euclidean_vector
  */
-declare class Vector2 {
+export declare class Vector2 {
     private _width;
     private _height;
     x: number;
@@ -130,4 +130,3 @@ declare class Vector2 {
      */
     multiplyScaler(scaler: number): Vector2;
 }
-export default Vector2;
