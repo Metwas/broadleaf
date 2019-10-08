@@ -2,11 +2,11 @@
 common extensions and helper functionality library
 
 > # Usage
-* *const broadleaf = require("broadleaf")
+* * const broadleaf = require("broadleaf")
 
  [or object destructuring]
   
-* *const { utils, math } = require("broadleaf");
+* * const { utils, math } = require("broadleaf");
 >
 >
 >
