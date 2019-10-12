@@ -31,10 +31,6 @@ export declare class Timer extends EventEmitter<any> implements ITimer {
      */
     TIMER_INTERVAL_ID: number;
     /**
-     * How many frames per second to be rendered per set interval
-     */
-    fps: number;
-    /**
      * Represents what state the timer is currently in
      */
     state: TimerState;
@@ -73,6 +69,18 @@ export declare class Timer extends EventEmitter<any> implements ITimer {
      * @returns {String}
      */
     readonly status: string;
+    /**
+    * Gets the current frames-per-second value
+    *
+    * @returns {Number}
+    */
+    private _fps;
+    /**
+    * Sets the current frames-per-second value, ensuring it falls within the defined UPDATE_INTERVAL
+    *
+    * @param {Number} value
+    */
+    fps: number;
     /**
      * How long this timer is setup for (in milliseconds)
      *

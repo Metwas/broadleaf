@@ -65,7 +65,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       */
      public static start(duration: number, mode: any = "once", startTime?: number): Timer {
 
-          const timer = new Timer(duration, startTime);
+          const timer = new Timer(duration, 60, startTime);
           timer.start(mode);
           return timer;
 
@@ -75,11 +75,6 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * The id for a newly initialized timer
       */
      public TIMER_INTERVAL_ID: number = -1;
-
-     /**
-      * How many frames per second to be rendered per set interval
-      */
-     public fps: number;
 
      /**
       * Represents what state the timer is currently in
@@ -154,6 +149,33 @@ export class Timer extends EventEmitter<any> implements ITimer {
 
           return this.state.toString();
 
+     }
+
+     /**
+     * Gets the current frames-per-second value
+     * 
+     * @returns {Number}
+     */
+     private _fps: number = 60;
+     public get fps(): number {
+
+          return this._fps;
+
+     }
+
+     /**
+     * Sets the current frames-per-second value, ensuring it falls within the defined UPDATE_INTERVAL
+     * 
+     * @param {Number} value
+     */
+     public set fps(value) {
+
+          if(value >= 0 && value < Timer.UPDATE_INTERVAL){
+
+               this._fps = value;
+
+          }
+     
      }
 
      /**
@@ -297,9 +319,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
 
           }
 
-          this._startTime = startTime;
-          this.elapsed = 0;
-
+          this._startTime = this.elapsed = startTime;
           const mode = String(arguments[0]).toLowerCase();
           this._mode = (mode === "once" || mode === "loop") ? mode : _this._mode || "once";
           this.TIMER_INTERVAL_ID = setInterval(function () { Timer._tick(_this); }, Timer.UPDATE_INTERVAL / this.fps, false);

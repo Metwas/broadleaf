@@ -12,16 +12,4 @@ export declare class SeperatorModel {
      */
     token: string;
     constructor(token: string, startSequence?: string, endSequence?: string);
-    /**
-     * The output result stored after the last parsing call
-     */
-    private _results;
-    readonly result: Array<string>;
-    /**
-     * Obtains all the values which match the current seperator tokens
-     *
-     * @param {String} value
-     * @returns {Array}
-     */
-    parse(value: string): Array<string>;
 }

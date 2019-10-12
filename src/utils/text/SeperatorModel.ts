@@ -17,7 +17,7 @@ export class SeperatorModel {
       */
      public token: string;
 
-     constructor(token: string, startSequence?: string, endSequence?: string) {
+     public constructor(token: string, startSequence?: string, endSequence?: string) {
 
           if (!utils.isString(token)) {
 
@@ -42,30 +42,5 @@ export class SeperatorModel {
           this.endSequence = endSequence;
 
      }
-
-     /**
-      * The output result stored after the last parsing call
-      */
-     private _results: Array<string> = [];
-     get result(): Array<string> {
-
-          return this._results;
-
-     }
-
-     /**
-      * Obtains all the values which match the current seperator tokens
-      * 
-      * @param {String} value 
-      * @returns {Array}
-      */
-     parse(value: string): Array<string> {
-
-          // const tokenString: string = `${this.startSequence}${this.token}${this.endSequence}`;
-          // const regexFn: (value: string) => string = utils.regex.MATCH_TOKEN(this);
-          // return this._results = [""];
-          return [];
-
-     }
-
+     
 }

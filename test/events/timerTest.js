@@ -6,7 +6,11 @@ const chalk = require("chalk");
 const { log, header } = printService;
 test("timer is not null or undefined", !utils.isNullOrUndefined(Timer));
 
-var timer = new Timer(5000);
+const duration = 5000; // Total duration for the timer to take to complete
+const fps = 1; // The resolution OR frame per second
+const startTime = 0; // A specified head start for the timer
+
+var timer = new Timer(duration, fps, startTime);
 const now = formatDateNow();
 timer.on("complete", (elapsed) => { console.log("\ntimer started: " + now + "\ntimer completed at: " + formatDateNow()); });
 timer.on("start", () => { console.log("timer started at: " + now); });
@@ -21,6 +25,6 @@ timer.start();
 function formatDateNow() {
 
      const now = new Date();
-     return `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+     return `${String("0" + now.getHours()).slice(-2)}:${String("0" + now.getMinutes()).slice(-2)}:${String("0" + now.getSeconds()).slice(-2)}`;
 
 }
