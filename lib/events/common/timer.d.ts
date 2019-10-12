@@ -1,6 +1,7 @@
 import { TimerState } from "./timerState";
 import { ITimer } from "./ITimer";
 import { EventEmitter } from "./EventEmitter";
+import { IListener } from "./IListener";
 /**
  * Represents a setInterval based wrapper and manager
  */
@@ -74,9 +75,67 @@ export declare class Timer extends EventEmitter<any> implements ITimer {
     readonly status: string;
     /**
      * How long this timer is setup for (in milliseconds)
+     *
+     * @returns {Number}
      */
     private _duration;
     readonly duration: number;
+    /**
+     * Registers the onstart event, which will get executed on the very first tick cycle
+     *
+     * @param {String} event
+     * @param {IListener} listener
+     */
+    on(event: "start", listener: IListener<any>): void;
+    /**
+     * Registers the ontick event, which will get executed each frame update
+     *
+     * @param {String} event
+     * @param {IListener} listener
+     */
+    on(event: "tick", listener: IListener<any>): void;
+    /**
+     * Registers the oncomplete event, which will get executed as soon as the timer as fully elapsed
+     *
+     * @param {String} event
+     * @param {IListener} listener
+     */
+    on(event: "complete", listener: IListener<any>): void;
+    /**
+    * Registers the onpause event, which will get executed as soon as the timer as paused
+    *
+    * @param {String} event
+    * @param {IListener} listener
+    */
+    on(event: "pause", listener: IListener<any>): void;
+    /**
+     * Registers the onstart event only once, which will get executed on the very first tick cycle
+     *
+     * @param {String} event
+     * @param {IListener} listener
+    */
+    once(event: "start", listener: IListener<any>): void;
+    /**
+     * Registers the ontick event only once, which will get executed each frame update
+     *
+     * @param {String} event
+     * @param {IListener} listener
+    */
+    once(event: "tick", listener: IListener<any>): void;
+    /**
+     * Registers the oncomplete event only once, which will get executed as soon as the timer as fully elapsed
+     *
+     * @param {String} event
+     * @param {IListener} listener
+     */
+    once(event: "complete", listener: IListener<any>): void;
+    /**
+    * Registers the onpause event only once, which will get executed as soon as the timer as paused
+    *
+    * @param {String} event
+    * @param {IListener} listener
+    */
+    once(event: "pause", listener: IListener<any>): void;
     /**
      * Runs the timer only once with an optional start time
      */
@@ -95,8 +154,22 @@ export declare class Timer extends EventEmitter<any> implements ITimer {
      * @param {Number} startTime
      */
     start(mode: "loop"): void;
+    /**
+     * Pauses the current timer instance
+     */
     pause(): void;
+    /**
+     * Stops the timer, setting the elapsed property to the duration value
+     */
     stop(): void;
+    /**
+     * Operates a full reset for the timer
+     */
     reset(): void;
+    /**
+     * This function gets called per frame tick
+     *
+     * @param {Timer} context
+     */
     private static _tick;
 }

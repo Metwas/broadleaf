@@ -26,6 +26,7 @@ import * as utils from "../../utils/utils";
 import { TimerState } from "./timerState";
 import { ITimer } from "./ITimer";
 import { EventEmitter } from "./EventEmitter";
+import { IListener } from "./IListener";
 
 /**
  * Represents a setInterval based wrapper and manager
@@ -44,7 +45,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * @param {String} mode Sets the timer to run only once
       * @param {Number} startTime An optional start position within the duration (in milliseconds)
       */
-     static start(duration: number, mode?: "once", startTime?: number): Timer;
+     public static start(duration: number, mode?: "once", startTime?: number): Timer;
 
      /**
       * Statically creates and starts up a timer
@@ -53,7 +54,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * @param {String} mode Sets the timer to run in an infinite loop
       * @param {Number} startTime An optional start position within the duration (in milliseconds)
       */
-     static start(duration: number, mode?: "loop", startTime?: number): Timer;
+     public static start(duration: number, mode?: "loop", startTime?: number): Timer;
 
      /**
       * Statically creates and starts up a timer
@@ -62,7 +63,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * @param {String} mode The specified operation procedure for the timer, either 'once' or 'loop'
       * @param {Number} startTime An optional start position within the duration (in milliseconds)
       */
-     static start(duration: number, mode: any = "once", startTime?: number): Timer {
+     public static start(duration: number, mode: any = "once", startTime?: number): Timer {
 
           const timer = new Timer(duration, startTime);
           timer.start(mode);
@@ -117,7 +118,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * @param {Number} duration How long this timer is setup for (in milliseconds)
       * @param {Number} startTime An optional start position within the duration (in milliseconds)
       */
-     constructor(duration: number, fps: number = 60, startTime: number = 0) {
+     public constructor(duration: number, fps: number = 60, startTime: number = 0) {
 
           // construct the event emitter
           super();
@@ -157,6 +158,8 @@ export class Timer extends EventEmitter<any> implements ITimer {
 
      /**
       * How long this timer is setup for (in milliseconds)
+      * 
+      * @returns {Number}
       */
      private _duration: number = 0;
      public get duration(): number {
@@ -166,9 +169,97 @@ export class Timer extends EventEmitter<any> implements ITimer {
      }
 
      /**
+      * Registers the onstart event, which will get executed on the very first tick cycle
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+      */
+     public on(event: "start", listener: IListener<any>): void;
+
+     /**
+      * Registers the ontick event, which will get executed each frame update
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+      */
+     public on(event: "tick", listener: IListener<any>): void;
+
+     /**
+      * Registers the oncomplete event, which will get executed as soon as the timer as fully elapsed
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+      */
+     public on(event: "complete", listener: IListener<any>): void;
+
+     /**
+     * Registers the onpause event, which will get executed as soon as the timer as paused
+     * 
+     * @param {String} event 
+     * @param {IListener} listener 
+     */
+     public on(event: "pause", listener: IListener<any>): void;
+
+     /**
+      * Registers the event to the base EventEmitter class
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+      */
+     public on(event: "complete" | "tick" | "pause" | "start", listener: IListener<any>): void {
+
+          super.on(event, listener);
+
+     }
+
+     /**
+      * Registers the onstart event only once, which will get executed on the very first tick cycle
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+     */
+     public once(event: "start", listener: IListener<any>): void;
+
+     /**
+      * Registers the ontick event only once, which will get executed each frame update
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+     */
+     public once(event: "tick", listener: IListener<any>): void;
+
+     /**
+      * Registers the oncomplete event only once, which will get executed as soon as the timer as fully elapsed
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+      */
+     public once(event: "complete", listener: IListener<any>): void;
+
+     /**
+     * Registers the onpause event only once, which will get executed as soon as the timer as paused
+     * 
+     * @param {String} event 
+     * @param {IListener} listener 
+     */
+     public once(event: "pause", listener: IListener<any>): void;
+
+     /**
+      * Registers the event to the base EventEmitter once store
+      * 
+      * @param {String} event 
+      * @param {IListener} listener 
+      */
+     public once(event: "complete" | "tick" | "pause" | "start", listener: IListener<any>): void {
+
+          super.once(event, listener);
+
+     }
+
+     /**
       * Runs the timer only once with an optional start time
       */
-     start(): void;
+     public start(): void;
 
      /**
       * Runs the timer only once with an optional start time
@@ -176,7 +267,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * @param {String} mode 
       * @param {Number} startTime
       */
-     start(mode: "once"): void;
+     public start(mode: "once"): void;
 
      /**
       * Runs the timer in an infinite loop and would have to be manually stopped by calling 'stop' on the timer instance
@@ -184,12 +275,12 @@ export class Timer extends EventEmitter<any> implements ITimer {
       * @param {String} mode 
       * @param {Number} startTime
       */
-     start(mode: "loop"): void;
+     public start(mode: "loop"): void;
 
      /**
       * Starts the timer with the default mode to run only once
       */
-     start(): void {
+     public start(): void {
 
           const _this = this;
 
@@ -213,31 +304,48 @@ export class Timer extends EventEmitter<any> implements ITimer {
           this._mode = (mode === "once" || mode === "loop") ? mode : _this._mode || "once";
           this.TIMER_INTERVAL_ID = setInterval(function () { Timer._tick(_this); }, Timer.UPDATE_INTERVAL / this.fps, false);
           this.state = TimerState.RUNNING;
+          this.emit("start");
 
      }
 
-     pause() {
+     /**
+      * Pauses the current timer instance
+      */
+     public pause() {
 
           this.state = TimerState.PAUSED;
           clearInterval(this.TIMER_INTERVAL_ID);
+          this.emit("pause");
 
      }
 
-     stop() {
+     /**
+      * Stops the timer, setting the elapsed property to the duration value
+      */
+     public stop() {
 
           this.state = TimerState.STOPPED;
           clearInterval(this.TIMER_INTERVAL_ID);
           this.elapsed = this.duration;
+          this.emit("complete", this.elapsed);
 
      }
 
-     reset() {
+     /**
+      * Operates a full reset for the timer
+      */
+     public reset() {
 
           this.stop();
           this.start();
 
      }
 
+     /**
+      * This function gets called per frame tick
+      * 
+      * @param {Timer} context 
+      */
      private static _tick(context: Timer) {
 
           const _this = context;
@@ -247,6 +355,10 @@ export class Timer extends EventEmitter<any> implements ITimer {
 
                // TODO:: Add a schedule class to manager timer processes
                _this._mode.toLowerCase() === "loop" ? _this.reset() : _this.stop();
+
+          } else {
+
+               _this.emit("tick", _this.elapsed);
 
           }
 
