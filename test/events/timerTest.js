@@ -11,6 +11,7 @@ const fps = 1; // The resolution OR frame per second
 const startTime = 0; // A specified head start for the timer
 
 var timer = new Timer(duration, fps, startTime);
+console.log("STATUS: " + timer.status);
 const now = formatDateNow();
 timer.on("complete", (elapsed) => { console.log("\ntimer started: " + now + "\ntimer completed at: " + formatDateNow()); });
 timer.on("start", () => { console.log("timer started at: " + now); });

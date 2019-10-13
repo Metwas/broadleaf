@@ -147,7 +147,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
       */
      public get status(): string {
 
-          return this.state.toString();
+          return TimerState[this.state];
 
      }
 
