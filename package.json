@@ -1,12 +1,13 @@
 {
   "name": "broadleaf",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "Common javascript extensions and helper functionality",
   "main": "./lib/broadleaf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "emitterTest": "echo \"Running event emitter tests...\" && node ./test/events/eventEmitter.js",
     "timerTest": "echo \"Running timer tests...\" && node ./test/events/timerTest.js",
+    "colorTest": "echo \"Running color tests...\" && node ./test/drawing/colorTest.js",
     "build": "tsc"
   },
   "keywords": [

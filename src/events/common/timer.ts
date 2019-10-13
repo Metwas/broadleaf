@@ -170,7 +170,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
      */
      public set fps(value) {
 
-          if(value >= 0 && value < Timer.UPDATE_INTERVAL){
+          if(value > 0 && value < Timer.UPDATE_INTERVAL){
 
                this._fps = value;
 
