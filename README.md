@@ -5,6 +5,9 @@ common typescript and es6 helper functions
 
 ```javascript
 const broadleaf = require("broadleaf");
+
+// Typescript
+import broadleaf from "broadleaf";
 ```
 
 > ### EventEmitter
