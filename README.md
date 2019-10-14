@@ -101,7 +101,7 @@ red.lerp(blue, inc);
 Color.lerp(Color.red, Color.blue, inc);
 ```
 
-This is my first node module and I am looking forward to improving and add new features to this project
+This is my first node module and I am looking forward on improving and adding new features to this project
 
 Have a look at the various test functions
 in the test directory for more examples and use cases
