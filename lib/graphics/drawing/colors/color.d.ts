@@ -3,591 +3,591 @@
  */
 export declare class Color {
     /**
-     * Color: 'AliceBlue' HEX: '0xF0F8FF'
+     * Color: 'AliceBlue' HEX: #F0F8FF'
      */
     static readonly AliceBlue: Color;
     /**
-     * Color: 'AntiqueWhite' HEX: '0xFAEBD7'
+     * Color: 'AntiqueWhite' HEX: #FAEBD7'
      */
     static readonly AntiqueWhite: Color;
     /**
-     * Color: 'Aqua' HEX: '0x00FFFF'
+     * Color: 'Aqua' HEX: #00FFFF'
      */
     static readonly Aqua: Color;
     /**
-     * Color: 'AquaMarine' HEX: '0x7FFFD4'
+     * Color: 'AquaMarine' HEX: #7FFFD4'
      */
     static readonly AquaMarine: Color;
     /**
-     * Color: 'Azure' HEX: '0xF0FFFF'
+     * Color: 'Azure' HEX: #007FFF'
      */
     static readonly Azure: Color;
     /**
-     * Color: 'Beige' HEX: '0xF5F5DC'
+     * Color: 'Beige' HEX: #F5F5DC'
      */
     static readonly Beige: Color;
     /**
-     * Color: 'Bisque' HEX: '0xFFE4C4'
+     * Color: 'Bisque' HEX: #FFE4C4'
      */
     static readonly Bisque: Color;
     /**
-     * Color: 'Black' HEX: '0x000000'
+     * Color: 'Black' HEX: #000000'
      */
     static readonly Black: Color;
     /**
-     * Color: 'BlanchedAlmond' HEX: '0xFFEBCD'
+     * Color: 'BlanchedAlmond' HEX: #FFEBCD'
      */
     static readonly BlanchedAlmond: Color;
     /**
-     * Color: 'Blue' HEX: '0x0000FF'
+     * Color: 'Blue' HEX: #0000FF'
      */
     static readonly Blue: Color;
     /**
-     * Color: 'blueViolet' HEX: '0x8A2BE2'
+     * Color: 'blueViolet' HEX: #8A2BE2'
      */
-    static readonly blueViolet: Color;
+    static readonly BlueViolet: Color;
     /**
-     * Color: 'Brown' HEX: '0xA52A2A'
+     * Color: 'Brown' HEX: #654321'
      */
     static readonly Brown: Color;
     /**
-     * Color: 'Burlywood' HEX: '0xDEB887'
+     * Color: 'Burlywood' HEX: #DEB887'
      */
     static readonly Burlywood: Color;
     /**
-     * Color: 'CadetBlue' HEX: '0x5F9EA0'
+     * Color: 'CadetBlue' HEX: #5F9EA0'
      */
     static readonly CadetBlue: Color;
     /**
-     * Color: 'Chartreuse' HEX: '0x7FFF00'
+     * Color: 'Chartreuse' HEX: #7FFF00'
      */
     static readonly Chartreuse: Color;
     /**
-     * Color: 'Chocolate' HEX: '0xD2691E'
+     * Color: 'Chocolate' HEX: #D2691E'
      */
     static readonly Chocolate: Color;
     /**
-     * Color: 'Coral' HEX: '0xFF7F50'
+     * Color: 'Coral' HEX: #FF7F50'
      */
     static readonly Coral: Color;
     /**
-     * Color: 'CornFlowerBlue' HEX: '0x6495ED'
+     * Color: 'CornFlowerBlue' HEX: #6495ED'
      */
     static readonly CornFlowerBlue: Color;
     /**
-     * Color: 'Cornsilk' HEX: '0xFFF8DC'
+     * Color: 'Cornsilk' HEX: #FFF8DC'
      */
     static readonly Cornsilk: Color;
     /**
-     * Color: 'Crimson' HEX: '0xDC143C'
+     * Color: 'Crimson' HEX: #DC143C'
      */
     static readonly Crimson: Color;
     /**
-     * Color: 'Cyan' HEX: '0x00FFFF'
+     * Color: 'Cyan' HEX: #00FFFF'
      */
     static readonly Cyan: Color;
     /**
-     * Color: 'DarkBlue' HEX: '0x00008B'
+     * Color: 'DarkBlue' HEX: #00008B'
      */
     static readonly DarkBlue: Color;
     /**
-     * Color: 'DarkCyan' HEX: '0x008B8B'
+     * Color: 'DarkCyan' HEX: #008B8B'
      */
     static readonly DarkCyan: Color;
     /**
-     * Color: 'DarkGoldenRod' HEX: '0xB8860B'
+     * Color: 'DarkGoldenRod' HEX: #B8860B'
      */
     static readonly DarkGoldenRod: Color;
     /**
-     * Color: 'DarkGray' HEX: '0xA9A9A9'
+     * Color: 'DarkGray' HEX: #A9A9A9'
      */
     static readonly DarkGray: Color;
     /**
-     * Color: 'DarkGreen' HEX: '0x006400'
+     * Color: 'DarkGreen' HEX: #006400'
      */
     static readonly DarkGreen: Color;
     /**
-     * Color: 'DarkKhaki' HEX: '0xBDB76B'
+     * Color: 'DarkKhaki' HEX: #BDB76B'
      */
     static readonly DarkKhaki: Color;
     /**
-     * Color: 'darkGrey' HEX: '0xA9A9A9'
+     * Color: 'darkGrey' HEX: #A9A9A9'
      */
-    static readonly darkGrey: Color;
+    static readonly DarkGrey: Color;
     /**
-     * Color: 'Darkgray' HEX: '0xA9A9A9'
+     * Color: 'Darkgray' HEX: #A9A9A9'
      */
     static readonly Darkgray: Color;
     /**
-     * Color: 'DarkMagenta' HEX: '0x8B008B'
+     * Color: 'DarkMagenta' HEX: #8B008B'
      */
     static readonly DarkMagenta: Color;
     /**
-     * Color: 'DarkOliveGreen' HEX: '0x556B2F'
+     * Color: 'DarkOliveGreen' HEX: #556B2F'
      */
     static readonly DarkOliveGreen: Color;
     /**
-     * Color: 'DarkOrange' HEX: '0xFF8C00'
+     * Color: 'DarkOrange' HEX: #FF8C00'
      */
     static readonly DarkOrange: Color;
     /**
-     * Color: 'DarkOrchid' HEX: '0x9932CC'
+     * Color: 'DarkOrchid' HEX: #9932CC'
      */
     static readonly DarkOrchid: Color;
     /**
-     * Color: 'DarkRed' HEX: '0x8B0000'
+     * Color: 'DarkRed' HEX: #8B0000'
      */
     static readonly DarkRed: Color;
     /**
-     * Color: 'DarkSalmon' HEX: '0xE9967A'
+     * Color: 'DarkSalmon' HEX: #E9967A'
      */
     static readonly DarkSalmon: Color;
     /**
-     * Color: 'DarkSeaGreen' HEX: '0x8FBC8F'
+     * Color: 'DarkSeaGreen' HEX: #8FBC8F'
      */
     static readonly DarkSeaGreen: Color;
     /**
-     * Color: 'DarkSlateBlue' HEX: '0x483D8B'
+     * Color: 'DarkSlateBlue' HEX: #483D8B'
      */
     static readonly DarkSlateBlue: Color;
     /**
-     * Color: 'DarkSlateGray' HEX: '0x2F4F4F'
+     * Color: 'DarkSlateGray' HEX: #2F4F4F'
      */
     static readonly DarkSlateGray: Color;
     /**
-     * Color: 'DarkSlateGrey' HEX: '0x2F4F4F'
+     * Color: 'DarkSlateGrey' HEX: #2F4F4F'
      */
     static readonly DarkSlateGrey: Color;
     /**
-     * Color: 'DarkTurquoise' HEX: '0x00CED1'
+     * Color: 'DarkTurquoise' HEX: #00CED1'
      */
     static readonly DarkTurquoise: Color;
     /**
-     * Color: 'DarkViolet' HEX: '0x9400D3'
+     * Color: 'DarkViolet' HEX: #9400D3'
      */
     static readonly DarkViolet: Color;
     /**
-     * Color: 'DeepPink' HEX: '0xFF1493'
+     * Color: 'DeepPink' HEX: #FF1493'
      */
     static readonly DeepPink: Color;
     /**
-     * Color: 'DeepSkyBlue' HEX: '0x00BFFF'
+     * Color: 'DeepSkyBlue' HEX: #00BFFF'
      */
     static readonly DeepSkyBlue: Color;
     /**
-     * Color: 'DimGray' HEX: '0x696969'
+     * Color: 'DimGray' HEX: #696969'
      */
     static readonly DimGray: Color;
     /**
-     * Color: 'DimGrey' HEX: '0x696969'
+     * Color: 'DimGrey' HEX: #696969'
      */
     static readonly DimGrey: Color;
     /**
-     * Color: 'DodgerBlue' HEX: '0x1E90FF'
+     * Color: 'DodgerBlue' HEX: #1E90FF'
      */
     static readonly DodgerBlue: Color;
     /**
-     * Color: 'FireBrick' HEX: '0xB22222'
+     * Color: 'FireBrick' HEX: #B22222'
      */
     static readonly FireBrick: Color;
     /**
-     * Color: 'FloralWhite' HEX: '0xFFFAF0'
+     * Color: 'FloralWhite' HEX: #FFFAF0'
      */
     static readonly FloralWhite: Color;
     /**
-     * Color: 'ForestGreen' HEX: '0x228B22'
+     * Color: 'ForestGreen' HEX: #228B22'
      */
     static readonly ForestGreen: Color;
     /**
-     * Color: 'Fuchsia' HEX: '0xFF00FF'
+     * Color: 'Fuchsia' HEX: #FF00FF'
      */
     static readonly Fuchsia: Color;
     /**
-     * Color: 'Gainsboro' HEX: '0xDCDCDC'
+     * Color: 'Gainsboro' HEX: #DCDCDC'
      */
     static readonly Gainsboro: Color;
     /**
-     * Color: 'GhostWhite' HEX: '0xF8F8FF'
+     * Color: 'GhostWhite' HEX: #F8F8FF'
      */
     static readonly GhostWhite: Color;
     /**
-     * Color: 'Gold' HEX: '0xFFD700'
+     * Color: 'Gold' HEX: #FFD700'
      */
     static readonly Gold: Color;
     /**
-     * Color: 'GoldenRod' HEX: '0xDAA520'
+     * Color: 'GoldenRod' HEX: #DAA520'
      */
     static readonly GoldenRod: Color;
     /**
-     * Color: 'Gray' HEX: '0x808080'
+     * Color: 'Gray' HEX: #808080'
      */
     static readonly Gray: Color;
     /**
-     * Color: 'Green' HEX: '0x008000'
+     * Color: 'Green' HEX: #008000'
      */
     static readonly Green: Color;
     /**
-     * Color: 'GreenYellow' HEX: '0xADFF2F'
+     * Color: 'GreenYellow' HEX: #ADFF2F'
      */
     static readonly GreenYellow: Color;
     /**
-     * Color: 'Grey' HEX: '0x808080'
+     * Color: 'Grey' HEX: #808080'
      */
     static readonly Grey: Color;
     /**
-     * Color: 'HoneyDew' HEX: '0xF0FFF0'
+     * Color: 'HoneyDew' HEX: #F0FFF0'
      */
     static readonly HoneyDew: Color;
     /**
-     * Color: 'HotPink' HEX: '0xFF69B4'
+     * Color: 'HotPink' HEX: #FF69B4'
      */
     static readonly HotPink: Color;
     /**
-     * Color: 'IndianRed' HEX: '0xCD5C5C'
+     * Color: 'IndianRed' HEX: #CD5C5C'
      */
     static readonly IndianRed: Color;
     /**
-     * Color: 'Indigo' HEX: '0x4B0082'
+     * Color: 'Indigo' HEX: #4B0082'
      */
     static readonly Indigo: Color;
     /**
-     * Color: 'Ivory' HEX: '0xFFFFF0'
+     * Color: 'Ivory' HEX: #FFFFF0'
      */
     static readonly Ivory: Color;
     /**
-     * Color: 'Khaki' HEX: '0xF0E68C'
+     * Color: 'Khaki' HEX: #F0E68C'
      */
     static readonly Khaki: Color;
     /**
-     * Color: 'Lavender' HEX: '0xE6E6FA'
+     * Color: 'Lavender' HEX: #E6E6FA'
      */
     static readonly Lavender: Color;
     /**
-     * Color: 'LavenderBlush' HEX: '0xFFF0F5'
+     * Color: 'LavenderBlush' HEX: #FFF0F5'
      */
     static readonly LavenderBlush: Color;
     /**
-     * Color: 'LawnGreen' HEX: '0x7CFC00'
+     * Color: 'LawnGreen' HEX: #7CFC00'
      */
     static readonly LawnGreen: Color;
     /**
-     * Color: 'LightBlue' HEX: '0xADD8E6'
+     * Color: 'LightBlue' HEX: #ADD8E6'
      */
     static readonly LightBlue: Color;
     /**
-     * Color: 'LightCoral' HEX: '0xF08080'
+     * Color: 'LightCoral' HEX: #F08080'
      */
     static readonly LightCoral: Color;
     /**
-     * Color: 'LightCyan' HEX: '0xE0FFFF'
+     * Color: 'LightCyan' HEX: #E0FFFF'
      */
     static readonly LightCyan: Color;
     /**
-     * Color: 'LightGray' HEX: '0xD3D3D3'
+     * Color: 'LightGray' HEX: #D3D3D3'
      */
     static readonly LightGray: Color;
     /**
-     * Color: 'LightGreen' HEX: '0x90EE90'
+     * Color: 'LightGreen' HEX: #90EE90'
      */
     static readonly LightGreen: Color;
     /**
-     * Color: 'LightGrey' HEX: '0xD3D3D3'
+     * Color: 'LightGrey' HEX: #D3D3D3'
      */
     static readonly LightGrey: Color;
     /**
-     * Color: 'LightPink' HEX: '0xFFB6C1'
+     * Color: 'LightPink' HEX: #FFB6C1'
      */
     static readonly LightPink: Color;
     /**
-     * Color: 'LightSalmon' HEX: '0xFFA07A'
+     * Color: 'LightSalmon' HEX: #FFA07A'
      */
     static readonly LightSalmon: Color;
     /**
-     * Color: 'LightSeaGreen' HEX: '0x20B2AA'
+     * Color: 'LightSeaGreen' HEX: #20B2AA'
      */
     static readonly LightSeaGreen: Color;
     /**
-     * Color: 'LightSkyBlue' HEX: '0x87CEFA'
+     * Color: 'LightSkyBlue' HEX: #87CEFA'
      */
     static readonly LightSkyBlue: Color;
     /**
-     * Color: 'LightSlateGray' HEX: '0x778899'
+     * Color: 'LightSlateGray' HEX: #778899'
      */
     static readonly LightSlateGray: Color;
     /**
-     * Color: 'LightSlateGrey' HEX: '0x778899'
+     * Color: 'LightSlateGrey' HEX: #778899'
      */
     static readonly LightSlateGrey: Color;
     /**
-     * Color: 'LightSteelBlue' HEX: '0xB0C4DE'
+     * Color: 'LightSteelBlue' HEX: #B0C4DE'
      */
     static readonly LightSteelBlue: Color;
     /**
-     * Color: 'LightYellow' HEX: '0xFFFFE0'
+     * Color: 'LightYellow' HEX: #FFFFE0'
      */
     static readonly LightYellow: Color;
     /**
-     * Color: 'Lime' HEX: '0x00FF00'
+     * Color: 'Lime' HEX: #00FF00'
      */
     static readonly Lime: Color;
     /**
-     * Color: 'LimeGreen' HEX: '0x32CD32'
+     * Color: 'LimeGreen' HEX: #32CD32'
      */
     static readonly LimeGreen: Color;
     /**
-     * Color: 'Linen' HEX: '0xFAF0E6'
+     * Color: 'Linen' HEX: #FAF0E6'
      */
     static readonly Linen: Color;
     /**
-     * Color: 'Magenta' HEX: '0xFF00FF'
+     * Color: 'Magenta' HEX: #FF00FF'
      */
     static readonly Magenta: Color;
     /**
-     * Color: 'Maroon' HEX: '0x800000'
+     * Color: 'Maroon' HEX: #800000'
      */
     static readonly Maroon: Color;
     /**
-     * Color: 'MediumAquaMarine' HEX: '0x66CDAA'
+     * Color: 'MediumAquaMarine' HEX: #66CDAA'
      */
     static readonly MediumAquaMarine: Color;
     /**
-     * Color: 'MediumBlue' HEX: '0x0000CD'
+     * Color: 'MediumBlue' HEX: #0000CD'
      */
     static readonly MediumBlue: Color;
     /**
-     * Color: 'MediumOrchid' HEX: '0xBA55D3'
+     * Color: 'MediumOrchid' HEX: #BA55D3'
      */
     static readonly MediumOrchid: Color;
     /**
-     * Color: 'MediumPurple' HEX: '0x9370DB'
+     * Color: 'MediumPurple' HEX: #9370DB'
      */
     static readonly MediumPurple: Color;
     /**
-     * Color: 'MediumSeaGreen' HEX: '0x3CB371'
+     * Color: 'MediumSeaGreen' HEX: #3CB371'
      */
     static readonly MediumSeaGreen: Color;
     /**
-     * Color: 'MediumSlateBlue' HEX: '0x7B68EE'
+     * Color: 'MediumSlateBlue' HEX: #7B68EE'
      */
     static readonly MediumSlateBlue: Color;
     /**
-     * Color: 'MediumSpringGreen' HEX: '0x00FA9A'
+     * Color: 'MediumSpringGreen' HEX: #00FA9A'
      */
     static readonly MediumSpringGreen: Color;
     /**
-     * Color: 'MediumTurquoise' HEX: '0x48D1CC'
+     * Color: 'MediumTurquoise' HEX: #48D1CC'
      */
     static readonly MediumTurquoise: Color;
     /**
-     * Color: 'MediumVioletRed' HEX: '0xC71585'
+     * Color: 'MediumVioletRed' HEX: #C71585'
      */
     static readonly MediumVioletRed: Color;
     /**
-     * Color: 'MidnightBlue' HEX: '0x191970'
+     * Color: 'MidnightBlue' HEX: #191970'
      */
     static readonly MidnightBlue: Color;
     /**
-     * Color: 'MintCream' HEX: '0xF5FFFA'
+     * Color: 'MintCream' HEX: #F5FFFA'
      */
     static readonly MintCream: Color;
     /**
-     * Color: 'MistyRose' HEX: '0xFFE4E1'
+     * Color: 'MistyRose' HEX: #FFE4E1'
      */
     static readonly MistyRose: Color;
     /**
-     * Color: 'Moccasin' HEX: '0xFFE4B5'
+     * Color: 'Moccasin' HEX: #FFE4B5'
      */
     static readonly Moccasin: Color;
     /**
-     * Color: 'NavajoWhite' HEX: '0xFFDEAD'
+     * Color: 'NavajoWhite' HEX: #FFDEAD'
      */
     static readonly NavajoWhite: Color;
     /**
-     * Color: 'Navy' HEX: '0x000080'
+     * Color: 'Navy' HEX: #000080'
      */
     static readonly Navy: Color;
     /**
-     * Color: 'OldLace' HEX: '0xFDF5E6'
+     * Color: 'OldLace' HEX: #FDF5E6'
      */
     static readonly OldLace: Color;
     /**
-     * Color: 'Olive' HEX: '0x808000'
+     * Color: 'Olive' HEX: #808000'
      */
     static readonly Olive: Color;
     /**
-     * Color: 'OliveDrab' HEX: '0x6B8E23'
+     * Color: 'OliveDrab' HEX: #6B8E23'
      */
     static readonly OliveDrab: Color;
     /**
-     * Color: 'Orange' HEX: '0xFFA500'
+     * Color: 'Orange' HEX: #FFA500'
      */
     static readonly Orange: Color;
     /**
-     * Color: 'OrangeRed' HEX: '0xFF4500'
+     * Color: 'OrangeRed' HEX: #FF4500'
      */
     static readonly OrangeRed: Color;
     /**
-     * Color: 'Orchid' HEX: '0xDA70D6'
+     * Color: 'Orchid' HEX: #DA70D6'
      */
     static readonly Orchid: Color;
     /**
-     * Color: 'PaleGoldenRod' HEX: '0xEEE8AA'
+     * Color: 'PaleGoldenRod' HEX: #EEE8AA'
      */
     static readonly PaleGoldenRod: Color;
     /**
-     * Color: 'PaleGreen' HEX: '0x98FB98'
+     * Color: 'PaleGreen' HEX: #98FB98'
      */
     static readonly PaleGreen: Color;
     /**
-     * Color: 'PaleTurquoise' HEX: '0xAFEEEE'
+     * Color: 'PaleTurquoise' HEX: #AFEEEE'
      */
     static readonly PaleTurquoise: Color;
     /**
-     * Color: 'PaleVioletRed' HEX: '0xDB7093'
+     * Color: 'PaleVioletRed' HEX: #DB7093'
      */
     static readonly PaleVioletRed: Color;
     /**
-     * Color: 'PapayaWhip' HEX: '0xFFDAB9'
+     * Color: 'PapayaWhip' HEX: #FFDAB9'
      */
     static readonly PapayaWhip: Color;
     /**
-     * Color: 'PeachPuff' HEX: '0xFFEFD5'
+     * Color: 'PeachPuff' HEX: #FFEFD5'
      */
     static readonly PeachPuff: Color;
     /**
-     * Color: 'Peru' HEX: '0xCD853F'
+     * Color: 'Peru' HEX: #CD853F'
      */
     static readonly Peru: Color;
     /**
-     * Color: 'Pink' HEX: '0xFFC0CB'
+     * Color: 'Pink' HEX: #FFC0CB'
      */
     static readonly Pink: Color;
     /**
-     * Color: 'Plum' HEX: '0xDDA0DD'
+     * Color: 'Plum' HEX: #DDA0DD'
      */
     static readonly Plum: Color;
     /**
-     * Color: 'PowderBlue' HEX: '0xB0E0E6'
+     * Color: 'PowderBlue' HEX: #B0E0E6'
      */
     static readonly PowderBlue: Color;
     /**
-     * Color: 'Purple' HEX: '0x800080'
+     * Color: 'Purple' HEX: #800080'
      */
     static readonly Purple: Color;
     /**
-     * Color: 'RebeccaPurple' HEX: '0x663399'
+     * Color: 'RebeccaPurple' HEX: #663399'
      */
     static readonly RebeccaPurple: Color;
     /**
-     * Color: 'Red' HEX: '0xFF0000'
+     * Color: 'Red' HEX: #FF0000'
      */
     static readonly Red: Color;
     /**
-     * Color: 'RosyBrown' HEX: '0xBC8F8F'
+     * Color: 'RosyBrown' HEX: #BC8F8F'
      */
     static readonly RosyBrown: Color;
     /**
-     * Color: 'RoyalBlue' HEX: '0x4169E1'
+     * Color: 'RoyalBlue' HEX: #4169E1'
      */
     static readonly RoyalBlue: Color;
     /**
-     * Color: 'SaddleBrown' HEX: '0x8B4513'
+     * Color: 'SaddleBrown' HEX: #8B4513'
      */
     static readonly SaddleBrown: Color;
     /**
-     * Color: 'Salmon' HEX: '0xFA8072'
+     * Color: 'Salmon' HEX: #FA8072'
      */
     static readonly Salmon: Color;
     /**
-     * Color: 'SandyBrown' HEX: '0xF4A460'
+     * Color: 'SandyBrown' HEX: #F4A460'
      */
     static readonly SandyBrown: Color;
     /**
-     * Color: 'SeaGreen' HEX: '0x2E8B57'
+     * Color: 'SeaGreen' HEX: #2E8B57'
      */
     static readonly SeaGreen: Color;
     /**
-     * Color: 'SeaShell' HEX: '0xFFF5EE'
+     * Color: 'SeaShell' HEX: #FFF5EE'
      */
     static readonly SeaShell: Color;
     /**
-     * Color: 'Sienna' HEX: '0xA0522D'
+     * Color: 'Sienna' HEX: #A0522D'
      */
     static readonly Sienna: Color;
     /**
-     * Color: 'Silver' HEX: '0xC0C0C0'
+     * Color: 'Silver' HEX: #C0C0C0'
      */
     static readonly Silver: Color;
     /**
-     * Color: 'SkyBlue' HEX: '0x87CEEB'
+     * Color: 'SkyBlue' HEX: #87CEEB'
      */
     static readonly SkyBlue: Color;
     /**
-     * Color: 'SlateBlue' HEX: '0x6A5ACD'
+     * Color: 'SlateBlue' HEX: #6A5ACD'
      */
     static readonly SlateBlue: Color;
     /**
-     * Color: 'SlateGray' HEX: '0x708090'
+     * Color: 'SlateGray' HEX: #708090'
      */
     static readonly SlateGray: Color;
     /**
-     * Color: 'SlateGrey' HEX: '0x708090'
+     * Color: 'SlateGrey' HEX: #708090'
      */
     static readonly SlateGrey: Color;
     /**
-     * Color: 'Snow' HEX: '0xFFFAFA'
+     * Color: 'Snow' HEX: #FFFAFA'
      */
     static readonly Snow: Color;
     /**
-     * Color: 'SpringGreen' HEX: '0x00FF7F'
+     * Color: 'SpringGreen' HEX: #00FF7F'
      */
     static readonly SpringGreen: Color;
     /**
-     * Color: 'SteelBlue' HEX: '0x4682B4'
+     * Color: 'SteelBlue' HEX: #4682B4'
      */
     static readonly SteelBlue: Color;
     /**
-     * Color: 'Tan' HEX: '0xD2B48C'
+     * Color: 'Tan' HEX: #D2B48C'
      */
     static readonly Tan: Color;
     /**
-     * Color: 'Teal' HEX: '0x008080'
+     * Color: 'Teal' HEX: #008080'
      */
     static readonly Teal: Color;
     /**
-     * Color: 'Thistle' HEX: '0xD8BFD8'
+     * Color: 'Thistle' HEX: #D8BFD8'
      */
     static readonly Thistle: Color;
     /**
-     * Color: 'Tomato' HEX: '0xFF6347'
+     * Color: 'Tomato' HEX: #FF6347'
      */
     static readonly Tomato: Color;
     /**
-     * Color: 'Turquoise' HEX: '0x40E0D0'
+     * Color: 'Turquoise' HEX: #40E0D0'
      */
     static readonly Turquoise: Color;
     /**
-     * Color: 'Violet' HEX: '0xEE82EE'
+     * Color: 'Violet' HEX: #EE82EE'
      */
     static readonly Violet: Color;
     /**
-     * Color: 'Wheat' HEX: '0xF5DEB3'
+     * Color: 'Wheat' HEX: #F5DEB3'
      */
     static readonly Wheat: Color;
     /**
-     * Color: 'White' HEX: '0xFFFFFF'
+     * Color: 'White' HEX: #FFFFFF'
      */
     static readonly White: Color;
     /**
-     * Color: 'WhiteSmoke' HEX: '0xF5F5F5'
+     * Color: 'WhiteSmoke' HEX: #F5F5F5'
      */
     static readonly WhiteSmoke: Color;
     /**
-     * Color: 'Yellow' HEX: '0xFFFF00'
+     * Color: 'Yellow' HEX: #FFFF00'
      */
     static readonly Yellow: Color;
     /**
-     * Color: 'YellowGreen' HEX: '0x9ACD32'
+     * Color: 'YellowGreen' HEX: #9ACD32'
      */
     static readonly YellowGreen: Color;
     /**
