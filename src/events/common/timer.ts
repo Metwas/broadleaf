@@ -347,6 +347,9 @@ export class Timer extends EventEmitter<any> implements ITimer {
           this.state = TimerState.STOPPED;
           clearInterval(this.TIMER_INTERVAL_ID);
           this.elapsed = this.duration;
+
+          // [As for version: 1.5.12] emit one more tick to completely ensure the elapsed duration is returned
+          this.emit("tick", this.elapsed);
           this.emit("complete", this.elapsed);
 
      }

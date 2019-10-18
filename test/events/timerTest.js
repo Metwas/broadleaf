@@ -7,7 +7,7 @@ const { log, header } = printService;
 test("timer is not null or undefined", !utils.isNullOrUndefined(Timer));
 
 const duration = 5000; // Total duration for the timer to take to complete
-const fps = 1; // The resolution OR frame per second
+const fps = 999; // The resolution OR frame per second
 const startTime = 0; // A specified head start for the timer
 
 var timer = new Timer(duration, fps, startTime);
