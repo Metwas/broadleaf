@@ -24,8 +24,7 @@
 
 import * as utils from "../../utils/utils";
 import { TimerState } from "./timerState";
-import { ITimer } from "./ITimer";
-import { EventEmitter } from "./EventEmitter";
+import { EventEmitter } from "./eventEmitter";
 import { IListener } from "./IListener";
 
 /**
@@ -170,12 +169,12 @@ export class Timer extends EventEmitter<any> implements ITimer {
      */
      public set fps(value) {
 
-          if(value > 0 && value < Timer.UPDATE_INTERVAL){
+          if (value > 0 && value < Timer.UPDATE_INTERVAL) {
 
                this._fps = value;
 
           }
-     
+
      }
 
      /**
@@ -386,5 +385,32 @@ export class Timer extends EventEmitter<any> implements ITimer {
           }
 
      }
+
+}
+
+/**
+ * Base template for a setInterval wrapper and manager
+ */
+export interface ITimer {
+
+     /**
+      * How long this timer is setup for (in milliseconds)
+      */
+     duration: number;
+
+     /**
+      * How many frames per second to be rendered per set interval
+      */
+     fps: number;
+
+     /**
+      * Represents what state the timer is currently in
+      */
+     state: TimerState;
+
+     /**
+      * The current time for the timer instance (in milliseconds)
+      */
+     elapsed: number;
 
 }

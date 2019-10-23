@@ -29,8 +29,8 @@ import * as regexConstants from "./utils/text/regexConstants";
 
 
 export { Color } from "./graphics/drawing/colors/color";
-export { Timer } from "./events/common/timer";
-export { EventEmitter } from "./events/common/EventEmitter";
+export { Timer } from "./tasks/common/timer";
+export { EventEmitter } from "./tasks/common/eventEmitter";
 
 export const text = {
      conversions: conversions,

@@ -22,31 +22,13 @@
      SOFTWARE.
 */
 
-import { TimerState } from "./timerState";
-
 /**
- * Base template for a setInterval wrapper and manager
+ * Represents an enumeration for the various timer states
  */
-export interface ITimer {
+export enum TimerState {
 
-     /**
-      * How long this timer is setup for (in milliseconds)
-      */
-     duration: number;
+     STOPPED = 0,
+     RUNNING = 1,
+     PAUSED = 2
 
-     /**
-      * How many frames per second to be rendered per set interval
-      */
-     fps: number;
-
-     /**
-      * Represents what state the timer is currently in
-      */
-     state: TimerState;
-
-     /**
-      * The current time for the timer instance (in milliseconds)
-      */
-     elapsed: number;
-
-}
+};

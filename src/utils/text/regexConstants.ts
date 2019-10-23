@@ -22,7 +22,7 @@
      SOFTWARE.
 */
 
-import { SeperatorModel } from "./SeperatorModel";
+import { SeperatorModel } from "./seperatorModel";
 import * as utils from "../utils";
 
 /**
