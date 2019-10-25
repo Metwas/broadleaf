@@ -31,12 +31,18 @@ import * as utils from "../utils/utils";
  */
 export async function sleep(delay: number): Promise<any> {
 
-     if (!utils.isNumber(delay)) {
+     const promise = new Promise((resolve, _) => {
 
-          delay = 1;
+          if (!utils.isNumber(delay)) {
 
-     }
+               delay = 1;
+     
+          }
+     
+          setTimeout(function(){ resolve() }, delay);
 
-     await setTimeout(utils.noop, delay);
+     });
+
+     return promise;
 
 }
