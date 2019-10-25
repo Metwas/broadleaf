@@ -21,4 +21,5 @@ log("max 32 bit size: " + max_unsigned_32bit);
 // Constants test
 test("nibble is a 4-bit number", (max_nibble >> 4) === 0, "nibble is a 4-bit number");
 test("byte is a 8-bit number", (max_byte >> 8) === 0);
+log(new math.Vector2(5,2).multiplyScaler(2).x);
 

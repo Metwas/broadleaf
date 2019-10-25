@@ -1,3 +1,5 @@
+import { math } from "../../broadleaf";
+
 /*
      MIT License
 
@@ -29,8 +31,6 @@
  */
 export class Vector2 {
 
-     private _width: number;
-     private _height: number;
      public x: number;
      public y: number;
 
@@ -44,56 +44,15 @@ export class Vector2 {
 
           this.x = x;
           this.y = y;
-          this._height = 0;
-          this._width = 0;
 
      }
 
      /**
-      * Gets the width for this vector
+      * Calculates the magnitude of the vector
       */
-     get Width(): number {
+     magnitude(): number {
 
-          return this._width || 0;
-
-     }
-
-     /**
-      * Sets this vectors width 
-      * 
-      * @param {number} value The value to be set
-      */
-     set Width(value: number) {
-
-          if (value == null || typeof (value) !== "undefined") {
-
-               this._width = value;
-
-          }
-
-     }
-
-     /**
-      * Gets the height for this vector
-      */
-     get Height(): number {
-
-          return this._height || 0;
-          
-     }
-
-     /**
-      * Sets this vectors height 
-      * 
-      * @param {number} value
-      */
-     set Height(value: number) {
-
-          if (value == null || typeof (value) !== "undefined") {
-
-               this._height = value;
-
-          }
+          return Math.sqrt((this.x + this.y) * (this.x + this.y));
 
      }
 
@@ -163,7 +122,7 @@ export class Vector2 {
       */
      addY(scaler: number): void {
 
-          this.y += scaler;          
+          this.y += scaler;
 
      }
 
@@ -285,6 +244,54 @@ export class Vector2 {
 
           this.multiplyX(scaler);
           this.multiplyY(scaler);
+          return this;
+
+     }
+
+     /**
+      * Normalizes the current vector's length to 1
+      */
+     normalize(): Vector2 {
+
+          const mag = this.magnitude();
+
+          if (mag > 0) {
+
+               return this.multiplyScaler(1 / mag);
+
+          }
+
+          return this;
+
+     }
+
+     /**
+      * Calculates the current vectors rotational angle
+      * 
+      * @returns {Number} The angle in radians
+      */
+     heading(): number {
+
+          return Math.atan2(this.y, this.x);
+
+     }
+
+     /**
+      * Rotates the current vector by a given angle
+      * 
+      * @param {Number} angle 
+      */
+     rotate(angle: number): Vector2 {
+
+          const mag: number = this.magnitude();
+          let newAngle: number = this.heading() + angle;
+          newAngle = math.degreesToRadians(newAngle);
+
+          // update the position based from the angle and magnitude
+          this.x = Math.cos(newAngle) * mag;
+          this.y = Math.sin(newAngle) * mag;
+
+          // return the vector to allow for chaining
           return this;
 
      }
