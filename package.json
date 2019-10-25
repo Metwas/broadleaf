@@ -5,9 +5,10 @@
   "main": "./lib/broadleaf.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "emitterTest": "echo \"Running event emitter tests...\" && node ./test/events/eventEmitter.js",
-    "timerTest": "echo \"Running timer tests...\" && node ./test/events/timerTest.js",
-    "colorTest": "echo \"Running color tests...\" && node ./test/drawing/colorTest.js",
+    "emitterTest": "echo \"Running event emitter tests...\" && node ./test/tasks/eventEmitter.js",
+    "timerTest": "echo \"Running timer tests...\" && node ./test/tasks/timerTest.js",
+    "colorTest": "echo \"Running color tests...\" && node ./test/graphics/colorTest.js",
+    "vectorTest": "echo \"Running vector tests...\" && node ./test/graphics/vectorTest.js",
     "build": "tsc"
   },
   "keywords": [
