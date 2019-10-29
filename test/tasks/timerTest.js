@@ -1,4 +1,5 @@
 const { Timer, utils } = require("../../lib/broadleaf");
+const { sleep } = require("../../lib/tasks/helpers");
 const { table, test, printService } = require("../helpers/helper");
 const chalk = require("chalk");
 
@@ -17,6 +18,15 @@ timer.on("complete", (elapsed) => { console.log("\ntimer started: " + now + "\nt
 timer.on("start", () => { console.log("timer started at: " + now); });
 timer.on("tick", (elapsed) => { console.log("timer tick: " + elapsed); });
 timer.start();
+
+async function sleeps(){
+
+     await sleep(5000);
+     console.log("Sleep over");
+
+}
+
+sleeps();
 
 /**
  * Returns the current date in a time format string

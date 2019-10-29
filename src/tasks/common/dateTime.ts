@@ -296,7 +296,7 @@ interface IDateNamedEntry {
 /**
  * A helper class for defined and managing javascript date objects
  */
-export class DateTime implements IDateTime, IFormattable<DateTime>, IComparable<DateTime>, IDisposable {
+export class DateTime implements IDateTime, IFormattable<DateTime>, IComparable<DateTime> {
 
      /**
       * Formats a value of type DateTime to a string

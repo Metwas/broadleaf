@@ -1,6 +1,5 @@
 import { TimerState } from "./timerState";
-import { ITimer } from "./ITimer";
-import { EventEmitter } from "./EventEmitter";
+import { EventEmitter } from "./eventEmitter";
 import { IListener } from "./IListener";
 /**
  * Represents a setInterval based wrapper and manager
@@ -180,4 +179,25 @@ export declare class Timer extends EventEmitter<any> implements ITimer {
      * @param {Timer} context
      */
     private static _tick;
+}
+/**
+ * Base template for a setInterval wrapper and manager
+ */
+export interface ITimer {
+    /**
+     * How long this timer is setup for (in milliseconds)
+     */
+    duration: number;
+    /**
+     * How many frames per second to be rendered per set interval
+     */
+    fps: number;
+    /**
+     * Represents what state the timer is currently in
+     */
+    state: TimerState;
+    /**
+     * The current time for the timer instance (in milliseconds)
+     */
+    elapsed: number;
 }

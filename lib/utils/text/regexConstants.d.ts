@@ -1,4 +1,4 @@
-import { SeperatorModel } from "./SeperatorModel";
+import { SeperatorModel } from "./seperatorModel";
 /**
  * Matches all words without spaces within a given string
  */
