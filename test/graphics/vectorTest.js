@@ -13,6 +13,6 @@ const acc = new vector2(2, 1);
 console.log(`Magnitude: ${vel.magnitude()}`);
 console.log(`Heading: ${vel.heading()}`);
 // rotate
-vel.rotate(math.HALF_PI);
+vel.rotate(360);
 console.log(`Heading: ${vel.heading()}`);
 

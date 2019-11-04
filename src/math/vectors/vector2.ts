@@ -467,7 +467,6 @@ export class Vector2 {
 
           const mag: number = this.magnitude();
           let newAngle: number = this.heading() + angle;
-          newAngle = math.degreesToRadians(newAngle);
 
           // update the position based from the angle and magnitude
           this.x = Math.cos(newAngle) * mag;
