@@ -62,6 +62,18 @@ export function toString(value: any): string {
 };
 
 /**
+ * Evaluates the class type on the obj parameter provided
+ * 
+ * @param {Object} obj 
+ * @param {String} className 
+ */
+export function isClassOf(obj: object, className: string): boolean {
+
+     return toString(obj) === `[object ${className}]`;
+
+}
+
+/**
  * Checks the value parameter is of type 'String'
  * 
  * @param value 

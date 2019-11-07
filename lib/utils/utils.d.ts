@@ -10,6 +10,13 @@ export declare function noop(): void;
  */
 export declare function toString(value: any): string;
 /**
+ * Evaluates the class type on the obj parameter provided
+ *
+ * @param {Object} obj
+ * @param {String} className
+ */
+export declare function isClassOf(obj: object, className: string): boolean;
+/**
  * Checks the value parameter is of type 'String'
  *
  * @param value
