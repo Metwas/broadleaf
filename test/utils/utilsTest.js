@@ -8,6 +8,9 @@ const { log, header } = printService;
 // testing initialization
 log(header("#### Utility Testing ####"));
 
+// test classOf 
+test("Log is function", utils.isClassOf(log, "Function"), "Class of");
+
 // object keys
 let testObj = { name: "test", age: 24, id: Math.floor(math.random(0x23, 0xff)) };
 const keys = utils.keys(testObj);

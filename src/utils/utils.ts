@@ -1,3 +1,5 @@
+import { text } from "../broadleaf";
+
 /*
      MIT License
 
@@ -69,7 +71,7 @@ export function toString(value: any): string {
  */
 export function isClassOf(obj: object, className: string): boolean {
 
-     return toString(obj) === `[object ${className}]`;
+     return !isNullOrUndefined(obj) && toString(obj) === `[object ${className}]`;
 
 }
 
