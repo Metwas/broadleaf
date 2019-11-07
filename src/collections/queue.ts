@@ -1,7 +1,7 @@
 // import event emitter module
 import { EventEmitter } from "../tasks/common/eventEmitter";
 // import utilities
-import { isString, isNumber, isNullOrUndefined, isObject } from "../utils/utils";
+import { isString, isNumber, isObject } from "../utils/utils";
 
 /**
  * Represents a overflow model based on a Queue
