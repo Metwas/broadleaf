@@ -23,7 +23,7 @@
 */
 
 import * as utils from "./utils";
-import os from "os";
+import * as os from "os";
 import { NetworkDevice } from "./models/networkDevice";
 
 /**
