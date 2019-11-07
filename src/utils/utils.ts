@@ -494,7 +494,7 @@ export function has(obj: Object, property: string): boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-const assignFunction = function (target: any, args: Array<any>): Object {
+const assignPolyfill = function (target: any, args: Array<any>): Object {
 
      "use scrict;";
 
@@ -555,7 +555,7 @@ export function assign(): Function {
 
      } else {
 
-          return assignFunction;
+          return assignPolyfill;
 
      }
 
