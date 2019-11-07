@@ -321,7 +321,7 @@ export class Timer extends EventEmitter<any> implements ITimer {
           this._startTime = this.elapsed = startTime;
           const mode = String(arguments[0]).toLowerCase();
           this._mode = (mode === "once" || mode === "loop") ? mode : _this._mode || "once";
-          this.TIMER_INTERVAL_ID = setInterval(function () { Timer._tick(_this); }, Timer.UPDATE_INTERVAL / this.fps, false);
+          this.TIMER_INTERVAL_ID = window.setInterval(function () { Timer._tick(_this); }, Timer.UPDATE_INTERVAL / this.fps, false);
           this.state = TimerState.RUNNING;
           this.emit("start");
 
