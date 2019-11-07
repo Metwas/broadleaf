@@ -22,7 +22,7 @@
      SOFTWARE.
 */
 
-import { IDisposable } from "../../core/IDisposable";
+import { IDisposable } from "../../common/IDisposable";
 import { IListener } from "./IListener";
 import { EventTable } from "./eventTable";
 import * as utils from "../../utils/utils";
