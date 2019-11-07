@@ -67,11 +67,11 @@ export function getNetDetails(version: string): NetworkDevice {
      const index: string = Object.keys(interfaces).filter(x => x !== "lo" && x.startsWith("e"))[0];
      const eth: any = interfaces[index];
 
-     let i = 0;
-     const length = Array.isArray(eth) ? eth.length : 0;
+     let i: number = 0;
+     const length: number = Array.isArray(eth) ? eth.length : 0;
      for (; i < length; i++) {
 
-          const ethInterface = eth[i];
+          const ethInterface: any = eth[i];
           if (ethInterface && ethInterface.family === version) {
 
                return { address: ethInterface["address"], mac: ethInterface["mac"], ipVersion: version };
