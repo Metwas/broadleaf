@@ -5,6 +5,10 @@ import { IListener } from "./IListener";
  */
 export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
     /**
+     * Default maximum allowed listeners
+     */
+    static readonly DEFAULT_MAX_LISTENERS = 15;
+    /**
      * Mapped array container for registered event listeners
      *
      * @private
@@ -17,9 +21,25 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
      */
     private listenersOnce;
     /**
-     * Type safe event register and emitter
+     * Maximum allowed listeners
      */
-    constructor();
+    private _maxListeners;
+    /**
+     * Default constructor
+     *
+     * @param {Number} maxListeners
+     */
+    constructor(maxListeners?: number);
+    /**
+     * Gets the total amount of registered listeners from both stores
+     */
+    readonly Count: number;
+    /**
+     * Sets the maximum amount of listeners
+     *
+     * @param {Number} value
+     */
+    setMaximumListeners(value: number): void;
     /**
      * Registers an event listener to a listener store
      *
@@ -27,17 +47,30 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
      */
     on(event: string, listener: IListener<T>): void;
     /**
+     * Registers an event listener to a listener store
+     *
+     * @param {IListener} listener
+     */
+    addEventListener(event: string, listener: IListener<T>): void;
+    /**
      * Registers a listener to the once store
      *
+     * @param {String} event
      * @param {IListener} listener
      */
     once(event: string, listener: IListener<T>): void;
     /**
      * Removes a specified listener from a listener store
      *
-     * @param {IListener} listener
+     * @param {String} event
      */
     off(event: string): void;
+    /**
+     * Removes a specified listener from a listener store
+     *
+     * @param {String} event
+     */
+    removeEventListener(event: string): void;
     /**
      * Fires off the specified event to all attached listeners
      *
@@ -67,7 +100,7 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
     * Helper function which attempts to retrieve an event entry by name in a provided store
     *
     * @param {String} event
-    * @param {EventTable} listenerTable
+    * @param {Array<EventTable>} table
     */
     private getEventEntry;
     /**
@@ -75,7 +108,7 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
      *
      * @param {String} event
      * @param {IListener} listener
-     * @param {Boolean} persistentTable
+     * @param {Boolean} persistentStore
      */
     private add;
 }

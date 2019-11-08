@@ -26,11 +26,17 @@ import { IDisposable } from "../../common/IDisposable";
 import { IListener } from "./IListener";
 import { EventTable } from "./eventTable";
 import * as utils from "../../utils/utils";
+import { isNullOrUndefined } from "util";
 
 /**
  * Type safe event register and emitter
  */
 export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
+
+     /**
+      * Default maximum allowed listeners
+      */
+     public static readonly DEFAULT_MAX_LISTENERS = 15;
 
      /**
       * Mapped array container for registered event listeners
@@ -47,12 +53,70 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      private listenersOnce: EventTable<T>[];
 
      /**
-      * Type safe event register and emitter
+      * Maximum allowed listeners
       */
-     constructor() {
+     private _maxListeners: number;
+
+     /**
+      * Default constructor
+      * 
+      * @param {Number} maxListeners
+      */
+     constructor(maxListeners?: number) {
 
           this.listeners = [];
           this.listenersOnce = [];
+
+          if (maxListeners && utils.isNumber(maxListeners)) {
+
+               this._maxListeners = maxListeners;
+
+          } else {
+
+               this._maxListeners = EventEmitter.DEFAULT_MAX_LISTENERS;
+
+          }
+
+     }
+
+     /**
+      * Gets the total amount of registered listeners from both stores
+      */
+     public get Count(): number {
+
+          let total: number = 0;
+          // get length from persistant store
+          if (utils.isArray(this.listeners)) {
+
+               total += this.listeners.length;
+
+          }
+          // get length from non-persistant store
+          if (utils.isArray(this.listenersOnce)) {
+
+               total += this.listenersOnce.length;
+
+          }
+
+          return total;
+
+     }
+
+     /**
+      * Sets the maximum amount of listeners
+      * 
+      * @param {Number} value 
+      */
+     public setMaximumListeners(value: number) {
+
+          if (!utils.isNumber(value) || value <= 0) {
+
+               console.warn("Provided maximum value was not valid, using defaults");
+               value = EventEmitter.DEFAULT_MAX_LISTENERS;
+
+          }
+
+          this._maxListeners = value;
 
      }
 
@@ -68,8 +132,20 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      }
 
      /**
+      * Registers an event listener to a listener store
+      * 
+      * @param {IListener} listener
+      */
+     public addEventListener(event: string, listener: IListener<T>): void {
+
+          this.add(event, listener, true);
+
+     }
+
+     /**
       * Registers a listener to the once store
       * 
+      * @param {String} event
       * @param {IListener} listener
       */
      public once(event: string, listener: IListener<T>): void {
@@ -81,7 +157,7 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      /**
       * Removes a specified listener from a listener store
       * 
-      * @param {IListener} listener
+      * @param {String} event
       */
      public off(event: string): void {
 
@@ -113,6 +189,17 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
                this.listeners.splice(indexPersistent, 1);
 
           }
+
+     }
+
+     /**
+      * Removes a specified listener from a listener store
+      * 
+      * @param {String} event
+      */
+     public removeEventListener(event: string): void {
+
+          this.off(event);
 
      }
 
@@ -247,7 +334,7 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      * Helper function which attempts to retrieve an event entry by name in a provided store
      * 
      * @param {String} event 
-     * @param {EventTable} listenerTable 
+     * @param {Array<EventTable>} table 
      */
      private getEventEntry(event: string, table: EventTable<T>[]): EventTable<T> | null {
 
@@ -280,7 +367,7 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
       * 
       * @param {String} event 
       * @param {IListener} listener 
-      * @param {Boolean} persistentTable 
+      * @param {Boolean} persistentStore 
       */
      private add(event: string, listener: IListener<T>, persistentStore: boolean) {
 
@@ -293,6 +380,13 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
           if (utils.isNullOrUndefined(listener)) {
 
                listener = (arg): void => { };
+
+          }
+
+          if (this.Count >= this._maxListeners) {
+
+               console.warn("Maximum listeners reached");
+               return;
 
           }
 
@@ -379,7 +473,7 @@ export interface ITypedEventEmitter<T> {
       * @param {String} event
       */
      emit(event: string, ...args: Array<any>): boolean;
-     
+
      /**
       * Pipes the current event emitter to another event emitter
       * 
