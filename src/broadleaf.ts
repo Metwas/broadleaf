@@ -26,6 +26,7 @@ import * as utilities from "./utils/utils";
 import * as maths from "./math/math";
 import * as conversions from "./utils/text/conversions";
 import * as regexConstants from "./utils/text/regexConstants";
+import { Queue } from "./collections/queue";
 
 
 export { Color } from "./graphics/drawing/colors/color";
@@ -36,6 +37,10 @@ export const text = {
      conversions: conversions,
      regex: regexConstants
 };
+
+export const collections = {
+     Queue: Queue
+}
 
 export const math = maths;
 export const utils = utilities;
