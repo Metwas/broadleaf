@@ -91,7 +91,7 @@ export function getNetDetails(version: string): NetworkDevice {
  */
 export function getIPv4Details(): NetworkDevice {
 
-    return getNetDetails(IP_VERSION_4);
+     return getNetDetails(IP_VERSION_4);
 
 };
 
@@ -103,5 +103,5 @@ export function getIPv4Details(): NetworkDevice {
 export function getIPv6Details(): NetworkDevice {
 
      return getNetDetails(IP_VERSION_6);
- 
- };
+
+};
