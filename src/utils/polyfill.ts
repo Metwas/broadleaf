@@ -25,6 +25,50 @@
 import * as utils from "./utils";
 
 /**
+ * Object.keys polyfill code
+ * 
+ * @returns {Function}
+ */
+export function keysPolyfill() {
+
+     // create local reference hasOwnProperty
+     const has = utils.has;
+
+     /**
+      * Iterates through the provided parameter object
+      * 
+      * @param {Any} obj
+      * @returns {Array} Array of object defined keys
+      */
+     return function (obj: any): Array<any> {
+
+          if (!utils.isFunction(obj) && (utils.isNullOrUndefined(obj) || !utils.isObject(obj))) {
+
+               console.error("Attempted to get keys from a non-object parameter!");
+               return [];
+
+          }
+
+          // Container to store object keys
+          const results: Array<any> = [];
+          // iterate through the object keys
+          for (let key in obj) {
+               // validate ownership of the key
+               if (has(obj, key)) {
+
+                    results.push(key);
+
+               }
+
+          }
+          // return keys
+          return results;
+
+     }
+
+};
+
+/**
  * Polyfill code for Object.assign invocation
  *
  * @param {Object} target obj
