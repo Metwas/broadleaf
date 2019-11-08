@@ -11,5 +11,12 @@ export declare class SeperatorModel {
      * The token seperator
      */
     token: string;
+    /**
+     * Default constructor
+     *
+     * @param {String} token
+     * @param {String} startSequence
+     * @param {String} endSequence
+     */
     constructor(token: string, startSequence?: string, endSequence?: string);
 }

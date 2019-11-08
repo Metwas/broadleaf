@@ -1,3 +1,5 @@
+import * as polyfill from "./polyfill";
+import * as system from "./system";
 /**
  * No operation function
  */
@@ -193,3 +195,5 @@ export declare function keys(obj: Object, callback?: (key: string) => void): Arr
  * @param {Function} callback The callback function to be called on each element within the provided array
  */
 export declare function forEach(enumerable: Array<any> | Object, callback: (element: any) => void): void;
+export { system };
+export { polyfill };

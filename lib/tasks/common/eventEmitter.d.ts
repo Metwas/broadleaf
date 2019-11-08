@@ -1,4 +1,4 @@
-import { IDisposable } from "../../core/IDisposable";
+import { IDisposable } from "../../common/IDisposable";
 import { IListener } from "./IListener";
 /**
  * Type safe event register and emitter
