@@ -1,5 +1,3 @@
-import { text } from "../broadleaf";
-
 /*
      MIT License
 
@@ -23,6 +21,9 @@ import { text } from "../broadleaf";
      OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
      SOFTWARE.
 */
+
+import * as polyfill from "./polyfill";
+import * as system from "./system";
 
 /**
  * Lookup table for native JavaScript types and the associated default values
@@ -494,59 +495,6 @@ export function has(obj: Object, property: string): boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-const assignPolyfill = function (target: any, args: Array<any>): Object {
-
-     "use scrict;";
-
-     if (isNullOrUndefined(target)) {
-
-          throw new Error("Provided target cannot be null or undefined");
-
-     }
-
-     // convert provided argument 'target' to an object
-     var _object = Object(target);
-
-     // copy targeted properties to all provided arguments starting from index 1
-     var _index = 0;
-     var _length = arguments.length;
-
-     for (; _index < _length; _index++) {
-
-          // the next object within the arguments array
-          var _nextObj = arguments[_index];
-
-          if (!isNullOrUndefined(_nextObj)) {
-
-               // iterate through the object to obtain each property
-               for (var _key in _nextObj) {
-
-                    // ensure the object declares this property
-                    if (has(_nextObj, _key)) {
-
-                         _object[_key] = _nextObj[_key];
-
-                    }
-
-               }
-
-          }
-     }
-
-     return _object;
-
-};
-
-/**
- * Polyfill code for Object.assign invocation
- *
- * @param {Object} target obj
- * @param {Array} args arguments to be passed to the object assignment
- * @throws {Error} Throws an error if the target parameter returned null
- * @returns {Object} A new object which has the properties assigned to it
- * @remarks If not supported , it will create a poly fill code.
- * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
- */
 export function assign(): Function {
 
      if (Object.assign && isFunction(Object.assign)) {
@@ -555,7 +503,7 @@ export function assign(): Function {
 
      } else {
 
-          return assignPolyfill;
+          return polyfill.assignPolyfill;
 
      }
 
@@ -717,7 +665,7 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
 };
 
 // export system and network utilities
-import * as system from "./system";
 export { system };
+export { polyfill };
 
 
