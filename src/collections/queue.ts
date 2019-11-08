@@ -1,7 +1,7 @@
 // import event emitter module
 import { EventEmitter } from "../tasks/common/eventEmitter";
 // import utilities
-import { isString, isNumber, isObject } from "../utils/utils";
+import { isString, isNumber, isObject, isNullOrUndefined } from "../utils/utils";
 
 /**
  * Represents a overflow model based on a Queue
@@ -206,21 +206,29 @@ export class Queue extends EventEmitter<any> {
           this.emit("next", queueItem);
           this.emit("_next", state);
 
-          if (typeof state.cb === "function") {
+          if (!isNullOrUndefined(state)) {
 
-               // call sub-classes callback function
-               queueItem = state.cb();
+               if (typeof state.cb === "function") {
+
+                    // call sub-classes callback function
+                    queueItem = state.cb();
+
+               }
+
+               if (!state.handled && this.Count > 0) {
+
+                    // provide default logic
+                    queueItem = this._data.shift();
+
+               }
+
+               return queueItem;
+
+          } else {
+
+               return this._data.shift();
 
           }
-
-          if (!state.handled && this.Count > 0) {
-
-               // provide default logic
-               queueItem = this._data.shift();
-
-          }
-
-          return queueItem;
 
      }
 
