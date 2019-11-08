@@ -30,5 +30,8 @@
   "devDependencies": {
     "chalk": "^2.4.2",
     "typescript": "^3.6.2"
+  },
+  "dependencies": {
+    "@types/node": "^12.12.6"
   }
 }
