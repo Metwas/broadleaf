@@ -26,7 +26,6 @@ import { IDisposable } from "../../common/IDisposable";
 import { IListener } from "./IListener";
 import { EventTable } from "./eventTable";
 import * as utils from "../../utils/utils";
-import { isNullOrUndefined } from "util";
 
 /**
  * Type safe event register and emitter
