@@ -82,7 +82,7 @@ export class Vector2 {
           }
 
           // get current heading
-          const angle = this.heading();
+          const angle: number = this.heading();
           // calculate the coordinates against the angle multiplied by the new magnitude value
           this.x = Math.cos(angle) * value;
           this.y = Math.sin(angle) * value;
@@ -129,8 +129,9 @@ export class Vector2 {
       * Calculates the Euclidean distance from the current Vector2 instance and another Vector2 parameter
       * 
       * @param {Vector2} vector 
+      * @returns {Number}
       */
-     distance(vector: Vector2) {
+     distance(vector: Vector2): number {
 
           if (!(vector instanceof Vector2)) {
 
@@ -415,7 +416,7 @@ export class Vector2 {
       */
      normalize(): Vector2 {
 
-          const mag = this.magnitude();
+          const mag: number = this.magnitude();
 
           if (mag > 0) {
 
@@ -432,7 +433,7 @@ export class Vector2 {
       */
      limit(max: number): Vector2 {
 
-          const magnitude = this.magnitude();
+          const magnitude: number = this.magnitude();
           // ensure magnitude is less than the magnitude of the maximum parameter value
           if (magnitude > math.square(max)) {
 
