@@ -24,8 +24,6 @@
 
 import * as utils from "../../utils/utils";
 
-
-
 export class Scheduler {
 
 }

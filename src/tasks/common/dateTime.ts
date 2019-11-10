@@ -24,7 +24,6 @@
 
 import { IFormattable } from "../../core/IFormattable";
 import { IComparable } from "../../core/comparers";
-import { IDisposable } from "../../core/IDisposable";
 
 /**
  * Represents the months within a year
@@ -258,16 +257,71 @@ interface IDateTime {
       * @public
       */
 
+     /**
+      * Gets current month on the DateTime instance
+      * 
+      * @returns {IDateNamedEntry}
+      */
      getMonth(): IDateNamedEntry;
+
+     /**
+      * Gets current year on the DateTime instance
+      * 
+      * @returns {IDateNamedEntry}
+      */
      getYear(): number;
+
+     /**
+      * Gets the current day on the DateTime instance
+      * 
+      * @returns {IDateNamedEntry}
+      */
      getDay(): IDateNamedEntry;
+
+     /**
+      * Gets current hour on the DateTime instance
+      * 
+      * @returns {Number}
+      */
      getHour(): number;
+
+     /**
+      * Gets current seconds value on the DateTime instance
+      * 
+      * @returns {Number}
+      */
      getSeconds(): number;
+
+     /**
+      * Gets the current milliseconds value on the DateTime instance
+      * 
+      * @returns {Number}
+      */
      getMilliseconds(): number;
 
-     diff(date: DateTime | Date): number;
-     isLeapYear(): boolean;
-     toString(format: string): string;
+     /**
+      * Calculates the difference between two DateTime objects and returns as a DateTime
+      * 
+      * @param {DateTime | Date} date
+      * @returns {Number}
+      */
+     diff(date: DateTime | Date): DateTime;
+
+     /**
+      * Checks if either the provided date or current instance of DateTime is a leap year
+      * 
+      * @param {DateTime | Date} date [Optional]
+      * @returns {Boolean}
+      */
+     isLeapYear(date?: DateTime | Date): boolean;
+
+     /**
+      * Converts the current DateTime instance to a string format
+      * 
+      * @param {String} format [Optional]
+      * @returns {String}
+      */
+     toString(format?: string): string;
 
 }
 
@@ -297,6 +351,420 @@ interface IDateNamedEntry {
  * A helper class for defined and managing javascript date objects
  */
 export class DateTime implements IDateTime, IFormattable<DateTime>, IComparable<DateTime> {
+
+     private year: number;
+     private month: IDateNamedEntry;
+     private day: IDateNamedEntry;
+     private hour: number;
+     private minute: number;
+     private second: number;
+     private millisecond: number;
+     /**
+      * Constructs a new instance of DateTime from the provided date parameter as a Date object or string
+      * 
+      * @param {Date | String} date 
+      */
+     constructor(date: Date | String) {
+
+          this.year = 0;
+          this.month = { code: 0, name: "mon" };
+          this.day = { code: 0, name: "mon" };
+          this.hour = 0;
+          this.minute = 0;
+          this.second = 0
+          this.millisecond = 0;
+
+     }
+
+     /**
+      * Gets current locale for the DateTime instance
+      */
+     private _locale: string = "en";
+     public get locale(): string {
+
+          return this._locale;
+
+     }
+
+     public set locale(value: string) {
+
+          this._locale = value;
+
+     }
+
+     /**
+      * Region Date Additions
+      * @public
+      */
+
+     /**
+      * Adds a given DateTime or javascript date object from the current DateTime instance
+      * 
+      * @param {DateTime | Date} date 
+      * @returns {DateTime}
+      */
+     add(date: DateTime | Date): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Adds a given number of years from the current DateTime instance
+      * 
+      * @param {Number} years 
+      * @returns {DateTime}
+      */
+     addYears(years: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Adds a given number of months from the current DateTime instance
+      * 
+      * @param {Number} months 
+      * @returns {DateTime}
+      */
+     addMonths(months: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Adds a given number of days from the current DateTime instance
+      * 
+      * @param {Number} days 
+      * @returns {DateTime}
+      */
+     addDays(days: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Adds a given number of hours from the current DateTime instance
+      * 
+      * @param {Number} hours 
+      * @returns {DateTime}
+      */
+     addHours(hours: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Adds a given number of seconds from the current DateTime instance
+      * 
+      * @param {Number} seconds 
+      * @returns {DateTime}
+      */
+     addSeconds(seconds: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Adds a given number of milliseconds from the current DateTime instance
+      * 
+      * @param {Number} milliseconds
+      * @returns {DateTime}
+      */
+     addMilliseconds(milliseconds: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Region Date Subtractions
+      * @public
+      */
+
+     /**
+      * Substracts a given DateTime or javascript date object from the current DateTime instance
+      * 
+      * @param {DateTime | Date} date 
+      * @returns {DateTime}
+      */
+     sub(date: DateTime | Date): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Substracts a given number of years from the current DateTime instance
+      * 
+      * @param {Number} years 
+      * @returns {DateTime}
+      */
+     subYears(years: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Substracts a given number of months from the current DateTime instance
+      * 
+      * @param {Number} months 
+      * @returns {DateTime}
+      */
+     subMonths(months: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Substracts a given number of days from the current DateTime instance
+      * 
+      * @param {Number} days 
+      * @returns {DateTime}
+      */
+     subDays(days: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Substracts a given number of hours from the current DateTime instance
+      * 
+      * @param {Number} hours 
+      * @returns {DateTime}
+      */
+     subHours(hours: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Substracts a given number of seconds from the current DateTime instance
+      * 
+      * @param {Number} seconds 
+      * @returns {DateTime}
+      */
+     subSeconds(seconds: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Substracts a given number of milliseconds from the current DateTime instance
+      * 
+      * @param {Number} milliseconds 
+      * @returns {DateTime}
+      */
+     subMilliseconds(milliseconds: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Region Date Setters
+      * @public
+      */
+
+     /**
+      * Sets the current date instance to a new DateTime, javascript date object or a DateTime string format
+      * 
+      * @param {DateTime | Date | String} date
+      * @returns {DateTime}
+      */
+     set(date: DateTime | Date | string): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Sets the year on the current DateTime instance
+      * 
+      * @param {Number} year
+      * @returns {DateTime}
+      */
+     setYear(year: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Sets the month on the current DateTime instance
+      * 
+      * @param {Number} month
+      * @returns {DateTime}
+      */
+     setMonth(month: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Sets the day on the current DateTime instance
+      * 
+      * @param {Number} day
+      * @returns {DateTime}
+      */
+     setDay(day: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Sets the hour on the current DateTime instance
+      * 
+      * @param {Number} hour
+      * @returns {DateTime}
+      */
+     setHour(hour: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Sets the second on the current DateTime instance
+      * 
+      * @param {Number} second
+      * @returns {DateTime}
+      */
+     setSecond(second: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Sets the milliseconds on the current DateTime instance
+      * 
+      * @param {Number} millisecond
+      * @returns {DateTime}
+      */
+     setMillisecond(millisecond: number): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Region Date Getters
+      * @public
+      */
+
+     /**
+      * Gets current month on the DateTime instance
+      * 
+      * @returns {IDateNamedEntry}
+      */
+     getMonth(): IDateNamedEntry {
+
+          return { code: 0, name: "mon" };
+
+     }
+
+     /**
+      * Gets current year on the DateTime instance
+      * 
+      * @returns {Number}
+      */
+     getYear(): number {
+
+          return 0;
+
+     }
+
+     /**
+      * Gets the current day on the DateTime instance
+      * 
+      * @returns {IDateNamedEntry}
+      */
+     getDay(): IDateNamedEntry {
+
+          return { code: 0, name: "mon" };
+
+     }
+
+     /**
+      * Gets current hour on the DateTime instance
+      * 
+      * @returns {Number}
+      */
+     getHour(): number {
+
+          return 0;
+
+     }
+
+     /**
+      * Gets current seconds value on the DateTime instance
+      * 
+      * @returns {Number}
+      */
+     getSeconds(): number {
+
+          return 0;
+
+     }
+
+     /**
+      * Gets the current milliseconds value on the DateTime instance
+      * 
+      * @returns {Number}
+      */
+     getMilliseconds(): number {
+
+          return 0;
+
+     }
+
+     /**
+      * Calculates the difference between two DateTime objects and returns as a DateTime
+      * 
+      * @param {DateTime | Date} date
+      * @returns {Number}
+      */
+     diff(date: DateTime | Date): DateTime {
+
+          return this;
+
+     }
+
+     /**
+      * Checks if either the provided date or current instance of DateTime is a leap year
+      * 
+      * @param {DateTime | Date} date [Optional]
+      * @returns {Boolean}
+      */
+     isLeapYear(date?: DateTime | Date): boolean {
+
+          return true;
+
+     }
+
+     /**
+      * Converts the current DateTime instance to a string format
+      * 
+      * @param {String} format [Optional]
+      * @returns {String}
+      */
+     toString(format?: string): string {
+
+          return String(this);
+
+     }
 
      /**
       * Formats a value of type DateTime to a string

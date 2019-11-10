@@ -1,5 +1,3 @@
-import { IFormattable } from "../../core/IFormattable";
-import { IComparable } from "../../core/comparers";
 /**
  * Represents the months within a year
  *
@@ -15,7 +13,7 @@ export declare const DAYS: Array<string>;
 /**
  * A helper class for defined and managing javascript date objects
  */
-export declare class DateTime implements IFormattable<DateTime>, IComparable<DateTime> {
+export declare class DateTime {
     /**
      * Formats a value of type DateTime to a string
      *
