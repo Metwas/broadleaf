@@ -172,7 +172,7 @@ export function isBoolean(value: any): boolean {
  */
 export function isArray(value: any): boolean {
 
-     return isClassOf(value, "Array");
+     return Array.isArray(value) || isClassOf(value, "Array");
 
 };
 
@@ -365,8 +365,8 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
                else {
 
                     // loop through every key matching the specified property value
-                    const keys: Array<any> = Object.keys(arrayOrObject);
-                    forEach(keys, (element: any) => {
+                    const objKeys: Array<any> = keys(arrayOrObject);
+                    forEach(objKeys, (element: any) => {
 
                          const value: any = arrayOrObject[element];
 
@@ -446,19 +446,19 @@ export function toArray(obj: Object, parseKeys?: boolean): Array<any> {
 
      const parseObjectKeys = function (): Array<any> {
 
-          let keys: Array<any> = [];
+          let objKeys: Array<any> = [];
           if (parseKeys && parseKeys === true) {
 
-               const objKeys = Object.keys(obj);
-               keys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return has(obj, element); });
+               objKeys = keys(obj);
+               objKeys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return has(obj, element); });
 
           } else {
 
-               keys = [obj];
+               objKeys = [obj];
 
           }
 
-          return keys;
+          return objKeys;
 
      };
 
@@ -530,19 +530,11 @@ export function values(obj: any, filterFn: (key: string, value: any, obj: any) =
 
      }
 
-     return Object.keys(obj).map(function (key) {
+     return keys(obj).map(function (key) {
 
-          const value = obj[key];
-          const filterResult = filterFn(key, value, obj);
-
-          // ignore the filter if the return type is not a boolean
-          if (typeof filterResult !== "boolean") {
-
-               return value;
-
-          }
-
-          if (filterResult) {
+          const value: any = obj[key];
+          const filterResult: boolean = filterFn(key, value, obj);
+          if (filterResult === true) {
 
                if (ownProperty === true) {
 
@@ -557,6 +549,11 @@ export function values(obj: any, filterFn: (key: string, value: any, obj: any) =
                     return value;
 
                }
+
+          }else{
+               
+               // ignore the filter if the return type is not a boolean
+               return value;
 
           }
 
@@ -594,6 +591,12 @@ export function value(obj: any, key: string, ownProperty?: boolean): any {
  */
 export function keys(obj: Object, callback: (key: string) => void = noop): Array<any> {
 
+     if(!(isNullOrUndefined(Object.keys) && isFunction(Object.keys))){
+          // invoke native Object.keys
+          return Object.keys(obj);
+
+     }
+
      if (isNullOrUndefined(obj)) {
 
           throw new Error("Object provided cannot be null");
@@ -606,7 +609,7 @@ export function keys(obj: Object, callback: (key: string) => void = noop): Array
 
      }
 
-     var _tempArray = [];
+     var _tempArray: Array<any> = [];
      for (var key in obj) {
 
           if (has(obj, key)) {
@@ -657,8 +660,8 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
      } else {
 
           // obtain the object's keys
-          const keys = Object.keys(enumerable);
-          forEach(keys, callback);
+          const objKeys: Array<any> = keys(enumerable);
+          forEach(objKeys, callback);
 
      }
 
