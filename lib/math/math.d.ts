@@ -56,17 +56,6 @@ export declare const dist: (x0: number, x1: number) => number;
  */
 export declare const distVector: (vector0: Vector2, vector1: Vector2) => object;
 /**
- * Ensures the provided vectors are in-order
- *
- * @param {Vector2} vector0 The first vector
- * @param {Vector2} vector1 The second vector
- * @returns {Object} returns a object containing the vectors in a normailized manor
- */
-export declare const normalizeVectors: (vector0: Vector2, vector1: Vector2) => {
-    vector0: Vector2;
-    vector1: Vector2;
-};
-/**
  * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided vectors
  *
  * @param {Vector2} from The start positional vector

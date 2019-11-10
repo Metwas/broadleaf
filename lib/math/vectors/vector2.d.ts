@@ -50,6 +50,7 @@ export declare class Vector2 {
      * Calculates the Euclidean distance from the current Vector2 instance and another Vector2 parameter
      *
      * @param {Vector2} vector
+     * @returns {Number}
      */
     distance(vector: Vector2): number;
     /**
