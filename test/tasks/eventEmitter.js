@@ -4,12 +4,11 @@ const chalk = require("chalk");
 
 
 const { log, header } = printService;
-
 log("Event Emitter initialization...");
 var emitter = new EventEmitter();
 emitter.on("message", (ev) => { console.log("Good " + ev) });
 emitter.once("message2", (ev) => { console.log("hello " + ev) });
-emitter.once("message2", (args) => { console.log("hello " + utils.isArray(args)) });
+emitter.once("message4", (args) => { console.log("hello " + utils.isArray(args)) });
 log("### Emitter Table ###" + "\n" + emitter);
 emitter.emit("message","day");
 emitter.emit("message2",["s","s"]);

@@ -1,3 +1,5 @@
+import * as polyfill from "./polyfill";
+import * as system from "./system";
 /**
  * No operation function
  */
@@ -9,6 +11,13 @@ export declare function noop(): void;
  * @param value
  */
 export declare function toString(value: any): string;
+/**
+ * Evaluates the class type on the obj parameter provided
+ *
+ * @param {Object} obj
+ * @param {String} className
+ */
+export declare function isClassOf(obj: object, className: string): boolean;
 /**
  * Checks the value parameter is of type 'String'
  *
@@ -186,3 +195,5 @@ export declare function keys(obj: Object, callback?: (key: string) => void): Arr
  * @param {Function} callback The callback function to be called on each element within the provided array
  */
 export declare function forEach(enumerable: Array<any> | Object, callback: (element: any) => void): void;
+export { system };
+export { polyfill };

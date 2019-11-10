@@ -22,8 +22,14 @@
      SOFTWARE.
 */
 
+<<<<<<< HEAD
 import { IFormattable } from "../../core/IFormattable";
 import { IComparable } from "../../core/comparers";
+=======
+import { IFormattable } from "../../common/IFormattable";
+import { IComparable } from "../../common/comparers";
+import { IDisposable } from "../../common/IDisposable";
+>>>>>>> 15f63f736afe8cdd212b85553a908982ff3b205f
 
 /**
  * Represents the months within a year
@@ -350,7 +356,7 @@ interface IDateNamedEntry {
 /**
  * A helper class for defined and managing javascript date objects
  */
-export class DateTime implements IDateTime, IFormattable<DateTime>, IComparable<DateTime> {
+export class DateTime{
 
      private year: number;
      private month: IDateNamedEntry;

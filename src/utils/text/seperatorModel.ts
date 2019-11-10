@@ -17,6 +17,13 @@ export class SeperatorModel {
       */
      public token: string;
 
+     /**
+      * Default constructor
+      * 
+      * @param {String} token 
+      * @param {String} startSequence 
+      * @param {String} endSequence 
+      */
      public constructor(token: string, startSequence?: string, endSequence?: string) {
 
           if (!utils.isString(token)) {

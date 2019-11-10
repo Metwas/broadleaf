@@ -22,6 +22,9 @@
      SOFTWARE.
 */
 
+import * as polyfill from "./polyfill";
+import * as system from "./system";
+
 /**
  * Lookup table for native JavaScript types and the associated default values
  * 
@@ -62,13 +65,25 @@ export function toString(value: any): string {
 };
 
 /**
+ * Evaluates the class type on the obj parameter provided
+ * 
+ * @param {Object} obj 
+ * @param {String} className 
+ */
+export function isClassOf(obj: object, className: string): boolean {
+
+     return !isNullOrUndefined(obj) && toString(obj) === `[object ${className}]`;
+
+}
+
+/**
  * Checks the value parameter is of type 'String'
  * 
  * @param value 
  */
 export function isString(value: any): boolean {
 
-     return toString(value) === "[object String]";
+     return isClassOf(value, "String");
 
 };
 
@@ -79,7 +94,7 @@ export function isString(value: any): boolean {
  */
 export function isNumber(value: any): boolean {
 
-     return toString(value) === "[object Number]";
+     return isClassOf(value, "Number");
 
 };
 
@@ -90,7 +105,7 @@ export function isNumber(value: any): boolean {
  */
 export function isObject(value: any): boolean {
 
-     return toString(value) === "[object Object]";
+     return isClassOf(value, "Object");
 
 };
 
@@ -101,7 +116,7 @@ export function isObject(value: any): boolean {
  */
 export function isFunction(value: any): boolean {
 
-     return typeof value === "function" || toString(value) === "[object Function]";
+     return typeof value === "function" || isClassOf(value, "Function");
 
 };
 
@@ -146,7 +161,7 @@ export function isNullOrUndefined(value: any): boolean {
  */
 export function isBoolean(value: any): boolean {
 
-     return value === true || value === false || toString(value) === "[object Boolean]";
+     return value === true || value === false || isClassOf(value, "Boolean");
 
 };
 
@@ -157,7 +172,7 @@ export function isBoolean(value: any): boolean {
  */
 export function isArray(value: any): boolean {
 
-     return toString(value) === "[object Array]";
+     return isClassOf(value, "Array");
 
 };
 
@@ -179,7 +194,7 @@ export function isFinite(value: any): boolean {
  */
 export function isRegExp(value: any): boolean {
 
-     return toString(value) === "[object RegExp]";
+     return isClassOf(value, "RegExp");
 
 };
 
@@ -214,7 +229,7 @@ export function isJSONSupported(): boolean {
 export function getType(obj: any): string {
 
      const type = typeof obj;
-     if (type !== "object") {
+     if (!isObject(obj)) {
 
           return type;
 
@@ -228,7 +243,7 @@ export function getType(obj: any): string {
 
      // obtain the constructor
      const ctr = obj.constructor;
-     const name = typeof ctr === "function" && ctr.name;
+     const name = isClassOf(ctr, "Function") && ctr.name;
 
      // ensure name is a valid string, else return an 'object'
      return typeof name === "string" && name.length > 0 ? name : "object";
@@ -480,59 +495,6 @@ export function has(obj: Object, property: string): boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-const assignFunction = function (target: any, args: Array<any>): Object {
-
-     "use scrict;";
-
-     if (isNullOrUndefined(target)) {
-
-          throw new Error("Provided target cannot be null or undefined");
-
-     }
-
-     // convert provided argument 'target' to an object
-     var _object = Object(target);
-
-     // copy targeted properties to all provided arguments starting from index 1
-     var _index = 0;
-     var _length = arguments.length;
-
-     for (; _index < _length; _index++) {
-
-          // the next object within the arguments array
-          var _nextObj = arguments[_index];
-
-          if (!isNullOrUndefined(_nextObj)) {
-
-               // iterate through the object to obtain each property
-               for (var _key in _nextObj) {
-
-                    // ensure the object declares this property
-                    if (has(_nextObj, _key)) {
-
-                         _object[_key] = _nextObj[_key];
-
-                    }
-
-               }
-
-          }
-     }
-
-     return _object;
-
-};
-
-/**
- * Polyfill code for Object.assign invocation
- *
- * @param {Object} target obj
- * @param {Array} args arguments to be passed to the object assignment
- * @throws {Error} Throws an error if the target parameter returned null
- * @returns {Object} A new object which has the properties assigned to it
- * @remarks If not supported , it will create a poly fill code.
- * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
- */
 export function assign(): Function {
 
      if (Object.assign && isFunction(Object.assign)) {
@@ -541,7 +503,7 @@ export function assign(): Function {
 
      } else {
 
-          return assignFunction;
+          return polyfill.assignPolyfill;
 
      }
 
@@ -701,5 +663,9 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
      }
 
 };
+
+// export system and network utilities
+export { system };
+export { polyfill };
 
 

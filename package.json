@@ -1,6 +1,6 @@
 {
   "name": "broadleaf",
-  "version": "1.5.14",
+  "version": "1.6.0",
   "description": "Common javascript extensions and helper functionality",
   "main": "./lib/broadleaf.js",
   "scripts": {
@@ -30,5 +30,8 @@
   "devDependencies": {
     "chalk": "^2.4.2",
     "typescript": "^3.6.2"
+  },
+  "dependencies": {
+    "@types/node": "^12.12.6"
   }
 }

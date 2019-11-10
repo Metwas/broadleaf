@@ -1,5 +1,3 @@
-import { IFormattable } from "../../core/IFormattable";
-import { IComparable } from "../../core/comparers";
 /**
  * Represents the months within a year
  *
@@ -257,6 +255,7 @@ interface IDateNamedEntry {
 /**
  * A helper class for defined and managing javascript date objects
  */
+<<<<<<< HEAD
 export declare class DateTime implements IDateTime, IFormattable<DateTime>, IComparable<DateTime> {
     private year;
     private month;
@@ -496,6 +495,9 @@ export declare class DateTime implements IDateTime, IFormattable<DateTime>, ICom
      * @returns {String}
      */
     toString(format?: string): string;
+=======
+export declare class DateTime {
+>>>>>>> 15f63f736afe8cdd212b85553a908982ff3b205f
     /**
      * Formats a value of type DateTime to a string
      *

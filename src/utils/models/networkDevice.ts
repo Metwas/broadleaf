@@ -22,25 +22,18 @@
      SOFTWARE.
 */
 
-import * as utilities from "./utils/utils";
-import * as maths from "./math/math";
-import * as conversions from "./utils/text/conversions";
-import * as regexConstants from "./utils/text/regexConstants";
-import { Queue } from "./collections/queue";
+/**
+ * Model object which holds network information for a given device
+ */
+export class NetworkDevice {
 
+     /**
+      * Constructs a new IP version 4 details object with the provided ip address and mac address
+      * 
+      * @param {String} address 
+      * @param {String} mac 
+      * @param {String} name 
+      */
+     constructor(public address: string, public mac: string, public ipVersion: string, public name?: string){ }
 
-export { Color } from "./graphics/drawing/colors/color";
-export { Timer } from "./tasks/common/timer";
-export { EventEmitter } from "./tasks/common/eventEmitter";
-
-export const text = {
-     conversions: conversions,
-     regex: regexConstants
-};
-
-export const collections = {
-     Queue: Queue
 }
-
-export const math = maths;
-export const utils = utilities;
