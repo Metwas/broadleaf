@@ -34,6 +34,12 @@ const assertValues = utils.isArray(values) && values.length > 0;
 test("Object values test", assertValues, "util.values length > 0", `${utilValue}`);
 //table(values, "testObj values");
 
+test("is test object literal", utils.isObjectLiteral(testObj),"Object literals");
+const testObj2 = new function test(){ this.name = "test2" };
+// create prototype chain
+testObj2.prototype = { log: function(){ console.log(this.name); } };
+test("is test2 not an object literal", !utils.isObjectLiteral(testObj2),"Object literals");
+
 // array contains 
 const arr = [2, 3, 4, 5, "test"];
 const contains = utils.contains(arr, 2);

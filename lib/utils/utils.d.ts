@@ -31,6 +31,12 @@ export declare function isString(value: any): boolean;
  */
 export declare function isNumber(value: any): boolean;
 /**
+ * Checks the value parameter is of type Object literal
+ *
+ * @param value
+ */
+export declare function isObjectLiteral(value: any): boolean;
+/**
  * Checks the value parameter is of type 'Object'
  *
  * @param value

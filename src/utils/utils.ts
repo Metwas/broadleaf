@@ -100,6 +100,18 @@ export function isNumber(value: any): boolean {
 };
 
 /**
+ * Checks the value parameter is of type Object literal
+ * 
+ * @param value 
+ */
+export function isObjectLiteral(value: any): boolean {
+
+     // ensure value does not have the prototype chain
+     return isClassOf(value, "Object") && isNullOrUndefined(value.prototype);
+
+};
+
+/**
  * Checks the value parameter is of type 'Object'
  * 
  * @param value 
