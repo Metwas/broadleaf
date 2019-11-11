@@ -17,6 +17,12 @@ const keys = utils.keys(testObj);
 test("Object keys test", utils.isArray(keys), "utils.keys is array");
 //table(testObj);
 
+log("Cloning test");
+let newObj = utils.deepCopy(testObj);
+newObj.name = "cloned";
+log(`Test name: ${testObj.name}, cloned name: ${newObj.name}`);
+console.log(newObj);
+
 // object value
 const value = testObj["name"];
 const utilValue = utils.value(testObj, "name");

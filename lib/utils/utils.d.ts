@@ -74,6 +74,13 @@ export declare function isBoolean(value: any): boolean;
  */
 export declare function isArray(value: any): boolean;
 /**
+ * Validates the provided value if it contains similar properties to an array
+ *
+ * @param {Object} value
+ * @returns {Boolean}
+ */
+export declare function isArrayLike(value: any): boolean;
+/**
  * Checks the value parameter is a valid number and finite
  *
  * @param value
@@ -92,6 +99,12 @@ export declare function isRegExp(value: any): boolean;
  */
 export declare function isError(value: any): boolean;
 /**
+ * Checks the provided parameter is an instance of type 'Date'
+ *
+ * @param value
+ */
+export declare function isDate(value: any): boolean;
+/**
  * Checks for native JSON support
  *
  * @returns {Boolean}
@@ -104,6 +117,21 @@ export declare function isJSONSupported(): boolean;
  * @returns {String} The type evaluated as a string
  */
 export declare function getType(obj: any): string;
+/**
+ * Performs a shallow copy on a provided object
+ *
+ * @param {Object} obj
+ * @param {String|Number} property
+ * @returns {Object}
+ */
+export declare function shallowCopy(obj: any, property: string): any;
+/**
+ * Performs a deep copy on most native javascript types
+ *
+ * @param {Object} value
+ * @returns {Object} clone object
+ */
+export declare function deepCopy(value: any): any;
 /**
  * Obtains the default value for a given type
  *
@@ -156,13 +184,12 @@ export declare function has(obj: Object, property: string): boolean;
  * Polyfill code for Object.assign invocation
  *
  * @param {Object} target obj
- * @param {Array} args arguments to be passed to the object assignment
  * @throws {Error} Throws an error if the target parameter returned null
  * @returns {Object} A new object which has the properties assigned to it
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-export declare function assign(): Function;
+export declare function assign(target: any, ...args: Array<any>): Object;
 /**
  * Obtains the property keys from a provided object parameter
  *
@@ -188,6 +215,14 @@ export declare function value(obj: any, key: string, ownProperty?: boolean): any
  * @returns {Array} An array of property objects
  */
 export declare function keys(obj: Object, callback?: (key: string) => void): Array<any>;
+/**
+ * Obtains all property keys within the provided object parameter including inheritted keys
+ *
+ * @param {Object} obj The object from which to yield each property
+ * @throws {Error} Throws an error if the object parameter returned null
+ * @returns {Array} An array of property objects
+ */
+export declare function allKeys(obj: Object, callback?: (key: string) => void): Array<any>;
 /**
  * Loops through a provided array and performs a callback function on each element in the array
  *
