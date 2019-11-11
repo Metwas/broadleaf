@@ -50,7 +50,7 @@ const DEFAULT_TABLE = (function (): any {
 /**
  * No operation function
  */
-export function noop() { };
+export function noop(): void { };
 
 /**
  * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
@@ -228,7 +228,7 @@ export function isJSONSupported(): boolean {
  */
 export function getType(obj: any): string {
 
-     const type = typeof obj;
+     const type: any = typeof obj;
      if (!isObject(obj)) {
 
           return type;
@@ -242,8 +242,8 @@ export function getType(obj: any): string {
      }
 
      // obtain the constructor
-     const ctr = obj.constructor;
-     const name = isClassOf(ctr, "Function") && ctr.name;
+     const ctr: any = obj.constructor;
+     const name: string = isClassOf(ctr, "Function") && ctr.name;
 
      // ensure name is a valid string, else return an 'object'
      return typeof name === "string" && name.length > 0 ? name : "object";
@@ -258,7 +258,7 @@ export function getType(obj: any): string {
  */
 export function __default(type: string) {
 
-     let stringType = "";
+     let stringType: string = "";
      if (type !== "string") {
 
           // attempt to obtain the type from a helper function
@@ -284,8 +284,8 @@ const function_call = function (fn: any, ...args: any): Function {
 
 };
 
-const array_slice = function_call(Array.prototype.slice);
-const array_splice = function_call(Array.prototype.splice);
+const array_slice: Function = function_call(Array.prototype.slice);
+const array_splice: Function = function_call(Array.prototype.splice);
 
 /**
  * Clones the provided array
@@ -295,7 +295,7 @@ const array_splice = function_call(Array.prototype.splice);
  */
 export function clone(arrayOrObject: Array<any> | any): Array<any> | any {
 
-     if (Array.isArray(arrayOrObject)) {
+     if (isArray(arrayOrObject)) {
 
           return array_slice(arrayOrObject, 0);
 
@@ -326,8 +326,8 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
 
      if (isArray(arrayOrObject)) {
 
-          var _index = 0;
-          var _length = arrayOrObject.length;
+          var _index: number = 0;
+          var _length: number = arrayOrObject.length;
 
           for (; _index < _length; _index++) {
 
@@ -350,7 +350,7 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
           if (isObject(arrayOrObject)) {
 
                // attempt to retrieve the specified key
-               const value = arrayOrObject[propertyKey];
+               const value: any = arrayOrObject[propertyKey];
 
                if (isNullOrUndefined(propertyValue) && !isNullOrUndefined(value)) {
 
@@ -404,15 +404,15 @@ export function filter(array: Array<any>, callback: (element: any, index: number
 
      }
 
-     if (Array.isArray(array)) {
+     if (isArray(array)) {
 
-          var _length = array.length;
-          var _index = 0;
+          var _length: number = array.length;
+          var _index: number = 0;
 
           for (; _index < _length; _index++) {
 
-               var _element = array[_index];
-               var _result = callback(_element, _index, array);
+               var _element: any = array[_index];
+               var _result: boolean = callback(_element, _index, array);
 
                if (!_result) {
 
@@ -571,14 +571,14 @@ export function values(obj: any, filterFn: (key: string, value: any, obj: any) =
  */
 export function value(obj: any, key: string, ownProperty?: boolean): any {
 
-     const filterFn = function (key: string, value: any, obj: any): boolean {
+     const filterFn: Function = function (key: string, value: any, obj: any): boolean {
 
           return key === key;
 
      };
 
      const objValues = values(obj, (objKey: string, value: any, obj: any) => { return objKey === key }, ownProperty);
-     return Array.isArray(objValues) && objValues.length > 0 ? objValues[0] : null;
+     return isArray(objValues) && objValues.length > 0 ? objValues[0] : null;
 
 };
 
@@ -626,6 +626,39 @@ export function keys(obj: Object, callback: (key: string) => void = noop): Array
 };
 
 /**
+ * Obtains all property keys within the provided object parameter including inheritted keys
+ *
+ * @param {Object} obj The object from which to yield each property
+ * @throws {Error} Throws an error if the object parameter returned null
+ * @returns {Array} An array of property objects
+ */
+export function allKeys(obj: Object, callback: (key: string) => void = noop): Array<any> {
+
+     if (isNullOrUndefined(obj)) {
+
+          throw new Error("Object provided cannot be null");
+
+     }
+
+     if (!isFunction(callback)) {
+
+          callback = noop;
+
+     }
+
+     var _tempArray: Array<any> = [];
+     for (var key in obj) {
+
+          _tempArray.push(key);
+          callback(key);
+
+     }
+
+     return _tempArray;
+
+};
+
+/**
  * Loops through a provided array and performs a callback function on each element in the array
  *
  * @param {Array | Object} enumerable An array
@@ -647,8 +680,8 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
 
      if (Array.isArray(enumerable)) {
 
-          var _index = 0;
-          var _length = enumerable.length;
+          var _index: number = 0;
+          var _length: number = enumerable.length;
 
           for (; _index < _length; _index++) {
 
