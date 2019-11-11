@@ -72,16 +72,14 @@ export function keysPolyfill() {
  * Polyfill code for Object.assign invocation
  *
  * @param {Object} target obj
- * @param {Array} args arguments to be passed to the object assignment
  * @throws {Error} Throws an error if the target parameter returned null
  * @returns {Object} A new object which has the properties assigned to it
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-export function assignPolyfill(target: any, args: Array<any>): Object {
+export function assignPolyfill(target: any, ...args: Array<any>): Object {
 
      "use scrict;";
-
      if (utils.isNullOrUndefined(target)) {
 
           throw new Error("Provided target cannot be null or undefined");
@@ -90,25 +88,24 @@ export function assignPolyfill(target: any, args: Array<any>): Object {
 
      // convert provided argument 'target' to an object
      var _object = Object(target);
-
      // copy targeted properties to all provided arguments starting from index 1
-     var _index = 0;
-     var _length = arguments.length;
+     var index = 1;
+     var length = utils.isArrayLike(args) ? arguments.length : 0;
 
-     for (; _index < _length; _index++) {
+     for (; index < length; index++) {
 
           // the next object within the arguments array
-          var _nextObj = arguments[_index];
+          var obj = arguments[index];
 
-          if (!utils.isNullOrUndefined(_nextObj)) {
+          if (!utils.isNullOrUndefined(obj)) {
 
                // iterate through the object to obtain each property
-               for (var _key in _nextObj) {
+               for (var _key in obj) {
 
                     // ensure the object declares this property
-                    if (utils.has(_nextObj, _key)) {
+                    if (utils.has(obj, _key)) {
 
-                         _object[_key] = _nextObj[_key];
+                         _object[_key] = obj[_key];
 
                     }
 
