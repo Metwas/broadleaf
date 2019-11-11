@@ -223,6 +223,17 @@ export function isError(value: any): boolean {
 };
 
 /**
+ * Checks the provided parameter is an instance of type 'Date'
+ * 
+ * @param value 
+ */
+export function isDate(value: any): boolean {
+
+     return isClassOf(value, "Date");
+
+};
+
+/**
  * Checks for native JSON support
  * 
  * @returns {Boolean}
@@ -257,7 +268,6 @@ export function getType(obj: any): string {
      // obtain the constructor
      const ctr: any = obj.constructor;
      const name: string = isClassOf(ctr, "Function") && ctr.name;
-
      // ensure name is a valid string, else return an 'object'
      return typeof name === "string" && name.length > 0 ? name : "object";
 
@@ -282,7 +292,13 @@ export function shallowCopy(obj: any, property: string): any {
 
 };
 
-export function deepCopy(value: any) {
+/**
+ * Performs a deep copy on most native javascript types
+ * 
+ * @param {Object} value
+ * @returns {Object} clone object
+ */
+export function deepCopy(value: any): any {
 
      if (utils.isNullOrUndefined(value)) {
 
@@ -290,12 +306,61 @@ export function deepCopy(value: any) {
 
      }
 
-     let _keys: Array<any> = [];
-     if (utils.isObject(value)) {
+     let result: any = void 0;
+     // match primitive types
+     const types: Array<string> = ["String", "Number", "Boolean"];
+     types.forEach(type => {
 
-          keys = keys.
+          if (isClassOf(value, type)) {
+
+               // simply set the value, as primitives are already cloned within the arguments
+               result = value;
+
+          }
+
+     });
+
+     if (isNullOrUndefined(result)) {
+
+          // search for complex types
+          if (isObject(value)) {
+               result = {};
+               // assign each property
+               for (let key in value) {
+
+                    // filter down each key
+                    result[key] = deepCopy(value[key]);
+
+               }
+
+          }
+          else if (isArray(value)) {
+
+               result = value.slice(0);
+
+          }
+          else if (isDate(value)) {
+
+               // create new Date intance
+               result = new Date(value);
+
+          }
+          else if (isRegExp(value)) {
+
+               // create new regular expression instance
+               result = new RegExp(value.source, value.flags);
+
+          }
+          else {
+
+               // return reference
+               result = value;
+
+          }
 
      }
+
+     return result;
 
 };
 
@@ -351,11 +416,13 @@ export function clone(arrayOrObject: Array<any> | any): Array<any> | any {
      } else {
 
           // default to deep cloning an object
-          if (isJSONSupported()) {
+          if (isJSONSupported() && !isNullOrUndefined(arrayOrObject) && !isFunction(arrayOrObject)) {
 
                return JSON.parse(JSON.stringify(arrayOrObject));
 
           }
+
+          return deepCopy(arrayOrObject);
 
      }
 
