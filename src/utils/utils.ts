@@ -335,7 +335,7 @@ export function deepCopy(value: any): any {
      if (isNullOrUndefined(result)) {
 
           // search for complex types
-          if (isObject(value)) {
+          if (isObjectLiteral(value)) {
                result = {};
                // assign each property
                for (let key in value) {
