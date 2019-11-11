@@ -24,7 +24,6 @@
 
 import * as polyfill from "./polyfill";
 import * as system from "./system";
-import { utils } from "../broadleaf";
 
 /**
  * Lookup table for native JavaScript types and the associated default values
@@ -294,7 +293,7 @@ export function getType(obj: any): string {
  */
 export function shallowCopy(obj: any, property: string): any {
 
-     if (utils.isNullOrUndefined(obj) || !(utils.isString(property) || utils.isNumber(property))) {
+     if (isNullOrUndefined(obj) || !(isString(property) || isNumber(property))) {
 
           return void 0;
 
@@ -312,7 +311,7 @@ export function shallowCopy(obj: any, property: string): any {
  */
 export function deepCopy(value: any): any {
 
-     if (utils.isNullOrUndefined(value)) {
+     if (isNullOrUndefined(value)) {
 
           return void 0;
 
