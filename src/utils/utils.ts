@@ -24,6 +24,7 @@
 
 import * as polyfill from "./polyfill";
 import * as system from "./system";
+import { utils } from "../broadleaf";
 
 /**
  * Lookup table for native JavaScript types and the associated default values
@@ -177,6 +178,18 @@ export function isArray(value: any): boolean {
 };
 
 /**
+ * Validates the provided value if it contains similar properties to an array
+ * 
+ * @param {Object} value
+ * @returns {Boolean}
+ */
+export function isArrayLike(value: any): boolean {
+
+     return !isNullOrUndefined(value.length) || Array.isArray(value);
+
+};
+
+/**
  * Checks the value parameter is a valid number and finite
  * 
  * @param value 
@@ -247,6 +260,42 @@ export function getType(obj: any): string {
 
      // ensure name is a valid string, else return an 'object'
      return typeof name === "string" && name.length > 0 ? name : "object";
+
+};
+
+/**
+ * Performs a shallow copy on a provided object
+ * 
+ * @param {Object} obj 
+ * @param {String|Number} property 
+ * @returns {Object}
+ */
+export function shallowCopy(obj: any, property: string): any {
+
+     if (utils.isNullOrUndefined(obj) || !(utils.isString(property) || utils.isNumber(property))) {
+
+          return void 0;
+
+     }
+
+     return obj[property];
+
+};
+
+export function deepCopy(value: any) {
+
+     if (utils.isNullOrUndefined(value)) {
+
+          return void 0;
+
+     }
+
+     let _keys: Array<any> = [];
+     if (utils.isObject(value)) {
+
+          keys = keys.
+
+     }
 
 };
 
@@ -489,21 +538,21 @@ export function has(obj: Object, property: string): boolean {
  * Polyfill code for Object.assign invocation
  *
  * @param {Object} target obj
- * @param {Array} args arguments to be passed to the object assignment
  * @throws {Error} Throws an error if the target parameter returned null
  * @returns {Object} A new object which has the properties assigned to it
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-export function assign(): Function {
+export function assign(target: any, ...args: Array<any>): Object {
 
      if (Object.assign && isFunction(Object.assign)) {
 
-          return Object.assign;
+          return Object.assign(target, args);
 
      } else {
 
-          return polyfill.assignPolyfill;
+
+          return polyfill.assignPolyfill(target);
 
      }
 
@@ -550,8 +599,8 @@ export function values(obj: any, filterFn: (key: string, value: any, obj: any) =
 
                }
 
-          }else{
-               
+          } else {
+
                // ignore the filter if the return type is not a boolean
                return value;
 
@@ -591,7 +640,7 @@ export function value(obj: any, key: string, ownProperty?: boolean): any {
  */
 export function keys(obj: Object, callback: (key: string) => void = noop): Array<any> {
 
-     if(!(isNullOrUndefined(Object.keys) && isFunction(Object.keys))){
+     if (!(isNullOrUndefined(Object.keys) && isFunction(Object.keys))) {
           // invoke native Object.keys
           return Object.keys(obj);
 
