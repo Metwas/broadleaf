@@ -122,6 +122,7 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      /**
       * Registers an event listener to a listener store
       * 
+      * @param {String} event
       * @param {IListener} listener
       */
      public on(event: string, listener: IListener<T>): void {
@@ -133,11 +134,13 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      /**
       * Registers an event listener to a listener store
       * 
+      * @param {String} event
       * @param {IListener} listener
+      * @param {Boolean} persistant
       */
-     public addEventListener(event: string, listener: IListener<T>): void {
+     public addEventListener(event: string, listener: IListener<T>, persistant: boolean = true): void {
 
-          this.add(event, listener, true);
+          this.add(event, listener, persistant);
 
      }
 
@@ -333,7 +336,8 @@ export class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposable {
      * Helper function which attempts to retrieve an event entry by name in a provided store
      * 
      * @param {String} event 
-     * @param {Array<EventTable>} table 
+     * @param {Array<EventTable>} table
+     * @returns {EventTable | Null}
      */
      private getEventEntry(event: string, table: EventTable<T>[]): EventTable<T> | null {
 
