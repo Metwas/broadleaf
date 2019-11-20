@@ -1,4 +1,3 @@
-import { Vector2 } from "./vectors/vector2";
 export declare const MAX_NIBBLE: number;
 export declare const MAX_BYTE: number;
 export declare const MAX_16BIT: number;
@@ -46,33 +45,6 @@ export declare const square: (value: number) => number;
  */
 export declare const dist: (x0: number, x1: number) => number;
 /**
- * Calculates the distance between two vector points
- *
- * @param {Number} vectorX0 The x start point
- * @param {Number} vectorX1 The x end point
- * @param {Number} y0 The y start point
- * @param {Number} y1 The y end point
- * @returns {Number} The distance between these two vectors
- */
-export declare const distVector: (vector0: Vector2, vector1: Vector2) => object;
-/**
- * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided vectors
- *
- * @param {Vector2} from The start positional vector
- * @param {Vector2} to The end positional vector
- * @remarks The line graph formulae goes as follows: y = f(x) = mx + c
- * @returns {Object} The values for each component in the formulae
- */
-export declare const getlineGraphComponents: (from: Vector2, to: Vector2) => Object;
-/**
-* Creates simple oscillation motion
-*
-* @param {Number} angle The angle value
-* @param {Number} amplitude
-* @returns {Number} a value thats mapped from the padding and amplitude to values between -1 to 1
-*/
-export declare const oscillate: (angle: number, amplitude: number) => number;
-/**
  * Maps a value to a range between a specifed maximum and minimum
  *
  * @param {Number} value The arbitrary number to be mapped
@@ -106,7 +78,7 @@ export declare const randomArray: (array: any[]) => number | null;
  * @param {Number} width The total width to calculate over
  * @returns {Number} The index of the corresponding element within a one dimensional array
  */
-export declare const getMatrixIndex2D: (x: number, y: number, width: number) => number;
+export declare const getMatrixIndex: (x: number, y: number, width: number) => number;
 /**
  * Gets the specified element at the computed index
  *
@@ -117,7 +89,7 @@ export declare const getMatrixIndex2D: (x: number, y: number, width: number) => 
  * @param {Boolean} border Option to loop back if a coordinate is greater than the dimension
  * @returns {Object} The element at the calculate index
  */
-export declare const getMatrixIndex: (x: number, y: number, width: number, array: any[], border: boolean) => Object | null;
+export declare const getMatrixIndexFromArray: (x: number, y: number, width: number, array: any[], border: boolean) => Object | null;
 /**
  * Converts a given degree to a radian value
  *

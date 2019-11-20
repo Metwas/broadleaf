@@ -125,96 +125,6 @@ export const dist = function (x0: number, x1: number): number {
 };
 
 /**
- * Calculates the distance between two vector points
- *
- * @param {Number} vectorX0 The x start point
- * @param {Number} vectorX1 The x end point
- * @param {Number} y0 The y start point
- * @param {Number} y1 The y end point
- * @returns {Number} The distance between these two vectors
- */
-export const distVector = function (vector0: Vector2, vector1: Vector2): object {
-
-     var _x = Math.sqrt((vector1.x - vector0.x) * (vector1.x - vector0.x));
-     var _y = Math.sqrt((vector1.y - vector0.y) * (vector1.y - vector0.y));
-
-     return {
-
-          x: _x,
-          y: _y
-
-     };
-
-};
-
-/**
- * Gets the component values within a line graph formulae, such as gradient and y-intercept from the two provided vectors
- *
- * @param {Vector2} from The start positional vector
- * @param {Vector2} to The end positional vector
- * @remarks The line graph formulae goes as follows: y = f(x) = mx + c
- * @returns {Object} The values for each component in the formulae
- */
-export const getlineGraphComponents = function (from: Vector2, to: Vector2): Object {
-
-     let _gradient = 0;
-     let _yIntercept = 0;
-
-     const _solve = function () {
-
-          /*
-              To solve for m (the gradient) the formulae is as follows:
-              m = (y2 - y1) / (x2 - x1)
-          */
-          var _deltaX = to.x - from.x;
-          var _deltaY = to.y - from.y;
-
-          if (_deltaX === 0) {
-
-               _gradient = 0;
-
-          } else {
-
-               _gradient = _deltaY / _deltaX;
-
-          }
-
-          /*
-              To solve for c (the y-intercept) the formulae is as follows:
-              c = ( y - (m * x) )
-          */
-          var _gradientFn = _gradient * from.x;
-          return from.y - _gradientFn;
-
-     };
-
-     const _distance = distVector(from, to);
-     _yIntercept = _solve();
-
-     return {
-
-          gradient: _gradient,
-          yIntercept: _yIntercept,
-          distance: _distance
-
-     };
-
-};
-
-/**
-* Creates simple oscillation motion
-*
-* @param {Number} angle The angle value
-* @param {Number} amplitude
-* @returns {Number} a value thats mapped from the padding and amplitude to values between -1 to 1
-*/
-export const oscillate = function (angle: number, amplitude: number): number {
-
-     return map(Math.sin(angle), -1, 1, -amplitude, amplitude);
-
-};
-
-/**
  * Maps a value to a range between a specifed maximum and minimum
  *
  * @param {Number} value The arbitrary number to be mapped
@@ -226,7 +136,7 @@ export const oscillate = function (angle: number, amplitude: number): number {
  */
 export const map = function (value: number, minFrom: number, maxFrom: number, minTo: number, maxTo: number): number {
 
-     if (!(isNaN(value) && isFinite(value)) || typeof value === "undefined") {
+     if (!utils.isNumber(value)) {
 
           return -1;
 
@@ -245,13 +155,12 @@ export const map = function (value: number, minFrom: number, maxFrom: number, mi
  */
 export const random = function (min: number, max: number): number {
 
-     var rand = Math.random();
-
-     if (typeof min === "undefined") {
+     const rand = Math.random();
+     if (!utils.isNumber(min)) {
 
           return rand;
 
-     } else if (typeof max === "undefined") {
+     } else if (!utils.isNumber(max)) {
 
           return Math.floor(rand * min);
 
@@ -261,7 +170,7 @@ export const random = function (min: number, max: number): number {
           if (min > max) {
 
                // swap the values
-               var temp = min;
+               const temp = min;
                min = max;
                max = temp;
 
@@ -281,9 +190,8 @@ export const random = function (min: number, max: number): number {
  */
 export const randomArray = function (array: Array<any>): number | null {
 
-     var rand = Math.random();
-
-     if (utils.isNullOrUndefined(array) || !Array.isArray(array)) {
+     const rand = Math.random();
+     if (!utils.isArray(array)) {
 
           return null;
 
@@ -302,7 +210,7 @@ export const randomArray = function (array: Array<any>): number | null {
  * @param {Number} width The total width to calculate over
  * @returns {Number} The index of the corresponding element within a one dimensional array
  */
-export const getMatrixIndex2D = function (x: number, y: number, width: number): number {
+export const getMatrixIndex = function (x: number, y: number, width: number): number {
 
      return y * width + x;
 
@@ -318,32 +226,30 @@ export const getMatrixIndex2D = function (x: number, y: number, width: number): 
  * @param {Boolean} border Option to loop back if a coordinate is greater than the dimension
  * @returns {Object} The element at the calculate index
  */
-export const getMatrixIndex = function (x: number, y: number, width: number, array: Array<any>, border: boolean): Object | null {
+export const getMatrixIndexFromArray = function (x: number, y: number, width: number, array: Array<any>, border: boolean): Object | null {
 
-     if (array === null || !Array.isArray(array)) {
+     if (!utils.isArray(array)) {
 
           return null;
 
      }
 
      border = !!border;
-
      if (border && (x < 0 || x >= width)) {
 
           return -1;
 
      }
 
-     var _index = getMatrixIndex2D(x, y, width);
-
-     if (_index > array.length) {
+     let index = getMatrixIndex(x, y, width);
+     if (index > array.length) {
 
           // avoid index out of bounds error
-          _index = 0;
+          index = 0;
 
      }
 
-     return array[_index];
+     return array[index];
 
 };
 
