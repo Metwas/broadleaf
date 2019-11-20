@@ -24,4 +24,4 @@ function getRootKey
 echo Provide the root key path:
 getRootKey
 # generate certificate using the key path specified
-sudo openssl req -new -x509 -days 365 -sha256 -writerand -key $rootKey -out $KEYPATH/"${NAME}.pem" -subj "/C=UK/ST=Derbyshire/O=EMQ/CN=${NAME}CA" &> /dev/null
+sudo openssl req -new -x509 -days 365 -sha256 -writerand -key $rootKey -out $KEYPATH/"${NAME}.pem"
