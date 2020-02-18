@@ -381,7 +381,7 @@ export function deepCopy(value: any): any {
  * @param {String} type The type name as a string
  * @returns {any} Returns a default value obtained from the default table lookup
  */
-export function __default(type: string) {
+export function reflectType(type: string) {
 
      let stringType: string = "";
      if (type !== "string") {
