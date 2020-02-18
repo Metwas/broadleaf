@@ -866,6 +866,59 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
 
 };
 
+/**
+ * Assigns default values to a given target
+ * 
+ * @param {Object} target 
+ * @param {Array | Object} source 
+ */
+export function defaults(target: any, ...source: Array<any>): any {
+     
+     if(isNullOrUndefined(target) || isNullOrUndefined(source)) { return {}; }
+
+     /**
+      * Ensure source is an array
+      */
+     const _temp: Array<any> = [];
+     _temp.concat(source).forEach(function(obj: any){
+
+          const defKeys: Array<number> = keys(obj);
+          const length: number = defKeys.length;
+          let index = 0;
+          for(; index < length; index++){
+
+               const key: number = defKeys[index];
+               const value: any = obj[key];
+               const targetValue = target[key];
+
+               if(!isNullOrUndefined(targetValue)){
+
+                    // recursively obtain defaults if both source and target values are object literals
+                    if(isObjectLiteral(targetValue) && isObjectLiteral(value)){
+
+                         defaults(targetValue, value);
+
+                    }
+
+               }else{
+
+                    if(!isNullOrUndefined(value)){
+
+                         // update target value
+                         target[key] = value;
+
+                    }
+
+               }
+
+          }
+
+     });
+
+     return target;
+
+};
+
 // export system and network utilities
 export { system };
 export { polyfill };
