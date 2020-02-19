@@ -925,7 +925,7 @@ export function defaults(target: any, ...source: Array<any>): any {
  * @param {Any} key 
  * @param {Any} arrayOrObject 
  */
-export function removeIfDefined(key: any, arrayOrObject: any): void {
+export function remove(key: any, arrayOrObject: any): void {
 
      /**
       * Handle array types

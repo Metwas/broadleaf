@@ -249,6 +249,6 @@ export declare function defaults(target: any, ...source: Array<any>): any;
  * @param {Any} key
  * @param {Any} arrayOrObject
  */
-export declare function removeIfDefined(key: any, arrayOrObject: any): void;
+export declare function remove(key: any, arrayOrObject: any): void;
 export { system };
 export { polyfill };

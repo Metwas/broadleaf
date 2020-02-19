@@ -15,8 +15,8 @@ const remArr = ["Test1", "test2", testRemObj];
 console.log(remObj);
 console.log(remArr);
 log(header("After removing key"));
-utils.removeIfDefined("name", remObj);
-utils.removeIfDefined(testRemObj, remArr);
+utils.remove("name", remObj);
+utils.remove(testRemObj, remArr);
 console.log(remObj);
 console.log(remArr);
 
