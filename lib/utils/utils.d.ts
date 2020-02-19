@@ -144,7 +144,7 @@ export declare function deepCopy(value: any): any;
  * @param {String} type The type name as a string
  * @returns {any} Returns a default value obtained from the default table lookup
  */
-export declare function __default(type: string): any;
+export declare function reflectType(type: string): any;
 /**
  * Clones the provided array
  *
@@ -236,5 +236,19 @@ export declare function allKeys(obj: Object, callback?: (key: string) => void): 
  * @param {Function} callback The callback function to be called on each element within the provided array
  */
 export declare function forEach(enumerable: Array<any> | Object, callback: (element: any) => void): void;
+/**
+ * Assigns default values to a given target
+ *
+ * @param {Object} target
+ * @param {Array | Object} source
+ */
+export declare function defaults(target: any, ...source: Array<any>): any;
+/**
+ * Removes key if defined within the provided array or object parameter
+ *
+ * @param {Any} key
+ * @param {Any} arrayOrObject
+ */
+export declare function removeIfDefined(key: any, arrayOrObject: any): void;
 export { system };
 export { polyfill };

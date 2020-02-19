@@ -43,15 +43,18 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
     /**
      * Registers an event listener to a listener store
      *
+     * @param {String} event
      * @param {IListener} listener
      */
     on(event: string, listener: IListener<T>): void;
     /**
      * Registers an event listener to a listener store
      *
+     * @param {String} event
      * @param {IListener} listener
+     * @param {Boolean} persistant
      */
-    addEventListener(event: string, listener: IListener<T>): void;
+    addEventListener(event: string, listener: IListener<T>, persistant?: boolean): void;
     /**
      * Registers a listener to the once store
      *
@@ -101,6 +104,7 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
     *
     * @param {String} event
     * @param {Array<EventTable>} table
+    * @returns {EventTable | Null}
     */
     private getEventEntry;
     /**
