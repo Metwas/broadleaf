@@ -873,36 +873,36 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
  * @param {Array | Object} source 
  */
 export function defaults(target: any, ...source: Array<any>): any {
-     
-     if(isNullOrUndefined(target) || isNullOrUndefined(source)) { return {}; }
+
+     if (isNullOrUndefined(target) || isNullOrUndefined(source)) { return {}; }
 
      /**
       * Ensure source is an array
       */
      const _temp: Array<any> = [];
-     _temp.concat(source).forEach(function(obj: any){
+     _temp.concat(source).forEach(function (obj: any) {
 
           const defKeys: Array<number> = keys(obj);
           const length: number = defKeys.length;
           let index = 0;
-          for(; index < length; index++){
+          for (; index < length; index++) {
 
                const key: number = defKeys[index];
                const value: any = obj[key];
                const targetValue = target[key];
 
-               if(!isNullOrUndefined(targetValue)){
+               if (!isNullOrUndefined(targetValue)) {
 
                     // recursively obtain defaults if both source and target values are object literals
-                    if(isObjectLiteral(targetValue) && isObjectLiteral(value)){
+                    if (isObjectLiteral(targetValue) && isObjectLiteral(value)) {
 
                          defaults(targetValue, value);
 
                     }
 
-               }else{
+               } else {
 
-                    if(!isNullOrUndefined(value)){
+                    if (!isNullOrUndefined(value)) {
 
                          // update target value
                          target[key] = value;
@@ -916,6 +916,41 @@ export function defaults(target: any, ...source: Array<any>): any {
      });
 
      return target;
+
+};
+
+/**
+ * Removes key if defined within the provided array or object parameter
+ * 
+ * @param {Any} key 
+ * @param {Any} arrayOrObject 
+ */
+export function removeIfDefined(key: any, arrayOrObject: any): void {
+
+     /**
+      * Handle array types
+      */
+     if (isArray(arrayOrObject)) {
+
+          const index: number = arrayOrObject.indexOf(key);
+          if (index > -1) {
+
+               arrayOrObject.splice(index, 1);
+
+          }
+
+     } else {
+
+          /**
+           * Handle native objects
+           */
+          if (!isNullOrUndefined(arrayOrObject[key])) {
+
+               delete arrayOrObject[key];
+
+          }
+
+     }
 
 };
 
