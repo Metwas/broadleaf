@@ -8,6 +8,18 @@ const { log, header } = printService;
 // testing initialization
 log(header("#### Utility Testing ####"));
 
+log(header("Before removing key from object or array"));
+const remObj = { name: "test" };
+const testRemObj = { test: "name" };
+const remArr = ["Test1", "test2", testRemObj];
+console.log(remObj);
+console.log(remArr);
+log(header("After removing key"));
+utils.removeIfDefined("name", remObj);
+utils.removeIfDefined(testRemObj, remArr);
+console.log(remObj);
+console.log(remArr);
+
 // test classOf 
 test("Log is function", utils.isClassOf(log, "Function"), "Class of");
 
@@ -57,5 +69,5 @@ test("object contains key and value", objContainsValue, `testObj contains and va
 
 // default type
 const type = "number";
-const _defaultValue = utils.__default(type);
+const _defaultValue = utils.reflectType(type);
 log(`Default value for type: ${type} = ${typeof _defaultValue}`);
