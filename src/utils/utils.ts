@@ -944,6 +944,8 @@ export function merge(target: any, source: any, own: boolean = false): any {
 
      });
 
+     return target;
+
 };
 
 /**
