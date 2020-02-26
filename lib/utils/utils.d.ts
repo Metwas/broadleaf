@@ -251,7 +251,7 @@ export declare function defaults(target: any, ...source: Array<any>): any;
  * @param {Object} source
  * @returns {Object}
  */
-export declare function mergeOwn(target: any, source: any): any;
+export declare function merge(target: any, source: any, own?: boolean): any;
 /**
  * Removes key if defined within the provided array or object parameter
  *

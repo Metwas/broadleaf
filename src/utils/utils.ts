@@ -927,7 +927,7 @@ export function defaults(target: any, ...source: Array<any>): any {
  * @param {Object} source 
  * @returns {Object}
  */
-export function mergeOwn(target: any, source: any): any {
+export function merge(target: any, source: any, own: boolean = false): any {
 
      /**
       * Validate target parameter
@@ -939,11 +939,8 @@ export function mergeOwn(target: any, source: any): any {
       */
      forEach(source, function (key) {
 
-          if (has(target, key)) {
-
-               target[key] = deepCopy(source[key]);
-
-          }
+          if (own === true && !has(target, key)) { /** do nothing */ }
+          else{ target[key] = deepCopy(source[key]); } 
 
      });
 
