@@ -217,6 +217,7 @@ export declare function value(obj: any, key: string, ownProperty?: boolean): any
  * Obtains the property keys within the provided object parameter
  *
  * @param {Object} obj The object from which to yield each property
+ * @param {Function} callback
  * @throws {Error} Throws an error if the object parameter returned null
  * @returns {Array} An array of property objects
  */
@@ -243,6 +244,14 @@ export declare function forEach(enumerable: Array<any> | Object, callback: (elem
  * @param {Array | Object} source
  */
 export declare function defaults(target: any, ...source: Array<any>): any;
+/**
+ * Merges source object with target on the matching keys
+ *
+ * @param {Object} target
+ * @param {Object} source
+ * @returns {Object}
+ */
+export declare function mergeOwn(target: any, source: any): any;
 /**
  * Removes key if defined within the provided array or object parameter
  *

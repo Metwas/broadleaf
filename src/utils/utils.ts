@@ -662,7 +662,7 @@ export function has(obj: Object, property: string): boolean {
  */
 export function assign(target: any, ...args: Array<any>): Object {
 
-     if (Object.assign && isFunction(Object.assign)) {
+     if (Object.assign || isFunction(Object.assign)) {
 
           return Object.assign(target, args);
 
@@ -752,6 +752,7 @@ export function value(obj: any, key: string, ownProperty?: boolean): any {
  * Obtains the property keys within the provided object parameter
  *
  * @param {Object} obj The object from which to yield each property
+ * @param {Function} callback
  * @throws {Error} Throws an error if the object parameter returned null
  * @returns {Array} An array of property objects
  */
@@ -916,6 +917,35 @@ export function defaults(target: any, ...source: Array<any>): any {
      });
 
      return target;
+
+};
+
+/**
+ * Merges source object with target on the matching keys
+ * 
+ * @param {Object} target 
+ * @param {Object} source 
+ * @returns {Object}
+ */
+export function mergeOwn(target: any, source: any): any {
+
+     /**
+      * Validate target parameter
+      */
+     if (isNullOrUndefined(target)) { return {}; }
+
+     /**
+      * Iterate through source keys, merging with the target object if defined
+      */
+     forEach(source, function (key) {
+
+          if (has(target, key)) {
+
+               target[key] = deepCopy(source[key]);
+
+          }
+
+     });
 
 };
 

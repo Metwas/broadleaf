@@ -1,6 +1,6 @@
 {
   "name": "broadleaf",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "Common javascript extensions and helper functionality",
   "main": "./lib/broadleaf.js",
   "scripts": {
