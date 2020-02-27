@@ -151,18 +151,29 @@ export const map = function (value: number, minFrom: number, maxFrom: number, mi
  *
  * @param {Number} min A minimum value
  * @param {Number} max A maximum value
+ * @param {Boolean} round {optional}
  * @returns {Number} A new random integer which falls between the given ranges
  */
-export const random = function (min: number, max: number): number {
+export const random = function (min: any, max: number, round: boolean | number): number {
 
-     const rand = Math.random();
+     const rand: number = Math.random();
+     let rnd: number = 0;
+
      if (!utils.isNumber(min)) {
 
-          return rand;
+          /**
+           * if min is of @see Boolean type, update refence
+           */
+          if (utils.isBoolean(min)) {
+
+               round = min;
+
+          }
+          rnd = rand;
 
      } else if (!utils.isNumber(max)) {
 
-          return Math.floor(rand * min);
+          rnd = rand * min;
 
      } else {
 
@@ -176,9 +187,20 @@ export const random = function (min: number, max: number): number {
 
           }
 
-          return rand * (max - min) + min;
+          rnd = rand * (max - min) + min;
 
      }
+
+     /**
+      * Round if parameter set to true
+      */
+     if (round === true) {
+
+          Math.round(rnd);
+
+     }
+
+     return rnd;
 
 };
 

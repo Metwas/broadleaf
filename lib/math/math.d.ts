@@ -60,9 +60,10 @@ export declare const map: (value: number, minFrom: number, maxFrom: number, minT
  *
  * @param {Number} min A minimum value
  * @param {Number} max A maximum value
+ * @param {Boolean} round {optional}
  * @returns {Number} A new random integer which falls between the given ranges
  */
-export declare const random: (min: number, max: number) => number;
+export declare const random: (min: any, max: number, round: number | boolean) => number;
 /**
  * Obtains a random array element within a given array
  *
