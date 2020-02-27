@@ -196,7 +196,7 @@ export const random = function (min: any, max: number, round: boolean | number):
       */
      if (round === true) {
 
-          Math.round(rnd);
+          rnd = Math.round(rnd);
 
      }
 
