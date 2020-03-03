@@ -26,12 +26,15 @@ import * as utilities from "./utils/utils";
 import * as maths from "./math/math";
 import * as conversions from "./utils/text/conversions";
 import * as regexConstants from "./utils/text/regexConstants";
+import * as timers from "./tasks/helpers";
 import { Queue } from "./collections/queue";
 
 
 export { Color } from "./graphics/drawing/colors/color";
 export { Timer } from "./tasks/common/timer";
 export { EventEmitter } from "./tasks/common/eventEmitter";
+export { timers };
+
 
 export const text = {
      conversions: conversions,

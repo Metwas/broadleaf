@@ -33,13 +33,8 @@ export async function sleep(delay: number): Promise<any> {
 
      const promise = new Promise((resolve, _) => {
 
-          if (!utils.isNumber(delay)) {
-
-               delay = 1;
-     
-          }
-     
-          setTimeout(function(){ resolve() }, delay);
+          if (!utils.isNumber(delay)) { delay = 1; }
+          setTimeout(resolve, delay);
 
      });
 

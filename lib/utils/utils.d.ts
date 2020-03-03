@@ -1,6 +1,5 @@
 import * as polyfill from "./polyfill";
 import * as system from "./system";
-import * as timers from "../tasks/helpers";
 /**
  * No operation function
  */
@@ -262,4 +261,3 @@ export declare function merge(target: any, source: any, own?: boolean): any;
 export declare function remove(key: any, arrayOrObject: any): void;
 export { system };
 export { polyfill };
-export { timers };
