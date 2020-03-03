@@ -24,6 +24,7 @@
 
 import * as polyfill from "./polyfill";
 import * as system from "./system";
+import * as timers from "../tasks/helpers";
 
 /**
  * Lookup table for native JavaScript types and the associated default values
@@ -986,5 +987,6 @@ export function remove(key: any, arrayOrObject: any): void {
 // export system and network utilities
 export { system };
 export { polyfill };
+export { timers };
 
 
