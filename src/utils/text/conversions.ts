@@ -38,7 +38,7 @@ export function toHexidecimal(value: number, baseFactor: number = 16, color: boo
      if (isNaN(value) || !isFinite(value)) { value = 0; }
 
      // return hexidecimal converted to the provided base factor
-     const hexidecimal = value.toString(baseFactor).slice(-2).toUpperCase();
+     const hexidecimal = "0" + value.toString(baseFactor).slice(-2).toUpperCase();
 
      /**
       * Initialize hex string based on a format
