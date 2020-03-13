@@ -3,9 +3,10 @@
  *
  * @param {Number} value
  * @param {Number} baseFactor The base factor size for the return value
+ * @param {Boolean} color Whether to format the hex string as a html color format
  * @returns {String} The string hexidecimal version for the provided number
  */
-export declare function toHexidecimal(value: number, baseFactor: number): string;
+export declare function toHexidecimal(value: number, baseFactor?: number, color?: boolean): string;
 /**
  * Converts a provided number to its binary string representation
  *
