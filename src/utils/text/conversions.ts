@@ -27,28 +27,24 @@
  *
  * @param {Number} value
  * @param {Number} baseFactor The base factor size for the return value
+ * @param {Boolean} color Whether to format the hex string as a html color format
  * @returns {String} The string hexidecimal version for the provided number
  */
-export function toHexidecimal(value: number, baseFactor: number): string {
+export function toHexidecimal(value: number, baseFactor: number = 16, color: boolean = false): string {
 
-     if (isNaN(value) || !isFinite(value)) {
+     /**
+      * Validate @see Number value
+      */
+     if (isNaN(value) || !isFinite(value)) { value = 0; }
 
-          value = 0;
+     // return hexidecimal converted to the provided base factor
+     const hexidecimal = value.toString(baseFactor).slice(-2).toUpperCase();
 
-     }
-
-     var _hexString = "#";
-     var _value = value.toString(16);
-     var _length = baseFactor;
-
-     for (var i = 0; i < _length; i++) {
-
-          _hexString += "0";
-
-     }
-
-     return _hexString + _value;
-
+     /**
+      * Initialize hex string based on a format
+      */
+     return `${(color === true ? '#0' : '')}${hexidecimal}`;
+     
 };
 
 /**
