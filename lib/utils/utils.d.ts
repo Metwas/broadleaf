@@ -19,6 +19,14 @@ export declare function toString(value: any): string;
  */
 export declare function isClassOf(obj: object, className: string): boolean;
 /**
+ * Validates the provided objects instance type against a defined type
+ *
+ * @param {Object} obj
+ * @param {Any} type
+ * @returns {Boolean}
+ */
+export declare function isInstanceOf(obj: object, type: any): boolean;
+/**
  * Checks the value parameter is of type 'String'
  *
  * @param value

@@ -74,7 +74,23 @@ export function isClassOf(obj: object, className: string): boolean {
 
      return !isNullOrUndefined(obj) && toString(obj) === `[object ${className}]`;
 
-}
+};
+
+/**
+ * Validates the provided objects instance type against a defined type
+ * 
+ * @param {Object} obj 
+ * @param {Any} type 
+ * @returns {Boolean}
+ */
+export function isInstanceOf(obj: object, type: any): boolean {
+
+     /**
+      * Returns false if type is null or undefined
+      */
+     return isNullOrUndefined(type) ? false: (obj instanceof type);
+
+};
 
 /**
  * Checks the value parameter is of type 'String'
