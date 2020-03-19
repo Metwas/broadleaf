@@ -170,6 +170,15 @@ export declare function clone(arrayOrObject: Array<any> | any): Array<any> | any
  */
 export declare function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean;
 /**
+ * Checks to see a given target has a reference to a defined type, returning the first result in the callback function
+ *
+ * @param {Object} arget
+ * @param {Object} type
+ * @param {Function} callback
+ * @returns {Boolean}
+ */
+export declare function containsType(target: any, type: any, callback: (ref: any) => void): boolean;
+/**
  * filters out elements which match a predicate but retains reference to the existing array
  *
  * @param {Array} array The array to be cloned

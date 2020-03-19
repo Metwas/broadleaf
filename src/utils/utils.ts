@@ -88,7 +88,7 @@ export function isInstanceOf(obj: object, type: any): boolean {
      /**
       * Returns false if type is null or undefined
       */
-     return isNullOrUndefined(type) ? false: (obj instanceof type);
+     return isNullOrUndefined(type) ? false : (obj instanceof type);
 
 };
 
@@ -572,6 +572,49 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
 };
 
 /**
+ * Checks to see a given target has a reference to a defined type, returning the first result in the callback function
+ * 
+ * @param {Object} arget 
+ * @param {Object} type 
+ * @param {Function} callback 
+ * @returns {Boolean}
+ */
+export function containsType(target: any, type: any, callback: (ref: any) => void): boolean {
+
+     /**
+      * Validate callback
+      */
+     if (!isFunction(callback)) { callback = noop; }
+
+     /**
+      * validate type arguments
+      */
+     if (isNullOrUndefined(target) || isNullOrUndefined(type)) { return false; }
+
+     /**
+      * Iterate through each key defined by @see target
+      */
+     const targetKeys: Array<any> = keys(target);
+     const length: number = targetKeys.length;
+     let index: number = 0;
+     for (; index < length; index++) {
+
+          const key: string = targetKeys[index];
+          if (isInstanceOf(target[key], type)) {
+
+               callback(target[key]);
+               return true;
+
+          }
+
+     }
+
+     // false if we got this far
+     return false
+
+};
+
+/**
  * filters out elements which match a predicate but retains reference to the existing array
  *
  * @param {Array} array The array to be cloned
@@ -956,7 +999,7 @@ export function merge(target: any, source: any, own: boolean = false): any {
      forEach(source, function (key) {
 
           if (own === true && !has(target, key)) { /** do nothing */ }
-          else{ target[key] = deepCopy(source[key]); } 
+          else { target[key] = deepCopy(source[key]); }
 
      });
 
