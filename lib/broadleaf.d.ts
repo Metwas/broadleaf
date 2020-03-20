@@ -7,6 +7,7 @@ import { Queue } from "./collections/queue";
 export { Color } from "./graphics/drawing/colors/color";
 export { Timer } from "./tasks/common/timer";
 export { EventEmitter } from "./tasks/common/eventEmitter";
+export { Enumerator } from "./common/enumeration/Enumerator";
 export { Task };
 export declare const text: {
     conversions: typeof conversions;
