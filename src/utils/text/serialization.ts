@@ -22,36 +22,15 @@
      SOFTWARE.
 */
 
-import * as maths from "./math/math";
-import * as Task from "./tasks/helpers";
-import * as utilities from "./utils/utils";
-import { Queue } from "./collections/queue";
-import * as conversions from "./utils/text/conversions";
-import * as serialization from "./utils/text/serialization";
-import * as regexConstants from "./utils/text/regexConstants";
-
-export { Task };
-export { Timer } from "./tasks/common/timer";
-export { Color } from "./graphics/drawing/colors/color";
-export { EventEmitter } from "./tasks/common/eventEmitter";
-export { Enumerator } from "./common/enumeration/Enumerator";
-
 /**
- * Text based helper functions
+ * Creates a unique guid
+ * 
+ * @public
+ * @param {Boolean} random Option to create a random guid or a timestamp based guid
+ * @returns {String}
  */
-export const text = { conversions: conversions, serialization: serialization, regex: regexConstants };
+export function createGUID(random: boolean = true): string {
 
-/**
- * Collections/container classes
- */
-export const collections = { Queue: Queue };
-
-/**
- * Commom math functions
- */
-export const math = maths;
-
-/**
- * Common helper functions
- */
-export const utils = utilities;
+     return (random === true ? require("uuid").v4 : require("uuid").v1)();
+ 
+ };

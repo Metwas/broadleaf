@@ -25,15 +25,17 @@
 //===================== imports =====================//
 
 const chalk = require("chalk");
-const { log, header } = printService;
-const { utils, math } = require("../../lib/broadleaf");
+const { utils, math, text } = require("../../lib/broadleaf");
 const { table, test, printService } = require("../helpers/helper");
+
+const { log, header } = printService;
 
 //===================== End imports =====================//
 
 
 // testing initialization
 log(header("#### Utility Testing ####"));
+console.log(text.serialization.createGUID());
 log(header("Before removing key from object or array"));
 const remObj = { name: "test" };
 const testRemObj = { test: "name" };
