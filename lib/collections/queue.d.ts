@@ -22,13 +22,13 @@ export declare class Queue extends EventEmitter<any> {
      *
      * @returns {Number}
      */
-    readonly Count: number;
+    get Count(): number;
     /**
      * Gets the underlying queue container
      *
      * @returns {Array}
      */
-    readonly Queue: Array<any>;
+    get Queue(): Array<any>;
     /**
      * Adds an entry to the back of the queue
      *

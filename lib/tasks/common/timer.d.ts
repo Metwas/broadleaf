@@ -67,26 +67,27 @@ export declare class Timer extends EventEmitter<any> implements ITimer {
      *
      * @returns {String}
      */
-    readonly status: string;
+    get status(): string;
     /**
     * Gets the current frames-per-second value
     *
     * @returns {Number}
     */
     private _fps;
+    get fps(): number;
     /**
     * Sets the current frames-per-second value, ensuring it falls within the defined UPDATE_INTERVAL
     *
     * @param {Number} value
     */
-    fps: number;
+    set fps(value: number);
     /**
      * How long this timer is setup for (in milliseconds)
      *
      * @returns {Number}
      */
     private _duration;
-    readonly duration: number;
+    get duration(): number;
     /**
      * Registers the onstart event, which will get executed on the very first tick cycle
      *
