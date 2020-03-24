@@ -1,7 +1,7 @@
 /*
      MIT License
 
-     Copyright (c) 2019 Metwas
+     Copyright (c) 2020 Metwas
 
      Permission is hereby granted, free of charge, to any person obtaining a copy
      of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +22,12 @@
      SOFTWARE.
 */
 
+//===================== imports =====================//
 
 import * as utils from "../utils/utils";
 import { Vector2 } from "./vectors/vector2";
+
+//===================== End imports =====================//
 
 // maximum 4 bit size
 export const MAX_NIBBLE = (1 << 4) - 1;

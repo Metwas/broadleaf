@@ -1,7 +1,7 @@
 /*
      MIT License
 
-     Copyright (c) 2019 Metwas
+     Copyright (c) 2020 Metwas
 
      Permission is hereby granted, free of charge, to any person obtaining a copy
      of this software and associated documentation files (the "Software"), to deal
@@ -22,8 +22,12 @@
      SOFTWARE.
 */
 
+//===================== imports =====================//
+
 import * as os from "os";
 import { NetworkDevice } from "./models/networkDevice";
+
+//===================== End imports =====================//
 
 /**
  * IP version 4 string

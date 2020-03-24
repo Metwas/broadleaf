@@ -1,7 +1,7 @@
 /*
      MIT License
 
-     Copyright (c) 2019 Metwas
+     Copyright (c) 2020 Metwas
 
      Permission is hereby granted, free of charge, to any person obtaining a copy
      of this software and associated documentation files (the "Software"), to deal
@@ -22,10 +22,14 @@
      SOFTWARE.
 */
 
+//===================== imports =====================//
+
 // import event emitter module
 import { EventEmitter } from "../tasks/common/eventEmitter";
 // import utilities
 import { isString, isNumber, isObject, isNullOrUndefined } from "../utils/utils";
+
+//===================== End imports =====================//
 
 /**
  * Represents a overflow model based on a Queue

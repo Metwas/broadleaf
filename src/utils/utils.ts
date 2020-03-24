@@ -22,8 +22,12 @@
      SOFTWARE.
 */
 
+//===================== imports =====================//
+
 import * as polyfill from "./polyfill";
 import * as system from "./system";
+
+//===================== End imports =====================//
 
 /**
  * Lookup table for native JavaScript types and the associated default values

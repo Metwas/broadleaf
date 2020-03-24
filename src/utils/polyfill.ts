@@ -22,7 +22,12 @@
      SOFTWARE.
 */
 
+//===================== imports =====================//
+
+// import common utilities
 import * as utils from "./utils";
+
+//===================== End imports =====================//
 
 /**
  * Object.keys polyfill code
