@@ -128,13 +128,16 @@ export function assignPolyfill(target: any, ...args: Array<any>): Object {
  *      // create a proxy for an array
  *      var proxy = new Proxy([1,2,3], {
  *              // can specify a getter and setter
- *              get: function(target, propertyNameORIndex){ 
+ *              get: function(target, property){ 
  *                      // custom logic here for a getter request
  *                      customFunction(); 
  *                      // return property value to caller
- *                      return target[propertyNameORIndex]
+ *                      return target[property]
  *              },
- *              set: function(){}
+ *              set: function(target, property, value){
+ *                   // update target value
+ *                   target[property] = value
+ *              }
  *       });
  */
 export function ProxyJX(target: any, handler: any): any {
