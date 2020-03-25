@@ -24,43 +24,17 @@
 
 //===================== imports =====================//
 
-import * as maths from "./math/math";
-import * as Task from "./tasks/helpers";
-import * as utilities from "./utils/utils";
-import { Queue } from "./collections/queue";
-import * as buffer from "./utils/text/buffers";
-import * as conversions from "./utils/text/conversions";
-import * as serialization from "./utils/text/serialization";
-import * as regexConstants from "./utils/text/regexConstants";
+const chalk = require("chalk");
+const { utils, math, text } = require("../../lib/broadleaf");
+const { table, test, printService } = require("../helpers/helper");
+
+const { log, header } = printService;
 
 //===================== End imports =====================//
 
-//===================== exports =====================//
-
-export { Task };
-export { Timer } from "./tasks/common/timer";
-export { Color } from "./graphics/drawing/colors/color";
-export { EventEmitter } from "./tasks/common/eventEmitter";
-export { Enumerator } from "./common/enumeration/Enumerator";
-
-/**
- * Text based helper functions
- */
-export const text = { conversions: conversions, serialization: serialization, regex: regexConstants, buffer: buffer };
-
-/**
- * Collections/container classes
- */
-export const collections = { Queue: Queue };
-
-/**
- * Commom math functions
- */
-export const math = maths;
-
-/**
- * Common helper functions
- */
-export const utils = utilities;
-
-//===================== End exports =====================//
+log(header("#### Text based tests ####"));
+console.log(`String to buffer ...`);
+const buffer = text.buffer.fromString("hello world", "utf-16");
+console.log(buffer);
+console.log("Buffer to string");
+console.log(text.buffer.toString(buffer, "utf-8"));

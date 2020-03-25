@@ -35,7 +35,6 @@ const { log, header } = printService;
 
 // testing initialization
 log(header("#### Utility Testing ####"));
-console.log(text.serialization.createGUID());
 log(header("Before removing key from object or array"));
 const remObj = { name: "test" };
 const testRemObj = { test: "name" };
