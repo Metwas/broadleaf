@@ -48,8 +48,7 @@ export declare class DateTime {
      * Gets current locale for the DateTime instance
      */
     private _locale;
-    get locale(): string;
-    set locale(value: string);
+    locale: string;
     /**
      * Region Date Additions
      * @public

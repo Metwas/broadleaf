@@ -33,7 +33,7 @@ export declare class EventEmitter<T> implements ITypedEventEmitter<T>, IDisposab
     /**
      * Gets the total amount of registered listeners from both stores
      */
-    get Count(): number;
+    readonly Count: number;
     /**
      * Sets the maximum amount of listeners
      *

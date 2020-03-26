@@ -5,591 +5,591 @@ export declare class Color {
     /**
      * Color: 'AliceBlue' HEX: #F0F8FF'
      */
-    static get AliceBlue(): Color;
+    static readonly AliceBlue: Color;
     /**
      * Color: 'AntiqueWhite' HEX: #FAEBD7'
      */
-    static get AntiqueWhite(): Color;
+    static readonly AntiqueWhite: Color;
     /**
      * Color: 'Aqua' HEX: #00FFFF'
      */
-    static get Aqua(): Color;
+    static readonly Aqua: Color;
     /**
      * Color: 'AquaMarine' HEX: #7FFFD4'
      */
-    static get AquaMarine(): Color;
+    static readonly AquaMarine: Color;
     /**
      * Color: 'Azure' HEX: #007FFF'
      */
-    static get Azure(): Color;
+    static readonly Azure: Color;
     /**
      * Color: 'Beige' HEX: #F5F5DC'
      */
-    static get Beige(): Color;
+    static readonly Beige: Color;
     /**
      * Color: 'Bisque' HEX: #FFE4C4'
      */
-    static get Bisque(): Color;
+    static readonly Bisque: Color;
     /**
      * Color: 'Black' HEX: #000000'
      */
-    static get Black(): Color;
+    static readonly Black: Color;
     /**
      * Color: 'BlanchedAlmond' HEX: #FFEBCD'
      */
-    static get BlanchedAlmond(): Color;
+    static readonly BlanchedAlmond: Color;
     /**
      * Color: 'Blue' HEX: #0000FF'
      */
-    static get Blue(): Color;
+    static readonly Blue: Color;
     /**
      * Color: 'blueViolet' HEX: #8A2BE2'
      */
-    static get BlueViolet(): Color;
+    static readonly BlueViolet: Color;
     /**
      * Color: 'Brown' HEX: #654321'
      */
-    static get Brown(): Color;
+    static readonly Brown: Color;
     /**
      * Color: 'Burlywood' HEX: #DEB887'
      */
-    static get Burlywood(): Color;
+    static readonly Burlywood: Color;
     /**
      * Color: 'CadetBlue' HEX: #5F9EA0'
      */
-    static get CadetBlue(): Color;
+    static readonly CadetBlue: Color;
     /**
      * Color: 'Chartreuse' HEX: #7FFF00'
      */
-    static get Chartreuse(): Color;
+    static readonly Chartreuse: Color;
     /**
      * Color: 'Chocolate' HEX: #D2691E'
      */
-    static get Chocolate(): Color;
+    static readonly Chocolate: Color;
     /**
      * Color: 'Coral' HEX: #FF7F50'
      */
-    static get Coral(): Color;
+    static readonly Coral: Color;
     /**
      * Color: 'CornFlowerBlue' HEX: #6495ED'
      */
-    static get CornFlowerBlue(): Color;
+    static readonly CornFlowerBlue: Color;
     /**
      * Color: 'Cornsilk' HEX: #FFF8DC'
      */
-    static get Cornsilk(): Color;
+    static readonly Cornsilk: Color;
     /**
      * Color: 'Crimson' HEX: #DC143C'
      */
-    static get Crimson(): Color;
+    static readonly Crimson: Color;
     /**
      * Color: 'Cyan' HEX: #00FFFF'
      */
-    static get Cyan(): Color;
+    static readonly Cyan: Color;
     /**
      * Color: 'DarkBlue' HEX: #00008B'
      */
-    static get DarkBlue(): Color;
+    static readonly DarkBlue: Color;
     /**
      * Color: 'DarkCyan' HEX: #008B8B'
      */
-    static get DarkCyan(): Color;
+    static readonly DarkCyan: Color;
     /**
      * Color: 'DarkGoldenRod' HEX: #B8860B'
      */
-    static get DarkGoldenRod(): Color;
+    static readonly DarkGoldenRod: Color;
     /**
      * Color: 'DarkGray' HEX: #A9A9A9'
      */
-    static get DarkGray(): Color;
+    static readonly DarkGray: Color;
     /**
      * Color: 'DarkGreen' HEX: #006400'
      */
-    static get DarkGreen(): Color;
+    static readonly DarkGreen: Color;
     /**
      * Color: 'DarkKhaki' HEX: #BDB76B'
      */
-    static get DarkKhaki(): Color;
+    static readonly DarkKhaki: Color;
     /**
      * Color: 'darkGrey' HEX: #A9A9A9'
      */
-    static get DarkGrey(): Color;
+    static readonly DarkGrey: Color;
     /**
      * Color: 'Darkgray' HEX: #A9A9A9'
      */
-    static get Darkgray(): Color;
+    static readonly Darkgray: Color;
     /**
      * Color: 'DarkMagenta' HEX: #8B008B'
      */
-    static get DarkMagenta(): Color;
+    static readonly DarkMagenta: Color;
     /**
      * Color: 'DarkOliveGreen' HEX: #556B2F'
      */
-    static get DarkOliveGreen(): Color;
+    static readonly DarkOliveGreen: Color;
     /**
      * Color: 'DarkOrange' HEX: #FF8C00'
      */
-    static get DarkOrange(): Color;
+    static readonly DarkOrange: Color;
     /**
      * Color: 'DarkOrchid' HEX: #9932CC'
      */
-    static get DarkOrchid(): Color;
+    static readonly DarkOrchid: Color;
     /**
      * Color: 'DarkRed' HEX: #8B0000'
      */
-    static get DarkRed(): Color;
+    static readonly DarkRed: Color;
     /**
      * Color: 'DarkSalmon' HEX: #E9967A'
      */
-    static get DarkSalmon(): Color;
+    static readonly DarkSalmon: Color;
     /**
      * Color: 'DarkSeaGreen' HEX: #8FBC8F'
      */
-    static get DarkSeaGreen(): Color;
+    static readonly DarkSeaGreen: Color;
     /**
      * Color: 'DarkSlateBlue' HEX: #483D8B'
      */
-    static get DarkSlateBlue(): Color;
+    static readonly DarkSlateBlue: Color;
     /**
      * Color: 'DarkSlateGray' HEX: #2F4F4F'
      */
-    static get DarkSlateGray(): Color;
+    static readonly DarkSlateGray: Color;
     /**
      * Color: 'DarkSlateGrey' HEX: #2F4F4F'
      */
-    static get DarkSlateGrey(): Color;
+    static readonly DarkSlateGrey: Color;
     /**
      * Color: 'DarkTurquoise' HEX: #00CED1'
      */
-    static get DarkTurquoise(): Color;
+    static readonly DarkTurquoise: Color;
     /**
      * Color: 'DarkViolet' HEX: #9400D3'
      */
-    static get DarkViolet(): Color;
+    static readonly DarkViolet: Color;
     /**
      * Color: 'DeepPink' HEX: #FF1493'
      */
-    static get DeepPink(): Color;
+    static readonly DeepPink: Color;
     /**
      * Color: 'DeepSkyBlue' HEX: #00BFFF'
      */
-    static get DeepSkyBlue(): Color;
+    static readonly DeepSkyBlue: Color;
     /**
      * Color: 'DimGray' HEX: #696969'
      */
-    static get DimGray(): Color;
+    static readonly DimGray: Color;
     /**
      * Color: 'DimGrey' HEX: #696969'
      */
-    static get DimGrey(): Color;
+    static readonly DimGrey: Color;
     /**
      * Color: 'DodgerBlue' HEX: #1E90FF'
      */
-    static get DodgerBlue(): Color;
+    static readonly DodgerBlue: Color;
     /**
      * Color: 'FireBrick' HEX: #B22222'
      */
-    static get FireBrick(): Color;
+    static readonly FireBrick: Color;
     /**
      * Color: 'FloralWhite' HEX: #FFFAF0'
      */
-    static get FloralWhite(): Color;
+    static readonly FloralWhite: Color;
     /**
      * Color: 'ForestGreen' HEX: #228B22'
      */
-    static get ForestGreen(): Color;
+    static readonly ForestGreen: Color;
     /**
      * Color: 'Fuchsia' HEX: #FF00FF'
      */
-    static get Fuchsia(): Color;
+    static readonly Fuchsia: Color;
     /**
      * Color: 'Gainsboro' HEX: #DCDCDC'
      */
-    static get Gainsboro(): Color;
+    static readonly Gainsboro: Color;
     /**
      * Color: 'GhostWhite' HEX: #F8F8FF'
      */
-    static get GhostWhite(): Color;
+    static readonly GhostWhite: Color;
     /**
      * Color: 'Gold' HEX: #FFD700'
      */
-    static get Gold(): Color;
+    static readonly Gold: Color;
     /**
      * Color: 'GoldenRod' HEX: #DAA520'
      */
-    static get GoldenRod(): Color;
+    static readonly GoldenRod: Color;
     /**
      * Color: 'Gray' HEX: #808080'
      */
-    static get Gray(): Color;
+    static readonly Gray: Color;
     /**
      * Color: 'Green' HEX: #008000'
      */
-    static get Green(): Color;
+    static readonly Green: Color;
     /**
      * Color: 'GreenYellow' HEX: #ADFF2F'
      */
-    static get GreenYellow(): Color;
+    static readonly GreenYellow: Color;
     /**
      * Color: 'Grey' HEX: #808080'
      */
-    static get Grey(): Color;
+    static readonly Grey: Color;
     /**
      * Color: 'HoneyDew' HEX: #F0FFF0'
      */
-    static get HoneyDew(): Color;
+    static readonly HoneyDew: Color;
     /**
      * Color: 'HotPink' HEX: #FF69B4'
      */
-    static get HotPink(): Color;
+    static readonly HotPink: Color;
     /**
      * Color: 'IndianRed' HEX: #CD5C5C'
      */
-    static get IndianRed(): Color;
+    static readonly IndianRed: Color;
     /**
      * Color: 'Indigo' HEX: #4B0082'
      */
-    static get Indigo(): Color;
+    static readonly Indigo: Color;
     /**
      * Color: 'Ivory' HEX: #FFFFF0'
      */
-    static get Ivory(): Color;
+    static readonly Ivory: Color;
     /**
      * Color: 'Khaki' HEX: #F0E68C'
      */
-    static get Khaki(): Color;
+    static readonly Khaki: Color;
     /**
      * Color: 'Lavender' HEX: #E6E6FA'
      */
-    static get Lavender(): Color;
+    static readonly Lavender: Color;
     /**
      * Color: 'LavenderBlush' HEX: #FFF0F5'
      */
-    static get LavenderBlush(): Color;
+    static readonly LavenderBlush: Color;
     /**
      * Color: 'LawnGreen' HEX: #7CFC00'
      */
-    static get LawnGreen(): Color;
+    static readonly LawnGreen: Color;
     /**
      * Color: 'LightBlue' HEX: #ADD8E6'
      */
-    static get LightBlue(): Color;
+    static readonly LightBlue: Color;
     /**
      * Color: 'LightCoral' HEX: #F08080'
      */
-    static get LightCoral(): Color;
+    static readonly LightCoral: Color;
     /**
      * Color: 'LightCyan' HEX: #E0FFFF'
      */
-    static get LightCyan(): Color;
+    static readonly LightCyan: Color;
     /**
      * Color: 'LightGray' HEX: #D3D3D3'
      */
-    static get LightGray(): Color;
+    static readonly LightGray: Color;
     /**
      * Color: 'LightGreen' HEX: #90EE90'
      */
-    static get LightGreen(): Color;
+    static readonly LightGreen: Color;
     /**
      * Color: 'LightGrey' HEX: #D3D3D3'
      */
-    static get LightGrey(): Color;
+    static readonly LightGrey: Color;
     /**
      * Color: 'LightPink' HEX: #FFB6C1'
      */
-    static get LightPink(): Color;
+    static readonly LightPink: Color;
     /**
      * Color: 'LightSalmon' HEX: #FFA07A'
      */
-    static get LightSalmon(): Color;
+    static readonly LightSalmon: Color;
     /**
      * Color: 'LightSeaGreen' HEX: #20B2AA'
      */
-    static get LightSeaGreen(): Color;
+    static readonly LightSeaGreen: Color;
     /**
      * Color: 'LightSkyBlue' HEX: #87CEFA'
      */
-    static get LightSkyBlue(): Color;
+    static readonly LightSkyBlue: Color;
     /**
      * Color: 'LightSlateGray' HEX: #778899'
      */
-    static get LightSlateGray(): Color;
+    static readonly LightSlateGray: Color;
     /**
      * Color: 'LightSlateGrey' HEX: #778899'
      */
-    static get LightSlateGrey(): Color;
+    static readonly LightSlateGrey: Color;
     /**
      * Color: 'LightSteelBlue' HEX: #B0C4DE'
      */
-    static get LightSteelBlue(): Color;
+    static readonly LightSteelBlue: Color;
     /**
      * Color: 'LightYellow' HEX: #FFFFE0'
      */
-    static get LightYellow(): Color;
+    static readonly LightYellow: Color;
     /**
      * Color: 'Lime' HEX: #00FF00'
      */
-    static get Lime(): Color;
+    static readonly Lime: Color;
     /**
      * Color: 'LimeGreen' HEX: #32CD32'
      */
-    static get LimeGreen(): Color;
+    static readonly LimeGreen: Color;
     /**
      * Color: 'Linen' HEX: #FAF0E6'
      */
-    static get Linen(): Color;
+    static readonly Linen: Color;
     /**
      * Color: 'Magenta' HEX: #FF00FF'
      */
-    static get Magenta(): Color;
+    static readonly Magenta: Color;
     /**
      * Color: 'Maroon' HEX: #800000'
      */
-    static get Maroon(): Color;
+    static readonly Maroon: Color;
     /**
      * Color: 'MediumAquaMarine' HEX: #66CDAA'
      */
-    static get MediumAquaMarine(): Color;
+    static readonly MediumAquaMarine: Color;
     /**
      * Color: 'MediumBlue' HEX: #0000CD'
      */
-    static get MediumBlue(): Color;
+    static readonly MediumBlue: Color;
     /**
      * Color: 'MediumOrchid' HEX: #BA55D3'
      */
-    static get MediumOrchid(): Color;
+    static readonly MediumOrchid: Color;
     /**
      * Color: 'MediumPurple' HEX: #9370DB'
      */
-    static get MediumPurple(): Color;
+    static readonly MediumPurple: Color;
     /**
      * Color: 'MediumSeaGreen' HEX: #3CB371'
      */
-    static get MediumSeaGreen(): Color;
+    static readonly MediumSeaGreen: Color;
     /**
      * Color: 'MediumSlateBlue' HEX: #7B68EE'
      */
-    static get MediumSlateBlue(): Color;
+    static readonly MediumSlateBlue: Color;
     /**
      * Color: 'MediumSpringGreen' HEX: #00FA9A'
      */
-    static get MediumSpringGreen(): Color;
+    static readonly MediumSpringGreen: Color;
     /**
      * Color: 'MediumTurquoise' HEX: #48D1CC'
      */
-    static get MediumTurquoise(): Color;
+    static readonly MediumTurquoise: Color;
     /**
      * Color: 'MediumVioletRed' HEX: #C71585'
      */
-    static get MediumVioletRed(): Color;
+    static readonly MediumVioletRed: Color;
     /**
      * Color: 'MidnightBlue' HEX: #191970'
      */
-    static get MidnightBlue(): Color;
+    static readonly MidnightBlue: Color;
     /**
      * Color: 'MintCream' HEX: #F5FFFA'
      */
-    static get MintCream(): Color;
+    static readonly MintCream: Color;
     /**
      * Color: 'MistyRose' HEX: #FFE4E1'
      */
-    static get MistyRose(): Color;
+    static readonly MistyRose: Color;
     /**
      * Color: 'Moccasin' HEX: #FFE4B5'
      */
-    static get Moccasin(): Color;
+    static readonly Moccasin: Color;
     /**
      * Color: 'NavajoWhite' HEX: #FFDEAD'
      */
-    static get NavajoWhite(): Color;
+    static readonly NavajoWhite: Color;
     /**
      * Color: 'Navy' HEX: #000080'
      */
-    static get Navy(): Color;
+    static readonly Navy: Color;
     /**
      * Color: 'OldLace' HEX: #FDF5E6'
      */
-    static get OldLace(): Color;
+    static readonly OldLace: Color;
     /**
      * Color: 'Olive' HEX: #808000'
      */
-    static get Olive(): Color;
+    static readonly Olive: Color;
     /**
      * Color: 'OliveDrab' HEX: #6B8E23'
      */
-    static get OliveDrab(): Color;
+    static readonly OliveDrab: Color;
     /**
      * Color: 'Orange' HEX: #FFA500'
      */
-    static get Orange(): Color;
+    static readonly Orange: Color;
     /**
      * Color: 'OrangeRed' HEX: #FF4500'
      */
-    static get OrangeRed(): Color;
+    static readonly OrangeRed: Color;
     /**
      * Color: 'Orchid' HEX: #DA70D6'
      */
-    static get Orchid(): Color;
+    static readonly Orchid: Color;
     /**
      * Color: 'PaleGoldenRod' HEX: #EEE8AA'
      */
-    static get PaleGoldenRod(): Color;
+    static readonly PaleGoldenRod: Color;
     /**
      * Color: 'PaleGreen' HEX: #98FB98'
      */
-    static get PaleGreen(): Color;
+    static readonly PaleGreen: Color;
     /**
      * Color: 'PaleTurquoise' HEX: #AFEEEE'
      */
-    static get PaleTurquoise(): Color;
+    static readonly PaleTurquoise: Color;
     /**
      * Color: 'PaleVioletRed' HEX: #DB7093'
      */
-    static get PaleVioletRed(): Color;
+    static readonly PaleVioletRed: Color;
     /**
      * Color: 'PapayaWhip' HEX: #FFDAB9'
      */
-    static get PapayaWhip(): Color;
+    static readonly PapayaWhip: Color;
     /**
      * Color: 'PeachPuff' HEX: #FFEFD5'
      */
-    static get PeachPuff(): Color;
+    static readonly PeachPuff: Color;
     /**
      * Color: 'Peru' HEX: #CD853F'
      */
-    static get Peru(): Color;
+    static readonly Peru: Color;
     /**
      * Color: 'Pink' HEX: #FFC0CB'
      */
-    static get Pink(): Color;
+    static readonly Pink: Color;
     /**
      * Color: 'Plum' HEX: #DDA0DD'
      */
-    static get Plum(): Color;
+    static readonly Plum: Color;
     /**
      * Color: 'PowderBlue' HEX: #B0E0E6'
      */
-    static get PowderBlue(): Color;
+    static readonly PowderBlue: Color;
     /**
      * Color: 'Purple' HEX: #800080'
      */
-    static get Purple(): Color;
+    static readonly Purple: Color;
     /**
      * Color: 'RebeccaPurple' HEX: #663399'
      */
-    static get RebeccaPurple(): Color;
+    static readonly RebeccaPurple: Color;
     /**
      * Color: 'Red' HEX: #FF0000'
      */
-    static get Red(): Color;
+    static readonly Red: Color;
     /**
      * Color: 'RosyBrown' HEX: #BC8F8F'
      */
-    static get RosyBrown(): Color;
+    static readonly RosyBrown: Color;
     /**
      * Color: 'RoyalBlue' HEX: #4169E1'
      */
-    static get RoyalBlue(): Color;
+    static readonly RoyalBlue: Color;
     /**
      * Color: 'SaddleBrown' HEX: #8B4513'
      */
-    static get SaddleBrown(): Color;
+    static readonly SaddleBrown: Color;
     /**
      * Color: 'Salmon' HEX: #FA8072'
      */
-    static get Salmon(): Color;
+    static readonly Salmon: Color;
     /**
      * Color: 'SandyBrown' HEX: #F4A460'
      */
-    static get SandyBrown(): Color;
+    static readonly SandyBrown: Color;
     /**
      * Color: 'SeaGreen' HEX: #2E8B57'
      */
-    static get SeaGreen(): Color;
+    static readonly SeaGreen: Color;
     /**
      * Color: 'SeaShell' HEX: #FFF5EE'
      */
-    static get SeaShell(): Color;
+    static readonly SeaShell: Color;
     /**
      * Color: 'Sienna' HEX: #A0522D'
      */
-    static get Sienna(): Color;
+    static readonly Sienna: Color;
     /**
      * Color: 'Silver' HEX: #C0C0C0'
      */
-    static get Silver(): Color;
+    static readonly Silver: Color;
     /**
      * Color: 'SkyBlue' HEX: #87CEEB'
      */
-    static get SkyBlue(): Color;
+    static readonly SkyBlue: Color;
     /**
      * Color: 'SlateBlue' HEX: #6A5ACD'
      */
-    static get SlateBlue(): Color;
+    static readonly SlateBlue: Color;
     /**
      * Color: 'SlateGray' HEX: #708090'
      */
-    static get SlateGray(): Color;
+    static readonly SlateGray: Color;
     /**
      * Color: 'SlateGrey' HEX: #708090'
      */
-    static get SlateGrey(): Color;
+    static readonly SlateGrey: Color;
     /**
      * Color: 'Snow' HEX: #FFFAFA'
      */
-    static get Snow(): Color;
+    static readonly Snow: Color;
     /**
      * Color: 'SpringGreen' HEX: #00FF7F'
      */
-    static get SpringGreen(): Color;
+    static readonly SpringGreen: Color;
     /**
      * Color: 'SteelBlue' HEX: #4682B4'
      */
-    static get SteelBlue(): Color;
+    static readonly SteelBlue: Color;
     /**
      * Color: 'Tan' HEX: #D2B48C'
      */
-    static get Tan(): Color;
+    static readonly Tan: Color;
     /**
      * Color: 'Teal' HEX: #008080'
      */
-    static get Teal(): Color;
+    static readonly Teal: Color;
     /**
      * Color: 'Thistle' HEX: #D8BFD8'
      */
-    static get Thistle(): Color;
+    static readonly Thistle: Color;
     /**
      * Color: 'Tomato' HEX: #FF6347'
      */
-    static get Tomato(): Color;
+    static readonly Tomato: Color;
     /**
      * Color: 'Turquoise' HEX: #40E0D0'
      */
-    static get Turquoise(): Color;
+    static readonly Turquoise: Color;
     /**
      * Color: 'Violet' HEX: #EE82EE'
      */
-    static get Violet(): Color;
+    static readonly Violet: Color;
     /**
      * Color: 'Wheat' HEX: #F5DEB3'
      */
-    static get Wheat(): Color;
+    static readonly Wheat: Color;
     /**
      * Color: 'White' HEX: #FFFFFF'
      */
-    static get White(): Color;
+    static readonly White: Color;
     /**
      * Color: 'WhiteSmoke' HEX: #F5F5F5'
      */
-    static get WhiteSmoke(): Color;
+    static readonly WhiteSmoke: Color;
     /**
      * Color: 'Yellow' HEX: #FFFF00'
      */
-    static get Yellow(): Color;
+    static readonly Yellow: Color;
     /**
      * Color: 'YellowGreen' HEX: #9ACD32'
      */
-    static get YellowGreen(): Color;
+    static readonly YellowGreen: Color;
     /**
      * Regular expression for the hexidecimal match sequence
      */
@@ -681,7 +681,7 @@ export declare class Color {
     /**
      * Gets the hexidecimal value for the current color instance
      */
-    get hex(): number;
+    readonly hex: number;
     /**
      * Constructs a color object with the provided RGB values
      *
