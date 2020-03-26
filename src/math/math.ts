@@ -25,52 +25,126 @@
 //===================== imports =====================//
 
 import * as utils from "../utils/utils";
-import { Vector2 } from "./vectors/vector2";
 
 //===================== End imports =====================//
 
-// maximum 4 bit size
+/**
+ * Maximum 4 bit size
+ * 
+ * @type {Number}
+ */
 export const MAX_NIBBLE = (1 << 4) - 1;
 
-// maximum 8 bit (1 byte) size
+/**
+ * Maximum 8 bit (1 byte) size
+ * 
+ * @type {Number}
+ */
 export const MAX_BYTE = (1 << 8) - 1;
 
-// maximum 16 bit (2 bytes) size
+/**
+ * Maximum 16 bit (2 bytes) size
+ * 
+ * @type {Number}
+ */
 export const MAX_16BIT = (1 << 16) - 1;
 
-// maximum 24 bit (3 bytes) size
+/**
+ * Maximum 24 bit (3 bytes) size
+ * 
+ * @type {Number}
+ */
 export const MAX_24BIT = (1 << 24) - 1;
 
-// maximum unsigned 32 bit (4 bytes) size
+/**
+ * Maximum unsigned 32 bit (4 bytes) size
+ * 
+ * @type {Number}
+ */
 export const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
 
-// positive infinity
-export const POSITIVE_INFINITY = (function () {
+/**
+ * 1KB (1 bit << base 10)
+ * 
+ * @type {Number}
+ */
+export const KILOBYTE = Math.pow(2, 10);
 
-     return Number.POSITIVE_INFINITY;
+/**
+ * 1MB (1024 * 1KB)
+ * 
+ * @type {Number}
+ */
+export const MEGABYTE = Math.pow(2, 20);
 
-})();
+/**
+ * 1GB (1024 * 1MB)
+ * 
+ * @type {Number}
+ */
+export const GIGABYTE = Math.pow(2, 30);
 
-// negative infinity
-export const NEGATIVE_INFINITY = (function () {
+/**
+ * 1TB (1024 * 1GB)
+ * 
+ * @type {Number}
+ */
+export const TERABYTE = Math.pow(2, 40);
 
-     return Number.NEGATIVE_INFINITY;
+/**
+ * 1PB (1024 * 1TB)
+ * 
+ * @type {Number}
+ */
+export const PETABYTE = Math.pow(2, 50);
 
-})();
+/**
+ * Positive infinity
+ * 
+ * @type {Number}
+ */
+export const POSITIVE_INFINITY = (function () { return Number.POSITIVE_INFINITY; })();
 
-// PI constant
+/**
+ * Negative infinity
+ * 
+ * @type {Number}
+ */
+export const NEGATIVE_INFINITY = (function () { return Number.NEGATIVE_INFINITY; })();
+
+/**
+ * PI constant
+ * 
+ * @type {Number}
+ */
 export const PI = Math.PI;
 
-// half PI
+/**
+ * Half PI
+ * 
+ * @type {Number}
+ */
 export const HALF_PI = PI / 2;
 
-// two times PI
+/**
+ * Two times PI
+ * 
+ * @type {Number}
+ */
 export const TAU = PI * 2;
 
-// Converts degrees to radians
+/**
+ * Converts degrees to radians
+ * 
+ * @type {Number}
+ */
 export const DEGTORAD = Math.PI / 180;
 
-// converts radians to degress
+/**
+ * Converts radians to degress
+ * 
+ * @type {Number}
+ */
 export const RADTODEG = 180 / Math.PI;
 
 /**

@@ -1,14 +1,104 @@
+/**
+ * Maximum 4 bit size
+ *
+ * @type {Number}
+ */
 export declare const MAX_NIBBLE: number;
+/**
+ * Maximum 8 bit (1 byte) size
+ *
+ * @type {Number}
+ */
 export declare const MAX_BYTE: number;
+/**
+ * Maximum 16 bit (2 bytes) size
+ *
+ * @type {Number}
+ */
 export declare const MAX_16BIT: number;
+/**
+ * Maximum 24 bit (3 bytes) size
+ *
+ * @type {Number}
+ */
 export declare const MAX_24BIT: number;
+/**
+ * Maximum unsigned 32 bit (4 bytes) size
+ *
+ * @type {Number}
+ */
 export declare const MAX_UNSIGNED_32BIT: number;
+/**
+ * 1KB (1 bit << base 10)
+ *
+ * @type {Number}
+ */
+export declare const KILOBYTE: number;
+/**
+ * 1MB (1024 * 1KB)
+ *
+ * @type {Number}
+ */
+export declare const MEGABYTE: number;
+/**
+ * 1GB (1024 * 1MB)
+ *
+ * @type {Number}
+ */
+export declare const GIGABYTE: number;
+/**
+ * 1TB (1024 * 1GB)
+ *
+ * @type {Number}
+ */
+export declare const TERABYTE: number;
+/**
+ * 1PB (1024 * 1TB)
+ *
+ * @type {Number}
+ */
+export declare const PETABYTE: number;
+/**
+ * Positive infinity
+ *
+ * @type {Number}
+ */
 export declare const POSITIVE_INFINITY: number;
+/**
+ * Negative infinity
+ *
+ * @type {Number}
+ */
 export declare const NEGATIVE_INFINITY: number;
+/**
+ * PI constant
+ *
+ * @type {Number}
+ */
 export declare const PI: number;
+/**
+ * Half PI
+ *
+ * @type {Number}
+ */
 export declare const HALF_PI: number;
+/**
+ * Two times PI
+ *
+ * @type {Number}
+ */
 export declare const TAU: number;
+/**
+ * Converts degrees to radians
+ *
+ * @type {Number}
+ */
 export declare const DEGTORAD: number;
+/**
+ * Converts radians to degress
+ *
+ * @type {Number}
+ */
 export declare const RADTODEG: number;
 /**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
