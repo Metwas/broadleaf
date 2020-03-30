@@ -58,6 +58,43 @@ Enumerator.validate = function (enumerator: any, value: any): boolean {
 };
 
 /**
+ * Validates the parameter to ensure it is a valid @see Enumerator object
+ * 
+ * @public
+ * @param {Enumerator} enumerator
+ * @returns {Boolean}
+ */
+Enumerator.isEnumerator = function (enumerator: any): boolean {
+
+    if (utils.isNullOrUndefined(enumerator)) { return false; }
+
+    let index: number = 0;
+    const keys: Array<any> = Object.keys(enumerator);
+    const length: number = keys.length;
+    /**
+     * Loop through each key within the provided enumerator parameter
+     */
+    for (; index < length; index++) {
+
+        const key: any = keys[index];
+        const property: any = enumerator[key];
+
+        let value = String(enumerator[enumerator[property]]);
+        /**
+         * Loop property back to index value and ensure a match
+         */
+        if (String(enumerator[value]) !== key) { return false; }
+
+    }
+
+    /**
+     * True if it passed all conditions
+     */
+    return true;
+
+};
+
+/**
  * Creates an enumeration model object
  * 
  * @param {Array} values
