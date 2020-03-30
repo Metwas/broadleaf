@@ -58,6 +58,37 @@ timer.on("tick", (elapsed) => { console.log("timer tick: " + elapsed); });
 // start the timer
 timer.start();
 ```
+> ### Proxy JX
+
+```javascript
+const { utils } = require("broadleaf");
+
+// create a proxy for a given object or array, below defines a custom getter and setter
+const proxy = new utils.polyfill.ProxyJX({}, {
+             // can specify a getter and setter
+            get: function(target, property){ 
+                   // custom logic here for a getter request
+                   customFunction(); 
+                   // return property value to caller
+                   return target[property]
+            },
+            set: function(target, property, value){
+                  // update target value
+                  target[property] = value
+             }
+});
+
+```
+
+> ### Enumerator
+
+```javascript
+const { Enumerator } = require("broadleaf");
+
+Enumerator.create(["START", "STOP", "RUNNING"], startIndex = 0) 
+RETURNS @Type Object => { 0: "START", 1: "STOP", 2: "RUNNING", "START": 0, "STOP": 1, "RUNNING": 2 }
+
+```
 
  > ### Math & utilities
   
@@ -75,6 +106,8 @@ math.PI
 math.TAU
 math.DEGTORAD
 math.RADTODEG
+math.KILOBYTE
+math.MEGABYTE
 
 // vectors
 const vel = math.Vector2(5,2);
