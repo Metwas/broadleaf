@@ -576,6 +576,55 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
 };
 
 /**
+ * Enumeration for ascending order
+ * 
+ * @type {Number}
+ */
+export const SORT_ASCENDING: number = 0;
+/**
+ * Enumeration for descending order
+ * 
+ * @type {Number}
+ */
+export const SORT_DESCENDING: number = 1;
+
+/**
+ * Sorts the array in a specified direction with the optional property to sort by
+ * 
+ * @param {Array} array 
+ * @param {Number|String} direction Ascending or descending
+ * @param {String} property 
+ */
+export function sort(array: Array<any>, direction: number | string = SORT_ASCENDING, property: any = null): Array<any> {
+
+     /**
+      * Sort on property if defined, else define default sort algorithm
+      * 
+      * @param {Any} a
+      * @param {Any} b
+      */
+     const sum = function (a: any, b: any): number { 
+
+          // define a default alogrithm for number types
+          const numFn = function(a: any, b: any): number { return a - b; };
+          const strFn = function(a: any, b: any): number { 
+               
+               if(b > a){ return -1 }
+               if(a > b){ return 1 }
+               // default to equal
+               return 0;
+
+          };
+
+          return (isNumber(a) && isNumber(b)) ? (direction === SORT_ASCENDING ? numFn(a, b) : numFn(b, a)) : (direction === SORT_ASCENDING ? strFn(a, b) : strFn(b, a));
+
+     };
+
+     return array.sort(function (a: any, b: any): number { return (isString(property) && (isObject(a) && isObject(b))) ? (sum(a[property], b[property])) : sum(a, b); });
+
+};
+
+/**
  * Checks to see a given target has a reference to a defined type, returning the first result in the callback function
  * 
  * @param {Object} arget 

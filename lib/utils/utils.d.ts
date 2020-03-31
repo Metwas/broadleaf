@@ -170,6 +170,26 @@ export declare function clone(arrayOrObject: Array<any> | any): Array<any> | any
  */
 export declare function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean;
 /**
+ * Enumeration for ascending order
+ *
+ * @type {Number}
+ */
+export declare const SORT_ASCENDING: number;
+/**
+ * Enumeration for descending order
+ *
+ * @type {Number}
+ */
+export declare const SORT_DESCENDING: number;
+/**
+ * Sorts the array in a specified direction with the optional property to sort by
+ *
+ * @param {Array} array
+ * @param {Number|String} direction Ascending or descending
+ * @param {String} property
+ */
+export declare function sort(array: Array<any>, direction?: number | string, property?: any): Array<any>;
+/**
  * Checks to see a given target has a reference to a defined type, returning the first result in the callback function
  *
  * @param {Object} arget
