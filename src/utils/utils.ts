@@ -598,10 +598,10 @@ export const SORT_DESCENDING: number = 1;
 export function sort(array: Array<any>, direction: number | string = SORT_ASCENDING, property: any = null): Array<any> {
 
      /**
-      * Sort on property if defined, else define default sort algorithm
+      * Sort algorithm for both number and string types
       * 
-      * @param {Any} a
-      * @param {Any} b
+      * @param {String | Number} a
+      * @param {String | Number} b
       */
      const sum = function (a: any, b: any): number { 
 
