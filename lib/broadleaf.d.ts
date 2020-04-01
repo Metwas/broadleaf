@@ -6,6 +6,7 @@ import * as buffer from "./utils/text/buffers";
 import * as conversions from "./utils/text/conversions";
 import * as serialization from "./utils/text/serialization";
 import * as regexConstants from "./utils/text/regexConstants";
+import { Dictionary } from "./collections/dictionary";
 export { Task };
 export { Timer } from "./tasks/common/timer";
 export { Color } from "./graphics/drawing/colors/color";
@@ -25,6 +26,7 @@ export declare const text: {
  */
 export declare const collections: {
     Queue: typeof Queue;
+    Dictionary: typeof Dictionary;
 };
 /**
  * Commom math functions

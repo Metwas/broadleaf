@@ -32,6 +32,7 @@ import * as buffer from "./utils/text/buffers";
 import * as conversions from "./utils/text/conversions";
 import * as serialization from "./utils/text/serialization";
 import * as regexConstants from "./utils/text/regexConstants";
+import { Dictionary } from "./collections/dictionary";
 
 //===================== End imports =====================//
 
@@ -51,7 +52,7 @@ export const text = { conversions: conversions, serialization: serialization, re
 /**
  * Collections/container classes
  */
-export const collections = { Queue: Queue };
+export const collections = { Queue: Queue, Dictionary: Dictionary };
 
 /**
  * Commom math functions
