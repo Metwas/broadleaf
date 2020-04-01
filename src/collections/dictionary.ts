@@ -71,7 +71,7 @@ interface IDictionary<T> {
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
      * @returns {Array<IKeyValuePair<T>>}
      */
-    list(sort: boolean | ((a: any, b: any) => number)): Array<IKeyValuePair<T>>;
+    list(sort: ((a: any, b: any) => number) | null): Array<IKeyValuePair<T>>;
 
 }
 
@@ -220,7 +220,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
      * @returns {Array<IKeyValuePair<T>>}
      */
-    public list(sort: boolean | ((a: any, b: any) => number)): Array<IKeyValuePair<T>> {
+    public list(sort: ((a: any, b: any) => number) | null = null): Array<IKeyValuePair<T>> {
 
         const arr: Array<IKeyValuePair<T>> = [];
 
@@ -239,7 +239,7 @@ export class Dictionary<T> implements IDictionary<T> {
 
         }
 
-        return arr;
+        return typeof sort === "function" ? arr.sort(sort) : arr;
 
     }
 
