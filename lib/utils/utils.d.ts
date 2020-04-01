@@ -166,9 +166,10 @@ export declare function clone(arrayOrObject: Array<any> | any): Array<any> | any
  * @param {Array | Object} arrayOrObject An Array or object to iterate through
  * @param {String} propertyKey The desired property to match a unique identifier on
  * @param {Object} propertyValue The property value which must be matched to
+ * @param {Function} callback
  * @returns {Boolean} Returns whether the element with that property exists in the array
  */
-export declare function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean;
+export declare function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any, callback?: (ret: any) => void): boolean;
 /**
  * Enumeration for ascending order
  *

@@ -35,7 +35,8 @@ const { log, header } = printService;
 
 // testing initialization
 log(header("#### Utility Testing ####"));
-const arr1 = [{name:"a"}, {name:"z"}, {name:"f"}, {name:"d"}];
+const arr1 = [{name:"a"}, {name:"z"}, {name:"f", nam: "a"}, {name:"d"}];
+console.log("Contains: " + utils.contains(arr1, "nam", "a", function(el){ console.log(el); }));
 // const arr1 = [1,2,5,16,3,56,6];
 console.log(utils.sort(arr1, utils.SORT_ASCENDING, "name"));
 log(header("Before removing key from object or array"));

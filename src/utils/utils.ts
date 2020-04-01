@@ -506,23 +506,54 @@ export function clone(arrayOrObject: Array<any> | any): Array<any> | any {
  * @param {Array | Object} arrayOrObject An Array or object to iterate through
  * @param {String} propertyKey The desired property to match a unique identifier on
  * @param {Object} propertyValue The property value which must be matched to
+ * @param {Function} callback
  * @returns {Boolean} Returns whether the element with that property exists in the array
  */
-export function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any): boolean {
+export function contains(arrayOrObject: Array<any> | any, propertyKey: any, propertyValue: any, callback: (ret: any) => void = noop): boolean {
 
+     /**
+      * Validate callback argument
+      */
+     if (!isFunction(callback)) { callback = isFunction(propertyValue) ? propertyValue : noop; }
+
+     /**
+      * Handle Array bound argument
+      */
      if (isArray(arrayOrObject)) {
 
-          var _index: number = 0;
-          var _length: number = arrayOrObject.length;
+          let index: number = 0;
+          const length: number = arrayOrObject.length;
 
-          for (; _index < _length; _index++) {
+          for (; index < length; index++) {
 
-               var _element = arrayOrObject[_index];
+               const element = arrayOrObject[index];
 
-               if (isNullOrUndefined(propertyValue) && isString(_element) || isNumber(_element)) {
+               if ((isNullOrUndefined(propertyValue) && !isFunction(propertyValue)) && isString(element) || isNumber(element)) {
 
-                    if (_element === propertyKey) {
+                    if (element === propertyKey) {
 
+                         /**
+                          * Pass element to callback
+                          */
+                         callback(element);
+                         return true;
+
+                    }
+
+               } else {
+
+                    /**
+                     * Array element must of object type therefore recursively check if the any one of the objects contains the specified property
+                     */
+                    if (contains(arrayOrObject[index], propertyKey, propertyValue) === true) {
+
+                         /**
+                          * Callback the object at the specific index
+                          */
+                         callback(arrayOrObject[index]);
+                         /**
+                          * An element does exist break the loop and return to caller
+                          */
                          return true;
 
                     }
@@ -533,16 +564,19 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
 
      } else {
 
+          /**
+           * Treat others as objects
+           */
           if (isObject(arrayOrObject)) {
 
                // attempt to retrieve the specified key
                const value: any = arrayOrObject[propertyKey];
 
-               if (isNullOrUndefined(propertyValue) && !isNullOrUndefined(value)) {
+               if ((isNullOrUndefined(propertyValue) && !isFunction(propertyValue)) && !isNullOrUndefined(value)) {
 
                     return true;
 
-               } else if (!(isNullOrUndefined(propertyValue) && isNullOrUndefined(propertyKey))) {
+               } else if (!((isNullOrUndefined(propertyValue) && !isFunction(propertyValue)) && isNullOrUndefined(propertyKey))) {
 
                     // match both the key and the value
                     return value === propertyValue;
@@ -558,6 +592,10 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
 
                          if (!isNullOrUndefined(value) && propertyKey === value) {
 
+                              /**
+                               * Pass element to callback
+                               */
+                              callback(value);
                               return true;
 
                          }
@@ -603,14 +641,14 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
       * @param {String | Number} a
       * @param {String | Number} b
       */
-     const sum = function (a: any, b: any): number { 
+     const sum = function (a: any, b: any): number {
 
           // define a default alogrithm for number types
-          const numFn = function(a: any, b: any): number { return a - b; };
-          const strFn = function(a: any, b: any): number { 
-               
-               if(b > a){ return -1 }
-               if(a > b){ return 1 }
+          const numFn = function (a: any, b: any): number { return a - b; };
+          const strFn = function (a: any, b: any): number {
+
+               if (b > a) { return -1 }
+               if (a > b) { return 1 }
                // default to equal
                return 0;
 
