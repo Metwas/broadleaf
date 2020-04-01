@@ -48,7 +48,7 @@ interface IDictionary<T> {
      * @param {String} name 
      * @returns {T}
      */
-    remove(name: string): T|null;
+    remove(name: string): T | null;
 
     /**
      * Checks if a specific @see T element exists within the dictionary
@@ -63,7 +63,7 @@ interface IDictionary<T> {
      * 
      * @param {String} name
      */
-    get(name: string): T|null;
+    get(name: string): T | null;
 
     /**
      * Returns the dictionary elements as a @see Array
@@ -78,8 +78,8 @@ interface IDictionary<T> {
 /**
  * Create a typescript TypeGuard based off a generic type
  */
-type Constructor<T> = { new (args: any[]): T };
-const typeGuard = function<T>(obj: any, constructor: Constructor<T>): boolean { return utils.isInstanceOf(obj, constructor); };
+type Constructor<T> = { new(args: any[]): T };
+const typeGuard = function <T>(obj: any, constructor: Constructor<T>): boolean { return utils.isInstanceOf(obj, constructor); };
 
 /**
  * Defines an object which can be iterated over
@@ -166,7 +166,7 @@ export class Dictionary<T> implements IDictionary<T> {
      */
     public add(name: string, arg: T): void {
 
-        if(utils.isNullOrUndefined(arg)) { throw new Error("Dictionary does not accept null or undefined values to be added"); }
+        if (utils.isNullOrUndefined(arg)) { throw new Error("Dictionary does not accept null or undefined values"); }
         /**
          * Only add if not already defined
          */
@@ -186,7 +186,7 @@ export class Dictionary<T> implements IDictionary<T> {
         /**
          * Check if value exists
          */
-        if (!this.contains(name) === true) {
+        if (this.contains(name) === true) {
 
             const source = this._source[name];
             delete this._source[name];
@@ -203,16 +203,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * 
      * @param {String} name
      */
-    public get(name: string): T|null { 
-
-        if(this.contains(name) === true){ return this._source[name]; }
-
-        /**
-         * No element
-         */
-        return null;
-
-    }
+    public get(name: string): T | null { return this.contains(name) === true ? this._source[name] : null; }
 
     /**
      * Checks if a specific @see T element exists within the dictionary
@@ -236,7 +227,7 @@ export class Dictionary<T> implements IDictionary<T> {
         const keys: Array<any> = Object.keys(this._source);
         const length: number = keys.length;
         let index: number = 0;
-        for(; index < length; index++){
+        for (; index < length; index++) {
 
             /**
              * Map each dictionary element to a @see IKeyValuePair object
