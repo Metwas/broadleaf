@@ -39,3 +39,7 @@ log("Dictionary");
 const dictionary = new collections.Dictionary();
 dictionary.add("name", "test");
 console.log(dictionary.get("name"));
+
+//remove element
+dictionary.remove("name");
+console.log(dictionary.list());
