@@ -23,9 +23,16 @@ export declare function isClassOf(obj: object, className: string): boolean;
  *
  * @param {Object} obj
  * @param {Any} type
+ * @param {Boolean} inherit
  * @returns {Boolean}
  */
-export declare function isInstanceOf(obj: object, type: any): boolean;
+export declare function isInstanceOf(obj: any, type: any, inherit?: boolean): boolean;
+/**
+ * Checks if the provided parameter is one of JavaScript's primitive types
+ *
+ * @param {Any} value
+ */
+export declare function isPrimitive(value: any): boolean;
 /**
  * Checks the value parameter is of type 'String'
  *
@@ -188,6 +195,7 @@ export declare const SORT_DESCENDING: number;
  * @param {Array} array
  * @param {Number|String} direction Ascending or descending
  * @param {String} property
+ * @returns {Array}
  */
 export declare function sort(array: Array<any>, direction?: number | string, property?: any): Array<any>;
 /**

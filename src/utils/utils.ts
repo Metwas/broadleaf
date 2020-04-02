@@ -85,14 +85,36 @@ export function isClassOf(obj: object, className: string): boolean {
  * 
  * @param {Object} obj 
  * @param {Any} type 
+ * @param {Boolean} inherit
  * @returns {Boolean}
  */
-export function isInstanceOf(obj: object, type: any): boolean {
+export function isInstanceOf(obj: any, type: any, inherit: boolean = true): boolean {
 
      /**
-      * Returns false if type is null or undefined
+      * False if incorrect arguments were provided
       */
-     return isNullOrUndefined(type) ? false : (obj instanceof type);
+     if (isNullOrUndefined(type)) { return false; }
+     /**
+      * Check for primitive types
+      */
+     if (isPrimitive(obj)) { return isClassOf(obj, type.name); }
+     /**
+      * Returns false if type is null or undefined
+      * 
+      * v:1.20.2 - Inherit will match constructors equality
+      */
+     return isNullOrUndefined(type) ? false : (obj instanceof type) && (inherit === false ? (obj.__proto__.constructor === type.prototype.constructor) : true);
+
+};
+
+/**
+ * Checks if the provided parameter is one of JavaScript's primitive types
+ * 
+ * @param {Any} value 
+ */
+export function isPrimitive(value: any): boolean {
+
+     return (isNumber(value) || isString(value) || isBoolean(value) || isNullOrUndefined(value));
 
 };
 
@@ -631,7 +653,8 @@ export const SORT_DESCENDING: number = 1;
  * 
  * @param {Array} array 
  * @param {Number|String} direction Ascending or descending
- * @param {String} property 
+ * @param {String} property
+ * @returns {Array}
  */
 export function sort(array: Array<any>, direction: number | string = SORT_ASCENDING, property: any = null): Array<any> {
 
