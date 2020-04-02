@@ -103,7 +103,7 @@ export function isInstanceOf(obj: any, type: any, inherit: boolean = true): bool
       * 
       * v:1.20.2 - Inherit will match constructors equality
       */
-     return isNullOrUndefined(type) ? false : (obj instanceof type) && (inherit === false ? (obj.__proto__.constructor === type.prototype.constructor) : true);
+     return (obj instanceof type) && (inherit === false ? (obj.__proto__.constructor === type.prototype.constructor) : true);
 
 };
 
