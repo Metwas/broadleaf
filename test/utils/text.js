@@ -24,9 +24,8 @@
 
 //===================== imports =====================//
 
-const chalk = require("chalk");
-const { utils, math, text } = require("../../lib/broadleaf");
-const { table, test, printService } = require("../helpers/helper");
+const { text } = require("../../lib/broadleaf");
+const { printService } = require("../helpers/helper");
 
 const { log, header } = printService;
 
