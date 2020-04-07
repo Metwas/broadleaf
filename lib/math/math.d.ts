@@ -127,6 +127,12 @@ export declare const clamp: (val: number, min: number, max: number) => number;
  */
 export declare const square: (value: number) => number;
 /**
+ *
+ * @param {Array} values
+ * @param {String} property optional if the values array contains objects
+ */
+export declare const average: (values: any[], property: any) => number;
+/**
  * Calculates the distance between two points
  *
  * @param {Number} x0 The start point

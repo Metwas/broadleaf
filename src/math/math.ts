@@ -189,6 +189,49 @@ export const square = function (value: number): number {
 };
 
 /**
+ * 
+ * @param {Array} values 
+ * @param {String} property optional if the values array contains objects
+ */
+export const average = function (values: Array<any>, property: any): number {
+
+     let result: number = 0;
+     if (utils.isArray(values)) {
+
+          /**
+           * Keep a track of valid @see Number type arguments, to avoid a miss count at the end
+           */
+          let totalValidArguments: number = 0;
+          for (const value in values) {
+
+               const normalized: number = utils.isObject(values[value]) ? values[value][property] : values[value];
+               /**
+                * Ensure sum is of number type
+                */
+               if (utils.isNumber(normalized)) {
+
+                    totalValidArguments++;
+                    /**
+                     * add to result
+                     */
+                    result += normalized;
+
+               }
+
+          }
+
+          /**
+           * Get average
+           */
+          result = result / totalValidArguments;
+
+     }
+
+     return result;
+
+};
+
+/**
  * Calculates the distance between two points
  *
  * @param {Number} x0 The start point
