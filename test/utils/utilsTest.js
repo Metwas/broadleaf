@@ -105,3 +105,8 @@ test("object contains key and value", objContainsValue, `testObj contains and va
 const type = "number";
 const _defaultValue = utils.reflectType(type);
 log(`Default value for type: ${type} = ${typeof _defaultValue}`);
+
+setInterval(function(){
+     console.log("CPU FREQUENCY");
+     console.log(`Average: ${utils.system.cpuFrequency()}`);
+}, 2000);

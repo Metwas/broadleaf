@@ -1,5 +1,25 @@
 import { NetworkDevice } from "./models/networkDevice";
 /**
+ * Gets the current system's operating platform
+ *
+ * @public
+ * @returns {String}
+ */
+export declare function platform(): string;
+/**
+ * Gets the total number of cores within the current system
+ *
+ * @public
+ * @returns {Number}
+ */
+export declare function cpuCount(): number;
+/**
+ * Gets the frequency for a specified core or and average result across all cores
+ *
+ * @param {Number | Boolean} coreOrAverage
+ */
+export declare function cpuFrequency(core: number): number;
+/**
  * Gets the total uptime of the operating system as a unix timestamp
  *
  * @returns {Number}

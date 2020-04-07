@@ -25,9 +25,60 @@
 //===================== imports =====================//
 
 import * as os from "os";
+import { average } from "../math/math";
 import { NetworkDevice } from "./models/networkDevice";
 
 //===================== End imports =====================//
+
+/**
+ * Gets the current system's operating platform 
+ * 
+ * @public
+ * @returns {String}
+ */
+export function platform(): string { return os.platform(); };
+
+/**
+ * Gets the total number of cores within the current system
+ * 
+ * @public
+ * @returns {Number}
+ */
+export function cpuCount(): number { return os.cpus().length; }
+
+/**
+ * Gets the frequency for a specified core or and average result across all cores
+ * 
+ * @param {Number | Boolean} coreOrAverage 
+ */
+export function cpuFrequency(core: number): number {
+
+     const cpus: number = cpuCount();
+     /**
+      * Handle specified core
+      */
+     if (typeof core === "number") {
+
+          /**
+           * Provide a default if core was out of range
+           */
+          if (core < 0 || core > cpus) { core = 0; }
+
+          /**
+           * get frequency for specified core
+           */
+          return os.cpus()[core].speed;
+
+     } else {
+
+          /**
+           * Default to average
+           */
+          return average(os.cpus(), "speed");
+
+     }
+
+};
 
 /**
  * IP version 4 string
