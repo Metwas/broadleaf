@@ -24,8 +24,9 @@
 
 //===================== imports =====================//
 
-import * as polyfill from "./polyfill";
 import * as system from "./system";
+import * as polyfill from "./polyfill";
+import { enumerable } from "./decorators";
 
 //===================== End imports =====================//
 
@@ -60,11 +61,17 @@ export function noop(): void { };
  * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
  * e.g '[object String]'
  * 
- * @param value 
+ * @param {Any} value
+ * @param {Boolean} classTemplate optional, defaults to true
  */
-export function toString(value: any): string {
+export function toString(value: any, basic: boolean = false): string {
 
-     return Object.prototype.toString.call(value);
+     let type: string = Object.prototype.toString.call(value);
+     /**
+      * By default return a class template e.g [object {Type}] else simply return {type} if set to true
+      */
+     if (basic){ type = type.replace("[object", "").replace("]", ""); }
+     return type;
 
 };
 
@@ -423,7 +430,7 @@ export function deepCopy(value: any): any {
  * @param {String} type The type name as a string
  * @returns {any} Returns a default value obtained from the default table lookup
  */
-export function reflectType(type: string) {
+export function getTypeDefaults(type: string) {
 
      let stringType: string = "";
      if (type !== "string") {
@@ -845,6 +852,160 @@ export function assign(target: any, ...args: Array<any>): Object {
           return polyfill.assignPolyfill(target);
 
      }
+
+};
+
+/**
+ * Defines a state model
+ * 
+ * @private
+ */
+type validatorState = { state: boolean, value: any };
+
+/**
+ * Defines a default property validator
+ * 
+ * @private
+ * @param {} value 
+ * @param property 
+ * @param target 
+ */
+const defaultPropertyValidator = function (value: any, property: any, target: any): validatorState {
+
+     let result = { state: false, value: value };
+     /**
+      * Handle primitive typest
+      */
+     if(isPrimitive(value)){ result.state = (value === property); result.value = value; }
+     /**
+      * Handle array or object types
+      */
+     if(isArray(value) || isObject(value)){ result.state = contains(value, property, null); result.value = value[property]; }
+     /**
+      * return result to caller
+      */
+     return result;
+
+};
+
+/**
+ * Flattens the base target by filtering out a specified property or validator function
+ * 
+ * @param {Array | Object} target
+ * @param {String | Function} key 
+ */
+export function flatten(target: any, key: any): Array<any> {
+
+     /**
+      * Validate target
+      */
+     if (isNullOrUndefined(target) || isPrimitive(target)) { throw new Error("Invalid target type provided"); }
+
+     let property: any = void 0;
+     const temp: Array<any> = [];
+     /**
+      * filter function
+      */
+     let validator: (value: any, property: any, target: any) => validatorState;
+     /**
+      * Check if key is property and is defined with target value
+      */
+     if (!isFunction(key)) { property = key; validator = defaultPropertyValidator }
+     /**
+      * Use custom key function
+      */
+     else { validator = key; }
+
+     /**
+      * Iterate through the target recursively filtering out with the @see validator function
+      */
+     tree(target, function (node: treeNode) {
+
+          /**
+           * Pass @see treeNode value to validator
+           */
+          const result = validator(node.value, property, target);
+          /**
+           * Add if result state is true
+           */
+          if (result.state === true) { temp.push(result.value); }
+
+     });
+
+     return temp;
+
+};
+
+/**
+ * Defines a tree node model
+ * 
+ * @private
+ */
+class treeNode {
+
+     /**
+      * Default constructor
+      * 
+      * @param {Any} value 
+      * @param {Array<any>} children 
+      */
+     constructor(public value: any = {}, public children: treeNode[] = []) { }
+
+     /**
+      * Gets the base class type for the assigned @see value
+      */
+     @enumerable(true)
+     public get type(): string { return toString(this.value, true); };
+
+};
+
+/**
+ * Iterates over every self declared property within the target structure, recursively creating a branch like structure of information
+ * 
+ * @param {Any} target 
+ * @param {Function} callback 
+ */
+export function tree(target: any, callback: (value: treeNode) => void): treeNode {
+
+     /**
+      * Check if target is of node type, else create an empty tree node structure
+      */
+     const rootNode: treeNode = isInstanceOf(target, treeNode) ? target : new treeNode(target);
+     /**
+      * Validate callback
+      */
+     if(!isFunction(callback)){ callback = noop; }
+
+     /**
+       * Get all keys from target+
+       */
+     const targetKeys: Array<any> = keys(rootNode.value);
+     const length: number = targetKeys.length;
+     let index: number = 0;
+     for (; index < length; index++) {
+
+          const key: any = targetKeys[index];
+          const value: any = rootNode.value[key];
+          /**
+           * create @see treeNode from the iterated result
+           */
+          const node: treeNode = new treeNode(value);
+          /**
+           * call node to caller
+           */
+          callback(node);
+          /**
+           * Recursively collect property information
+           */
+          if (isObject(value) || isArray(value)) { node.children.push(tree(value, callback)); }
+          /**
+           * Add to rootNode
+           */
+          rootNode.children.push(node);
+
+     }
+     
+     return rootNode;
 
 };
 

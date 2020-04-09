@@ -35,13 +35,12 @@ const { log, header } = printService;
 // testing initialization
 log(header("#### Utility Testing ####"));
 const arr1 = [{name:"a"}, {name:"z"}, {name:"f", nam: "a"}, {name:"d"}];
-console.log("Contains: " + utils.contains(arr1, "nam", "a", function(el){ console.log(el); }));
-// const arr1 = [1,2,5,16,3,56,6];
-console.log(utils.sort(arr1, utils.SORT_ASCENDING, "name"));
+console.log("Flatten array");
+console.log(utils.flatten(arr1, "name"));
+// console.log("Contains: " + utils.contains(arr1, "nam", "a", function(el){ console.log(el); }));
+// // const arr1 = [1,2,5,16,3,56,6];
+// console.log(utils.sort(arr1, utils.SORT_ASCENDING, "name"));
 
-const str = "hello";
-log("instanceof");
-console.log(utils.isInstanceOf(str, String));
 log(header("Before removing key from object or array"));
 const remObj = { name: "test" };
 const testRemObj = { test: "name" };
@@ -103,7 +102,7 @@ test("object contains key and value", objContainsValue, `testObj contains and va
 
 // default type
 const type = "number";
-const _defaultValue = utils.reflectType(type);
+const _defaultValue = utils.getTypeDefaults(type);
 log(`Default value for type: ${type} = ${typeof _defaultValue}`);
 
 setInterval(function(){

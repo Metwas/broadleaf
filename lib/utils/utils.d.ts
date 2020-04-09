@@ -1,5 +1,5 @@
-import * as polyfill from "./polyfill";
 import * as system from "./system";
+import * as polyfill from "./polyfill";
 /**
  * No operation function
  */
@@ -8,9 +8,10 @@ export declare function noop(): void;
  * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
  * e.g '[object String]'
  *
- * @param value
+ * @param {Any} value
+ * @param {Boolean} classTemplate optional, defaults to true
  */
-export declare function toString(value: any): string;
+export declare function toString(value: any, basic?: boolean): string;
 /**
  * Evaluates the class type on the obj parameter provided
  *
@@ -159,7 +160,7 @@ export declare function deepCopy(value: any): any;
  * @param {String} type The type name as a string
  * @returns {any} Returns a default value obtained from the default table lookup
  */
-export declare function reflectType(type: string): any;
+export declare function getTypeDefaults(type: string): any;
 /**
  * Clones the provided array
  *
@@ -242,6 +243,40 @@ export declare function has(obj: Object, property: string): boolean;
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
 export declare function assign(target: any, ...args: Array<any>): Object;
+/**
+ * Flattens the base target by filtering out a specified property or validator function
+ *
+ * @param {Array | Object} target
+ * @param {String | Function} key
+ */
+export declare function flatten(target: any, key: any): Array<any>;
+/**
+ * Defines a tree node model
+ *
+ * @private
+ */
+declare class treeNode {
+    value: any;
+    children: treeNode[];
+    /**
+     * Default constructor
+     *
+     * @param {Any} value
+     * @param {Array<any>} children
+     */
+    constructor(value?: any, children?: treeNode[]);
+    /**
+     * Gets the base class type for the assigned @see value
+     */
+    readonly type: string;
+}
+/**
+ * Iterates over every self declared property within the target structure, recursively creating a branch like structure of information
+ *
+ * @param {Any} target
+ * @param {Function} callback
+ */
+export declare function tree(target: any, callback: (value: treeNode) => void): treeNode;
 /**
  * Obtains the property keys from a provided object parameter
  *
