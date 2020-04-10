@@ -31,6 +31,7 @@ import * as utils from "../utils/utils";
 /**
  * Maximum 4 bit size
  * 
+ * @public
  * @type {Number}
  */
 export const MAX_NIBBLE = (1 << 4) - 1;
@@ -38,6 +39,7 @@ export const MAX_NIBBLE = (1 << 4) - 1;
 /**
  * Maximum 8 bit (1 byte) size
  * 
+ * @public
  * @type {Number}
  */
 export const MAX_BYTE = (1 << 8) - 1;
@@ -45,6 +47,7 @@ export const MAX_BYTE = (1 << 8) - 1;
 /**
  * Maximum 16 bit (2 bytes) size
  * 
+ * @public
  * @type {Number}
  */
 export const MAX_16BIT = (1 << 16) - 1;
@@ -59,6 +62,7 @@ export const MAX_24BIT = (1 << 24) - 1;
 /**
  * Maximum unsigned 32 bit (4 bytes) size
  * 
+ * @public
  * @type {Number}
  */
 export const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
@@ -66,6 +70,7 @@ export const MAX_UNSIGNED_32BIT = ((1 << 31) >>> 0) * 2 - 1;
 /**
  * 1KB (1 bit << base 10)
  * 
+ * @public
  * @type {Number}
  */
 export const KILOBYTE = Math.pow(2, 10);
@@ -73,6 +78,7 @@ export const KILOBYTE = Math.pow(2, 10);
 /**
  * 1MB (1024 * 1KB)
  * 
+ * @public
  * @type {Number}
  */
 export const MEGABYTE = Math.pow(2, 20);
@@ -80,6 +86,7 @@ export const MEGABYTE = Math.pow(2, 20);
 /**
  * 1GB (1024 * 1MB)
  * 
+ * @public
  * @type {Number}
  */
 export const GIGABYTE = Math.pow(2, 30);
@@ -87,6 +94,7 @@ export const GIGABYTE = Math.pow(2, 30);
 /**
  * 1TB (1024 * 1GB)
  * 
+ * @public
  * @type {Number}
  */
 export const TERABYTE = Math.pow(2, 40);
@@ -94,6 +102,7 @@ export const TERABYTE = Math.pow(2, 40);
 /**
  * 1PB (1024 * 1TB)
  * 
+ * @public
  * @type {Number}
  */
 export const PETABYTE = Math.pow(2, 50);
@@ -101,6 +110,7 @@ export const PETABYTE = Math.pow(2, 50);
 /**
  * Positive infinity
  * 
+ * @public
  * @type {Number}
  */
 export const POSITIVE_INFINITY = (function () { return Number.POSITIVE_INFINITY; })();
@@ -108,6 +118,7 @@ export const POSITIVE_INFINITY = (function () { return Number.POSITIVE_INFINITY;
 /**
  * Negative infinity
  * 
+ * @public
  * @type {Number}
  */
 export const NEGATIVE_INFINITY = (function () { return Number.NEGATIVE_INFINITY; })();
@@ -115,6 +126,7 @@ export const NEGATIVE_INFINITY = (function () { return Number.NEGATIVE_INFINITY;
 /**
  * PI constant
  * 
+ * @public
  * @type {Number}
  */
 export const PI = Math.PI;
@@ -122,6 +134,7 @@ export const PI = Math.PI;
 /**
  * Half PI
  * 
+ * @public
  * @type {Number}
  */
 export const HALF_PI = PI / 2;
@@ -129,6 +142,7 @@ export const HALF_PI = PI / 2;
 /**
  * Two times PI
  * 
+ * @public
  * @type {Number}
  */
 export const TAU = PI * 2;
@@ -136,6 +150,7 @@ export const TAU = PI * 2;
 /**
  * Converts degrees to radians
  * 
+ * @public
  * @type {Number}
  */
 export const DEGTORAD = Math.PI / 180;
@@ -143,13 +158,33 @@ export const DEGTORAD = Math.PI / 180;
 /**
  * Converts radians to degress
  * 
+ * @public
  * @type {Number}
  */
 export const RADTODEG = 180 / Math.PI;
 
 /**
+ * Swaps values using the exclusive OR method
+ * 
+ * @public
+ * @param {Number} x
+ * @param {Number} y
+ * @returns {Object}
+ */
+export const XOR_SWAP = function (x: number, y: number) {
+
+     if (x != y) { x ^= y; y ^= x; x ^= y;}
+     /**
+      * Return to caller
+      */
+     return { x: x, y: y };
+
+};
+
+/**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
  *
+ * @public
  * @param {Number} x0 A start point
  * @param {Number} x1 The final resting point
  * @param {Number} t The resolution of steps to take to get to the final resting position
@@ -179,6 +214,7 @@ export const clamp = function (val: number, min: number, max: number): number {
 /**
  * Raises the provided value to the power of 2
  *
+ * @public
  * @param {Number} value The value to be squared
  * @returns {Number} The newly squared value
  */
@@ -189,7 +225,9 @@ export const square = function (value: number): number {
 };
 
 /**
+ * Calculates the average result of a set of values
  * 
+ * @public
  * @param {Array} values 
  * @param {String} property optional if the values array contains objects
  */
@@ -234,6 +272,7 @@ export const average = function (values: Array<any>, property: any): number {
 /**
  * Calculates the distance between two points
  *
+ * @public
  * @param {Number} x0 The start point
  * @param {Number} x1 The end point
  * @returns {Number} The distance between these points
@@ -247,6 +286,7 @@ export const dist = function (x0: number, x1: number): number {
 /**
  * Maps a value to a range between a specifed maximum and minimum
  *
+ * @public
  * @param {Number} value The arbitrary number to be mapped
  * @param {Number} minFrom The minimum value to start
  * @param {Number} maxFrom The maximum value to start
@@ -269,12 +309,13 @@ export const map = function (value: number, minFrom: number, maxFrom: number, mi
 /**
  * Returns a random number between a minimum and maximum value
  *
+ * @public
  * @param {Number} min A minimum value
  * @param {Number} max A maximum value
  * @param {Boolean} round {optional}
  * @returns {Number} A new random integer which falls between the given ranges
  */
-export const random = function (min: any, max: number, round: boolean | number): number {
+export const random = function (min: any, max: number, round: boolean | number = false): number {
 
      const rand: number = Math.random();
      let rnd: number = 0;
@@ -314,11 +355,7 @@ export const random = function (min: any, max: number, round: boolean | number):
      /**
       * Round if parameter set to true
       */
-     if (round === true) {
-
-          rnd = Math.round(rnd);
-
-     }
+     if (round === true) { rnd = Math.round(rnd); }
 
      return rnd;
 
@@ -327,6 +364,7 @@ export const random = function (min: any, max: number, round: boolean | number):
 /**
  * Obtains a random array element within a given array
  *
+ * @public
  * @param {Array} array An array
  * @returns {Number} A random element within the array
  */
@@ -347,6 +385,7 @@ export const randomArray = function (array: Array<any>): number | null {
 /**
  * Gets the specified index position which corresponding to a one dimensional array
  *
+ * @public
  * @param {Number} x The position in a row (0 indexed)
  * @param {Number} y The position in a column (0 indexed)
  * @param {Number} width The total width to calculate over
@@ -361,6 +400,7 @@ export const getMatrixIndex = function (x: number, y: number, width: number): nu
 /**
  * Gets the specified element at the computed index
  *
+ * @public
  * @param {Number} x The position in a row (0 indexed)
  * @param {Number} y The position in a column (0 indexed)
  * @param {Number} width The total width to calculate over
@@ -398,6 +438,7 @@ export const getMatrixIndexFromArray = function (x: number, y: number, width: nu
 /**
  * Converts a given degree to a radian value
  *
+ * @public
  * @param {Number} degrees A degree value to be converted to radians
  * @returns {Number} The new radian value
  */
@@ -410,6 +451,7 @@ export const degreesToRadians = function (degrees: number): number {
 /**
  * Converts a given radian to a degree value
  *
+ * @public
  * @param {Number} radian A radian value to be converted to degrees
  * @returns {Number} The new degree value
  */
