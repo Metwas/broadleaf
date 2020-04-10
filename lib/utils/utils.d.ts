@@ -5,6 +5,13 @@ import * as polyfill from "./polyfill";
  */
 export declare function noop(): void;
 /**
+ * Regular expression for parsing class data types
+ *
+ * @public
+ * @type {RegExp}
+ */
+export declare const CLASS_REG: RegExp;
+/**
  * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
  * e.g '[object String]'
  *

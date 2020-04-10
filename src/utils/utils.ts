@@ -58,6 +58,14 @@ const DEFAULT_TABLE = (function (): any {
 export function noop(): void { };
 
 /**
+ * Regular expression for parsing class data types
+ * 
+ * @public
+ * @type {RegExp}
+ */
+export const CLASS_REG = /\[object (.*?)\]/i;
+
+/**
  * Wraps a string conversion to allow for a object parameter to be expressed as a default string representation
  * e.g '[object String]'
  * 
@@ -70,7 +78,15 @@ export function toString(value: any, basic: boolean = false): string {
      /**
       * By default return a class template e.g [object {Type}] else simply return {type} if set to true
       */
-     if (basic){ type = type.replace("[object", "").replace("]", ""); }
+     if (basic) {
+
+          const groups = type.match(CLASS_REG);
+          /**
+           * The first group will be the entire match, therefore check for a second argument being a string type
+           */
+          if (groups && isString(groups[1])) { type = groups[1].trim().toLowerCase(); }
+
+     }
      return type;
 
 };
@@ -876,11 +892,11 @@ const defaultPropertyValidator = function (value: any, property: any, target: an
      /**
       * Handle primitive typest
       */
-     if(isPrimitive(value)){ result.state = (value === property); result.value = value; }
+     if (isPrimitive(value)) { result.state = (value === property); result.value = value; }
      /**
       * Handle array or object types
       */
-     if(isArray(value) || isObject(value)){ result.state = contains(value, property, null); result.value = value[property]; }
+     if (isArray(value) || isObject(value)) { result.state = contains(value, property, null); result.value = value[property]; }
      /**
       * return result to caller
       */
@@ -974,7 +990,7 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
      /**
       * Validate callback
       */
-     if(!isFunction(callback)){ callback = noop; }
+     if (!isFunction(callback)) { callback = noop; }
 
      /**
        * Get all keys from target+
@@ -1004,7 +1020,7 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
           rootNode.children.push(node);
 
      }
-     
+
      return rootNode;
 
 };
