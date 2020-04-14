@@ -35,6 +35,9 @@ const { log, header } = printService;
 // testing initialization
 log(header("#### Math Testing ####"));
 
+console.log(`LCG test`);
+const lcg = new math.LCG()
+setInterval(function(){ console.log(Math.round(lcg.nextRange(4,8)))}, 1000);
 let max_nibble = math.MAX_NIBBLE;
 const max_byte = math.MAX_BYTE;
 const max_16bit = math.MAX_16BIT;
