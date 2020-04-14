@@ -38,8 +38,8 @@ export class Color {
 	/**
 	 * Color: 'AliceBlue' HEX: #F0F8FF'
 	 */
-	static get AliceBlue(): Color { 
-		
+	static get AliceBlue(): Color {
+
 		return Color.fromHex(0xF0F8FF);
 
 	}
@@ -47,8 +47,8 @@ export class Color {
 	/**
 	 * Color: 'AntiqueWhite' HEX: #FAEBD7'
 	 */
-	static get AntiqueWhite(): Color { 
-		
+	static get AntiqueWhite(): Color {
+
 		return Color.fromHex(0xFAEBD7);
 
 	}
@@ -56,8 +56,8 @@ export class Color {
 	/**
 	 * Color: 'Aqua' HEX: #00FFFF'
 	 */
-	static get Aqua(): Color { 
-		
+	static get Aqua(): Color {
+
 		return Color.fromHex(0x00FFFF);
 
 	}
@@ -65,8 +65,8 @@ export class Color {
 	/**
 	 * Color: 'AquaMarine' HEX: #7FFFD4'
 	 */
-	static get AquaMarine(): Color { 
-		
+	static get AquaMarine(): Color {
+
 		return Color.fromHex(0x7FFFD4);
 
 	}
@@ -74,8 +74,8 @@ export class Color {
 	/**
 	 * Color: 'Azure' HEX: #007FFF'
 	 */
-	static get Azure(): Color { 
-		
+	static get Azure(): Color {
+
 		return Color.fromHex(0x007FFF);
 
 	}
@@ -83,8 +83,8 @@ export class Color {
 	/**
 	 * Color: 'Beige' HEX: #F5F5DC'
 	 */
-	static get Beige(): Color { 
-		
+	static get Beige(): Color {
+
 		return Color.fromHex(0xF5F5DC);
 
 	}
@@ -92,8 +92,8 @@ export class Color {
 	/**
 	 * Color: 'Bisque' HEX: #FFE4C4'
 	 */
-	static get Bisque(): Color { 
-		
+	static get Bisque(): Color {
+
 		return Color.fromHex(0xFFE4C4);
 
 	}
@@ -101,8 +101,8 @@ export class Color {
 	/**
 	 * Color: 'Black' HEX: #000000'
 	 */
-	static get Black(): Color { 
-		
+	static get Black(): Color {
+
 		return Color.fromHex(0x000000);
 
 	}
@@ -110,8 +110,8 @@ export class Color {
 	/**
 	 * Color: 'BlanchedAlmond' HEX: #FFEBCD'
 	 */
-	static get BlanchedAlmond(): Color { 
-		
+	static get BlanchedAlmond(): Color {
+
 		return Color.fromHex(0xFFEBCD);
 
 	}
@@ -119,8 +119,8 @@ export class Color {
 	/**
 	 * Color: 'Blue' HEX: #0000FF'
 	 */
-	static get Blue(): Color { 
-		
+	static get Blue(): Color {
+
 		return Color.fromHex(0x0000FF);
 
 	}
@@ -128,8 +128,8 @@ export class Color {
 	/**
 	 * Color: 'blueViolet' HEX: #8A2BE2'
 	 */
-	static get BlueViolet(): Color { 
-		
+	static get BlueViolet(): Color {
+
 		return Color.fromHex(0x8A2BE2);
 
 	}
@@ -137,8 +137,8 @@ export class Color {
 	/**
 	 * Color: 'Brown' HEX: #654321'
 	 */
-	static get Brown(): Color { 
-		
+	static get Brown(): Color {
+
 		return Color.fromHex(0x654321);
 
 	}
@@ -146,8 +146,8 @@ export class Color {
 	/**
 	 * Color: 'Burlywood' HEX: #DEB887'
 	 */
-	static get Burlywood(): Color { 
-		
+	static get Burlywood(): Color {
+
 		return Color.fromHex(0xDEB887);
 
 	}
@@ -155,8 +155,8 @@ export class Color {
 	/**
 	 * Color: 'CadetBlue' HEX: #5F9EA0'
 	 */
-	static get CadetBlue(): Color { 
-		
+	static get CadetBlue(): Color {
+
 		return Color.fromHex(0x5F9EA0);
 
 	}
@@ -164,8 +164,8 @@ export class Color {
 	/**
 	 * Color: 'Chartreuse' HEX: #7FFF00'
 	 */
-	static get Chartreuse(): Color { 
-		
+	static get Chartreuse(): Color {
+
 		return Color.fromHex(0x7FFF00);
 
 	}
@@ -173,8 +173,8 @@ export class Color {
 	/**
 	 * Color: 'Chocolate' HEX: #D2691E'
 	 */
-	static get Chocolate(): Color { 
-		
+	static get Chocolate(): Color {
+
 		return Color.fromHex(0xD2691E);
 
 	}
@@ -182,8 +182,8 @@ export class Color {
 	/**
 	 * Color: 'Coral' HEX: #FF7F50'
 	 */
-	static get Coral(): Color { 
-		
+	static get Coral(): Color {
+
 		return Color.fromHex(0xFF7F50);
 
 	}
@@ -191,8 +191,8 @@ export class Color {
 	/**
 	 * Color: 'CornFlowerBlue' HEX: #6495ED'
 	 */
-	static get CornFlowerBlue(): Color { 
-		
+	static get CornFlowerBlue(): Color {
+
 		return Color.fromHex(0x6495ED);
 
 	}
@@ -200,8 +200,8 @@ export class Color {
 	/**
 	 * Color: 'Cornsilk' HEX: #FFF8DC'
 	 */
-	static get Cornsilk(): Color { 
-		
+	static get Cornsilk(): Color {
+
 		return Color.fromHex(0xFFF8DC);
 
 	}
@@ -209,8 +209,8 @@ export class Color {
 	/**
 	 * Color: 'Crimson' HEX: #DC143C'
 	 */
-	static get Crimson(): Color { 
-		
+	static get Crimson(): Color {
+
 		return Color.fromHex(0xDC143C);
 
 	}
@@ -218,8 +218,8 @@ export class Color {
 	/**
 	 * Color: 'Cyan' HEX: #00FFFF'
 	 */
-	static get Cyan(): Color { 
-		
+	static get Cyan(): Color {
+
 		return Color.fromHex(0x00FFFF);
 
 	}
@@ -227,8 +227,8 @@ export class Color {
 	/**
 	 * Color: 'DarkBlue' HEX: #00008B'
 	 */
-	static get DarkBlue(): Color { 
-		
+	static get DarkBlue(): Color {
+
 		return Color.fromHex(0x00008B);
 
 	}
@@ -236,8 +236,8 @@ export class Color {
 	/**
 	 * Color: 'DarkCyan' HEX: #008B8B'
 	 */
-	static get DarkCyan(): Color { 
-		
+	static get DarkCyan(): Color {
+
 		return Color.fromHex(0x008B8B);
 
 	}
@@ -245,8 +245,8 @@ export class Color {
 	/**
 	 * Color: 'DarkGoldenRod' HEX: #B8860B'
 	 */
-	static get DarkGoldenRod(): Color { 
-		
+	static get DarkGoldenRod(): Color {
+
 		return Color.fromHex(0xB8860B);
 
 	}
@@ -254,8 +254,8 @@ export class Color {
 	/**
 	 * Color: 'DarkGray' HEX: #A9A9A9'
 	 */
-	static get DarkGray(): Color { 
-		
+	static get DarkGray(): Color {
+
 		return Color.fromHex(0xA9A9A9);
 
 	}
@@ -263,8 +263,8 @@ export class Color {
 	/**
 	 * Color: 'DarkGreen' HEX: #006400'
 	 */
-	static get DarkGreen(): Color { 
-		
+	static get DarkGreen(): Color {
+
 		return Color.fromHex(0x006400);
 
 	}
@@ -272,8 +272,8 @@ export class Color {
 	/**
 	 * Color: 'DarkKhaki' HEX: #BDB76B'
 	 */
-	static get DarkKhaki(): Color { 
-		
+	static get DarkKhaki(): Color {
+
 		return Color.fromHex(0xBDB76B);
 
 	}
@@ -281,8 +281,8 @@ export class Color {
 	/**
 	 * Color: 'darkGrey' HEX: #A9A9A9'
 	 */
-	static get DarkGrey(): Color { 
-		
+	static get DarkGrey(): Color {
+
 		return Color.fromHex(0xA9A9A9);
 
 	}
@@ -290,8 +290,8 @@ export class Color {
 	/**
 	 * Color: 'Darkgray' HEX: #A9A9A9'
 	 */
-	static get Darkgray(): Color { 
-		
+	static get Darkgray(): Color {
+
 		return Color.fromHex(0xA9A9A9);
 
 	}
@@ -299,8 +299,8 @@ export class Color {
 	/**
 	 * Color: 'DarkMagenta' HEX: #8B008B'
 	 */
-	static get DarkMagenta(): Color { 
-		
+	static get DarkMagenta(): Color {
+
 		return Color.fromHex(0x8B008B);
 
 	}
@@ -308,8 +308,8 @@ export class Color {
 	/**
 	 * Color: 'DarkOliveGreen' HEX: #556B2F'
 	 */
-	static get DarkOliveGreen(): Color { 
-		
+	static get DarkOliveGreen(): Color {
+
 		return Color.fromHex(0x556B2F);
 
 	}
@@ -317,8 +317,8 @@ export class Color {
 	/**
 	 * Color: 'DarkOrange' HEX: #FF8C00'
 	 */
-	static get DarkOrange(): Color { 
-		
+	static get DarkOrange(): Color {
+
 		return Color.fromHex(0xFF8C00);
 
 	}
@@ -326,8 +326,8 @@ export class Color {
 	/**
 	 * Color: 'DarkOrchid' HEX: #9932CC'
 	 */
-	static get DarkOrchid(): Color { 
-		
+	static get DarkOrchid(): Color {
+
 		return Color.fromHex(0x9932CC);
 
 	}
@@ -335,8 +335,8 @@ export class Color {
 	/**
 	 * Color: 'DarkRed' HEX: #8B0000'
 	 */
-	static get DarkRed(): Color { 
-		
+	static get DarkRed(): Color {
+
 		return Color.fromHex(0x8B0000);
 
 	}
@@ -344,8 +344,8 @@ export class Color {
 	/**
 	 * Color: 'DarkSalmon' HEX: #E9967A'
 	 */
-	static get DarkSalmon(): Color { 
-		
+	static get DarkSalmon(): Color {
+
 		return Color.fromHex(0xE9967A);
 
 	}
@@ -353,8 +353,8 @@ export class Color {
 	/**
 	 * Color: 'DarkSeaGreen' HEX: #8FBC8F'
 	 */
-	static get DarkSeaGreen(): Color { 
-		
+	static get DarkSeaGreen(): Color {
+
 		return Color.fromHex(0x8FBC8F);
 
 	}
@@ -362,8 +362,8 @@ export class Color {
 	/**
 	 * Color: 'DarkSlateBlue' HEX: #483D8B'
 	 */
-	static get DarkSlateBlue(): Color { 
-		
+	static get DarkSlateBlue(): Color {
+
 		return Color.fromHex(0x483D8B);
 
 	}
@@ -371,8 +371,8 @@ export class Color {
 	/**
 	 * Color: 'DarkSlateGray' HEX: #2F4F4F'
 	 */
-	static get DarkSlateGray(): Color { 
-		
+	static get DarkSlateGray(): Color {
+
 		return Color.fromHex(0x2F4F4F);
 
 	}
@@ -380,8 +380,8 @@ export class Color {
 	/**
 	 * Color: 'DarkSlateGrey' HEX: #2F4F4F'
 	 */
-	static get DarkSlateGrey(): Color { 
-		
+	static get DarkSlateGrey(): Color {
+
 		return Color.fromHex(0x2F4F4F);
 
 	}
@@ -389,8 +389,8 @@ export class Color {
 	/**
 	 * Color: 'DarkTurquoise' HEX: #00CED1'
 	 */
-	static get DarkTurquoise(): Color { 
-		
+	static get DarkTurquoise(): Color {
+
 		return Color.fromHex(0x00CED1);
 
 	}
@@ -398,8 +398,8 @@ export class Color {
 	/**
 	 * Color: 'DarkViolet' HEX: #9400D3'
 	 */
-	static get DarkViolet(): Color { 
-		
+	static get DarkViolet(): Color {
+
 		return Color.fromHex(0x9400D3);
 
 	}
@@ -407,8 +407,8 @@ export class Color {
 	/**
 	 * Color: 'DeepPink' HEX: #FF1493'
 	 */
-	static get DeepPink(): Color { 
-		
+	static get DeepPink(): Color {
+
 		return Color.fromHex(0xFF1493);
 
 	}
@@ -416,8 +416,8 @@ export class Color {
 	/**
 	 * Color: 'DeepSkyBlue' HEX: #00BFFF'
 	 */
-	static get DeepSkyBlue(): Color { 
-		
+	static get DeepSkyBlue(): Color {
+
 		return Color.fromHex(0x00BFFF);
 
 	}
@@ -425,8 +425,8 @@ export class Color {
 	/**
 	 * Color: 'DimGray' HEX: #696969'
 	 */
-	static get DimGray(): Color { 
-		
+	static get DimGray(): Color {
+
 		return Color.fromHex(0x696969);
 
 	}
@@ -434,8 +434,8 @@ export class Color {
 	/**
 	 * Color: 'DimGrey' HEX: #696969'
 	 */
-	static get DimGrey(): Color { 
-		
+	static get DimGrey(): Color {
+
 		return Color.fromHex(0x696969);
 
 	}
@@ -443,8 +443,8 @@ export class Color {
 	/**
 	 * Color: 'DodgerBlue' HEX: #1E90FF'
 	 */
-	static get DodgerBlue(): Color { 
-		
+	static get DodgerBlue(): Color {
+
 		return Color.fromHex(0x1E90FF);
 
 	}
@@ -452,8 +452,8 @@ export class Color {
 	/**
 	 * Color: 'FireBrick' HEX: #B22222'
 	 */
-	static get FireBrick(): Color { 
-		
+	static get FireBrick(): Color {
+
 		return Color.fromHex(0xB22222);
 
 	}
@@ -461,8 +461,8 @@ export class Color {
 	/**
 	 * Color: 'FloralWhite' HEX: #FFFAF0'
 	 */
-	static get FloralWhite(): Color { 
-		
+	static get FloralWhite(): Color {
+
 		return Color.fromHex(0xFFFAF0);
 
 	}
@@ -470,8 +470,8 @@ export class Color {
 	/**
 	 * Color: 'ForestGreen' HEX: #228B22'
 	 */
-	static get ForestGreen(): Color { 
-		
+	static get ForestGreen(): Color {
+
 		return Color.fromHex(0x228B22);
 
 	}
@@ -479,8 +479,8 @@ export class Color {
 	/**
 	 * Color: 'Fuchsia' HEX: #FF00FF'
 	 */
-	static get Fuchsia(): Color { 
-		
+	static get Fuchsia(): Color {
+
 		return Color.fromHex(0xFF00FF);
 
 	}
@@ -488,8 +488,8 @@ export class Color {
 	/**
 	 * Color: 'Gainsboro' HEX: #DCDCDC'
 	 */
-	static get Gainsboro(): Color { 
-		
+	static get Gainsboro(): Color {
+
 		return Color.fromHex(0xDCDCDC);
 
 	}
@@ -497,8 +497,8 @@ export class Color {
 	/**
 	 * Color: 'GhostWhite' HEX: #F8F8FF'
 	 */
-	static get GhostWhite(): Color { 
-		
+	static get GhostWhite(): Color {
+
 		return Color.fromHex(0xF8F8FF);
 
 	}
@@ -506,8 +506,8 @@ export class Color {
 	/**
 	 * Color: 'Gold' HEX: #FFD700'
 	 */
-	static get Gold(): Color { 
-		
+	static get Gold(): Color {
+
 		return Color.fromHex(0xFFD700);
 
 	}
@@ -515,8 +515,8 @@ export class Color {
 	/**
 	 * Color: 'GoldenRod' HEX: #DAA520'
 	 */
-	static get GoldenRod(): Color { 
-		
+	static get GoldenRod(): Color {
+
 		return Color.fromHex(0xDAA520);
 
 	}
@@ -524,8 +524,8 @@ export class Color {
 	/**
 	 * Color: 'Gray' HEX: #808080'
 	 */
-	static get Gray(): Color { 
-		
+	static get Gray(): Color {
+
 		return Color.fromHex(0x808080);
 
 	}
@@ -533,8 +533,8 @@ export class Color {
 	/**
 	 * Color: 'Green' HEX: #008000'
 	 */
-	static get Green(): Color { 
-		
+	static get Green(): Color {
+
 		return Color.fromHex(0x008000);
 
 	}
@@ -542,8 +542,8 @@ export class Color {
 	/**
 	 * Color: 'GreenYellow' HEX: #ADFF2F'
 	 */
-	static get GreenYellow(): Color { 
-		
+	static get GreenYellow(): Color {
+
 		return Color.fromHex(0xADFF2F);
 
 	}
@@ -551,8 +551,8 @@ export class Color {
 	/**
 	 * Color: 'Grey' HEX: #808080'
 	 */
-	static get Grey(): Color { 
-		
+	static get Grey(): Color {
+
 		return Color.fromHex(0x808080);
 
 	}
@@ -560,8 +560,8 @@ export class Color {
 	/**
 	 * Color: 'HoneyDew' HEX: #F0FFF0'
 	 */
-	static get HoneyDew(): Color { 
-		
+	static get HoneyDew(): Color {
+
 		return Color.fromHex(0xF0FFF0);
 
 	}
@@ -569,8 +569,8 @@ export class Color {
 	/**
 	 * Color: 'HotPink' HEX: #FF69B4'
 	 */
-	static get HotPink(): Color { 
-		
+	static get HotPink(): Color {
+
 		return Color.fromHex(0xFF69B4);
 
 	}
@@ -578,8 +578,8 @@ export class Color {
 	/**
 	 * Color: 'IndianRed' HEX: #CD5C5C'
 	 */
-	static get IndianRed(): Color { 
-		
+	static get IndianRed(): Color {
+
 		return Color.fromHex(0xCD5C5C);
 
 	}
@@ -587,8 +587,8 @@ export class Color {
 	/**
 	 * Color: 'Indigo' HEX: #4B0082'
 	 */
-	static get Indigo(): Color { 
-		
+	static get Indigo(): Color {
+
 		return Color.fromHex(0x4B0082);
 
 	}
@@ -596,8 +596,8 @@ export class Color {
 	/**
 	 * Color: 'Ivory' HEX: #FFFFF0'
 	 */
-	static get Ivory(): Color { 
-		
+	static get Ivory(): Color {
+
 		return Color.fromHex(0xFFFFF0);
 
 	}
@@ -605,8 +605,8 @@ export class Color {
 	/**
 	 * Color: 'Khaki' HEX: #F0E68C'
 	 */
-	static get Khaki(): Color { 
-		
+	static get Khaki(): Color {
+
 		return Color.fromHex(0xF0E68C);
 
 	}
@@ -614,8 +614,8 @@ export class Color {
 	/**
 	 * Color: 'Lavender' HEX: #E6E6FA'
 	 */
-	static get Lavender(): Color { 
-		
+	static get Lavender(): Color {
+
 		return Color.fromHex(0xE6E6FA);
 
 	}
@@ -623,8 +623,8 @@ export class Color {
 	/**
 	 * Color: 'LavenderBlush' HEX: #FFF0F5'
 	 */
-	static get LavenderBlush(): Color { 
-		
+	static get LavenderBlush(): Color {
+
 		return Color.fromHex(0xFFF0F5);
 
 	}
@@ -632,8 +632,8 @@ export class Color {
 	/**
 	 * Color: 'LawnGreen' HEX: #7CFC00'
 	 */
-	static get LawnGreen(): Color { 
-		
+	static get LawnGreen(): Color {
+
 		return Color.fromHex(0x7CFC00);
 
 	}
@@ -641,8 +641,8 @@ export class Color {
 	/**
 	 * Color: 'LightBlue' HEX: #ADD8E6'
 	 */
-	static get LightBlue(): Color { 
-		
+	static get LightBlue(): Color {
+
 		return Color.fromHex(0xADD8E6);
 
 	}
@@ -650,8 +650,8 @@ export class Color {
 	/**
 	 * Color: 'LightCoral' HEX: #F08080'
 	 */
-	static get LightCoral(): Color { 
-		
+	static get LightCoral(): Color {
+
 		return Color.fromHex(0xF08080);
 
 	}
@@ -659,8 +659,8 @@ export class Color {
 	/**
 	 * Color: 'LightCyan' HEX: #E0FFFF'
 	 */
-	static get LightCyan(): Color { 
-		
+	static get LightCyan(): Color {
+
 		return Color.fromHex(0xE0FFFF);
 
 	}
@@ -668,8 +668,8 @@ export class Color {
 	/**
 	 * Color: 'LightGray' HEX: #D3D3D3'
 	 */
-	static get LightGray(): Color { 
-		
+	static get LightGray(): Color {
+
 		return Color.fromHex(0xD3D3D3);
 
 	}
@@ -677,8 +677,8 @@ export class Color {
 	/**
 	 * Color: 'LightGreen' HEX: #90EE90'
 	 */
-	static get LightGreen(): Color { 
-		
+	static get LightGreen(): Color {
+
 		return Color.fromHex(0x90EE90);
 
 	}
@@ -686,8 +686,8 @@ export class Color {
 	/**
 	 * Color: 'LightGrey' HEX: #D3D3D3'
 	 */
-	static get LightGrey(): Color { 
-		
+	static get LightGrey(): Color {
+
 		return Color.fromHex(0xD3D3D3);
 
 	}
@@ -695,8 +695,8 @@ export class Color {
 	/**
 	 * Color: 'LightPink' HEX: #FFB6C1'
 	 */
-	static get LightPink(): Color { 
-		
+	static get LightPink(): Color {
+
 		return Color.fromHex(0xFFB6C1);
 
 	}
@@ -704,8 +704,8 @@ export class Color {
 	/**
 	 * Color: 'LightSalmon' HEX: #FFA07A'
 	 */
-	static get LightSalmon(): Color { 
-		
+	static get LightSalmon(): Color {
+
 		return Color.fromHex(0xFFA07A);
 
 	}
@@ -713,8 +713,8 @@ export class Color {
 	/**
 	 * Color: 'LightSeaGreen' HEX: #20B2AA'
 	 */
-	static get LightSeaGreen(): Color { 
-		
+	static get LightSeaGreen(): Color {
+
 		return Color.fromHex(0x20B2AA);
 
 	}
@@ -722,8 +722,8 @@ export class Color {
 	/**
 	 * Color: 'LightSkyBlue' HEX: #87CEFA'
 	 */
-	static get LightSkyBlue(): Color { 
-		
+	static get LightSkyBlue(): Color {
+
 		return Color.fromHex(0x87CEFA);
 
 	}
@@ -731,8 +731,8 @@ export class Color {
 	/**
 	 * Color: 'LightSlateGray' HEX: #778899'
 	 */
-	static get LightSlateGray(): Color { 
-		
+	static get LightSlateGray(): Color {
+
 		return Color.fromHex(0x778899);
 
 	}
@@ -740,8 +740,8 @@ export class Color {
 	/**
 	 * Color: 'LightSlateGrey' HEX: #778899'
 	 */
-	static get LightSlateGrey(): Color { 
-		
+	static get LightSlateGrey(): Color {
+
 		return Color.fromHex(0x778899);
 
 	}
@@ -749,8 +749,8 @@ export class Color {
 	/**
 	 * Color: 'LightSteelBlue' HEX: #B0C4DE'
 	 */
-	static get LightSteelBlue(): Color { 
-		
+	static get LightSteelBlue(): Color {
+
 		return Color.fromHex(0xB0C4DE);
 
 	}
@@ -758,8 +758,8 @@ export class Color {
 	/**
 	 * Color: 'LightYellow' HEX: #FFFFE0'
 	 */
-	static get LightYellow(): Color { 
-		
+	static get LightYellow(): Color {
+
 		return Color.fromHex(0xFFFFE0);
 
 	}
@@ -767,8 +767,8 @@ export class Color {
 	/**
 	 * Color: 'Lime' HEX: #00FF00'
 	 */
-	static get Lime(): Color { 
-		
+	static get Lime(): Color {
+
 		return Color.fromHex(0x00FF00);
 
 	}
@@ -776,8 +776,8 @@ export class Color {
 	/**
 	 * Color: 'LimeGreen' HEX: #32CD32'
 	 */
-	static get LimeGreen(): Color { 
-		
+	static get LimeGreen(): Color {
+
 		return Color.fromHex(0x32CD32);
 
 	}
@@ -785,8 +785,8 @@ export class Color {
 	/**
 	 * Color: 'Linen' HEX: #FAF0E6'
 	 */
-	static get Linen(): Color { 
-		
+	static get Linen(): Color {
+
 		return Color.fromHex(0xFAF0E6);
 
 	}
@@ -794,8 +794,8 @@ export class Color {
 	/**
 	 * Color: 'Magenta' HEX: #FF00FF'
 	 */
-	static get Magenta(): Color { 
-		
+	static get Magenta(): Color {
+
 		return Color.fromHex(0xFF00FF);
 
 	}
@@ -803,8 +803,8 @@ export class Color {
 	/**
 	 * Color: 'Maroon' HEX: #800000'
 	 */
-	static get Maroon(): Color { 
-		
+	static get Maroon(): Color {
+
 		return Color.fromHex(0x800000);
 
 	}
@@ -812,8 +812,8 @@ export class Color {
 	/**
 	 * Color: 'MediumAquaMarine' HEX: #66CDAA'
 	 */
-	static get MediumAquaMarine(): Color { 
-		
+	static get MediumAquaMarine(): Color {
+
 		return Color.fromHex(0x66CDAA);
 
 	}
@@ -821,8 +821,8 @@ export class Color {
 	/**
 	 * Color: 'MediumBlue' HEX: #0000CD'
 	 */
-	static get MediumBlue(): Color { 
-		
+	static get MediumBlue(): Color {
+
 		return Color.fromHex(0x0000CD);
 
 	}
@@ -830,8 +830,8 @@ export class Color {
 	/**
 	 * Color: 'MediumOrchid' HEX: #BA55D3'
 	 */
-	static get MediumOrchid(): Color { 
-		
+	static get MediumOrchid(): Color {
+
 		return Color.fromHex(0xBA55D3);
 
 	}
@@ -839,8 +839,8 @@ export class Color {
 	/**
 	 * Color: 'MediumPurple' HEX: #9370DB'
 	 */
-	static get MediumPurple(): Color { 
-		
+	static get MediumPurple(): Color {
+
 		return Color.fromHex(0x9370DB);
 
 	}
@@ -848,8 +848,8 @@ export class Color {
 	/**
 	 * Color: 'MediumSeaGreen' HEX: #3CB371'
 	 */
-	static get MediumSeaGreen(): Color { 
-		
+	static get MediumSeaGreen(): Color {
+
 		return Color.fromHex(0x3CB371);
 
 	}
@@ -857,8 +857,8 @@ export class Color {
 	/**
 	 * Color: 'MediumSlateBlue' HEX: #7B68EE'
 	 */
-	static get MediumSlateBlue(): Color { 
-		
+	static get MediumSlateBlue(): Color {
+
 		return Color.fromHex(0x7B68EE);
 
 	}
@@ -866,8 +866,8 @@ export class Color {
 	/**
 	 * Color: 'MediumSpringGreen' HEX: #00FA9A'
 	 */
-	static get MediumSpringGreen(): Color { 
-		
+	static get MediumSpringGreen(): Color {
+
 		return Color.fromHex(0x00FA9A);
 
 	}
@@ -875,8 +875,8 @@ export class Color {
 	/**
 	 * Color: 'MediumTurquoise' HEX: #48D1CC'
 	 */
-	static get MediumTurquoise(): Color { 
-		
+	static get MediumTurquoise(): Color {
+
 		return Color.fromHex(0x48D1CC);
 
 	}
@@ -884,8 +884,8 @@ export class Color {
 	/**
 	 * Color: 'MediumVioletRed' HEX: #C71585'
 	 */
-	static get MediumVioletRed(): Color { 
-		
+	static get MediumVioletRed(): Color {
+
 		return Color.fromHex(0xC71585);
 
 	}
@@ -893,8 +893,8 @@ export class Color {
 	/**
 	 * Color: 'MidnightBlue' HEX: #191970'
 	 */
-	static get MidnightBlue(): Color { 
-		
+	static get MidnightBlue(): Color {
+
 		return Color.fromHex(0x191970);
 
 	}
@@ -902,8 +902,8 @@ export class Color {
 	/**
 	 * Color: 'MintCream' HEX: #F5FFFA'
 	 */
-	static get MintCream(): Color { 
-		
+	static get MintCream(): Color {
+
 		return Color.fromHex(0xF5FFFA);
 
 	}
@@ -911,8 +911,8 @@ export class Color {
 	/**
 	 * Color: 'MistyRose' HEX: #FFE4E1'
 	 */
-	static get MistyRose(): Color { 
-		
+	static get MistyRose(): Color {
+
 		return Color.fromHex(0xFFE4E1);
 
 	}
@@ -920,8 +920,8 @@ export class Color {
 	/**
 	 * Color: 'Moccasin' HEX: #FFE4B5'
 	 */
-	static get Moccasin(): Color { 
-		
+	static get Moccasin(): Color {
+
 		return Color.fromHex(0xFFE4B5);
 
 	}
@@ -929,8 +929,8 @@ export class Color {
 	/**
 	 * Color: 'NavajoWhite' HEX: #FFDEAD'
 	 */
-	static get NavajoWhite(): Color { 
-		
+	static get NavajoWhite(): Color {
+
 		return Color.fromHex(0xFFDEAD);
 
 	}
@@ -938,8 +938,8 @@ export class Color {
 	/**
 	 * Color: 'Navy' HEX: #000080'
 	 */
-	static get Navy(): Color { 
-		
+	static get Navy(): Color {
+
 		return Color.fromHex(0x000080);
 
 	}
@@ -947,8 +947,8 @@ export class Color {
 	/**
 	 * Color: 'OldLace' HEX: #FDF5E6'
 	 */
-	static get OldLace(): Color { 
-		
+	static get OldLace(): Color {
+
 		return Color.fromHex(0xFDF5E6);
 
 	}
@@ -956,8 +956,8 @@ export class Color {
 	/**
 	 * Color: 'Olive' HEX: #808000'
 	 */
-	static get Olive(): Color { 
-		
+	static get Olive(): Color {
+
 		return Color.fromHex(0x808000);
 
 	}
@@ -965,8 +965,8 @@ export class Color {
 	/**
 	 * Color: 'OliveDrab' HEX: #6B8E23'
 	 */
-	static get OliveDrab(): Color { 
-		
+	static get OliveDrab(): Color {
+
 		return Color.fromHex(0x6B8E23);
 
 	}
@@ -974,8 +974,8 @@ export class Color {
 	/**
 	 * Color: 'Orange' HEX: #FFA500'
 	 */
-	static get Orange(): Color { 
-		
+	static get Orange(): Color {
+
 		return Color.fromHex(0xFFA500);
 
 	}
@@ -983,8 +983,8 @@ export class Color {
 	/**
 	 * Color: 'OrangeRed' HEX: #FF4500'
 	 */
-	static get OrangeRed(): Color { 
-		
+	static get OrangeRed(): Color {
+
 		return Color.fromHex(0xFF4500);
 
 	}
@@ -992,8 +992,8 @@ export class Color {
 	/**
 	 * Color: 'Orchid' HEX: #DA70D6'
 	 */
-	static get Orchid(): Color { 
-		
+	static get Orchid(): Color {
+
 		return Color.fromHex(0xDA70D6);
 
 	}
@@ -1001,8 +1001,8 @@ export class Color {
 	/**
 	 * Color: 'PaleGoldenRod' HEX: #EEE8AA'
 	 */
-	static get PaleGoldenRod(): Color { 
-		
+	static get PaleGoldenRod(): Color {
+
 		return Color.fromHex(0xEEE8AA);
 
 	}
@@ -1010,8 +1010,8 @@ export class Color {
 	/**
 	 * Color: 'PaleGreen' HEX: #98FB98'
 	 */
-	static get PaleGreen(): Color { 
-		
+	static get PaleGreen(): Color {
+
 		return Color.fromHex(0x98FB98);
 
 	}
@@ -1019,8 +1019,8 @@ export class Color {
 	/**
 	 * Color: 'PaleTurquoise' HEX: #AFEEEE'
 	 */
-	static get PaleTurquoise(): Color { 
-		
+	static get PaleTurquoise(): Color {
+
 		return Color.fromHex(0xAFEEEE);
 
 	}
@@ -1028,8 +1028,8 @@ export class Color {
 	/**
 	 * Color: 'PaleVioletRed' HEX: #DB7093'
 	 */
-	static get PaleVioletRed(): Color { 
-		
+	static get PaleVioletRed(): Color {
+
 		return Color.fromHex(0xDB7093);
 
 	}
@@ -1037,8 +1037,8 @@ export class Color {
 	/**
 	 * Color: 'PapayaWhip' HEX: #FFDAB9'
 	 */
-	static get PapayaWhip(): Color { 
-		
+	static get PapayaWhip(): Color {
+
 		return Color.fromHex(0xFFDAB9);
 
 	}
@@ -1046,8 +1046,8 @@ export class Color {
 	/**
 	 * Color: 'PeachPuff' HEX: #FFEFD5'
 	 */
-	static get PeachPuff(): Color { 
-		
+	static get PeachPuff(): Color {
+
 		return Color.fromHex(0xFFEFD5);
 
 	}
@@ -1055,8 +1055,8 @@ export class Color {
 	/**
 	 * Color: 'Peru' HEX: #CD853F'
 	 */
-	static get Peru(): Color { 
-		
+	static get Peru(): Color {
+
 		return Color.fromHex(0xCD853F);
 
 	}
@@ -1064,8 +1064,8 @@ export class Color {
 	/**
 	 * Color: 'Pink' HEX: #FFC0CB'
 	 */
-	static get Pink(): Color { 
-		
+	static get Pink(): Color {
+
 		return Color.fromHex(0xFFC0CB);
 
 	}
@@ -1073,8 +1073,8 @@ export class Color {
 	/**
 	 * Color: 'Plum' HEX: #DDA0DD'
 	 */
-	static get Plum(): Color { 
-		
+	static get Plum(): Color {
+
 		return Color.fromHex(0xDDA0DD);
 
 	}
@@ -1082,8 +1082,8 @@ export class Color {
 	/**
 	 * Color: 'PowderBlue' HEX: #B0E0E6'
 	 */
-	static get PowderBlue(): Color { 
-		
+	static get PowderBlue(): Color {
+
 		return Color.fromHex(0xB0E0E6);
 
 	}
@@ -1091,8 +1091,8 @@ export class Color {
 	/**
 	 * Color: 'Purple' HEX: #800080'
 	 */
-	static get Purple(): Color { 
-		
+	static get Purple(): Color {
+
 		return Color.fromHex(0x800080);
 
 	}
@@ -1100,8 +1100,8 @@ export class Color {
 	/**
 	 * Color: 'RebeccaPurple' HEX: #663399'
 	 */
-	static get RebeccaPurple(): Color { 
-		
+	static get RebeccaPurple(): Color {
+
 		return Color.fromHex(0x663399);
 
 	}
@@ -1109,8 +1109,8 @@ export class Color {
 	/**
 	 * Color: 'Red' HEX: #FF0000'
 	 */
-	static get Red(): Color { 
-		
+	static get Red(): Color {
+
 		return Color.fromHex(0xFF0000);
 
 	}
@@ -1118,8 +1118,8 @@ export class Color {
 	/**
 	 * Color: 'RosyBrown' HEX: #BC8F8F'
 	 */
-	static get RosyBrown(): Color { 
-		
+	static get RosyBrown(): Color {
+
 		return Color.fromHex(0xBC8F8F);
 
 	}
@@ -1127,8 +1127,8 @@ export class Color {
 	/**
 	 * Color: 'RoyalBlue' HEX: #4169E1'
 	 */
-	static get RoyalBlue(): Color { 
-		
+	static get RoyalBlue(): Color {
+
 		return Color.fromHex(0x4169E1);
 
 	}
@@ -1136,8 +1136,8 @@ export class Color {
 	/**
 	 * Color: 'SaddleBrown' HEX: #8B4513'
 	 */
-	static get SaddleBrown(): Color { 
-		
+	static get SaddleBrown(): Color {
+
 		return Color.fromHex(0x8B4513);
 
 	}
@@ -1145,8 +1145,8 @@ export class Color {
 	/**
 	 * Color: 'Salmon' HEX: #FA8072'
 	 */
-	static get Salmon(): Color { 
-		
+	static get Salmon(): Color {
+
 		return Color.fromHex(0xFA8072);
 
 	}
@@ -1154,8 +1154,8 @@ export class Color {
 	/**
 	 * Color: 'SandyBrown' HEX: #F4A460'
 	 */
-	static get SandyBrown(): Color { 
-		
+	static get SandyBrown(): Color {
+
 		return Color.fromHex(0xF4A460);
 
 	}
@@ -1163,8 +1163,8 @@ export class Color {
 	/**
 	 * Color: 'SeaGreen' HEX: #2E8B57'
 	 */
-	static get SeaGreen(): Color { 
-		
+	static get SeaGreen(): Color {
+
 		return Color.fromHex(0x2E8B57);
 
 	}
@@ -1172,8 +1172,8 @@ export class Color {
 	/**
 	 * Color: 'SeaShell' HEX: #FFF5EE'
 	 */
-	static get SeaShell(): Color { 
-		
+	static get SeaShell(): Color {
+
 		return Color.fromHex(0xFFF5EE);
 
 	}
@@ -1181,8 +1181,8 @@ export class Color {
 	/**
 	 * Color: 'Sienna' HEX: #A0522D'
 	 */
-	static get Sienna(): Color { 
-		
+	static get Sienna(): Color {
+
 		return Color.fromHex(0xA0522D);
 
 	}
@@ -1190,8 +1190,8 @@ export class Color {
 	/**
 	 * Color: 'Silver' HEX: #C0C0C0'
 	 */
-	static get Silver(): Color { 
-		
+	static get Silver(): Color {
+
 		return Color.fromHex(0xC0C0C0);
 
 	}
@@ -1199,8 +1199,8 @@ export class Color {
 	/**
 	 * Color: 'SkyBlue' HEX: #87CEEB'
 	 */
-	static get SkyBlue(): Color { 
-		
+	static get SkyBlue(): Color {
+
 		return Color.fromHex(0x87CEEB);
 
 	}
@@ -1208,8 +1208,8 @@ export class Color {
 	/**
 	 * Color: 'SlateBlue' HEX: #6A5ACD'
 	 */
-	static get SlateBlue(): Color { 
-		
+	static get SlateBlue(): Color {
+
 		return Color.fromHex(0x6A5ACD);
 
 	}
@@ -1217,8 +1217,8 @@ export class Color {
 	/**
 	 * Color: 'SlateGray' HEX: #708090'
 	 */
-	static get SlateGray(): Color { 
-		
+	static get SlateGray(): Color {
+
 		return Color.fromHex(0x708090);
 
 	}
@@ -1226,8 +1226,8 @@ export class Color {
 	/**
 	 * Color: 'SlateGrey' HEX: #708090'
 	 */
-	static get SlateGrey(): Color { 
-		
+	static get SlateGrey(): Color {
+
 		return Color.fromHex(0x708090);
 
 	}
@@ -1235,8 +1235,8 @@ export class Color {
 	/**
 	 * Color: 'Snow' HEX: #FFFAFA'
 	 */
-	static get Snow(): Color { 
-		
+	static get Snow(): Color {
+
 		return Color.fromHex(0xFFFAFA);
 
 	}
@@ -1244,8 +1244,8 @@ export class Color {
 	/**
 	 * Color: 'SpringGreen' HEX: #00FF7F'
 	 */
-	static get SpringGreen(): Color { 
-		
+	static get SpringGreen(): Color {
+
 		return Color.fromHex(0x00FF7F);
 
 	}
@@ -1253,8 +1253,8 @@ export class Color {
 	/**
 	 * Color: 'SteelBlue' HEX: #4682B4'
 	 */
-	static get SteelBlue(): Color { 
-		
+	static get SteelBlue(): Color {
+
 		return Color.fromHex(0x4682B4);
 
 	}
@@ -1262,8 +1262,8 @@ export class Color {
 	/**
 	 * Color: 'Tan' HEX: #D2B48C'
 	 */
-	static get Tan(): Color { 
-		
+	static get Tan(): Color {
+
 		return Color.fromHex(0xD2B48C);
 
 	}
@@ -1272,7 +1272,7 @@ export class Color {
 	 * Color: 'Teal' HEX: #008080'
 	 */
 	static get Teal(): Color {
-		
+
 		return Color.fromHex(0x008080);
 
 	}
@@ -1281,7 +1281,7 @@ export class Color {
 	 * Color: 'Thistle' HEX: #D8BFD8'
 	 */
 	static get Thistle(): Color {
-		
+
 		return Color.fromHex(0xD8BFD8);
 
 	}
@@ -1299,7 +1299,7 @@ export class Color {
 	 * Color: 'Turquoise' HEX: #40E0D0'
 	 */
 	static get Turquoise(): Color {
-		
+
 		return Color.fromHex(0x40E0D0);
 
 	}
@@ -1316,8 +1316,8 @@ export class Color {
 	/**
 	 * Color: 'Wheat' HEX: #F5DEB3'
 	 */
-	static get Wheat(): Color  {
-		
+	static get Wheat(): Color {
+
 		return Color.fromHex(0xF5DEB3);
 
 	}
@@ -1334,7 +1334,7 @@ export class Color {
 	/**
 	 * Color: 'WhiteSmoke' HEX: #F5F5F5'
 	 */
-	static get WhiteSmoke(): Color { 
+	static get WhiteSmoke(): Color {
 
 		return Color.fromHex(0xF5F5F5);
 
@@ -1344,7 +1344,7 @@ export class Color {
 	 * Color: 'Yellow' HEX: #FFFF00'
 	 */
 	static get Yellow(): Color {
-		
+
 		return Color.fromHex(0xFFFF00);
 
 	}
@@ -1353,7 +1353,7 @@ export class Color {
 	 * Color: 'YellowGreen' HEX: #9ACD32'
 	 */
 	static get YellowGreen(): Color {
-		
+
 		return Color.fromHex(0x9ACD32);
 
 	}
@@ -1409,6 +1409,21 @@ export class Color {
 	}
 
 	/**
+	 * Creates a @see Color instance from the HSLA color format components
+	 * 
+	 * @param {Number} Hue A value in a range of 0 - 360 degrees, representing a color wheel
+	 * @param {Number} saturation Percentage of color saturation
+	 * @param {Number} lightness Percentage of color lightness white - black scale
+	 * @param {Number} alpha Optional alpha value, defaults to 1
+	 * @returns {Color}
+	 */
+	static fromHSLA = function (hue: number, saturation: number, lightness: number, alpha: number) {
+
+		return Color.Black.setHSLA(hue, saturation, lightness, alpha || 1);
+
+	}
+
+	/**
       * Builds the current color instance into a hexidecimal format
       *
 	 * @param {number} red The red channel value
@@ -1459,7 +1474,7 @@ export class Color {
 
 		}
 
-		if(!utils.isNumber(increment)){
+		if (!utils.isNumber(increment)) {
 
 			increment = 1;
 
@@ -1510,7 +1525,7 @@ export class Color {
 	 * @param {number} alpha The alpha / transparency channel value
 	 * @returns {Color} Color
 	 */
-	constructor(red: number | string, green?: number, blue?: number, alpha: number = 255) {
+	public constructor(red: number | string, green?: number, blue?: number, alpha: number = 255) {
 
 		this.name = "";
 		this.red = 0;
@@ -1529,13 +1544,13 @@ export class Color {
 			this.setRGB(Number(red), Number(green), Number(blue));
 
 		}
-		
+
 	}
 
 	/**
 	 * Gets the hexidecimal value for the current color instance
 	 */
-	get hex(): number {
+	public get hex(): number {
 
 		return this._hex;
 
@@ -1549,7 +1564,7 @@ export class Color {
 	 * @param {number} blue The blue channel value
 	 * @returns {Color} Color
 	 */
-	setRGB(red: number, green: number, blue: number): Color {
+	public setRGB(red: number, green: number, blue: number): Color {
 
 		return this.setRGBA(red, green, blue, this.alpha);
 
@@ -1564,7 +1579,7 @@ export class Color {
 	 * @param {number} alpha The alpha / transparency channel value
 	 * @returns {Color} Color
 	 */
-	setRGBA(red: number, green: number, blue: number, alpha: number): Color {
+	public setRGBA(red: number, green: number, blue: number, alpha: number): Color {
 
 		this.red = red;
 		this.green = green;
@@ -1572,6 +1587,166 @@ export class Color {
 		this.alpha = alpha;
 		this._updateHex();
 
+		return this;
+
+	}
+
+	/**
+	 * Converts the current @see Color instance to a HSLA string
+	 * 
+	 * @returns {String} 'hsla(hue, saturation, lightness)'
+	 */
+	public toHSLA(): string {
+
+		/**
+		 * Make rgb fractions from 0 - 1
+		 */
+		var red = this.red / 255;
+		var green = this.green / 255;
+		var blue = this.blue / 255;
+
+		/**
+		 * Obtain color dominance
+		 */
+		var min = Math.min(red, green, blue);
+		var max = Math.max(red, green, blue);
+		var delta = max - min;
+
+		/**
+		 * Define HSLA components
+		 */
+		var hue = 0;
+		var saturation = 0;
+		var lightness = 0;
+		/**
+		 * Map current @see Color instance alpha from 0 - 255 to 0 - 1
+		 */
+		var alpha = (this.alpha / 255);
+
+		/**
+		 * Code below calculates hue from accordinly to which @see Color channel is most dominant
+		 */
+		/**
+		 * No color difference
+		 */
+		if (delta === 0) { hue = 0; }
+		/**
+		 * Red is most dominant
+		 */
+		else if (max === red) { hue = ((green - blue) / delta) % 6; }
+		/**
+		 * Green is most dominant
+		 */
+		else if (max === green) { hue = (blue - red) / delta + 2; }
+		/**
+		 * Blue is most dominant
+		 */
+		else { hue = (red - green) / delta + 4; }
+
+		/**
+		 * Correctly map the hue to degrees and above negative values 
+		 */
+		hue = Math.round(hue * 60);
+		if (hue < 0) { hue += 360; }
+
+		/**
+		 * Code below calculates the lightness
+		 */
+		lightness = (max + min) / 2;
+
+		/**
+		 * Calculate saturation, based on the @see lightness average
+		 */
+		saturation = delta === 0 ? 0 : delta / (1 - Math.abs(2 * lightness - 1));
+
+		/**
+		 * Get lightness and saturation pecentages
+		 */
+		saturation = (saturation * 100);
+		lightness = (lightness * 100);
+
+		/**
+		 * Finally return the HSLA string
+		 */
+		return `hsla(${hue},${saturation}%,${lightness}%,${alpha})`;
+
+	}
+
+	/**
+	 * Sets the current @see Color instance from the HSLA color format components
+	 * 
+	 * @param {Number} Hue A value in a range of 0 - 360 degrees, representing a color wheel
+	 * @param {Number} saturation Percentage of color saturation
+	 * @param {Number} lightness Percentage of color lightness white - black scale
+	 * @returns {Color}
+	 */
+	public setHSLA(hue: number, saturation: number, lightness: number, alpha: number): Color {
+
+		/**
+		 * Being a percentage value , we must get fractions of 1
+		 */
+		saturation /= 100;
+		lightness /= 100;
+
+		/**
+		 * Color intensity
+		 */
+		let chroma: number = (1 - Math.abs(2 * lightness - 1)) * saturation;
+		let satX: number = chroma * (1 - Math.abs((hue / 60) % 2 - 1));
+		let intensity: number = lightness - chroma / 2;
+
+		/**
+		 * Define RGBA components
+		 */
+		let red: number = 0;
+		let green: number = 0;
+		let blue: number = 0;
+		/**
+		 * HSLA alpha value is a range from 0 - 1, therefore calculate a factor of 255
+		 */
+		alpha = utils.isNumber(alpha) ? (alpha * 255) : this.alpha;
+
+		/**
+		 * Code below calculates where the color channel lies within the wheel based from the hue angle
+		 * 
+		 * @see chroma represents which color is most dominant
+		 */
+		/**
+		 * Mix red and green dominance color band
+		 */
+		if (hue >= 0 && hue < 60) { red = chroma; green = satX; blue = 0; }
+		/**
+		 * Mostly green color dominance
+		 */
+		else if (hue >= 60 && hue < 120) { red = satX; green = chroma; blue = 0; }
+		/**
+		 * Mix green and blue dominance
+		 */
+		else if (hue >= 120 && hue < 180) { red = 0; green = chroma; blue = satX; }
+		/**
+		 * Mostly blue dominance
+		 */
+		else if (hue >= 180 && hue < 240) { red = 0; green = satX; blue = chroma; }
+		/**
+		 * Mix blue and red dominance
+		 */
+		else if (hue >= 240 && hue < 300) { red = satX; green = 0; blue = chroma; }
+		/**
+		 * Mostyl red dominance
+		 */
+		else if (hue >= 300 && hue < 360) { red = chroma; green = 0; blue = satX; }
+
+		/**
+		 * Map channels to 255 based on @see intensity
+		 */
+		this.red = Math.round((red + intensity) * 255);
+		this.green = Math.round((green + intensity) * 255);
+		this.blue = Math.round((blue + intensity) * 255);
+		this.alpha = alpha;
+
+		/**
+		 * Return @see Color instance for chaing
+		 */
 		return this;
 
 	}

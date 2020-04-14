@@ -624,6 +624,16 @@ export declare class Color {
      */
     static fromRGBA(red: number, green: number, blue: number, alpha: number): Color;
     /**
+     * Creates a @see Color instance from the HSLA color format components
+     *
+     * @param {Number} Hue A value in a range of 0 - 360 degrees, representing a color wheel
+     * @param {Number} saturation Percentage of color saturation
+     * @param {Number} lightness Percentage of color lightness white - black scale
+     * @param {Number} alpha Optional alpha value, defaults to 1
+     * @returns {Color}
+     */
+    static fromHSLA: (hue: number, saturation: number, lightness: number, alpha: number) => Color;
+    /**
       * Builds the current color instance into a hexidecimal format
       *
      * @param {number} red The red channel value
@@ -701,6 +711,21 @@ export declare class Color {
      * @returns {Color} Color
      */
     setRGBA(red: number, green: number, blue: number, alpha: number): Color;
+    /**
+     * Converts the current @see Color instance to a HSLA string
+     *
+     * @returns {String} 'hsla(hue, saturation, lightness)'
+     */
+    toHSLA(): string;
+    /**
+     * Sets the current @see Color instance from the HSLA color format components
+     *
+     * @param {Number} Hue A value in a range of 0 - 360 degrees, representing a color wheel
+     * @param {Number} saturation Percentage of color saturation
+     * @param {Number} lightness Percentage of color lightness white - black scale
+     * @returns {Color}
+     */
+    setHSLA(hue: number, saturation: number, lightness: number, alpha: number): Color;
     /**
      * Constructs a color object with the provided hexidecimal value
      *
