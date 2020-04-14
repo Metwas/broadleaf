@@ -32,5 +32,39 @@
 export function createGUID(random: boolean = true): string {
 
      return (random === true ? require("uuid").v4 : require("uuid").v1)();
- 
- };
+
+};
+
+/**
+ * Defines a type for holding cut target and remainder string values
+ */
+type stringCutSource = { remainder: string, value: string };
+
+/**
+ * Cuts a target string value from a source, returning @see stringCutSource
+ * 
+ * @param {String} target 
+ * @param {String} source 
+ * @returns {stringCutSource}
+ */
+export function cut(target: string, source: string): stringCutSource | null {
+
+     /**
+      * Validate types
+      */
+     if (typeof target === "string" && typeof source === "string") {
+
+          const original: string = source.substring(source.indexOf(target), target.length);
+          /**
+           * Return type @see stringCutSource
+           */
+          return { value: original, remainder: source.replace(original, "") };
+
+     }
+
+     /**
+      * Return an null if we got this far
+      */
+     return null;
+
+};

@@ -37,3 +37,4 @@ const buffer = text.buffer.fromString("hello world", "utf-16");
 console.log(buffer);
 console.log("Buffer to string");
 console.log(text.buffer.toString(buffer, "utf-8"));
+console.log(text.serialization.cut("#helloWorld#", "#helloWorld#Bye world"));
