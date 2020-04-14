@@ -58,7 +58,7 @@ export function cut(target: string, source: string): stringCutSource | null {
           /**
            * Return type @see stringCutSource
            */
-          return { value: original, remainder: source.replace(original, "") };
+          return { value: original, remainder: source.replace(original, "") || "" };
 
      }
 
