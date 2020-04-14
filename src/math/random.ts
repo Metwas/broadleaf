@@ -114,8 +114,7 @@ export class LCG {
         /**
          * Get initial random seed
          */
-        const random = this.next() / this.modular;
-        return start + Math.floor(random * range);
+        return start + Math.floor(this.next() * range);
 
     }
 

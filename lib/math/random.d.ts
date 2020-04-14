@@ -37,7 +37,7 @@ export declare class LCG {
      */
     constructor();
     /**
-     * Gets a new random integer
+     * Gets a new random float value between 0 - 1
      *
      * @public
      * @returns {Number}
