@@ -41,19 +41,9 @@ function Enumerator() { };
 Enumerator.validate = function (enumerator: any, value: any): boolean {
 
     /**
-     * Assign value to the enumerator reference if it matches an enum key type, such as @see String | @see Number
-     */
-    if (Enumerator.isValidEnumType(enumerator) && utils.isNullOrUndefined(value)) { value = enumerator; }
-
-    /**
-     * Validate instance binding
-     */
-    const self = utils.isNullOrUndefined(this) ? (Enumerator.isValidEnumType(enumerator) ? {} : enumerator) : this;
-
-    /**
      * This will return false if the provided parameter is not a valid enumeration
      */
-    return Enumerator.isValidEnumType(self[value]);
+    return Enumerator.isValidEnumType(enumerator[value]);
 
 };
 
