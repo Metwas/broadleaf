@@ -43,7 +43,7 @@ Enumerator.validate = function (enumerator: any, value: any): boolean {
     /**
      * This will return false if the provided parameter is not a valid enumeration
      */
-    return Enumerator.isValidEnumType(enumerator[value]);
+    return (utils.isNullOrUndefined(value) || utils.isNullOrUndefined(enumerator)) ? false : Enumerator.isValidEnumType(enumerator[value]);
 
 };
 
