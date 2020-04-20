@@ -96,6 +96,32 @@ export class Vector2 {
      }
 
      /**
+      * Calculates the dot product between the current @see Vector2 and the vector or vector coordiates provided
+      * 
+      * @see https://en.wikipedia.org/wiki/Dot_product
+      * @public
+      * @param {Number | Vector2} x
+      * @param {Number} y
+      * @returns {Vector2}
+      */
+     dot(x: Vector2 | number, y: number = 0): Vector2 {
+
+          /**
+           * Flatten the @see Vector2
+           */
+          if (x instanceof Vector2) { return this.dot(x.x, x.y); }
+          /**
+           * Calculate dot product
+           */
+          this.x * (x || 0) + this.y * (y || 0);
+          /**
+           * return instance for chaining
+           */
+          return this;
+
+     }
+
+     /**
       * Creates a new Vector2 from the current vectors magnitude
       * 
       * @returns {Vector2}

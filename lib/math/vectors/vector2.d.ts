@@ -33,6 +33,16 @@ export declare class Vector2 {
      */
     setMagnitude(value: number): Vector2;
     /**
+     * Calculates the dot product between the current @see Vector2 and the vector or vector coordiates provided
+     *
+     * @see https://en.wikipedia.org/wiki/Dot_product
+     * @public
+     * @param {Number | Vector2} x
+     * @param {Number} y
+     * @returns {Vector2}
+     */
+    dot(x: Vector2 | number, y?: number): Vector2;
+    /**
      * Creates a new Vector2 from the current vectors magnitude
      *
      * @returns {Vector2}
