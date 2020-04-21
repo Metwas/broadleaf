@@ -54,8 +54,8 @@ export class Vector2 {
       */
      constructor(x: number, y: number) {
 
-          this.x = x;
-          this.y = y;
+          this.x = utils.isNumber(x) ? x : 0;
+          this.y = utils.isNumber(y) ? y : 0;
 
      }
 
@@ -64,11 +64,7 @@ export class Vector2 {
       * 
       * @returns {Number}
       */
-     magnitude(): number {
-
-          return Math.sqrt((this.x + this.y) * (this.x + this.y));
-
-     }
+     magnitude(): number { return Math.sqrt((this.x + this.y) * (this.x + this.y)); }
 
      /**
       * Calculates the vectors coordinates based from the new magnitude value provided
@@ -126,11 +122,7 @@ export class Vector2 {
       * 
       * @returns {Vector2}
       */
-     copy(): Vector2 {
-
-          return new Vector2(this.x, this.y);
-
-     }
+     copy(): Vector2 { return new Vector2(this.x, this.y); }
 
      /**
       * Linear interpolates from the current vector to a new vector or scaler
@@ -180,22 +172,14 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     setX(scaler: number): void {
-
-          this.x = scaler;
-
-     }
+     setX(scaler: number): void { this.x = scaler; }
 
      /**
       * Sets the y property on this vector to the value provided
       * 
       * @param {number} scaler 
       */
-     setY(scaler: number): void {
-
-          this.y = scaler;
-
-     }
+     setY(scaler: number): void { this.y = scaler; }
 
      /**
       * Adds the provided value to the x property on this vector
@@ -246,22 +230,14 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     addX(scaler: number): void {
-
-          this.x += scaler;
-
-     }
+     addX(scaler: number): void { this.x += scaler; }
 
      /**
       * Adds the provided value to the y property on this vector
       * 
       * @param {number} scaler
       */
-     addY(scaler: number): void {
-
-          this.y += scaler;
-
-     }
+     addY(scaler: number): void { this.y += scaler; }
 
      /**
       * Adds the provided vector to this current vector object
@@ -312,22 +288,14 @@ export class Vector2 {
       * 
       * @param {number} scaler
       */
-     subX(scaler: number): void {
-
-          this.x -= scaler;
-
-     }
+     subX(scaler: number): void { this.x -= scaler; }
 
      /**
       * Subtracts the provided value from the y property on this vector
       * 
       * @param {number} scaler
       */
-     subY(scaler: number): void {
-
-          this.y -= scaler;
-
-     }
+     subY(scaler: number): void { this.y -= scaler; }
 
      /**
       * Subtracts the provided vector from this current vector object
@@ -378,22 +346,14 @@ export class Vector2 {
       * 
       * @param {number} scaler A multiplier scaler
       */
-     multiplyX(scaler: number): void {
-
-          this.x *= scaler;
-
-     }
+     multiplyX(scaler: number): void { this.x *= scaler; }
 
      /**
       * Multiplies the vectors y value to the provided multiplier 
       * 
       * @param {number} scaler The multiplier scaler
       */
-     multiplyY(scaler: number): void {
-
-          this.y *= scaler;
-
-     }
+     multiplyY(scaler: number): void { this.y *= scaler; }
 
      /**
       * Multiplies the vectors x and y value to the provided vector object
@@ -482,11 +442,7 @@ export class Vector2 {
       * 
       * @returns {Number} The angle in radians
       */
-     heading(): number {
-
-          return Math.atan2(this.y, this.x);
-
-     }
+     heading(): number { return Math.atan2(this.y, this.x); }
 
      /**
       * Rotates the current vector by a given angle
