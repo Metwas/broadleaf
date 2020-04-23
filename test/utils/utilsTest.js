@@ -105,7 +105,3 @@ const type = "number";
 const _defaultValue = utils.getTypeDefaults(type);
 log(`Default value for type: ${type} = ${typeof _defaultValue}`);
 
-setInterval(function(){
-     console.log("CPU FREQUENCY");
-     console.log(`Average: ${utils.system.cpuFrequency()}`);
-}, 2000);
