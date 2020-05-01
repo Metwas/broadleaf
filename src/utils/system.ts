@@ -159,3 +159,57 @@ export function getIPv6Details(): NetworkDevice {
      return getNetDetails(IP_VERSION_6);
 
 };
+
+/**
+ * Defines a basic operating system process
+ */
+type processEntry = { user: string, cpuUsage: number, memUsage: number, start: string, command: string };
+
+/**
+ * Gets all running processors on the current machine
+ * 
+ * @public
+ * @param {String | Function} filter 
+ * @returns Array<processEntry>
+ */
+export function getProcesses(filter: any = null): Array<any> {
+
+     const result: Array<processEntry> = []
+     let command: string = "";
+
+     /**
+      * Get supported os commands
+      */
+     switch (os.platform()) {
+
+          /**
+           * Windows 
+           */
+          case "win32":
+               command = "tasklist";
+               break;
+
+          /**
+           * All linux distros
+           */
+          case "linux":
+               command = "ps -aux";
+               break;
+
+     }
+
+     /**
+      * Spawn the command process
+      */
+     require("child_process").exec(command, function (err: Error, stdout: any, stderr: any) {
+
+          /**
+           * Filter out any processors
+           */
+          console.log(stdout.split("\n").join("\n\n\n"));
+
+     });
+
+     return result;
+
+};

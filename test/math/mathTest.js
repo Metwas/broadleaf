@@ -36,8 +36,27 @@ const { log, header } = printService;
 log(header("#### Math Testing ####"));
 
 console.log(`LCG test`);
-const lcg = new math.LCG()
-setInterval(function(){ console.log(Math.round(lcg.nextRange(4,8)))}, 1000);
+const lcg = new math.LCG();
+
+console.log(`RC4 test`);
+const rc4 = new math.RC4();
+
+const str = "hello world";
+let result = "";
+// encrypt using rc4 generate
+for(var i = 0; i < str.length;i++){
+
+     const code = String.prototype.charCodeAt.call(str, i);
+     // generate a byte sequence from the given char code
+     result += String.fromCharCode(rc4.generate(code));
+
+}
+
+console.log(`\nPlain: ${str}\nEncrypted${result}\n`);
+console.log(`Generate: ${rc4.generate()}`);
+console.log(`Generate: ${rc4.generate(2)}`);
+console.log(`Generate: ${rc4.generate(12)}`);
+// setInterval(function(){ console.log(Math.round(lcg.nextRange(4,8)))}, 1000);
 let max_nibble = math.MAX_NIBBLE;
 const max_byte = math.MAX_BYTE;
 const max_16bit = math.MAX_16BIT;

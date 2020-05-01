@@ -462,4 +462,4 @@ export const radiansToDegrees = function (radian: number): number {
 };
 
 export { Vector2 } from "./vectors/vector2";
-export { LCG } from "./random";
+export { LCG, RC4 } from "./random";

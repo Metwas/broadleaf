@@ -242,4 +242,4 @@ export declare const degreesToRadians: (degrees: number) => number;
  */
 export declare const radiansToDegrees: (radian: number) => number;
 export { Vector2 } from "./vectors/vector2";
-export { LCG } from "./random";
+export { LCG, RC4 } from "./random";
