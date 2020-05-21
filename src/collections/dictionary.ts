@@ -164,13 +164,32 @@ export class Dictionary<T> implements IDictionary<T> {
      * @param {String} name 
      * @param {T} arg 
      */
-    public add(name: string, arg: T): void {
+    public add<T>(name: string, arg: T): void {
 
         if (utils.isNullOrUndefined(arg)) { throw new Error("Dictionary does not accept null or undefined values"); }
-        /**
-         * Only add if not already defined
-         */
+        // Only add if not already defined
         if (!this.contains(name) === true) { this._source[name] = arg; }
+
+    }
+
+    /**
+     * Adds an array of @see IKeyValuePair entries to this @see Dictionary instance
+     * 
+     * @public
+     * @param {Array<IKeyValuePair<T>>}
+     */
+    public addRange<T>(array: Array<IKeyValuePair<T>>): void {
+
+        const length: number = utils.isArray(array) ? array.length : 0;
+        let index: number = 0;
+        for (; index < length; index++) {
+
+            const element: IKeyValuePair<T> = array[index];
+            const name: string = utils.isString(element.key) ? element.key : String(element);
+            // add key pair element
+            this.add(name, element.value);
+
+        }
 
     }
 

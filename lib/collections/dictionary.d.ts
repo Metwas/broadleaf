@@ -79,7 +79,14 @@ export declare class Dictionary<T> implements IDictionary<T> {
      * @param {String} name
      * @param {T} arg
      */
-    add(name: string, arg: T): void;
+    add<T>(name: string, arg: T): void;
+    /**
+     * Adds an array of @see IKeyValuePair entries to this @see Dictionary instance
+     *
+     * @public
+     * @param {Array<IKeyValuePair<T>>}
+     */
+    addRange<T>(array: Array<IKeyValuePair<T>>): void;
     /**
      * Removes and returns the @see T element specified by name
      *
