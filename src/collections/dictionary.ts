@@ -66,6 +66,13 @@ interface IDictionary<T> {
     get(name: string): T | null;
 
     /**
+     * Gets the total count of entries within this @see IDictionary instance
+     * 
+     * @returns {Number}
+     */
+    count(): number;
+
+    /**
      * Returns the dictionary elements as a @see Array
      * 
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
@@ -124,9 +131,7 @@ export class Dictionary<T> implements IDictionary<T> {
 
             if (utils.isInstanceOf(enumerable, Dictionary)) {
 
-                /**
-                 * Get contents of the @see Dictionary as an @see Array
-                 */
+                /** Get contents of the @see Dictionary as an @see Array */ 
                 enumerable = enumerable.list();
 
             }
@@ -215,6 +220,13 @@ export class Dictionary<T> implements IDictionary<T> {
      * @returns {Boolean}
      */
     public contains(name: string): boolean { return (name in this._source); }
+
+    /**
+     * Gets the total count of entries within this @see IDictionary instance
+     * 
+     * @returns {Number}
+     */
+    public count(): number { return Object.keys(this._source).length || 0; }
 
     /**
      * Returns the dictionary elements as a @see Array

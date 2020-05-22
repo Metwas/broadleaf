@@ -30,6 +30,12 @@ interface IDictionary<T> {
      */
     get(name: string): T | null;
     /**
+     * Gets the total count of entries within this @see IDictionary instance
+     *
+     * @returns {Number}
+     */
+    count(): number;
+    /**
      * Returns the dictionary elements as a @see Array
      *
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
@@ -109,6 +115,12 @@ export declare class Dictionary<T> implements IDictionary<T> {
      * @returns {Boolean}
      */
     contains(name: string): boolean;
+    /**
+     * Gets the total count of entries within this @see IDictionary instance
+     *
+     * @returns {Number}
+     */
+    count(): number;
     /**
      * Returns the dictionary elements as a @see Array
      *
