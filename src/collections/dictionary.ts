@@ -131,27 +131,7 @@ export class Dictionary<T> implements IDictionary<T> {
 
             }
 
-            if (utils.isArray(enumerable)) {
-
-                /**
-                 * The key within the dictionary will be the indexes of the array
-                 */
-                const keys: Array<any> = Object.keys(enumerable);
-                const length: number = keys.length;
-                let index: number = 0;
-                for (; index < length; index++) {
-
-                    const key: any = keys[index];
-                    const value: any = enumerable[index];
-
-                    /**
-                     * Add to underlying source
-                     */
-                    this.add(key, value);
-
-                }
-
-            }
+            if (utils.isArray(enumerable) || utils.isInstanceOf(enumerable, Dictionary)) { this.addRange(enumerable); }
 
         }
 
@@ -178,14 +158,17 @@ export class Dictionary<T> implements IDictionary<T> {
      * @public
      * @param {Array<IKeyValuePair<T>>}
      */
-    public addRange<T>(array: Array<IKeyValuePair<T>>): void {
+    public addRange<T>(array: any): void {
+
+        // flatten array if dictionary type
+        array = utils.isInstanceOf(array, Dictionary) ? array.list() : array;
 
         const length: number = utils.isArray(array) ? array.length : 0;
         let index: number = 0;
         for (; index < length; index++) {
 
             const element: IKeyValuePair<T> = array[index];
-            const name: string = utils.isString(element.key) ? element.key : String(element);
+            const name: string = utils.isString(element.key) ? element.key : String(index);
             // add key pair element
             this.add(name, element.value);
 
