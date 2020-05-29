@@ -40,4 +40,74 @@ export async function sleep(delay: number): Promise<any> {
 
      return promise;
 
-}
+};
+
+/**
+ * Model type for an @see interval system management
+ */
+type intervalMS = { clear: () => void, delay: (value: number) => void, times: (value: number) => void };
+
+/**
+ * A safer alternative to the @see global.setInterval
+ * 
+ * @param {Function} callback
+ * @param {Number} delay 
+ * @param {Number} times
+ */
+export function interval(callback: any, delay: number, times: number): intervalMS {
+
+     const INT_FUNC: any = function () {
+
+          return function () {
+
+               // validate execution times
+               if ((times === void 0 || times === null) || typeof times === "number" && times-- > 0) {
+
+                    // invoke function
+                    try { callback.call(null); }
+                    // handle errors
+                    catch (error) {
+
+                         // update times to zero, breaking the timeout
+                         times = 0;
+                         // throw error to caller
+                         throw error;
+
+                    }
+
+                    // re-initialize after a set timeout
+                    setTimeout(INT_FUNC, delay);
+
+               }
+
+          };
+
+     }();
+     
+     // This will be the initial kickstart
+     setTimeout(INT_FUNC, delay);
+     // return management system object to control the times and delay during runtime
+     return { 
+
+          /**
+           * Sets the times to 0, clearing the interval
+           */
+          clear: function(){ times = 0; },
+
+          /**
+           * Updates the delay paramater
+           * 
+           * @param {Number} value
+           */
+          delay: function(value: number){ (utils.isNumber(value) && value > 0) && (delay = value); },
+
+          /**
+           * Updates the times parameter
+           * 
+           * @param {Number} value
+           */
+          times: function(value){ (utils.isNumber(value) && value > 0) && (times = value);  }
+
+     };
+
+};

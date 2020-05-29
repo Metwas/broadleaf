@@ -24,11 +24,17 @@
 
 //===================== imports =====================//
 
-const { Timer, utils } = require("../../lib/broadleaf");
+const { Timer, utils, Task } = require("../../lib/broadleaf");
 const { test } = require("../helpers/helper");
 const { sleep } = require("../../lib/tasks/helpers");
 
 //===================== End imports =====================//
+
+let system = Task.interval(function(){ console.log("TESTING INTERVAL"); }, 1000, 2);
+
+// update interval
+system.times(5);
+system.delay(100);
 
 test("timer is not null or undefined", !utils.isNullOrUndefined(Timer));
 
