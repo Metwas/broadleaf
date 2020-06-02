@@ -78,9 +78,10 @@ interface IDictionary<T> {
      * Returns the dictionary elements as a @see Array
      * 
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
+     * @param {predicate} predicate
      * @returns {Array<IKeyValuePair<T>>}
      */
-    list(sort: ((a: any, b: any) => number) | null): Array<IKeyValuePair<T>>;
+    list(sort: ((a: any, b: any) => number) | null, predicate: predicate): Array<IKeyValuePair<T>>;
 
 }
 
@@ -173,6 +174,8 @@ export class Dictionary<T> implements IDictionary<T> {
 
         // validate type instance
         if (utils.isNullOrUndefined(arg)) { throw new Error("Invalid type requested to be added to this dictionary instance"); }
+        // ensure valid predicate
+        if (!utils.isFunction(predicate)) { predicate = defaultPredicate; }
         // validate predicate condition
         if (predicate(arg) && !this.contains(name)) { this._source[name] = arg; }
 
@@ -276,11 +279,15 @@ export class Dictionary<T> implements IDictionary<T> {
      * Returns the dictionary elements as a @see Array
      * 
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
+     * @param {predicate} predicate
      * @returns {Array<IKeyValuePair<T>>}
      */
-    public list(sort: ((a: any, b: any) => number) | null = null): Array<IKeyValuePair<T>> {
+    public list(sort: ((a: any, b: any) => number) | null = null, predicate: predicate = defaultPredicate): Array<IKeyValuePair<T>> {
 
         const arr: Array<IKeyValuePair<T>> = [];
+
+        // ensure valid predicate
+        if (!utils.isFunction(predicate)) { predicate = defaultPredicate; }
 
         const keys: Array<any> = Object.keys(this._source);
         const length: number = keys.length;
@@ -293,7 +300,8 @@ export class Dictionary<T> implements IDictionary<T> {
             const key: any = keys[index];
             const value: any = this._source[key];
 
-            arr.push({ key: key, value: value });
+            // evaluate predicate before adding to array
+            predicate(value) && arr.push({ key: key, value: value });
 
         }
 

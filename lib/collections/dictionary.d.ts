@@ -41,9 +41,10 @@ interface IDictionary<T> {
      * Returns the dictionary elements as a @see Array
      *
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
+     * @param {predicate} predicate
      * @returns {Array<IKeyValuePair<T>>}
      */
-    list(sort: ((a: any, b: any) => number) | null): Array<IKeyValuePair<T>>;
+    list(sort: ((a: any, b: any) => number) | null, predicate: predicate): Array<IKeyValuePair<T>>;
 }
 /**
  * Defines an object which can be iterated over
@@ -136,8 +137,9 @@ export declare class Dictionary<T> implements IDictionary<T> {
      * Returns the dictionary elements as a @see Array
      *
      * @param {Boolean | Function} sort An optional argument to use a default sort or custom compare function
+     * @param {predicate} predicate
      * @returns {Array<IKeyValuePair<T>>}
      */
-    list(sort?: ((a: any, b: any) => number) | null): Array<IKeyValuePair<T>>;
+    list(sort?: ((a: any, b: any) => number) | null, predicate?: predicate): Array<IKeyValuePair<T>>;
 }
 export {};
