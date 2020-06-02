@@ -46,10 +46,11 @@ interface IDictionary<T> {
     /**
      * Removes and returns the @see T element specified by name
      * 
-     * @param {String} name 
-     * @returns {T}
+     * @public
+     * @param {String | predicate} nameOrPredicate 
+     * @returns {T | Array<T> | null}
      */
-    remove(name: string): T | null;
+    remove(nameOrPredicate: any): T | Array<T> | null;
 
     /**
      * Checks if a specific @see T element exists within the dictionary
@@ -98,6 +99,14 @@ export interface IKeyValuePair<T> { key: string; value: T; }
  * Defines a single iterated @see IIteratable result
  */
 interface IIteratorResult<T> { value: T; done: boolean; }
+
+/**
+ * Predicate filter fuction type
+ * 
+ * @private
+ * @type {Function}
+ */
+type predicate = (arg: any) => boolean;
 
 /**
  * Default truthy predicate
@@ -160,7 +169,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * @param {T} arg 
      * @param {Function} predicate
      */
-    public add<T>(name: string, arg: T, predicate: (arg: T) => boolean = defaultPredicate): void {
+    public add<T>(name: string, arg: T, predicate: predicate = defaultPredicate): void {
 
         // validate type instance
         if (utils.isNullOrUndefined(arg)) { throw new Error("Invalid type requested to be added to this dictionary instance"); }
@@ -176,7 +185,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * @param {Array<IKeyValuePair<T>>}
      * @param {Function} predicate
      */
-    public addRange<T>(array: any, predicate: (arg: T) => boolean = defaultPredicate): void {
+    public addRange<T>(array: any, predicate: predicate = defaultPredicate): void {
 
         // flatten array if dictionary type
         array = utils.isInstanceOf(array, Dictionary) ? array.list() : array;
@@ -198,21 +207,45 @@ export class Dictionary<T> implements IDictionary<T> {
      * Removes and returns the @see T element specified by name
      * 
      * @public
-     * @param {String} name 
-     * @returns {T | null}
+     * @param {String | predicate} nameOrPredicate 
+     * @returns {T | Array<T> | null}
      */
-    public remove(name: string): T | null {
+    public remove(nameOrPredicate: any): T | Array<T> | null {
 
-        // Check if value exists
-        if (this.contains(name) === true) {
+        const self: this = this;
+        const r_elements: Array<any> = [];
+        // validate predicate
+        if (!utils.isFunction(nameOrPredicate)) {
 
-            const source = this._source[name];
-            delete this._source[name];
-            return source;
+            // make string name into predicate function
+            if (utils.isString(nameOrPredicate)) { nameOrPredicate = function (value: any) { return self._source[value]; }.bind(this); }
+            // else return null
+            else { return null; }
 
         }
 
-        return null;
+        const keys: Array<any> = Object.keys(self._source || {});
+        const length: number = keys.length;
+        let index: number = 0;
+        // iterate through the source keys
+        for (; index < length; index++) {
+
+            const key: any = keys[index];
+            const value: any = self._source[key];
+
+            // evaluate predicate
+            if (nameOrPredicate(value)) {
+
+                // add to removed list
+                r_elements.push(self._source[value]);
+                // remove from dictionary
+                delete self._source[value];
+
+            }
+
+        }
+
+        return r_elements.length === 1 ? r_elements[0] : r_elements;
 
     }
 

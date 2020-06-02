@@ -13,10 +13,11 @@ interface IDictionary<T> {
     /**
      * Removes and returns the @see T element specified by name
      *
-     * @param {String} name
-     * @returns {T}
+     * @public
+     * @param {String | predicate} nameOrPredicate
+     * @returns {T | Array<T> | null}
      */
-    remove(name: string): T | null;
+    remove(nameOrPredicate: any): T | Array<T> | null;
     /**
      * Checks if a specific @see T element exists within the dictionary
      *
@@ -59,6 +60,13 @@ interface IIteratorResult<T> {
     done: boolean;
 }
 /**
+ * Predicate filter fuction type
+ *
+ * @private
+ * @type {Function}
+ */
+declare type predicate = (arg: any) => boolean;
+/**
  * Defines a @see Symbol.iterator model
  */
 export interface IIteratable<T> {
@@ -87,7 +95,7 @@ export declare class Dictionary<T> implements IDictionary<T> {
      * @param {T} arg
      * @param {Function} predicate
      */
-    add<T>(name: string, arg: T, predicate?: (arg: T) => boolean): void;
+    add<T>(name: string, arg: T, predicate?: predicate): void;
     /**
      * Adds an array of @see IKeyValuePair entries to this @see Dictionary instance
      *
@@ -95,15 +103,15 @@ export declare class Dictionary<T> implements IDictionary<T> {
      * @param {Array<IKeyValuePair<T>>}
      * @param {Function} predicate
      */
-    addRange<T>(array: any, predicate?: (arg: T) => boolean): void;
+    addRange<T>(array: any, predicate?: predicate): void;
     /**
      * Removes and returns the @see T element specified by name
      *
      * @public
-     * @param {String} name
-     * @returns {T | null}
+     * @param {String | predicate} nameOrPredicate
+     * @returns {T | Array<T> | null}
      */
-    remove(name: string): T | null;
+    remove(nameOrPredicate: any): T | Array<T> | null;
     /**
      * Gets a specified element by name
      *
