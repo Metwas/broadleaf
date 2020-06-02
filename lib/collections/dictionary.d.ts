@@ -7,8 +7,9 @@ interface IDictionary<T> {
      *
      * @param {String} name
      * @param {T} arg
+     * @param {Function} predicate
      */
-    add(name: string, arg: T): void;
+    add(name: string, arg: T, predicate: (arg: T) => boolean): void;
     /**
      * Removes and returns the @see T element specified by name
      *
@@ -84,15 +85,17 @@ export declare class Dictionary<T> implements IDictionary<T> {
      * @public
      * @param {String} name
      * @param {T} arg
+     * @param {Function} predicate
      */
-    add<T>(name: string, arg: T): void;
+    add<T>(name: string, arg: T, predicate?: (arg: T) => boolean): void;
     /**
      * Adds an array of @see IKeyValuePair entries to this @see Dictionary instance
      *
      * @public
      * @param {Array<IKeyValuePair<T>>}
+     * @param {Function} predicate
      */
-    addRange<T>(array: any): void;
+    addRange<T>(array: any, predicate?: (arg: T) => boolean): void;
     /**
      * Removes and returns the @see T element specified by name
      *

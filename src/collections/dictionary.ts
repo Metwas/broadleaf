@@ -39,8 +39,9 @@ interface IDictionary<T> {
      * 
      * @param {String} name 
      * @param {T} arg 
+     * @param {Function} predicate
      */
-    add(name: string, arg: T): void;
+    add(name: string, arg: T, predicate: (arg: T) => boolean): void;
 
     /**
      * Removes and returns the @see T element specified by name
@@ -99,6 +100,14 @@ export interface IKeyValuePair<T> { key: string; value: T; }
 interface IIteratorResult<T> { value: T; done: boolean; }
 
 /**
+ * Default truthy predicate
+ * 
+ * @private
+ * @param {Any} arg 
+ */
+const defaultPredicate: (arg: any) => boolean = function (arg: any) { return true };
+
+/**
  * Defines a @see Symbol.iterator model
  */
 export interface IIteratable<T> { next(): IIteratorResult<T>;[Symbol.iterator](): Iterable<T>; }
@@ -123,20 +132,21 @@ export class Dictionary<T> implements IDictionary<T> {
     /**
      * Constructs a @see Dictionary instance from an @see Array
      * 
-     * @param {IKeyValuePair<T> | null} enumerable 
+     * @param {IKeyValuePair<T> | null} enumerable
+     * @param {Function} predicate
      */
-    public constructor(enumerable: any = null) {
+    public constructor(enumerable: any = null, predicate: (arg: T) => boolean = defaultPredicate) {
 
         if (enumerable !== null && enumerable !== void 0) {
 
             if (utils.isInstanceOf(enumerable, Dictionary)) {
 
-                /** Get contents of the @see Dictionary as an @see Array */ 
+                /** Get contents of the @see Dictionary as an @see Array */
                 enumerable = enumerable.list();
 
             }
 
-            if (utils.isArray(enumerable) || utils.isInstanceOf(enumerable, Dictionary)) { this.addRange(enumerable); }
+            if (utils.isArray(enumerable) || utils.isInstanceOf(enumerable, Dictionary)) { this.addRange(enumerable, predicate); }
 
         }
 
@@ -148,12 +158,14 @@ export class Dictionary<T> implements IDictionary<T> {
      * @public
      * @param {String} name 
      * @param {T} arg 
+     * @param {Function} predicate
      */
-    public add<T>(name: string, arg: T): void {
+    public add<T>(name: string, arg: T, predicate: (arg: T) => boolean = defaultPredicate): void {
 
-        if (utils.isNullOrUndefined(arg)) { throw new Error("Dictionary does not accept null or undefined values"); }
-        // Only add if not already defined
-        if (!this.contains(name) === true) { this._source[name] = arg; }
+        // validate type instance
+        if (utils.isNullOrUndefined(arg)) { throw new Error("Invalid type requested to be added to this dictionary instance"); }
+        // validate predicate condition
+        if (predicate(arg) && !this.contains(name)) { this._source[name] = arg; }
 
     }
 
@@ -162,8 +174,9 @@ export class Dictionary<T> implements IDictionary<T> {
      * 
      * @public
      * @param {Array<IKeyValuePair<T>>}
+     * @param {Function} predicate
      */
-    public addRange<T>(array: any): void {
+    public addRange<T>(array: any, predicate: (arg: T) => boolean = defaultPredicate): void {
 
         // flatten array if dictionary type
         array = utils.isInstanceOf(array, Dictionary) ? array.list() : array;
@@ -175,7 +188,7 @@ export class Dictionary<T> implements IDictionary<T> {
             const element: IKeyValuePair<T> = array[index];
             const name: string = utils.isString(element.key) ? element.key : String(index);
             // add key pair element
-            this.add(name, element.value);
+            this.add(name, element.value, predicate);
 
         }
 
@@ -190,9 +203,7 @@ export class Dictionary<T> implements IDictionary<T> {
      */
     public remove(name: string): T | null {
 
-        /**
-         * Check if value exists
-         */
+        // Check if value exists
         if (this.contains(name) === true) {
 
             const source = this._source[name];
