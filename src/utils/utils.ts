@@ -113,14 +113,11 @@ export function isClassOf(obj: object, className: string): boolean {
  */
 export function isInstanceOf(obj: any, type: any, inherit: boolean = true): boolean {
 
-     /**
-      * False if incorrect arguments were provided
-      */
-     if (isNullOrUndefined(type)) { return false; }
-     /**
-      * Check for primitive types
-      */
+     //  False if incorrect arguments were provided
+     if (isNullOrUndefined(type) || isNullOrUndefined(obj)) { return false; }
+     // Check for primitive types
      if (isPrimitive(obj)) { return isClassOf(obj, type.name); }
+
      /**
       * Returns false if type is null or undefined
       * 
@@ -856,18 +853,19 @@ export function has(obj: Object, property: string): boolean {
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-export function assign(target: any, ...args: Array<any>): Object {
+export function assign(target: any, ...args: Array<any>): any {
 
-     if (Object.assign || isFunction(Object.assign)) {
+     // define a polyfill if @see Object.assign does not exist
+     let _assign: (target: any, source: any) => any = function (target: any, source: any): any {
 
-          return Object.assign(target, args);
-
-     } else {
-
-
-          return polyfill.assignPolyfill(target);
+          _assign = Object.assign || polyfill.assignPolyfill;
+          // return the result
+          return _assign(target, source);
 
      }
+
+     // return assign to caller
+     return _assign(target, args);
 
 };
 

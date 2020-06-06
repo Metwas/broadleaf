@@ -249,7 +249,7 @@ export declare function has(obj: Object, property: string): boolean;
  * @remarks If not supported , it will create a poly fill code.
  * Some good documentation can be found here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
  */
-export declare function assign(target: any, ...args: Array<any>): Object;
+export declare function assign(target: any, ...args: Array<any>): any;
 /**
  * Flattens the base target by filtering out a specified property or validator function
  *
