@@ -44,11 +44,3 @@ export declare function getIPv4Details(): NetworkDevice;
  * @returns {NetworkDevice}
  */
 export declare function getIPv6Details(): NetworkDevice;
-/**
- * Gets all running processors on the current machine
- *
- * @public
- * @param {String | Function} filter
- * @returns Array<processEntry>
- */
-export declare function getProcesses(filter?: any): Array<any>;
