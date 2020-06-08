@@ -199,8 +199,10 @@ export class Dictionary<T> implements IDictionary<T> {
 
             const element: IKeyValuePair<T> = array[index];
             const name: string = utils.isString(element.key) ? element.key : String(index);
+            // get correct value
+            const value: any = utils.isNullOrUndefined(element.value) ? element : element.value;
             // add key pair element
-            this.add(name, element.value, predicate);
+            this.add(name, value, predicate);
 
         }
 
@@ -221,9 +223,15 @@ export class Dictionary<T> implements IDictionary<T> {
         if (!utils.isFunction(nameOrPredicate)) {
 
             // make string name into predicate function
-            if (utils.isString(nameOrPredicate)) { nameOrPredicate = function (value: any) { return self._source[value]; }.bind(this); }
+            if (utils.isString(nameOrPredicate)) { 
+                nameOrPredicate = function (value: any) { 
+                    return self._source[value]; 
+                }.bind(this); 
+            }
             // else return null
-            else { return null; }
+            else { 
+                return null; 
+            }
 
         }
 
@@ -257,7 +265,11 @@ export class Dictionary<T> implements IDictionary<T> {
      * 
      * @param {String} name
      */
-    public get(name: string): T | null { return this.contains(name) === true ? this._source[name] : null; }
+    public get(name: string): T | null { 
+        
+        return this.contains(name) === true ? this._source[name] : null; 
+    
+    }
 
     /**
      * Checks if a specific @see T element exists within the dictionary
@@ -266,14 +278,22 @@ export class Dictionary<T> implements IDictionary<T> {
      * @param {String} name
      * @returns {Boolean}
      */
-    public contains(name: string): boolean { return (name in this._source); }
+    public contains(name: string): boolean { 
+        
+        return (name in this._source); 
+    
+    }
 
     /**
      * Gets the total count of entries within this @see IDictionary instance
      * 
      * @returns {Number}
      */
-    public count(): number { return Object.keys(this._source).length || 0; }
+    public count(): number { 
+        
+        return Object.keys(this._source).length || 0; 
+    
+    }
 
     /**
      * Returns the dictionary elements as a @see Array
@@ -287,7 +307,9 @@ export class Dictionary<T> implements IDictionary<T> {
         const arr: Array<IKeyValuePair<T>> = [];
 
         // ensure valid predicate
-        if (!utils.isFunction(predicate)) { predicate = defaultPredicate; }
+        if (!utils.isFunction(predicate)) { 
+            predicate = defaultPredicate; 
+        }
 
         const keys: Array<any> = Object.keys(this._source);
         const length: number = keys.length;
