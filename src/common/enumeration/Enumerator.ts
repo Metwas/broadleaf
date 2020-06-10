@@ -40,9 +40,7 @@ function Enumerator() { };
  */
 Enumerator.validate = function (enumerator: any, value: any): boolean {
 
-    /**
-     * This will return false if the provided parameter is not a valid enumeration
-     */
+    /** This will return false if the provided parameter is not a valid enumeration */
     return (utils.isNullOrUndefined(value) || utils.isNullOrUndefined(enumerator)) ? false : Enumerator.isValidEnumType(enumerator[value]);
 
 };
@@ -56,7 +54,9 @@ Enumerator.validate = function (enumerator: any, value: any): boolean {
  */
 Enumerator.isEnumerator = function (enumerator: any): boolean {
 
-    if (utils.isNullOrUndefined(enumerator)) { return false; }
+    if (utils.isNullOrUndefined(enumerator)) {
+        return false;
+    }
 
     let index: number = 0;
     const keys: Array<any> = Object.keys(enumerator);
@@ -70,16 +70,14 @@ Enumerator.isEnumerator = function (enumerator: any): boolean {
         const property: any = enumerator[key];
 
         let value = String(enumerator[enumerator[property]]);
-        /**
-         * Loop property back to index value and ensure a match
-         */
-        if (String(enumerator[value]) !== key) { return false; }
+        /** Loop property back to index value and ensure a match */
+        if (String(enumerator[value]) !== key) {
+            return false;
+        }
 
     }
 
-    /**
-     * True if it passed all conditions
-     */
+    // True if it passed all conditions
     return true;
 
 };
@@ -106,7 +104,9 @@ Enumerator.create = function (values: Array<any>, startIndex: number): Enumerato
     /**
      * Validate start position
      */
-    if (!utils.isNumber(startIndex) || startIndex < 0) { startIndex = 0; }
+    if (!utils.isNumber(startIndex) || startIndex < 0) {
+        startIndex = 0;
+    }
 
     /**
      * Assigns the enumeration entry to a @see Enumerator instance
@@ -121,9 +121,7 @@ Enumerator.create = function (values: Array<any>, startIndex: number): Enumerato
         // increment enumeration count
         _currentIndex++;
 
-        /**
-         * Flatten value if object literal
-         */
+        // Flatten value if object literal
         if (utils.isObjectLiteral(value)) {
 
             value = value["value"];
@@ -131,21 +129,19 @@ Enumerator.create = function (values: Array<any>, startIndex: number): Enumerato
 
         }
 
-        /**
-         *  ensure value is of @see String type
-         */
+        /** Ensure value is of @see String type */
         value = utils.isString(value) ? value : "";
         // add entry
         return enumerator[enumerator[value] = ((utils.isNumber(index) && index >= _currentIndex) ? index : _currentIndex - 1)] = value;
 
     };
 
-    /**
-     * Iterate through values parameter
-     */
+    // Iterate through values parameter
     let index = 0;
     const length = utils.isArray(values) ? values.length : 0;
-    for (; index < length; index++) { assign(enumerator, values[index], 0); }
+    for (; index < length; index++) {
+        assign(enumerator, values[index], 0);
+    }
 
     /**
      * Return @see Enumerator instance
@@ -161,7 +157,23 @@ Enumerator.create = function (values: Array<any>, startIndex: number): Enumerato
  * @param {Number | String} value
  * @returns {Boolean}
  */
-Enumerator.isValidEnumType = function (value: any) { return (utils.isString(value) || utils.isNumber(value)); };
+Enumerator.isValidEnumType = function (value: any) {
+
+    return (utils.isString(value) || utils.isNumber(value));
+
+};
+
+/**
+ * Returns the string representation for this enumeration
+ * 
+ * @param {Enumerator} enumeration
+ * @param {Number} index
+ */
+Enumerator.toString = function (enumeration: any, index: number): string {
+
+    return Enumerator.isEnumerator(enumeration) ? (utils.isNumber(index) ? (enumeration[index] || "") : (enumeration[enumeration[index]]) || "") : "";
+
+};
 
 /**
  * create minimal prototype
@@ -174,7 +186,22 @@ Enumerator.prototype = {
      * @param {Number | String}
      * @returns {Boolean}
      */
-    validate: function (value: any) { return Enumerator.validate(this, value); }
+    validate: function (value: any) {
+
+        return Enumerator.validate(this, value);
+
+    },
+
+    /**
+     * Returns the string representation for this enumeration
+     * 
+     * @param {Number} index
+     */
+    toString: function (index: number): string {
+
+        return Enumerator.toString(this, index);
+
+    }
 
 };
 

@@ -7,5 +7,6 @@ declare namespace Enumerator {
     var isEnumerator: (enumerator: any) => boolean;
     var create: (values: any[], startIndex: number) => Enumerator<any>;
     var isValidEnumType: (value: any) => boolean;
+    var toString: (enumeration: any, index: number) => string;
 }
 export { Enumerator };
