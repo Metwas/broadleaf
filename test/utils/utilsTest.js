@@ -24,19 +24,22 @@
 
 //===================== imports =====================//
 
-const { utils, math } = require("../../lib/broadleaf");
 const {  test, printService } = require("../helpers/helper");
-
-const { log, header } = printService;
+const { utils, math, Enumerator } = require("../../lib/broadleaf");
 
 //===================== End imports =====================//
 
+const { log, header } = printService;
 
 // testing initialization
 log(header("#### Utility Testing ####"));
-const arr1 = [{name:"a"}, {name:"z"}, {name:"f", nam: "a"}, {name:"d"}];
+log(header("Enumeration test"));
+const enumeration = Enumerator.create(["ready", "paused"]);
+console.log(Enumerator.toString(enumeration, 0));
+
+const arr1 = [{name:"a"}, {name:"z", message: "Hello world"}, {name:"f",  message: "foo"}, {name:"d"}];
 console.log("Flatten array");
-console.log(utils.flatten(arr1, "name"));
+console.log(utils.flatten(arr1, "name", true));
 // console.log("Contains: " + utils.contains(arr1, "nam", "a", function(el){ console.log(el); }));
 // // const arr1 = [1,2,5,16,3,56,6];
 // console.log(utils.sort(arr1, utils.SORT_ASCENDING, "name"));
