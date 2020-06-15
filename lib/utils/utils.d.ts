@@ -2,6 +2,8 @@ import * as system from "./system";
 import * as polyfill from "./polyfill";
 /**
  * No operation function
+ *
+ * @type {Function}
  */
 export declare function noop(): void;
 /**
@@ -17,6 +19,7 @@ export declare const CLASS_REG: RegExp;
  *
  * @param {Any} value
  * @param {Boolean} classTemplate optional, defaults to true
+ * @returns {String}
  */
 export declare function toString(value: any, basic?: boolean): string;
 /**
@@ -24,6 +27,7 @@ export declare function toString(value: any, basic?: boolean): string;
  *
  * @param {Object} obj
  * @param {String} className
+ * @returns {Boolean}
  */
 export declare function isClassOf(obj: object, className: string): boolean;
 /**
@@ -39,48 +43,63 @@ export declare function isInstanceOf(obj: any, type: any, inherit?: boolean): bo
  * Checks if the provided parameter is one of JavaScript's primitive types
  *
  * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isPrimitive(value: any): boolean;
 /**
  * Checks the value parameter is of type 'String'
  *
- * @param value
+ * @param {String} value
+ * @returns {Boolean}
  */
 export declare function isString(value: any): boolean;
 /**
+ * Checks the string value if it is empty
+ *
+ * @param {String} value
+ * @returns {Boolean}
+ */
+export declare function isEmptyString(value: any): boolean;
+/**
  * Checks the value parameter is of type 'Number'
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isNumber(value: any): boolean;
 /**
  * Checks the value parameter is of type Object literal
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isObjectLiteral(value: any): boolean;
 /**
  * Checks the value parameter is of type 'Object'
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isObject(value: any): boolean;
 /**
  * Checks the value parameter is a valid function
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isFunction(value: any): boolean;
 /**
  * Checks the value parameter if it is null
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isNull(value: any): boolean;
 /**
  * Checks the value parameter if it is undefined
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isUndefined(value: any): boolean;
 /**
@@ -93,13 +112,15 @@ export declare function isNullOrUndefined(value: any): boolean;
 /**
  * Checks the value parameter is of type 'Boolean'
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isBoolean(value: any): boolean;
 /**
  * Checks the value parameter is of type 'Array'
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isArray(value: any): boolean;
 /**
@@ -112,25 +133,29 @@ export declare function isArrayLike(value: any): boolean;
 /**
  * Checks the value parameter is a valid number and finite
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isFinite(value: any): boolean;
 /**
  * Checks the value parameter is a valid regular expression
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isRegExp(value: any): boolean;
 /**
  * Checks the provided parameter is an instance of type 'Error'
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isError(value: any): boolean;
 /**
  * Checks the provided parameter is an instance of type 'Date'
  *
- * @param value
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export declare function isDate(value: any): boolean;
 /**

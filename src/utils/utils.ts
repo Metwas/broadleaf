@@ -54,6 +54,8 @@ const DEFAULT_TABLE = (function (): any {
 
 /**
  * No operation function
+ * 
+ * @type {Function}
  */
 export function noop(): void { };
 
@@ -71,6 +73,7 @@ export const CLASS_REG = /\[object (.*?)\]/i;
  * 
  * @param {Any} value
  * @param {Boolean} classTemplate optional, defaults to true
+ * @returns {String}
  */
 export function toString(value: any, basic: boolean = false): string {
 
@@ -95,7 +98,8 @@ export function toString(value: any, basic: boolean = false): string {
  * Evaluates the class type on the obj parameter provided
  * 
  * @param {Object} obj 
- * @param {String} className 
+ * @param {String} className
+ * @returns {Boolean}
  */
 export function isClassOf(obj: object, className: string): boolean {
 
@@ -130,7 +134,8 @@ export function isInstanceOf(obj: any, type: any, inherit: boolean = true): bool
 /**
  * Checks if the provided parameter is one of JavaScript's primitive types
  * 
- * @param {Any} value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isPrimitive(value: any): boolean {
 
@@ -141,7 +146,8 @@ export function isPrimitive(value: any): boolean {
 /**
  * Checks the value parameter is of type 'String'
  * 
- * @param value 
+ * @param {String} value
+ * @returns {Boolean}
  */
 export function isString(value: any): boolean {
 
@@ -150,9 +156,22 @@ export function isString(value: any): boolean {
 };
 
 /**
+ * Checks the string value if it is empty
+ * 
+ * @param {String} value
+ * @returns {Boolean}
+ */
+export function isEmptyString(value: any): boolean {
+
+     return isString(value) && value.length === 0;
+
+};
+
+/**
  * Checks the value parameter is of type 'Number'
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isNumber(value: any): boolean {
 
@@ -163,7 +182,8 @@ export function isNumber(value: any): boolean {
 /**
  * Checks the value parameter is of type Object literal
  * 
- * @param value 
+ * @param {Any} value 
+ * @returns {Boolean}
  */
 export function isObjectLiteral(value: any): boolean {
 
@@ -175,7 +195,8 @@ export function isObjectLiteral(value: any): boolean {
 /**
  * Checks the value parameter is of type 'Object'
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isObject(value: any): boolean {
 
@@ -186,7 +207,8 @@ export function isObject(value: any): boolean {
 /**
  * Checks the value parameter is a valid function
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isFunction(value: any): boolean {
 
@@ -197,7 +219,8 @@ export function isFunction(value: any): boolean {
 /**
  * Checks the value parameter if it is null
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isNull(value: any): boolean {
 
@@ -208,7 +231,8 @@ export function isNull(value: any): boolean {
 /**
  * Checks the value parameter if it is undefined
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isUndefined(value: any): boolean {
 
@@ -231,7 +255,8 @@ export function isNullOrUndefined(value: any): boolean {
 /**
  * Checks the value parameter is of type 'Boolean'
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isBoolean(value: any): boolean {
 
@@ -242,7 +267,8 @@ export function isBoolean(value: any): boolean {
 /**
  * Checks the value parameter is of type 'Array'
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isArray(value: any): boolean {
 
@@ -265,7 +291,8 @@ export function isArrayLike(value: any): boolean {
 /**
  * Checks the value parameter is a valid number and finite
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isFinite(value: any): boolean {
 
@@ -276,7 +303,8 @@ export function isFinite(value: any): boolean {
 /**
  * Checks the value parameter is a valid regular expression
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isRegExp(value: any): boolean {
 
@@ -287,7 +315,8 @@ export function isRegExp(value: any): boolean {
 /**
  * Checks the provided parameter is an instance of type 'Error'
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isError(value: any): boolean {
 
@@ -298,7 +327,8 @@ export function isError(value: any): boolean {
 /**
  * Checks the provided parameter is an instance of type 'Date'
  * 
- * @param value 
+ * @param {Any} value
+ * @returns {Boolean}
  */
 export function isDate(value: any): boolean {
 
