@@ -255,8 +255,9 @@ export declare function assign(target: any, ...args: Array<any>): any;
  *
  * @param {Array | Object} target
  * @param {String | Function} key
+ * @param {Boolean} retAsKey - Option to return as an array of objects allocated with the @see key parameter
  */
-export declare function flatten(target: any, key: any): Array<any>;
+export declare function flatten(target: any, key: any, retAsKey?: boolean): Array<any>;
 /**
  * Defines a tree node model
  *

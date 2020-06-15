@@ -906,9 +906,10 @@ const defaultPropertyValidator = function (value: any, property: any, target: an
  * Flattens the base target by filtering out a specified property or validator function
  * 
  * @param {Array | Object} target
- * @param {String | Function} key 
+ * @param {String | Function} key
+ * @param {Boolean} retAsKey - Option to return as an array of objects allocated with the @see key parameter
  */
-export function flatten(target: any, key: any): Array<any> {
+export function flatten(target: any, key: any, retAsKey: boolean = false): Array<any> {
 
      /**
       * Validate target
@@ -942,7 +943,22 @@ export function flatten(target: any, key: any): Array<any> {
           /**
            * Add if result state is true
            */
-          if (result.state === true) { temp.push(result.value); }
+          if (result.state === true) {
+
+               let value: any = {};
+
+               if(retAsKey === true){
+                    // assign key
+                    value[key] = result.value;
+               }
+               // else assign default value
+               else{
+                    value = result.value;
+               }
+
+               temp.push(value); 
+
+          }
 
      });
 
