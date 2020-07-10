@@ -22,7 +22,11 @@
      SOFTWARE.
 */
 
+//===================== Imports =====================//
+
 import * as utils from "../utils/utils";
+
+//===================== End Imports =====================//
 
 /**
  * Creates an awaitable timeout for a defined number of milliseconds
@@ -33,7 +37,10 @@ export async function sleep(delay: number): Promise<any> {
 
      const promise = new Promise((resolve, _) => {
 
-          if (!utils.isNumber(delay)) { delay = 1; }
+          if (!utils.isNumber(delay)) { 
+               delay = 1; 
+          }
+
           setTimeout(resolve, delay);
 
      });
@@ -45,7 +52,11 @@ export async function sleep(delay: number): Promise<any> {
 /**
  * Model type for an @see interval system management
  */
-type intervalMS = { clear: () => void, delay: (value: number) => void, times: (value: number) => void };
+type intervalMS = { 
+     clear: () => void, 
+     delay: (value: number) => void, 
+     times: (value: number) => void 
+};
 
 /**
  * A safer alternative to the @see global.setInterval
@@ -64,7 +75,9 @@ export function interval(callback: any, delay: number, times: number): intervalM
                if ((times === void 0 || times === null) || typeof times === "number" && times-- > 0) {
 
                     // invoke function
-                    try { callback.call(null); }
+                    try { 
+                         callback.call(null); 
+                    }
                     // handle errors
                     catch (error) {
 
@@ -86,27 +99,34 @@ export function interval(callback: any, delay: number, times: number): intervalM
      
      // This will be the initial kickstart
      setTimeout(INT_FUNC, delay);
+
      // return management system object to control the times and delay during runtime
      return { 
 
           /**
            * Sets the times to 0, clearing the interval
            */
-          clear: function(){ times = 0; },
+          clear: function(){ 
+               times = 0; 
+          },
 
           /**
            * Updates the delay paramater
            * 
            * @param {Number} value
            */
-          delay: function(value: number){ (utils.isNumber(value) && value > 0) && (delay = value); },
+          delay: function(value: number){ 
+               (utils.isNumber(value) && value > 0) && (delay = value); 
+          },
 
           /**
            * Updates the times parameter
            * 
            * @param {Number} value
            */
-          times: function(value){ (utils.isNumber(value) && value > 0) && (times = value);  }
+          times: function(value){ 
+               (utils.isNumber(value) && value > 0) && (times = value);  
+          }
 
      };
 

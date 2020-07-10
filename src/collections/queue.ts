@@ -107,15 +107,9 @@ export class Queue extends EventEmitter<any> {
 
                const entry: any = this._data[i];
                if (!entry) {
-
-                    // remove null entry
                     this.remove(i);
-
                } else {
-
-                    // increment count
                     _temp++;
-
                }
 
           }
@@ -130,9 +124,7 @@ export class Queue extends EventEmitter<any> {
       * @returns {Array}
       */
      public get Queue(): Array<any> {
-
           return this._data;
-
      }
 
      /**
@@ -143,25 +135,19 @@ export class Queue extends EventEmitter<any> {
      public append(queueItem: any): void {
 
           if (!queueItem) {
-
                console.warn("Provided queue item was undefined or null");
                return;
-
           }
 
           if (Array.isArray(queueItem)) {
-
                this.appendRange(queueItem);
                return;
-
           }
 
           // ensure count does not exceed the set limit
           if ((this.Count + 1) > this.limit) {
-
                console.warn(`Queue has exceeded the set limit of: ${this.limit}`);
                return;
-
           }
 
           // push entries to the end of the queue
@@ -179,10 +165,8 @@ export class Queue extends EventEmitter<any> {
      public appendRange(items: Array<any>): void {
 
           if (!items) {
-
                console.warn("Provided item(s) was not null or undefined");
                return;
-
           }
 
           // validate the items fall within range, else select a set few entries
@@ -192,20 +176,16 @@ export class Queue extends EventEmitter<any> {
           if (state && state.handled === true) {
 
                if (typeof state.cb === "function") {
-
                     // call sub-classes callback function
                     state.cb(items, { inRange: inRange, overflowAmount: overflowAmount });
-
                }
 
           } else {
 
                // provide default logic
                if (inRange === false) {
-
                     // slice the items based on the overflow amount
                     items = items.slice(0, overflowAmount);
-
                }
 
                this._data.push(...items);
@@ -222,9 +202,7 @@ export class Queue extends EventEmitter<any> {
      public next(): any {
 
           if (this._data.length === 0) {
-
                return null;
-
           }
 
           // state is used for sub-classes to inject custom logic
@@ -237,25 +215,19 @@ export class Queue extends EventEmitter<any> {
           if (!isNullOrUndefined(state)) {
 
                if (typeof state.cb === "function") {
-
                     // call sub-classes callback function
                     queueItem = state.cb();
-
                }
 
                if (!state.handled && this.Count > 0) {
-
                     // provide default logic
                     queueItem = this._data.shift();
-
                }
 
                return queueItem;
 
           } else {
-
                return this._data.shift();
-
           }
 
      }
@@ -275,6 +247,7 @@ export class Queue extends EventEmitter<any> {
                this.emit("remove", queueItem);
 
           }
+
           // return the removed queue entry
           return queueItem;
 
@@ -303,7 +276,6 @@ export class Queue extends EventEmitter<any> {
                     if (end <= start) {
                          // ensure end is greater than the start
                          end = start + 1;
-
                     }
 
                     if (start > -1 && end && end <= this.Count) {
@@ -333,6 +305,7 @@ export class Queue extends EventEmitter<any> {
           const length: number = Array.isArray(items) ? items.length : 1;
           let inRange: boolean = false;
           let overflow: number = 0;
+
           if (length <= this.limit) {
 
                overflow = (this.Count + length) % this.limit;
@@ -371,10 +344,9 @@ export class PriorityQueue extends Queue {
      public constructor(priorityProperty: string, limit: number, retain: boolean = true) {
 
           super(limit);
+
           if (!isString(priorityProperty)) {
-
                priorityProperty = "priority";
-
           }
 
           this.retainQueue = retain;
@@ -392,14 +364,10 @@ export class PriorityQueue extends Queue {
      public append(item: any): void {
 
           if (this.retainQueue === false) {
-
                this._add(item);
-
           }
           else {
-
                super.append(this._createPriorityItem(item));
-
           }
 
      }
@@ -422,9 +390,7 @@ export class PriorityQueue extends Queue {
                     const length = items.length;
                     let i = 0;
                     for (; i < length; i++) {
-
                          yield self._createPriorityItem(items[i]);
-
                     }
 
                }(item);
@@ -433,9 +399,7 @@ export class PriorityQueue extends Queue {
                let entry: any = null;
                let temp: Array<any> = [];
                while (entry = priorityItems.next().value) {
-
                     temp.push(entry);
-
                }
 
                return temp;
@@ -444,16 +408,12 @@ export class PriorityQueue extends Queue {
 
           const isValueType: boolean = isNumber(item) || isString(item);
           if (isValueType) {
-
                item = { value: item };
-
           }
 
           if (!item[this.priorityProperty]) {
-
                // default to value priority if value type, else set priority level of 1
                item[this.priorityProperty] = isValueType ? item.value : 1;
-
           }
 
           return item;
@@ -466,9 +426,7 @@ export class PriorityQueue extends Queue {
       * @private
       */
      private _handleItemAddition(): void {
-
           this._sortByPriority(this._data);
-
      }
 
      /**
@@ -481,7 +439,9 @@ export class PriorityQueue extends Queue {
 
           const self = this;
           // sort the array based on the priority
-          items.sort(function (a, b) { return a[self.priorityProperty] - b[self.priorityProperty] });
+          items.sort(function (a, b) { 
+               return a[self.priorityProperty] - b[self.priorityProperty] 
+          });
 
      }
 
@@ -502,17 +462,13 @@ export class PriorityQueue extends Queue {
                if (inRange === false) {
 
                     if (self.retainQueue === false) {
-
                          // replace with new entries based on priority
                          self._add(priorityItems);
                          return;
-
                     } else {
-
                          // only leave the top priority entries
                          self._sortByPriority(priorityItems);
                          priorityItems.splice(-overflowAmount);
-
                     }
 
                }
@@ -537,9 +493,7 @@ export class PriorityQueue extends Queue {
      private _add(items: Array<any>): void {
 
           if (!Array.isArray(items)) {
-
                items = [items];
-
           }
 
           const length: number = this._data.length;
@@ -549,11 +503,10 @@ export class PriorityQueue extends Queue {
           this._data.push(...items);
           // sort based on priority
           this._sortByPriority(this._data);
+          
           // only filter out the entries if overflowing
           if (amount > 0) {
-
                this._data.splice(this.limit, amount);
-
           }
 
      }

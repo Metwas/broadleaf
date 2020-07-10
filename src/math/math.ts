@@ -173,10 +173,10 @@ export const RADTODEG = 180 / Math.PI;
  */
 export const XOR_SWAP = function (x: number, y: number) {
 
-     if (x != y) { x ^= y; y ^= x; x ^= y;}
-     /**
-      * Return to caller
-      */
+     if (x != y) { 
+          x ^= y; y ^= x; x ^= y;
+     }
+     
      return { x: x, y: y };
 
 };
@@ -192,9 +192,7 @@ export const XOR_SWAP = function (x: number, y: number) {
  * @returns {Number} A new point which is a fraction (based off [t]) of the final x1 point
  */
 export const lerp = function (x0: number, x1: number, t: number): number {
-
      return (1 - t) * x0 + t * x1;
-
 };
 
 /**
@@ -206,9 +204,7 @@ export const lerp = function (x0: number, x1: number, t: number): number {
  * @returns {Number} A new number which is now clamped between a given minimum and maximum range value
  */
 export const clamp = function (val: number, min: number, max: number): number {
-
      return Math.max(min, Math.min(max, val));
-
 };
 
 /**
@@ -219,9 +215,7 @@ export const clamp = function (val: number, min: number, max: number): number {
  * @returns {Number} The newly squared value
  */
 export const square = function (value: number): number {
-
      return Math.pow(value, 2);
-
 };
 
 /**
@@ -236,9 +230,7 @@ export const average = function (values: Array<any>, property: any): number {
      let result: number = 0;
      if (utils.isArray(values)) {
 
-          /**
-           * Keep a track of valid @see Number type arguments, to avoid a miss count at the end
-           */
+          /** Keep a track of valid @see Number type arguments, to avoid a miss count at the end */
           let totalValidArguments: number = 0;
           for (const value in values) {
 
@@ -249,9 +241,6 @@ export const average = function (values: Array<any>, property: any): number {
                if (utils.isNumber(normalized)) {
 
                     totalValidArguments++;
-                    /**
-                     * add to result
-                     */
                     result += normalized;
 
                }
@@ -278,9 +267,7 @@ export const average = function (values: Array<any>, property: any): number {
  * @returns {Number} The distance between these points
  */
 export const dist = function (x0: number, x1: number): number {
-
      return Math.sqrt((x0 - x1) * (x0 - x1));
-
 };
 
 /**
@@ -297,9 +284,7 @@ export const dist = function (x0: number, x1: number): number {
 export const map = function (value: number, minFrom: number, maxFrom: number, minTo: number, maxTo: number): number {
 
      if (!utils.isNumber(value)) {
-
           return -1;
-
      }
 
      return (value - minFrom) * (maxTo - minTo) / (maxFrom - minFrom) + minTo;
@@ -322,20 +307,15 @@ export const random = function (min: any, max: number, round: boolean | number =
 
      if (!utils.isNumber(min)) {
 
-          /**
-           * if min is of @see Boolean type, update refence
-           */
+          /** if min is of @see Boolean type, update refence */
           if (utils.isBoolean(min)) {
-
                round = min;
-
           }
+
           rnd = rand;
 
      } else if (!utils.isNumber(max)) {
-
           rnd = rand * min;
-
      } else {
 
           // get the highest of the two supplied values
@@ -355,7 +335,9 @@ export const random = function (min: any, max: number, round: boolean | number =
      /**
       * Round if parameter set to true
       */
-     if (round === true) { rnd = Math.round(rnd); }
+     if (round === true) { 
+          rnd = Math.round(rnd); 
+     }
 
      return rnd;
 
@@ -372,9 +354,7 @@ export const randomArray = function (array: Array<any>): number | null {
 
      const rand = Math.random();
      if (!utils.isArray(array)) {
-
           return null;
-
      }
 
      return array[Math.floor(rand * array.length)];
@@ -392,9 +372,7 @@ export const randomArray = function (array: Array<any>): number | null {
  * @returns {Number} The index of the corresponding element within a one dimensional array
  */
 export const getMatrixIndex = function (x: number, y: number, width: number): number {
-
      return y * width + x;
-
 };
 
 /**
@@ -411,24 +389,18 @@ export const getMatrixIndex = function (x: number, y: number, width: number): nu
 export const getMatrixIndexFromArray = function (x: number, y: number, width: number, array: Array<any>, border: boolean): Object | null {
 
      if (!utils.isArray(array)) {
-
           return null;
-
      }
 
      border = !!border;
      if (border && (x < 0 || x >= width)) {
-
           return -1;
-
      }
 
      let index = getMatrixIndex(x, y, width);
      if (index > array.length) {
-
           // avoid index out of bounds error
           index = 0;
-
      }
 
      return array[index];
@@ -443,9 +415,7 @@ export const getMatrixIndexFromArray = function (x: number, y: number, width: nu
  * @returns {Number} The new radian value
  */
 export const degreesToRadians = function (degrees: number): number {
-
      return degrees * DEGTORAD;
-
 };
 
 /**
@@ -456,9 +426,7 @@ export const degreesToRadians = function (degrees: number): number {
  * @returns {Number} The new degree value
  */
 export const radiansToDegrees = function (radian: number): number {
-
      return radian * RADTODEG;
-
 };
 
 export { Vector2 } from "./vectors/vector2";

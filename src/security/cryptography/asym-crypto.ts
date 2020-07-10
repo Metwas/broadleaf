@@ -22,6 +22,8 @@
      SOFTWARE.
 */
 
+//===================== Imports =====================//
+
 // import cryptography library
 import * as crypto from "crypto";
 // path used to obtain private and public key information
@@ -30,6 +32,8 @@ import path from "path";
 import fs from "fs";
 // import utilities
 import { isString, isObject } from "../../utils/utils";
+
+//===================== End Imports =====================//
 
 /**
  * Encrypts a message using a public key 
@@ -46,15 +50,12 @@ export function publicKeyEncrypt(message: any, publicKeyOrPath: string): string 
 
           let key: string | Buffer = "";
           let srcPath: string = path.resolve(publicKeyOrPath);
+          
           if (fs.existsSync(srcPath)) {
-
                key = fs.readFileSync(key, "utf8");
-
           } else {
-
                // attempt to regard it as a private key buffer
                key = Buffer.isBuffer(publicKeyOrPath) ? publicKeyOrPath : Buffer.from(publicKeyOrPath, "utf8");
-
           }
 
           // store message data into a buffer container
@@ -65,9 +66,7 @@ export function publicKeyEncrypt(message: any, publicKeyOrPath: string): string 
           return encryptedMessage.toString("base64");
 
      } else {
-
           throw new Error(`Invalid public key parameter provided, must be either the path or the public key as a string or buffer`);
-
      }
 
 };
@@ -88,15 +87,12 @@ export function privateKeyDecrypt(encryptedMessage: string, privateKeyOrPath: st
 
           let key: string | Buffer = "";
           let srcPath: string = path.resolve(privateKeyOrPath);
+
           if (fs.existsSync(srcPath)) {
-
                key = fs.readFileSync(key, "utf8");
-
           } else {
-
                // attempt to regard it as a private key buffer
                key = Buffer.isBuffer(privateKeyOrPath) ? privateKeyOrPath : Buffer.from(privateKeyOrPath, "utf8");
-
           }
 
           // create buffer container with expected encoding type to be base64
@@ -107,9 +103,7 @@ export function privateKeyDecrypt(encryptedMessage: string, privateKeyOrPath: st
           return message.toString("utf8");
 
      } else {
-
           throw new Error(`Invalid private key parameter provided, must be either the path or the private key as a string or buffer`);
-
      }
 
 };
@@ -125,9 +119,7 @@ export function privateKeyDecrypt(encryptedMessage: string, privateKeyOrPath: st
 export function generatePublicPrivateKeyPair(type: "rsa", options: any) {
 
      if (!isObject(options)) {
-
           throw new Error("Invalid options argument was provided");
-
      }
 
      // generate the private and public key pairs based from defined algorithm options
@@ -150,10 +142,8 @@ export function generatePublicPrivateKeyPair(type: "rsa", options: any) {
 export const createPublicKeyDefaults = function (): any {
 
      return {
-
           type: "spki",
           format: "pem"
-
      };
 
 };
@@ -171,12 +161,10 @@ export const createPublicKeyDefaults = function (): any {
 export const createPrivateKeyDefaults = function (passphrase: string): any {
 
      return {
-
           type: "pkcs8",
           format: "pem",
           cipher: "aes-256-cbc",
           passphrase: passphrase
-
      };
 
 };

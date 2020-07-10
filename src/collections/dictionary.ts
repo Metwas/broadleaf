@@ -89,17 +89,24 @@ interface IDictionary<T> {
  * Create a typescript TypeGuard based off a generic type
  */
 type Constructor<T> = { new(args: any[]): T };
-const typeGuard = function <T>(obj: any, constructor: Constructor<T>): boolean { return utils.isInstanceOf(obj, constructor); };
+const typeGuard = function <T>(obj: any, constructor: Constructor<T>): boolean { 
+    return utils.isInstanceOf(obj, constructor); 
+};
 
 /**
  * Defines an object which can be iterated over
  */
-export interface IKeyValuePair<T> { key: string; value: T; }
+export interface IKeyValuePair<T> { 
+    key: string; value: T; 
+}
 
 /**
  * Defines a single iterated @see IIteratable result
  */
-interface IIteratorResult<T> { value: T; done: boolean; }
+interface IIteratorResult<T> { 
+    value: T; 
+    done: boolean; 
+}
 
 /**
  * Predicate filter fuction type
@@ -115,12 +122,16 @@ type predicate = (arg: any) => boolean;
  * @private
  * @param {Any} arg 
  */
-const defaultPredicate: (arg: any) => boolean = function (arg: any) { return true };
+const defaultPredicate: (arg: any) => boolean = function (arg: any) { 
+    return true 
+};
 
 /**
  * Defines a @see Symbol.iterator model
  */
-export interface IIteratable<T> { next(): IIteratorResult<T>;[Symbol.iterator](): Iterable<T>; }
+export interface IIteratable<T> { 
+    next(): IIteratorResult<T>;[Symbol.iterator](): Iterable<T>; 
+}
 
 /**
  * Base Dictionary implementation which is strongly typed
@@ -150,13 +161,13 @@ export class Dictionary<T> implements IDictionary<T> {
         if (enumerable !== null && enumerable !== void 0) {
 
             if (utils.isInstanceOf(enumerable, Dictionary)) {
-
                 /** Get contents of the @see Dictionary as an @see Array */
                 enumerable = enumerable.list();
-
             }
 
-            if (utils.isArray(enumerable) || utils.isInstanceOf(enumerable, Dictionary)) { this.addRange(enumerable, predicate); }
+            if (utils.isArray(enumerable) || utils.isInstanceOf(enumerable, Dictionary)) { 
+                this.addRange(enumerable, predicate); 
+            }
 
         }
 
@@ -173,11 +184,19 @@ export class Dictionary<T> implements IDictionary<T> {
     public add<T>(name: string, arg: T, predicate: predicate = defaultPredicate): void {
 
         // validate type instance
-        if (utils.isNullOrUndefined(arg)) { throw new Error("Invalid type requested to be added to this dictionary instance"); }
+        if (utils.isNullOrUndefined(arg)) { 
+            throw new Error("Invalid type requested to be added to this dictionary instance"); 
+        }
+
         // ensure valid predicate
-        if (!utils.isFunction(predicate)) { predicate = defaultPredicate; }
+        if (!utils.isFunction(predicate)) { 
+            predicate = defaultPredicate; 
+        }
+
         // validate predicate condition
-        if (predicate(arg) && !this.contains(name)) { this._source[name] = arg; }
+        if (predicate(arg) && !this.contains(name)) { 
+            this._source[name] = arg; 
+        }
 
     }
 
@@ -266,9 +285,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * @param {String} name
      */
     public get(name: string): T | null { 
-        
         return this.contains(name) === true ? this._source[name] : null; 
-    
     }
 
     /**
@@ -279,9 +296,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * @returns {Boolean}
      */
     public contains(name: string): boolean { 
-        
         return (name in this._source); 
-    
     }
 
     /**
@@ -290,9 +305,7 @@ export class Dictionary<T> implements IDictionary<T> {
      * @returns {Number}
      */
     public count(): number { 
-        
         return Object.keys(this._source).length || 0; 
-    
     }
 
     /**

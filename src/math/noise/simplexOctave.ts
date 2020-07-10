@@ -70,18 +70,16 @@ export class Simplex_octave {
      * @param {Number} seed If set to null or zero , a random seed will be generated
      */
     public constructor(seed: number = 0) {
-       
-        /**
-         * Generate a default seed value
-         */
-        if (isNullOrUndefined(seed) || seed <= 0) { seed = Math.random(); }
-        /**
-         * Create seeded random number generator
-         */
+
+        // Generate a default seed value
+        if (isNullOrUndefined(seed) || seed <= 0) {
+            seed = Math.random();
+        }
+
+        // Create seeded random number generator
         const random = new LCG(seed);
-        /**
-         * Perform swaps configured from the @see DEFAULT_SWAP_COUNT
-         */
+
+        /** Perform swaps configured from the @see DEFAULT_SWAP_COUNT */
         let index: number = 0;
         for (; index < this.DEFAULT_SWAP_COUNT; index++) {
 
@@ -165,14 +163,13 @@ export class Simplex_octave {
      */
     public noise(x: number, y: number = 0, z: number = 0, w: number = 0): number {
 
-        /**
-         * Only supporting 2d noise for now
-         */
-        if(isNumber(x) && isNumber(y)){ return this.noise2d(x, y); }
-        /**
-         * else return 0
-         */
-        else { return 0; }
+        /** Only supporting 2d noise for now */
+        if (isNumber(x) && isNumber(y)) {
+            return this.noise2d(x, y);
+        }
+        else {
+            return 0;
+        }
 
     }
 
@@ -184,7 +181,7 @@ export class Simplex_octave {
      * @param {Number} y
      * @returns {Number}
      */
-    private noise2d(x: number, y: number): number{
+    private noise2d(x: number, y: number): number {
 
         /**
          * Get the noise contribution triangle corners (dimension + 1)
@@ -202,7 +199,7 @@ export class Simplex_octave {
         // skew back to x,y space
         let X0: number = i - t;
         let Y0: number = j - t;
-        
+
         // distance from cell origin
         let x0: number = x - X0;
         let y0: number = x - Y0;
@@ -230,7 +227,9 @@ export class Simplex_octave {
          * Corner 1
          */
         let t0: number = 0.5 - (x0 * x0) - (y0 * y0);
-        if (t0 < 0) { n0 = 0; }
+        if (t0 < 0) {
+            n0 = 0;
+        }
         else {
 
             t0 *= t0;
@@ -241,7 +240,9 @@ export class Simplex_octave {
          * Corner 2
          */
         let t1: number = 0.5 - (x1 * x1) - (y1 * y1);
-        if (t1 < 0) { n1 = 0; }
+        if (t1 < 0) {
+            n1 = 0;
+        }
         else {
 
             t1 *= t1;
@@ -252,7 +253,9 @@ export class Simplex_octave {
          * Corner 3
          */
         let t2 = 0.5 - (x2 * x2) - (y2 * y2);
-        if (t2 < 0) { n2 = 0; }
+        if (t2 < 0) { 
+            n2 = 0; 
+        }
         else {
 
             t2 *= t2;
@@ -273,13 +276,12 @@ export class Simplex_octave {
      */
     private getPermutationTable(options?: PERMUTATION_OPTIONS): Array<number> {
 
-        /**
-         * Create a permutation table from the options specified
-         */
-        if (typeof options !== "undefined") { return PERMUTATION_CREATE(options.max, options.min, options.resolution, isNullOrUndefined(options.fixed) ? true : (!options.fixed)); }
-        /**
-         * By default, return a pre-defined random 8-bit table
-         */
+        // Create a permutation table from the options specified
+        if (typeof options !== "undefined") { 
+            return PERMUTATION_CREATE(options.max, options.min, options.resolution, isNullOrUndefined(options.fixed) ? true : (!options.fixed)); 
+        }
+
+        // By default, return a pre-defined random 8-bit table
         return PERMUTATION_FIXED_256;
 
     };

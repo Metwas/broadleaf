@@ -64,7 +64,9 @@ export class Vector2 {
       * 
       * @returns {Number}
       */
-     magnitude(): number { return Math.sqrt((this.x + this.y) * (this.x + this.y)); }
+     magnitude(): number { 
+          return Math.sqrt((this.x + this.y) * (this.x + this.y)); 
+     }
 
      /**
       * Calculates the vectors coordinates based from the new magnitude value provided
@@ -102,17 +104,13 @@ export class Vector2 {
       */
      dot(x: Vector2 | number, y: number = 0): Vector2 {
 
-          /**
-           * Flatten the @see Vector2
-           */
-          if (x instanceof Vector2) { return this.dot(x.x, x.y); }
-          /**
-           * Calculate dot product
-           */
+          /** Flatten the @see Vector2 */
+          if (x instanceof Vector2) { 
+               return this.dot(x.x, x.y); 
+          }
+
+          // Calculate dot product
           this.x * (x || 0) + this.y * (y || 0);
-          /**
-           * return instance for chaining
-           */
           return this;
 
      }
@@ -122,7 +120,9 @@ export class Vector2 {
       * 
       * @returns {Vector2}
       */
-     copy(): Vector2 { return new Vector2(this.x, this.y); }
+     copy(): Vector2 { 
+          return new Vector2(this.x, this.y); 
+     }
 
      /**
       * Linear interpolates from the current vector to a new vector or scaler
@@ -134,13 +134,9 @@ export class Vector2 {
      lerp(vector: Vector2, step: number): Vector2 {
 
           if (vector instanceof Vector2) {
-
                this.setMagnitude(math.lerp(this.magnitude(), vector.magnitude(), step));
-
           } else if (utils.isNumber(vector)) {
-
                this.setMagnitude(math.lerp(this.magnitude(), vector, step));
-
           }
 
           return this;
@@ -172,14 +168,18 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     setX(scaler: number): void { this.x = scaler; }
+     setX(scaler: number): void { 
+          this.x = scaler; 
+     }
 
      /**
       * Sets the y property on this vector to the value provided
       * 
       * @param {number} scaler 
       */
-     setY(scaler: number): void { this.y = scaler; }
+     setY(scaler: number): void { 
+          this.y = scaler; 
+     }
 
      /**
       * Adds the provided value to the x property on this vector
@@ -195,9 +195,7 @@ export class Vector2 {
                this.setY(vector.y);
 
           } else if (utils.isNumber(vector)) {
-
                return this.multiplyScaler(vector);
-
           }
 
           return this;
@@ -230,14 +228,18 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     addX(scaler: number): void { this.x += scaler; }
+     addX(scaler: number): void { 
+          this.x += scaler; 
+     }
 
      /**
       * Adds the provided value to the y property on this vector
       * 
       * @param {number} scaler
       */
-     addY(scaler: number): void { this.y += scaler; }
+     addY(scaler: number): void { 
+          this.y += scaler; 
+     }
 
      /**
       * Adds the provided vector to this current vector object
@@ -253,9 +255,7 @@ export class Vector2 {
                this.addY(vector.y);
 
           } else if (utils.isNumber(vector)) {
-
                return this.multiplyScaler(vector);
-
           }
 
           return this;
@@ -288,14 +288,18 @@ export class Vector2 {
       * 
       * @param {number} scaler
       */
-     subX(scaler: number): void { this.x -= scaler; }
+     subX(scaler: number): void { 
+          this.x -= scaler; 
+     }
 
      /**
       * Subtracts the provided value from the y property on this vector
       * 
       * @param {number} scaler
       */
-     subY(scaler: number): void { this.y -= scaler; }
+     subY(scaler: number): void { 
+          this.y -= scaler; 
+     }
 
      /**
       * Subtracts the provided vector from this current vector object
@@ -311,9 +315,7 @@ export class Vector2 {
                this.subY(vector.y);
 
           } else if (utils.isNumber(vector)) {
-
                return this.multiplyScaler(vector);
-
           }
 
           return this;
@@ -346,14 +348,18 @@ export class Vector2 {
       * 
       * @param {number} scaler A multiplier scaler
       */
-     multiplyX(scaler: number): void { this.x *= scaler; }
+     multiplyX(scaler: number): void { 
+          this.x *= scaler; 
+     }
 
      /**
       * Multiplies the vectors y value to the provided multiplier 
       * 
       * @param {number} scaler The multiplier scaler
       */
-     multiplyY(scaler: number): void { this.y *= scaler; }
+     multiplyY(scaler: number): void { 
+          this.y *= scaler; 
+     }
 
      /**
       * Multiplies the vectors x and y value to the provided vector object
@@ -369,9 +375,7 @@ export class Vector2 {
                this.multiplyY(vector.y);
 
           } else if (utils.isNumber(vector)) {
-
                return this.multiplyScaler(vector);
-
           }
 
           return this;
@@ -409,9 +413,7 @@ export class Vector2 {
           const mag: number = this.magnitude();
 
           if (mag > 0) {
-
                return this.multiplyScaler(1 / mag);
-
           }
 
           return this;
@@ -424,12 +426,11 @@ export class Vector2 {
      limit(max: number): Vector2 {
 
           const magnitude: number = this.magnitude();
+
           // ensure magnitude is less than the magnitude of the maximum parameter value
           if (magnitude > math.square(max)) {
-
                // normalize first, then multiple scaler to get the highest possible magnitude set
                return this.normalize().multiplyScaler(max);
-
           }
 
           // dont do anything, simple return current vector instance
@@ -442,7 +443,9 @@ export class Vector2 {
       * 
       * @returns {Number} The angle in radians
       */
-     heading(): number { return Math.atan2(this.y, this.x); }
+     heading(): number { 
+          return Math.atan2(this.y, this.x); 
+     }
 
      /**
       * Rotates the current vector by a given angle

@@ -38,7 +38,6 @@ import { enumerable } from "./decorators";
 const DEFAULT_TABLE = (function (): any {
 
      return {
-
           number: 0,
           string: "",
           object: {},
@@ -47,7 +46,6 @@ const DEFAULT_TABLE = (function (): any {
           function: function () { },
           boolean: false,
           null: null
-
      };
 
 })();
@@ -84,10 +82,11 @@ export function toString(value: any, basic: boolean = false): string {
      if (basic) {
 
           const groups = type.match(CLASS_REG);
-          /**
-           * The first group will be the entire match, therefore check for a second argument being a string type
-           */
-          if (groups && isString(groups[1])) { type = groups[1].trim().toLowerCase(); }
+
+          // The first group will be the entire match, therefore check for a second argument being a string type
+          if (groups && isString(groups[1])) { 
+               type = groups[1].trim().toLowerCase(); 
+          }
 
      }
      return type;
@@ -102,9 +101,7 @@ export function toString(value: any, basic: boolean = false): string {
  * @returns {Boolean}
  */
 export function isClassOf(obj: object, className: string): boolean {
-
      return !isNullOrUndefined(obj) && toString(obj) === `[object ${className}]`;
-
 };
 
 /**
@@ -118,9 +115,14 @@ export function isClassOf(obj: object, className: string): boolean {
 export function isInstanceOf(obj: any, type: any, inherit: boolean = true): boolean {
 
      //  False if incorrect arguments were provided
-     if (isNullOrUndefined(type) || isNullOrUndefined(obj)) { return false; }
+     if (isNullOrUndefined(type) || isNullOrUndefined(obj)) { 
+          return false; 
+     }
+
      // Check for primitive types
-     if (isPrimitive(obj)) { return isClassOf(obj, type.name); }
+     if (isPrimitive(obj)) { 
+          return isClassOf(obj, type.name); 
+     }
 
      /**
       * Returns false if type is null or undefined
@@ -138,9 +140,7 @@ export function isInstanceOf(obj: any, type: any, inherit: boolean = true): bool
  * @returns {Boolean}
  */
 export function isPrimitive(value: any): boolean {
-
      return (isNumber(value) || isString(value) || isBoolean(value) || isNullOrUndefined(value));
-
 };
 
 /**
@@ -150,9 +150,7 @@ export function isPrimitive(value: any): boolean {
  * @returns {Boolean}
  */
 export function isString(value: any): boolean {
-
      return isClassOf(value, "String");
-
 };
 
 /**
@@ -162,9 +160,7 @@ export function isString(value: any): boolean {
  * @returns {Boolean}
  */
 export function isEmptyString(value: any): boolean {
-
      return isString(value) && value.length === 0;
-
 };
 
 /**
@@ -174,9 +170,7 @@ export function isEmptyString(value: any): boolean {
  * @returns {Boolean}
  */
 export function isNumber(value: any): boolean {
-
      return isClassOf(value, "Number");
-
 };
 
 /**
@@ -186,10 +180,8 @@ export function isNumber(value: any): boolean {
  * @returns {Boolean}
  */
 export function isObjectLiteral(value: any): boolean {
-
      // ensure value does not have the prototype chain
      return isClassOf(value, "Object") && isNullOrUndefined(value.prototype);
-
 };
 
 /**
@@ -199,9 +191,7 @@ export function isObjectLiteral(value: any): boolean {
  * @returns {Boolean}
  */
 export function isObject(value: any): boolean {
-
      return isClassOf(value, "Object");
-
 };
 
 /**
@@ -211,9 +201,7 @@ export function isObject(value: any): boolean {
  * @returns {Boolean}
  */
 export function isFunction(value: any): boolean {
-
      return typeof value === "function" || isClassOf(value, "Function");
-
 };
 
 /**
@@ -223,9 +211,7 @@ export function isFunction(value: any): boolean {
  * @returns {Boolean}
  */
 export function isNull(value: any): boolean {
-
      return value === null;
-
 };
 
 /**
@@ -235,9 +221,7 @@ export function isNull(value: any): boolean {
  * @returns {Boolean}
  */
 export function isUndefined(value: any): boolean {
-
      return value === void 0;
-
 };
 
 /**
@@ -247,9 +231,7 @@ export function isUndefined(value: any): boolean {
  * @returns {boolean}
  */
 export function isNullOrUndefined(value: any): boolean {
-
      return isNull(value) || isUndefined(value);
-
 };
 
 /**
@@ -259,9 +241,7 @@ export function isNullOrUndefined(value: any): boolean {
  * @returns {Boolean}
  */
 export function isBoolean(value: any): boolean {
-
      return value === true || value === false || isClassOf(value, "Boolean");
-
 };
 
 /**
@@ -271,9 +251,7 @@ export function isBoolean(value: any): boolean {
  * @returns {Boolean}
  */
 export function isArray(value: any): boolean {
-
      return Array.isArray(value) || isClassOf(value, "Array");
-
 };
 
 /**
@@ -283,9 +261,7 @@ export function isArray(value: any): boolean {
  * @returns {Boolean}
  */
 export function isArrayLike(value: any): boolean {
-
      return !isNullOrUndefined(value.length) || Array.isArray(value);
-
 };
 
 /**
@@ -295,9 +271,7 @@ export function isArrayLike(value: any): boolean {
  * @returns {Boolean}
  */
 export function isFinite(value: any): boolean {
-
      return !isNaN(value) && isFinite(value);
-
 };
 
 /**
@@ -307,9 +281,7 @@ export function isFinite(value: any): boolean {
  * @returns {Boolean}
  */
 export function isRegExp(value: any): boolean {
-
      return isClassOf(value, "RegExp");
-
 };
 
 /**
@@ -319,9 +291,7 @@ export function isRegExp(value: any): boolean {
  * @returns {Boolean}
  */
 export function isError(value: any): boolean {
-
      return value instanceof Error && !isUndefined(value.message);
-
 };
 
 /**
@@ -331,9 +301,7 @@ export function isError(value: any): boolean {
  * @returns {Boolean}
  */
 export function isDate(value: any): boolean {
-
      return isClassOf(value, "Date");
-
 };
 
 /**
@@ -342,9 +310,7 @@ export function isDate(value: any): boolean {
  * @returns {Boolean}
  */
 export function isJSONSupported(): boolean {
-
      return (JSON && isFunction(JSON.parse) && isFunction(JSON.stringify));
-
 };
 
 /**
@@ -356,16 +322,13 @@ export function isJSONSupported(): boolean {
 export function getType(obj: any): string {
 
      const type: any = typeof obj;
+
      if (!isObject(obj)) {
-
           return type;
-
      }
 
      if (type === null) {
-
           return "null";
-
      }
 
      // obtain the constructor
@@ -386,9 +349,7 @@ export function getType(obj: any): string {
 export function shallowCopy(obj: any, property: string): any {
 
      if (isNullOrUndefined(obj) || !(isString(property) || isNumber(property))) {
-
           return void 0;
-
      }
 
      return obj[property];
@@ -404,9 +365,7 @@ export function shallowCopy(obj: any, property: string): any {
 export function deepCopy(value: any): any {
 
      if (isNullOrUndefined(value)) {
-
           return void 0;
-
      }
 
      let result: any = void 0;
@@ -415,10 +374,8 @@ export function deepCopy(value: any): any {
      types.forEach(type => {
 
           if (isClassOf(value, type)) {
-
                // simply set the value, as primitives are already cloned within the arguments
                result = value;
-
           }
 
      });
@@ -427,38 +384,29 @@ export function deepCopy(value: any): any {
 
           // search for complex types
           if (isObjectLiteral(value)) {
+
                result = {};
                // assign each property
                for (let key in value) {
-
                     // filter down each key
                     result[key] = deepCopy(value[key]);
-
                }
 
           }
           else if (isArray(value)) {
-
                result = value.slice(0);
-
           }
           else if (isDate(value)) {
-
                // create new Date intance
                result = new Date(value);
-
           }
           else if (isRegExp(value)) {
-
                // create new regular expression instance
                result = new RegExp(value.source, value.flags);
-
           }
           else {
-
                // return reference
                result = value;
-
           }
 
      }
@@ -476,12 +424,12 @@ export function deepCopy(value: any): any {
 export function getTypeDefaults(type: string) {
 
      let stringType: string = "";
-     if (type !== "string") {
 
+     if (type !== "string") {
           // attempt to obtain the type from a helper function
           stringType = getType(type);
-
      }
+
      stringType = type.toLowerCase();
      return DEFAULT_TABLE[stringType];
 
@@ -494,9 +442,7 @@ const _caller = Function.call;
 const function_call = function (fn: any, ...args: any): Function {
 
      return function (): any {
-
           return _caller.apply(fn, args);
-
      };
 
 };
@@ -527,10 +473,9 @@ const evaluateFn = function (context: any): (code: string) => void {
           const args: Array<any> = [];
           const length: number = isArray(arguments) ? (arguments.length - 1) : 1;
           let index: number = 1;
+
           for (; index < length; index++) {
-
                args.push(arguments[index]);
-
           }
 
           // invoke the javascript code with the function wrapper
@@ -552,16 +497,12 @@ const array_splice: Function = function_call(Array.prototype.splice);
 export function clone(arrayOrObject: Array<any> | any): Array<any> | any {
 
      if (isArray(arrayOrObject)) {
-
           return array_slice(arrayOrObject, 0);
-
      } else {
 
           // default to deep cloning an object
           if (isJSONSupported() && !isNullOrUndefined(arrayOrObject) && !isFunction(arrayOrObject)) {
-
                return JSON.parse(JSON.stringify(arrayOrObject));
-
           }
 
           return deepCopy(arrayOrObject);
@@ -586,7 +527,9 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
      /**
       * Validate callback argument
       */
-     if (!isFunction(callback)) { callback = isFunction(propertyValue) ? propertyValue : noop; }
+     if (!isFunction(callback)) { 
+          callback = isFunction(propertyValue) ? propertyValue : noop; 
+     }
 
      /**
       * Handle Array bound argument
@@ -603,31 +546,16 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
                if ((isNullOrUndefined(propertyValue) && !isFunction(propertyValue)) && isString(element) || isNumber(element)) {
 
                     if (element === propertyKey) {
-
-                         /**
-                          * Pass element to callback
-                          */
                          callback(element);
                          return true;
-
                     }
 
                } else {
 
-                    /**
-                     * Array element must of object type therefore recursively check if the any one of the objects contains the specified property
-                     */
+                    // Array element must of object type therefore recursively check if the any one of the objects contains the specified property
                     if (contains(arrayOrObject[index], propertyKey, propertyValue) === true) {
-
-                         /**
-                          * Callback the object at the specific index
-                          */
                          callback(arrayOrObject[index]);
-                         /**
-                          * An element does exist break the loop and return to caller
-                          */
                          return true;
-
                     }
 
                }
@@ -645,14 +573,10 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
                const value: any = arrayOrObject[propertyKey];
 
                if ((isNullOrUndefined(propertyValue) && !isFunction(propertyValue)) && !isNullOrUndefined(value)) {
-
                     return true;
-
                } else if (!((isNullOrUndefined(propertyValue) && !isFunction(propertyValue)) && isNullOrUndefined(propertyKey))) {
-
                     // match both the key and the value
                     return value === propertyValue;
-
                }
                else {
 
@@ -663,13 +587,8 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
                          const value: any = arrayOrObject[element];
 
                          if (!isNullOrUndefined(value) && propertyKey === value) {
-
-                              /**
-                               * Pass element to callback
-                               */
                               callback(value);
                               return true;
-
                          }
 
                     });
@@ -717,11 +636,20 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
      const sum = function (a: any, b: any): number {
 
           // define a default alogrithm for number types
-          const numFn = function (a: any, b: any): number { return a - b; };
+          const numFn = function (a: any, b: any): number { 
+               return a - b; 
+          };
+
           const strFn = function (a: any, b: any): number {
 
-               if (b > a) { return -1 }
-               if (a > b) { return 1 }
+               if (b > a) { 
+                    return -1 
+               }
+
+               if (a > b) { 
+                    return 1 
+               }
+
                // default to equal
                return 0;
 
@@ -731,7 +659,9 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
 
      };
 
-     return array.sort(function (a: any, b: any): number { return (isString(property) && (isObject(a) && isObject(b))) ? (sum(a[property], b[property])) : sum(a, b); });
+     return array.sort(function (a: any, b: any): number { 
+          return (isString(property) && (isObject(a) && isObject(b))) ? (sum(a[property], b[property])) : sum(a, b); 
+     });
 
 };
 
@@ -745,15 +675,15 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
  */
 export function containsType(target: any, type: any, callback: (ref: any) => void): boolean {
 
-     /**
-      * Validate callback
-      */
-     if (!isFunction(callback)) { callback = noop; }
+     // Validate callback
+     if (!isFunction(callback)) { 
+          callback = noop; 
+     }
 
-     /**
-      * validate type arguments
-      */
-     if (isNullOrUndefined(target) || isNullOrUndefined(type)) { return false; }
+     // validate type arguments
+     if (isNullOrUndefined(target) || isNullOrUndefined(type)) { 
+          return false; 
+     }
 
      /**
       * Iterate through each key defined by @see target
@@ -764,11 +694,10 @@ export function containsType(target: any, type: any, callback: (ref: any) => voi
      for (; index < length; index++) {
 
           const key: string = targetKeys[index];
-          if (isInstanceOf(target[key], type)) {
 
+          if (isInstanceOf(target[key], type)) {
                callback(target[key]);
                return true;
-
           }
 
      }
@@ -788,9 +717,7 @@ export function containsType(target: any, type: any, callback: (ref: any) => voi
 export function filter(array: Array<any>, callback: (element: any, index: number, array: Array<any>) => boolean): Array<any> {
 
      if (typeof callback !== "function") {
-
           callback = function (element: any, index: number, array: Array<any>) { return true; };
-
      }
 
      if (isArray(array)) {
@@ -804,9 +731,7 @@ export function filter(array: Array<any>, callback: (element: any, index: number
                var _result: boolean = callback(_element, _index, array);
 
                if (!_result) {
-
                     array_splice(_index, 1);
-
                }
 
           }
@@ -828,9 +753,7 @@ export function filter(array: Array<any>, callback: (element: any, index: number
 export function toArray(obj: Object, parseKeys?: boolean): Array<any> {
 
      if (isNullOrUndefined(obj)) {
-
           throw new Error("Provided object cannot be null or undefined");
-
      }
 
      const parseObjectKeys = function (): Array<any> {
@@ -842,9 +765,7 @@ export function toArray(obj: Object, parseKeys?: boolean): Array<any> {
                objKeys = filter(objKeys, (element: any, index: number, array: Array<any>) => { return has(obj, element); });
 
           } else {
-
                objKeys = [obj];
-
           }
 
           return objKeys;
@@ -865,9 +786,7 @@ export function toArray(obj: Object, parseKeys?: boolean): Array<any> {
 export function has(obj: Object, property: string): boolean {
 
      if (isNullOrUndefined(obj)) {
-
           return false;
-
      }
 
      return Object.prototype.hasOwnProperty.call(obj, property);
@@ -904,7 +823,10 @@ export function assign(target: any, ...args: Array<any>): any {
  * 
  * @private
  */
-type validatorState = { state: boolean, value: any };
+type validatorState = { 
+     state: boolean, 
+     value: any 
+};
 
 /**
  * Defines a default property validator
@@ -916,18 +838,21 @@ type validatorState = { state: boolean, value: any };
  */
 const defaultPropertyValidator = function (value: any, property: any, target: any): validatorState {
 
-     let result = { state: false, value: value };
-     /**
-      * Handle primitive typest
-      */
-     if (isPrimitive(value)) { result.state = (value === property); result.value = value; }
-     /**
-      * Handle array or object types
-      */
-     if (isArray(value) || isObject(value)) { result.state = contains(value, property, null); result.value = value[property]; }
-     /**
-      * return result to caller
-      */
+     let result = { 
+          state: false, 
+          value: value 
+     };
+     
+     // Handle primitive types
+     if (isPrimitive(value)) { 
+          result.state = (value === property); result.value = value; 
+     }
+
+     // Handle array or object types
+     if (isArray(value) || isObject(value)) { 
+          result.state = contains(value, property, null); result.value = value[property]; 
+     }
+
      return result;
 
 };
@@ -944,22 +869,23 @@ export function flatten(target: any, key: any, retAsKey: boolean = false): Array
      /**
       * Validate target
       */
-     if (isNullOrUndefined(target) || isPrimitive(target)) { throw new Error("Invalid target type provided"); }
+     if (isNullOrUndefined(target) || isPrimitive(target)) { 
+          throw new Error("Invalid target type provided"); 
+     }
 
      let property: any = void 0;
      const temp: Array<any> = [];
-     /**
-      * filter function
-      */
+
+     // filter function
      let validator: (value: any, property: any, target: any) => validatorState;
-     /**
-      * Check if key is property and is defined with target value
-      */
-     if (!isFunction(key)) { property = key; validator = defaultPropertyValidator }
-     /**
-      * Use custom key function
-      */
-     else { validator = key; }
+
+     // Check if key is property and is defined with target value
+     if (!isFunction(key)) { 
+          property = key; validator = defaultPropertyValidator 
+     }
+     else { 
+          validator = key; 
+     }
 
      /**
       * Iterate through the target recursively filtering out with the @see validator function
@@ -970,18 +896,14 @@ export function flatten(target: any, key: any, retAsKey: boolean = false): Array
            * Pass @see treeNode value to validator
            */
           const result = validator(node.value, property, target);
-          /**
-           * Add if result state is true
-           */
+     
           if (result.state === true) {
 
                let value: any = {};
 
                if(retAsKey === true){
-                    // assign key
                     value[key] = result.value;
                }
-               // else assign default value
                else{
                     value = result.value;
                }
@@ -1009,13 +931,17 @@ class treeNode {
       * @param {Any} value 
       * @param {Array<any>} children 
       */
-     constructor(public value: any = {}, public children: treeNode[] = []) { }
+     constructor(public value: any = {}, public children: treeNode[] = []) { 
+
+     }
 
      /**
       * Gets the base class type for the assigned @see value
       */
      @enumerable(true)
-     public get type(): string { return toString(this.value, true); };
+     public get type(): string { 
+          return toString(this.value, true); 
+     };
 
 };
 
@@ -1031,10 +957,10 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
       * Check if target is of node type, else create an empty tree node structure
       */
      const rootNode: treeNode = isInstanceOf(target, treeNode) ? target : new treeNode(target);
-     /**
-      * Validate callback
-      */
-     if (!isFunction(callback)) { callback = noop; }
+     
+     if (!isFunction(callback)) { 
+          callback = noop; 
+     }
 
      /**
        * Get all keys from target+
@@ -1046,21 +972,17 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
 
           const key: any = targetKeys[index];
           const value: any = rootNode.value[key];
-          /**
-           * create @see treeNode from the iterated result
-           */
+
+          /** create @see treeNode from the iterated result */
           const node: treeNode = new treeNode(value);
-          /**
-           * call node to caller
-           */
+          
           callback(node);
-          /**
-           * Recursively collect property information
-           */
-          if (isObject(value) || isArray(value)) { node.children.push(tree(value, callback)); }
-          /**
-           * Add to rootNode
-           */
+
+          // Recursively collect property information
+          if (isObject(value) || isArray(value)) { 
+               node.children.push(tree(value, callback)); 
+          }
+
           rootNode.children.push(node);
 
      }
@@ -1079,15 +1001,11 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
 export function values(obj: any, filterFn: (key: string, value: any, obj: any) => boolean, ownProperty?: boolean): Array<any> {
 
      if (isNullOrUndefined(obj)) {
-
           return [];
-
      }
 
      if (typeof filterFn !== "function") {
-
           filterFn = (key: string, value: any, obj: any) => { return true; };
-
      }
 
      return keys(obj).map(function (key) {
@@ -1099,22 +1017,16 @@ export function values(obj: any, filterFn: (key: string, value: any, obj: any) =
                if (ownProperty === true) {
 
                     if (has(obj, key)) {
-
                          return value;
-
                     }
 
                } else {
-
                     return value;
-
                }
 
           } else {
-
                // ignore the filter if the return type is not a boolean
                return value;
-
           }
 
      });
@@ -1132,9 +1044,7 @@ export function values(obj: any, filterFn: (key: string, value: any, obj: any) =
 export function value(obj: any, key: string, ownProperty?: boolean): any {
 
      const filterFn: Function = function (key: string, value: any, obj: any): boolean {
-
           return key === key;
-
      };
 
      const objValues = values(obj, (objKey: string, value: any, obj: any) => { return objKey === key }, ownProperty);
@@ -1159,25 +1069,19 @@ export function keys(obj: Object, callback: (key: string) => void = noop): Array
      }
 
      if (isNullOrUndefined(obj)) {
-
           throw new Error("Object provided cannot be null");
-
      }
 
      if (!isFunction(callback)) {
-
           callback = noop;
-
      }
 
      var _tempArray: Array<any> = [];
      for (var key in obj) {
 
           if (has(obj, key)) {
-
                _tempArray.push(key);
                callback(key);
-
           }
 
      }
@@ -1196,23 +1100,17 @@ export function keys(obj: Object, callback: (key: string) => void = noop): Array
 export function allKeys(obj: Object, callback: (key: string) => void = noop): Array<any> {
 
      if (isNullOrUndefined(obj)) {
-
           throw new Error("Object provided cannot be null");
-
      }
 
      if (!isFunction(callback)) {
-
           callback = noop;
-
      }
 
      var _tempArray: Array<any> = [];
      for (var key in obj) {
-
           _tempArray.push(key);
           callback(key);
-
      }
 
      return _tempArray;
@@ -1228,15 +1126,11 @@ export function allKeys(obj: Object, callback: (key: string) => void = noop): Ar
 export function forEach(enumerable: Array<any> | Object, callback: (element: any) => void): void {
 
      if (isNullOrUndefined(enumerable)) {
-
           return;
-
      }
 
      if (typeof callback !== "function") {
-
           callback = function () { };
-
      }
 
      if (Array.isArray(enumerable)) {
@@ -1269,11 +1163,10 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
  */
 export function defaults(target: any, ...source: Array<any>): any {
 
-     if (isNullOrUndefined(target) || isNullOrUndefined(source)) { return {}; }
+     if (isNullOrUndefined(target) || isNullOrUndefined(source)) { 
+          return {}; 
+     }
 
-     /**
-      * Ensure source is an array
-      */
      const _temp: Array<any> = [];
      _temp.concat(source).forEach(function (obj: any) {
 
@@ -1290,18 +1183,14 @@ export function defaults(target: any, ...source: Array<any>): any {
 
                     // recursively obtain defaults if both source and target values are object literals
                     if (isObjectLiteral(targetValue) && isObjectLiteral(value)) {
-
                          defaults(targetValue, value);
-
                     }
 
                } else {
 
                     if (!isNullOrUndefined(value)) {
-
                          // update target value
                          target[key] = value;
-
                     }
 
                }
@@ -1322,19 +1211,20 @@ export function defaults(target: any, ...source: Array<any>): any {
  * @returns {Object}
  */
 export function merge(target: any, source: any, own: boolean = false): any {
+     
+     if (isNullOrUndefined(target)) { 
+          return {}; 
+     }
 
-     /**
-      * Validate target parameter
-      */
-     if (isNullOrUndefined(target)) { return {}; }
-
-     /**
-      * Iterate through source keys, merging with the target object if defined
-      */
+     // Iterate through source keys, merging with the target object if defined
      forEach(source, function (key) {
 
-          if (own === true && !has(target, key)) { /** do nothing */ }
-          else { target[key] = deepCopy(source[key]); }
+          if (own === true && !has(target, key)) { 
+               /** do nothing */ 
+          }
+          else { 
+               target[key] = deepCopy(source[key]); 
+          }
 
      });
 
@@ -1350,27 +1240,18 @@ export function merge(target: any, source: any, own: boolean = false): any {
  */
 export function remove(key: any, arrayOrObject: any): void {
 
-     /**
-      * Handle array types
-      */
      if (isArray(arrayOrObject)) {
 
           const index: number = arrayOrObject.indexOf(key);
+
           if (index > -1) {
-
                arrayOrObject.splice(index, 1);
-
           }
 
      } else {
 
-          /**
-           * Handle native objects
-           */
           if (!isNullOrUndefined(arrayOrObject[key])) {
-
                delete arrayOrObject[key];
-
           }
 
      }

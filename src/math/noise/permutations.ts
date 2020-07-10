@@ -57,17 +57,17 @@ export const PERMUTATION_FIXED_256: Array<number> = [151, 160, 137, 91, 90, 15,
  */
 export function PERMUTATION_CREATE(max: number, min: number, clampedSize: any = null, randomSeed: boolean = true) {
 
-    /**
-     * Default to 8 bit
-     */
-    if (!isNumber(max)) { max = 255; }
-    /**
-     * Default to zero
-     */
-    if (!isNumber(min)) { min = 0; }
-    /**
-     * Swap if min is creater than max
-     */
+    // Default to 8 bit
+    if (!isNumber(max)) { 
+        max = 255; 
+    }
+    
+    // Default to zero
+    if (!isNumber(min)) { 
+        min = 0; 
+    }
+
+    // Swap if min is creater than max
     if (min > max) {
 
         const result = XOR_SWAP(min, max);
@@ -77,20 +77,19 @@ export function PERMUTATION_CREATE(max: number, min: number, clampedSize: any = 
     }
 
     let diff = max - min;
-    /**
-     * Validate clampedSize
-     */
+    // Validate clampedSize
     let scale: number = 1;
+
     if (isNumber(clampedSize)) {
 
         scale = diff / clampedSize;
         diff = clampedSize;
 
     }
-    /**
-     * else set randonSeed
-     */
-    else if (isBoolean(clampedSize)) { randomSeed = clampedSize; }
+    // else set randonSeed
+    else if (isBoolean(clampedSize)) { 
+        randomSeed = clampedSize; 
+    }
 
     /**
      * Create an empty array filled with 0
@@ -103,14 +102,10 @@ export function PERMUTATION_CREATE(max: number, min: number, clampedSize: any = 
     let iterator: number = temp.length - 1;
     while (iterator >= 0) {
 
-        /**
-         * Create a random value between min and max
-         */
+        // Create a random value between min and max
         const index: number = randomSeed === true ? random(0, temp.length, true) : iterator;
         
-        /**
-         * Validate uniqueness before assigning
-         */
+        // Validate uniqueness before assigning
         if (temp[index] === (min - 1)) {
 
             value -= scale;
@@ -131,4 +126,9 @@ export function PERMUTATION_CREATE(max: number, min: number, clampedSize: any = 
  * @public
  * @type {Object}
  */
-export type PERMUTATION_OPTIONS = { fixed?: boolean, max: number, min: number, resolution?: number };
+export type PERMUTATION_OPTIONS = { 
+    fixed?: boolean, 
+    max: number, 
+    min: number, 
+    resolution?: number 
+};

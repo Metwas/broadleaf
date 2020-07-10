@@ -1463,21 +1463,15 @@ export class Color {
 	static lerp(from: Color, to: Color, increment: number): Color {
 
 		if (utils.isNullOrUndefined(from)) {
-
 			throw new Error("The initial start color was not provided");
-
 		}
 
 		if (utils.isNullOrUndefined(to)) {
-
 			throw new Error("The finally transition color was not provided!");
-
 		}
 
 		if (!utils.isNumber(increment)) {
-
 			increment = 1;
-
 		}
 
 		return from.lerp(to, increment);
@@ -1535,14 +1529,10 @@ export class Color {
 		this._hex = 0;
 
 		if (utils.isUndefined(green) && utils.isUndefined(blue)) {
-
 			// only default to the first parameter
 			this.setHex(red);
-
 		} else {
-
 			this.setRGB(Number(red), Number(green), Number(blue));
-
 		}
 
 	}
@@ -1551,9 +1541,7 @@ export class Color {
 	 * Gets the hexidecimal value for the current color instance
 	 */
 	public get hex(): number {
-
 		return this._hex;
-
 	}
 
 	/**
@@ -1565,9 +1553,7 @@ export class Color {
 	 * @returns {Color} Color
 	 */
 	public setRGB(red: number, green: number, blue: number): Color {
-
 		return this.setRGBA(red, green, blue, this.alpha);
-
 	}
 
 	/**
@@ -1626,48 +1612,42 @@ export class Color {
 		/**
 		 * Code below calculates hue from accordinly to which @see Color channel is most dominant
 		 */
-		/**
-		 * No color difference
-		 */
-		if (delta === 0) { hue = 0; }
-		/**
-		 * Red is most dominant
-		 */
-		else if (max === red) { hue = ((green - blue) / delta) % 6; }
-		/**
-		 * Green is most dominant
-		 */
-		else if (max === green) { hue = (blue - red) / delta + 2; }
-		/**
-		 * Blue is most dominant
-		 */
-		else { hue = (red - green) / delta + 4; }
 
-		/**
-		 * Correctly map the hue to degrees and above negative values 
-		 */
+		// No color difference
+		if (delta === 0) { 
+			hue = 0; 
+		}
+		// Red is most dominant
+		else if (max === red) { 
+			hue = ((green - blue) / delta) % 6; 
+		}
+		// Green is most dominant
+		else if (max === green) { 
+			hue = (blue - red) / delta + 2; 
+		}
+		// Blue is most dominant
+		else { 
+			hue = (red - green) / delta + 4; 
+		}
+
+		// Correctly map the hue to degrees and above negative values 
 		hue = Math.round(hue * 60);
-		if (hue < 0) { hue += 360; }
+		
+		if (hue < 0) { 
+			hue += 360; 
+		}
 
-		/**
-		 * Code below calculates the lightness
-		 */
+		// Code below calculates the lightness
 		lightness = (max + min) / 2;
 
-		/**
-		 * Calculate saturation, based on the @see lightness average
-		 */
+		/** Calculate saturation, based on the @see lightness average */
 		saturation = delta === 0 ? 0 : delta / (1 - Math.abs(2 * lightness - 1));
 
-		/**
-		 * Get lightness and saturation pecentages
-		 */
+		// Get lightness and saturation pecentages
 		saturation = (saturation * 100);
 		lightness = (lightness * 100);
 
-		/**
-		 * Finally return the HSLA string
-		 */
+		// Finally return the HSLA string
 		return `hsla(${hue},${saturation}%,${lightness}%,${alpha})`;
 
 	}
@@ -1711,34 +1691,33 @@ export class Color {
 		 * 
 		 * @see chroma represents which color is most dominant
 		 */
-		/**
-		 * Mix red and green dominance color band
-		 */
-		if (hue >= 0 && hue < 60) { red = chroma; green = satX; blue = 0; }
-		/**
-		 * Mostly green color dominance
-		 */
-		else if (hue >= 60 && hue < 120) { red = satX; green = chroma; blue = 0; }
-		/**
-		 * Mix green and blue dominance
-		 */
-		else if (hue >= 120 && hue < 180) { red = 0; green = chroma; blue = satX; }
-		/**
-		 * Mostly blue dominance
-		 */
-		else if (hue >= 180 && hue < 240) { red = 0; green = satX; blue = chroma; }
-		/**
-		 * Mix blue and red dominance
-		 */
-		else if (hue >= 240 && hue < 300) { red = satX; green = 0; blue = chroma; }
-		/**
-		 * Mostyl red dominance
-		 */
-		else if (hue >= 300 && hue < 360) { red = chroma; green = 0; blue = satX; }
 
-		/**
-		 * Map channels to 255 based on @see intensity
-		 */
+		// Mix red and green dominance color band
+		if (hue >= 0 && hue < 60) { 
+			red = chroma; green = satX; blue = 0; 
+		}
+		// Mostly green color dominance
+		else if (hue >= 60 && hue < 120) { 
+			red = satX; green = chroma; blue = 0; 
+		}
+		// Mix green and blue dominance
+		else if (hue >= 120 && hue < 180) { 
+			red = 0; green = chroma; blue = satX; 
+		}
+		// Mostly blue dominance
+		else if (hue >= 180 && hue < 240) { 
+			red = 0; green = satX; blue = chroma; 
+		}
+		// Mix blue and red dominance
+		else if (hue >= 240 && hue < 300) { 
+			red = satX; green = 0; blue = chroma; 
+		}
+		// Mostly red dominance
+		else if (hue >= 300 && hue < 360) { 
+			red = chroma; green = 0; blue = satX; 
+		}
+
+		/** Map channels to 255 based on @see intensity */
 		this.red = Math.round((red + intensity) * 255);
 		this.green = Math.round((green + intensity) * 255);
 		this.blue = Math.round((blue + intensity) * 255);
@@ -1768,35 +1747,27 @@ export class Color {
 
 		const index = colorHex.indexOf("#");
 		if (!(index === 0)) {
-
 			// prepend the hash delimiter
 			colorHex = "#" + colorHex;
-
 		}
 
 		// match any shorthand hexidecimal values, such as: #fff => #ffffff
 		colorHex = colorHex.replace(Color._shortHexRegex, function (m, r, g, b) {
-
 			return "#" + r + r + g + g + b + b;
-
 		});
 
 		// should return either a group of 3 or 4 byte sequences
 		const results = colorHex.match(Color._hexRegex);
 		if (typeof results === "undefined" || results === null) {
-
 			// dont change the current color instance
 			return this;
-
 		}
 
 		let group: Array<any> = [];
 		let length: number = 3;
 
 		if (results.length >= 4) {
-
 			length = 4;
-
 		}
 
 		// iterate through the results, skipping the first indexed position
@@ -1810,9 +1781,7 @@ export class Color {
 				// convert to decimal
 				const value: number = parseInt(result, 16);
 				if (utils.isNumber(hex)) {
-
 					hex = value;
-
 				}
 
 			}
@@ -1873,9 +1842,7 @@ export class Color {
 		const { red, green, blue, alpha } = this;
 
 		if (hexidecimal === true) {
-
 			return Color.toHexString(red, green, blue, alpha);
-
 		}
 
 		return `rgba(${red},${green},${blue},${alpha})`;
@@ -1896,9 +1863,7 @@ export class Color {
 	 * @param {String} value 
 	 */
 	private static addZeroPadding(value: string): string {
-
 		return (value.length === 2 || value.length === 5 || value.length === 7) ? ("0" + value) : value;
-
 	}
 
 }

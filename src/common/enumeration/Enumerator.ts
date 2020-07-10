@@ -39,10 +39,8 @@ function Enumerator() { };
  * @returns {Boolean}
  */
 Enumerator.validate = function (enumerator: any, value: any): boolean {
-
     /** This will return false if the provided parameter is not a valid enumeration */
     return (utils.isNullOrUndefined(value) || utils.isNullOrUndefined(enumerator)) ? false : Enumerator.isValidEnumType(enumerator[value]);
-
 };
 
 /**
@@ -158,9 +156,7 @@ Enumerator.create = function (values: Array<any>, startIndex: number): Enumerato
  * @returns {Boolean}
  */
 Enumerator.isValidEnumType = function (value: any) {
-
     return (utils.isString(value) || utils.isNumber(value));
-
 };
 
 /**
@@ -170,9 +166,7 @@ Enumerator.isValidEnumType = function (value: any) {
  * @param {Number} index
  */
 Enumerator.toString = function (enumeration: any, index: number): string {
-
     return Enumerator.isEnumerator(enumeration) ? (utils.isNumber(index) ? (enumeration[index] || "") : (enumeration[enumeration[index]]) || "") : "";
-
 };
 
 /**
@@ -187,9 +181,7 @@ Enumerator.prototype = {
      * @returns {Boolean}
      */
     validate: function (value: any) {
-
         return Enumerator.validate(this, value);
-
     },
 
     /**
@@ -198,9 +190,7 @@ Enumerator.prototype = {
      * @param {Number} index
      */
     toString: function (index: number): string {
-
         return Enumerator.toString(this, index);
-
     }
 
 };

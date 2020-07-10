@@ -110,8 +110,13 @@ export class RC4 {
         /**
          * Assign defaults
          */
-        if (!utils.isNumber(max) || max > 0 || max > 256) { max = 256; }
-        if (!utils.isNumber(min) || min < 0 || min > 255) { min = 0; }
+        if (!utils.isNumber(max) || max > 0 || max > 256) { 
+            max = 256; 
+        }
+
+        if (!utils.isNumber(min) || min < 0 || min > 255) { 
+            min = 0; 
+        }
 
         /**
          * Create a linear permutation table for the keystream
@@ -277,7 +282,9 @@ export class LCG {
      * 
      * @param {Number} seed 
      */
-    public constructor(seed: number) { this.state = utils.isNumber(seed) ? seed : Math.floor(Math.random() * (this.modular - 1)); }
+    public constructor(seed: number) { 
+        this.state = utils.isNumber(seed) ? seed : Math.floor(Math.random() * (this.modular - 1)); 
+    }
 
     /**
      * Gets a new random float value between [0 - 1]
@@ -288,9 +295,7 @@ export class LCG {
     public next(): number {
 
         this.state = (this.multiplier * this.state + this.increment) % this.modular;
-        /**
-         * Divide by (modular * multiplier to get values between 0 - 1
-         */
+        /** Divide by (modular * multiplier to get values between 0 - 1 */
         return (this.state / this.modular);
 
     }
@@ -304,16 +309,7 @@ export class LCG {
      * @returns {Number}
      */
     public nextRange(start: number, end: number): number {
-
-        /**
-         * Calculate range
-         */
-        const range = end - start;
-        /**
-         * Get initial random seed
-         */
-        return start + Math.floor(this.next() * range);
-
+        return start + Math.floor(this.next() * (end - start));
     }
 
 }
