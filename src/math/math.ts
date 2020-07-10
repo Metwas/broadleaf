@@ -22,11 +22,13 @@
      SOFTWARE.
 */
 
-//===================== imports =====================//
+//===================== Imports =====================//
 
 import * as utils from "../utils/utils";
+// import simplex noise
+import { Simplex_octave } from "./noise/simplexOctave";
 
-//===================== End imports =====================//
+//===================== End Imports =====================//
 
 /**
  * Maximum 4 bit size
@@ -176,7 +178,7 @@ export const XOR_SWAP = function (x: number, y: number) {
      if (x != y) { 
           x ^= y; y ^= x; x ^= y;
      }
-     
+
      return { x: x, y: y };
 
 };
@@ -429,5 +431,19 @@ export const radiansToDegrees = function (radian: number): number {
      return radian * RADTODEG;
 };
 
+/**
+ * Simplex noise creator function
+ * 
+ * @param {Number} seed
+ * @returns {Simplex_octave}
+ */
+export const createNoise = function(seed: number){
+     return new Simplex_octave(seed);
+};
+
+//===================== Exports =====================//
+
 export { Vector2 } from "./vectors/vector2";
 export { LCG, RC4 } from "./random";
+
+//===================== End Exports =====================//

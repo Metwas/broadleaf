@@ -1,3 +1,4 @@
+import { Simplex_octave } from "./noise/simplexOctave";
 /**
  * Maximum 4 bit size
  *
@@ -241,5 +242,12 @@ export declare const degreesToRadians: (degrees: number) => number;
  * @returns {Number} The new degree value
  */
 export declare const radiansToDegrees: (radian: number) => number;
+/**
+ * Simplex noise creator function
+ *
+ * @param {Number} seed
+ * @returns {Simplex_octave}
+ */
+export declare const createNoise: (seed: number) => Simplex_octave;
 export { Vector2 } from "./vectors/vector2";
 export { LCG, RC4 } from "./random";
