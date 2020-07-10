@@ -58,9 +58,7 @@ for (var y = 0; y < height; y++) {
     for (var x = 0; x < width; x++) {
 
         const noise = simplex.noise(x, y);
-        /**
-         * Add to array map
-         */
+        console.log(`Noise: [${noise}]`);        
         const index = getMatrixIndex(x, y, width);
         arrMap[index] = Math.floor(map(noise, -1, 1, 0, 255));
 

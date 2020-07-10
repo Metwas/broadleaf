@@ -161,10 +161,10 @@ export class Simplex_octave {
      * @param {Number} w 
      * @returns {Number}
      */
-    public noise(x: number, y: number = 0, z: number = 0, w: number = 0): number {
+    public noise(x: number = 0, y: number = 0, z: number = 0, w: number = 0): number {
 
         /** Only supporting 2d noise for now */
-        if (isNumber(x) && isNumber(y)) {
+        if (isNumber(x) && isNumber(y)) {            
             return this.noise2d(x, y);
         }
         else {
@@ -202,12 +202,14 @@ export class Simplex_octave {
 
         // distance from cell origin
         let x0: number = x - X0;
-        let y0: number = x - Y0;
+        let y0: number = y - Y0;
 
         // create triangle offsets
         let i1: number = 0;
         let j1: number = 1;
-        if (x0 > y0) { i1 = 1; j1 = 0; }
+        if (x0 > y0) { 
+            i1 = 1; j1 = 0; 
+        }
 
         let x1: number = x0 - i1 + Simplex_octave.G2;
         let y1: number = y0 - j1 + Simplex_octave.G2;
@@ -220,12 +222,12 @@ export class Simplex_octave {
         let gi0: number = this.double_permutation_table_mod12[ii + this.double_permutation_table_mod12[jj]];
         let gi1: number = this.double_permutation_table_mod12[ii + i1 + this.double_permutation_table_mod12[jj + j1]];
         let gi2: number = this.double_permutation_table_mod12[ii + 1 + this.double_permutation_table_mod12[jj + 1]];
+        
         /**
          * Calculate contribution from the three corners
          */
-        /**
-         * Corner 1
-         */
+
+        /** Corner 1 */
         let t0: number = 0.5 - (x0 * x0) - (y0 * y0);
         if (t0 < 0) {
             n0 = 0;
@@ -262,7 +264,7 @@ export class Simplex_octave {
             n2 = t2 * t2 * GRAD_3D[gi2].dot(x2, y2);
 
         }
-
+        
         // finally, add constributions to get a final noise value between [-1,1]
         return 70 * (n0 + n1 + n2);
 
