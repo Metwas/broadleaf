@@ -1,5 +1,5 @@
 > # broadleaf
-common typescript and es6 helper functions
+Common utility belt library written in Typescript, translated to es5 standard JavaScript
 
 > ### Usage
 
