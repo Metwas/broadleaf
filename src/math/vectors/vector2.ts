@@ -60,12 +60,36 @@ export class Vector2 {
      }
 
      /**
+      * Creates a new @see Vector2 instance from the given angle and length
+      * 
+      * @param {Number} angle - in degrees
+      * @param {Number} length
+      * @returns {Vector2}
+      */
+     static fromAngle(angle: number, length: number = 1): Vector2 {
+
+          // ensure length is valid
+          length = utils.isNumber(length) ? length : 1;
+          return new Vector2(length * Math.cos(angle), length * Math.sin(angle));
+
+     }
+
+     /**
+      * Creates a @see Vector2 instance with a random heading set (magnitude is set to 1)
+      * 
+      * @returns {Vector2}
+      */
+     static random(): Vector2 {
+          return Vector2.fromAngle(Math.random() * math.TAU, 1);
+     }
+
+     /**
       * Calculates the magnitude of the vector
       * 
       * @returns {Number}
       */
-     magnitude(): number { 
-          return Math.sqrt((this.x + this.y) * (this.x + this.y)); 
+     magnitude(): number {
+          return Math.sqrt((this.x + this.y) * (this.x + this.y));
      }
 
      /**
@@ -105,8 +129,8 @@ export class Vector2 {
      dot(x: Vector2 | number, y: number = 0): Vector2 {
 
           /** Flatten the @see Vector2 */
-          if (x instanceof Vector2) { 
-               return this.dot(x.x, x.y); 
+          if (x instanceof Vector2) {
+               return this.dot(x.x, x.y);
           }
 
           // Calculate dot product
@@ -120,8 +144,8 @@ export class Vector2 {
       * 
       * @returns {Vector2}
       */
-     copy(): Vector2 { 
-          return new Vector2(this.x, this.y); 
+     copy(): Vector2 {
+          return new Vector2(this.x, this.y);
      }
 
      /**
@@ -168,8 +192,8 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     setX(scaler: number): void { 
-          this.x = scaler; 
+     setX(scaler: number): void {
+          this.x = scaler;
      }
 
      /**
@@ -177,8 +201,8 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     setY(scaler: number): void { 
-          this.y = scaler; 
+     setY(scaler: number): void {
+          this.y = scaler;
      }
 
      /**
@@ -228,8 +252,8 @@ export class Vector2 {
       * 
       * @param {number} scaler 
       */
-     addX(scaler: number): void { 
-          this.x += scaler; 
+     addX(scaler: number): void {
+          this.x += scaler;
      }
 
      /**
@@ -237,8 +261,8 @@ export class Vector2 {
       * 
       * @param {number} scaler
       */
-     addY(scaler: number): void { 
-          this.y += scaler; 
+     addY(scaler: number): void {
+          this.y += scaler;
      }
 
      /**
@@ -288,8 +312,8 @@ export class Vector2 {
       * 
       * @param {number} scaler
       */
-     subX(scaler: number): void { 
-          this.x -= scaler; 
+     subX(scaler: number): void {
+          this.x -= scaler;
      }
 
      /**
@@ -297,8 +321,8 @@ export class Vector2 {
       * 
       * @param {number} scaler
       */
-     subY(scaler: number): void { 
-          this.y -= scaler; 
+     subY(scaler: number): void {
+          this.y -= scaler;
      }
 
      /**
@@ -348,8 +372,8 @@ export class Vector2 {
       * 
       * @param {number} scaler A multiplier scaler
       */
-     multiplyX(scaler: number): void { 
-          this.x *= scaler; 
+     multiplyX(scaler: number): void {
+          this.x *= scaler;
      }
 
      /**
@@ -357,8 +381,8 @@ export class Vector2 {
       * 
       * @param {number} scaler The multiplier scaler
       */
-     multiplyY(scaler: number): void { 
-          this.y *= scaler; 
+     multiplyY(scaler: number): void {
+          this.y *= scaler;
      }
 
      /**
@@ -443,8 +467,8 @@ export class Vector2 {
       * 
       * @returns {Number} The angle in radians
       */
-     heading(): number { 
-          return Math.atan2(this.y, this.x); 
+     heading(): number {
+          return Math.atan2(this.y, this.x);
      }
 
      /**

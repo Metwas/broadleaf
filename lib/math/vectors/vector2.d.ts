@@ -20,6 +20,20 @@ export declare class Vector2 {
      */
     constructor(x: number, y: number);
     /**
+     * Creates a new @see Vector2 instance from the given angle and length
+     *
+     * @param {Number} angle - in degrees
+     * @param {Number} length
+     * @returns {Vector2}
+     */
+    static fromAngle(angle: number, length?: number): Vector2;
+    /**
+     * Creates a @see Vector2 instance with a random heading set (magnitude is set to 1)
+     *
+     * @returns {Vector2}
+     */
+    static random(): Vector2;
+    /**
      * Calculates the magnitude of the vector
      *
      * @returns {Number}
