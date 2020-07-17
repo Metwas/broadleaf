@@ -184,6 +184,18 @@ export const XOR_SWAP = function (x: number, y: number) {
 };
 
 /**
+ * Logistics map (Sigmoid function)
+ * 
+ * @param {Number} e
+ * @param {Number} x
+ * @returns {Number}
+ */
+export const logistics_f = function(e: number = 1, x: number = 0): number {
+     const p = Math.pow(e, x);
+     return (p/(p + 1));
+};
+
+/**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
  *
  * @public

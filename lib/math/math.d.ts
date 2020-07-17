@@ -130,6 +130,14 @@ export declare const XOR_SWAP: (x: number, y: number) => {
     y: number;
 };
 /**
+ * Logistics map (Sigmoid function)
+ *
+ * @param {Number} e
+ * @param {Number} x
+ * @returns {Number}
+ */
+export declare const logistics_f: (e?: number, x?: number) => number;
+/**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
  *
  * @public
