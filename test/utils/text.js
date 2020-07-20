@@ -38,3 +38,6 @@ console.log(buffer);
 console.log("Buffer to string");
 console.log(text.buffer.toString(buffer, "utf-8"));
 console.log(text.serialization.cut("#helloWorld#", "#helloWorld#Bye world"));
+
+console.log("From hex");
+console.log(text.conversions.fromHexidecimal("0x4453"));

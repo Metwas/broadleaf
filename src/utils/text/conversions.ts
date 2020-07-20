@@ -32,19 +32,40 @@
  */
 export function toHexidecimal(value: number, baseFactor: number = 16, color: boolean = false): string {
 
-     /**
-      * Validate @see Number value
-      */
-     if (isNaN(value) || !isFinite(value)) { value = 0; }
+     /** Validate @see Number value */
+     if (isNaN(value) || !isFinite(value)) {
+          value = 0;
+     }
 
      // return hexidecimal converted to the provided base factor
-     const hexidecimal = ("0" + value.toString(baseFactor)).slice(-2).toUpperCase();
+     return `${(color === true ? '#0' : '')}${("0" + value.toString(baseFactor)).slice(-2).toUpperCase()}`;
 
-     /**
-      * Initialize hex string based on a format
-      */
-     return `${(color === true ? '#0' : '')}${hexidecimal}`;
-     
+};
+
+/**
+ * Converts a hexidecimal value to either a integer or string
+ * 
+ * @param {Number} value
+ * @param {Boolean}
+ * @returns {String | Number}
+ */
+export function fromHexidecimal(value: number | string, asInt: boolean = false): string | number {
+
+     if (asInt) {
+          return parseInt(value.toString(), 16);
+     }
+
+     const hex: string = value ? value.toString() : "";
+     let str = "";
+
+     const length = hex.length;
+     let index = 0;
+     for (; (index < length && hex.substr(index, 2) !== "00"); index += 2) {
+          str += String.fromCharCode(parseInt(hex.substr(index, 2), 16));
+     }
+
+     return str;
+
 };
 
 /**
@@ -58,13 +79,10 @@ export function toBinary(value: number): string {
      var _bin = "";
 
      if (typeof value !== "number") {
-
           return "";
-
      }
 
      while (value > 0) {
-
           _bin = (value & 1) + _bin;
           value = value >> 1;
      }
@@ -90,9 +108,7 @@ export function padLeft(value: string, char: string, count: number): string {
           _lengthToAttach = count - value.length;
 
           for (var i = 0; i < _lengthToAttach; i++) {
-
                _char += char;
-
           }
 
           value = _char.concat(value);

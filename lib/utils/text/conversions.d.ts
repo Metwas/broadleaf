@@ -8,6 +8,14 @@
  */
 export declare function toHexidecimal(value: number, baseFactor?: number, color?: boolean): string;
 /**
+ * Converts a hexidecimal value to either a integer or string
+ *
+ * @param {Number} value
+ * @param {Boolean}
+ * @returns {String | Number}
+ */
+export declare function fromHexidecimal(value: number | string, asInt?: boolean): string | number;
+/**
  * Converts a provided number to its binary string representation
  *
  * @param {Number} value The number to be converted to a binary string
