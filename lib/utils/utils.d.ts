@@ -1,5 +1,7 @@
+/// <reference types="node" />
 import * as system from "./system";
 import * as polyfill from "./polyfill";
+import { Readable } from "stream";
 /**
  * No operation function
  *
@@ -373,5 +375,12 @@ export declare function merge(target: any, source: any, own?: boolean): any;
  * @param {Any} arrayOrObject
  */
 export declare function remove(key: any, arrayOrObject: any): void;
+/**
+ * Creates a readable stream from a buffer
+ *
+ * @param {Buffer} buffer
+ * @returns {Stream}
+ */
+export declare function createStreamFromBuffer(buffer: Buffer): Readable;
 export { system };
 export { polyfill };

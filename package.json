@@ -1,6 +1,6 @@
 {
   "name": "broadleaf",
-  "version": "1.31.0",
+  "version": "1.32.0",
   "description": "Common javascript extensions and helper functionality",
   "main": "./lib/broadleaf.js",
   "scripts": {
@@ -28,11 +28,11 @@
   },
   "homepage": "https://github.com/Metwas/broadleaf#readme",
   "devDependencies": {
+    "@types/node": "^12.12.53",
     "chalk": "^2.4.2",
     "typescript": "^3.6.2"
   },
   "dependencies": {
-    "@types/node": "^12.12.6",
     "uuid": "^7.0.2"
   }
 }

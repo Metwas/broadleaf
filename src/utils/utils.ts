@@ -27,6 +27,8 @@
 import * as system from "./system";
 import * as polyfill from "./polyfill";
 import { enumerable } from "./decorators";
+// import stream
+import { Readable } from "stream";
 
 //===================== End imports =====================//
 
@@ -84,8 +86,8 @@ export function toString(value: any, basic: boolean = false): string {
           const groups = type.match(CLASS_REG);
 
           // The first group will be the entire match, therefore check for a second argument being a string type
-          if (groups && isString(groups[1])) { 
-               type = groups[1].trim().toLowerCase(); 
+          if (groups && isString(groups[1])) {
+               type = groups[1].trim().toLowerCase();
           }
 
      }
@@ -115,13 +117,13 @@ export function isClassOf(obj: object, className: string): boolean {
 export function isInstanceOf(obj: any, type: any, inherit: boolean = true): boolean {
 
      //  False if incorrect arguments were provided
-     if (isNullOrUndefined(type) || isNullOrUndefined(obj)) { 
-          return false; 
+     if (isNullOrUndefined(type) || isNullOrUndefined(obj)) {
+          return false;
      }
 
      // Check for primitive types
-     if (isPrimitive(obj)) { 
-          return isClassOf(obj, type.name); 
+     if (isPrimitive(obj)) {
+          return isClassOf(obj, type.name);
      }
 
      /**
@@ -527,8 +529,8 @@ export function contains(arrayOrObject: Array<any> | any, propertyKey: any, prop
      /**
       * Validate callback argument
       */
-     if (!isFunction(callback)) { 
-          callback = isFunction(propertyValue) ? propertyValue : noop; 
+     if (!isFunction(callback)) {
+          callback = isFunction(propertyValue) ? propertyValue : noop;
      }
 
      /**
@@ -636,18 +638,18 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
      const sum = function (a: any, b: any): number {
 
           // define a default alogrithm for number types
-          const numFn = function (a: any, b: any): number { 
-               return a - b; 
+          const numFn = function (a: any, b: any): number {
+               return a - b;
           };
 
           const strFn = function (a: any, b: any): number {
 
-               if (b > a) { 
-                    return -1 
+               if (b > a) {
+                    return -1
                }
 
-               if (a > b) { 
-                    return 1 
+               if (a > b) {
+                    return 1
                }
 
                // default to equal
@@ -659,8 +661,8 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
 
      };
 
-     return array.sort(function (a: any, b: any): number { 
-          return (isString(property) && (isObject(a) && isObject(b))) ? (sum(a[property], b[property])) : sum(a, b); 
+     return array.sort(function (a: any, b: any): number {
+          return (isString(property) && (isObject(a) && isObject(b))) ? (sum(a[property], b[property])) : sum(a, b);
      });
 
 };
@@ -676,13 +678,13 @@ export function sort(array: Array<any>, direction: number | string = SORT_ASCEND
 export function containsType(target: any, type: any, callback: (ref: any) => void): boolean {
 
      // Validate callback
-     if (!isFunction(callback)) { 
-          callback = noop; 
+     if (!isFunction(callback)) {
+          callback = noop;
      }
 
      // validate type arguments
-     if (isNullOrUndefined(target) || isNullOrUndefined(type)) { 
-          return false; 
+     if (isNullOrUndefined(target) || isNullOrUndefined(type)) {
+          return false;
      }
 
      /**
@@ -823,9 +825,9 @@ export function assign(target: any, ...args: Array<any>): any {
  * 
  * @private
  */
-type validatorState = { 
-     state: boolean, 
-     value: any 
+type validatorState = {
+     state: boolean,
+     value: any
 };
 
 /**
@@ -838,19 +840,19 @@ type validatorState = {
  */
 const defaultPropertyValidator = function (value: any, property: any, target: any): validatorState {
 
-     let result = { 
-          state: false, 
-          value: value 
+     let result = {
+          state: false,
+          value: value
      };
-     
+
      // Handle primitive types
-     if (isPrimitive(value)) { 
-          result.state = (value === property); result.value = value; 
+     if (isPrimitive(value)) {
+          result.state = (value === property); result.value = value;
      }
 
      // Handle array or object types
-     if (isArray(value) || isObject(value)) { 
-          result.state = contains(value, property, null); result.value = value[property]; 
+     if (isArray(value) || isObject(value)) {
+          result.state = contains(value, property, null); result.value = value[property];
      }
 
      return result;
@@ -869,8 +871,8 @@ export function flatten(target: any, key: any, retAsKey: boolean = false): Array
      /**
       * Validate target
       */
-     if (isNullOrUndefined(target) || isPrimitive(target)) { 
-          throw new Error("Invalid target type provided"); 
+     if (isNullOrUndefined(target) || isPrimitive(target)) {
+          throw new Error("Invalid target type provided");
      }
 
      let property: any = void 0;
@@ -880,11 +882,11 @@ export function flatten(target: any, key: any, retAsKey: boolean = false): Array
      let validator: (value: any, property: any, target: any) => validatorState;
 
      // Check if key is property and is defined with target value
-     if (!isFunction(key)) { 
-          property = key; validator = defaultPropertyValidator 
+     if (!isFunction(key)) {
+          property = key; validator = defaultPropertyValidator
      }
-     else { 
-          validator = key; 
+     else {
+          validator = key;
      }
 
      /**
@@ -896,19 +898,19 @@ export function flatten(target: any, key: any, retAsKey: boolean = false): Array
            * Pass @see treeNode value to validator
            */
           const result = validator(node.value, property, target);
-     
+
           if (result.state === true) {
 
                let value: any = {};
 
-               if(retAsKey === true){
+               if (retAsKey === true) {
                     value[key] = result.value;
                }
-               else{
+               else {
                     value = result.value;
                }
 
-               temp.push(value); 
+               temp.push(value);
 
           }
 
@@ -931,7 +933,7 @@ class treeNode {
       * @param {Any} value 
       * @param {Array<any>} children 
       */
-     constructor(public value: any = {}, public children: treeNode[] = []) { 
+     constructor(public value: any = {}, public children: treeNode[] = []) {
 
      }
 
@@ -939,8 +941,8 @@ class treeNode {
       * Gets the base class type for the assigned @see value
       */
      @enumerable(true)
-     public get type(): string { 
-          return toString(this.value, true); 
+     public get type(): string {
+          return toString(this.value, true);
      };
 
 };
@@ -957,9 +959,9 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
       * Check if target is of node type, else create an empty tree node structure
       */
      const rootNode: treeNode = isInstanceOf(target, treeNode) ? target : new treeNode(target);
-     
-     if (!isFunction(callback)) { 
-          callback = noop; 
+
+     if (!isFunction(callback)) {
+          callback = noop;
      }
 
      /**
@@ -975,12 +977,12 @@ export function tree(target: any, callback: (value: treeNode) => void): treeNode
 
           /** create @see treeNode from the iterated result */
           const node: treeNode = new treeNode(value);
-          
+
           callback(node);
 
           // Recursively collect property information
-          if (isObject(value) || isArray(value)) { 
-               node.children.push(tree(value, callback)); 
+          if (isObject(value) || isArray(value)) {
+               node.children.push(tree(value, callback));
           }
 
           rootNode.children.push(node);
@@ -1163,8 +1165,8 @@ export function forEach(enumerable: Array<any> | Object, callback: (element: any
  */
 export function defaults(target: any, ...source: Array<any>): any {
 
-     if (isNullOrUndefined(target) || isNullOrUndefined(source)) { 
-          return {}; 
+     if (isNullOrUndefined(target) || isNullOrUndefined(source)) {
+          return {};
      }
 
      const _temp: Array<any> = [];
@@ -1211,19 +1213,19 @@ export function defaults(target: any, ...source: Array<any>): any {
  * @returns {Object}
  */
 export function merge(target: any, source: any, own: boolean = false): any {
-     
-     if (isNullOrUndefined(target)) { 
-          return {}; 
+
+     if (isNullOrUndefined(target)) {
+          return {};
      }
 
      // Iterate through source keys, merging with the target object if defined
      forEach(source, function (key) {
 
-          if (own === true && !has(target, key)) { 
-               /** do nothing */ 
+          if (own === true && !has(target, key)) {
+               /** do nothing */
           }
-          else { 
-               target[key] = deepCopy(source[key]); 
+          else {
+               target[key] = deepCopy(source[key]);
           }
 
      });
@@ -1255,6 +1257,23 @@ export function remove(key: any, arrayOrObject: any): void {
           }
 
      }
+
+};
+
+/**
+ * Creates a readable stream from a buffer
+ * 
+ * @param {Buffer} buffer 
+ * @returns {Stream}
+ */
+export function createStreamFromBuffer(buffer: Buffer): Readable {
+     
+     return new Readable({
+          read() {
+               this.push(buffer);
+               this.push(null);
+          }
+     });
 
 };
 
