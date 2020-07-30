@@ -52,18 +52,18 @@ const width = 500;
  * One dimensional noise container of a one byte each per pixel
  */
 const arrMap = [];
+let zoff = 0;
 
 for (var y = 0; y < height; y++) {
 
     for (var x = 0; x < width; x++) {
 
-        const noise = simplex.noise(x, y);
-        console.log(`Noise: [${noise}]`);        
+        const noise = simplex.noise(x, y, zoff);       
         const index = getMatrixIndex(x, y, width);
         arrMap[index] = Math.floor(map(noise, -1, 1, 0, 255));
 
     }
-
+    zoff+=0.1;
 }
 
 console.log(arrMap);

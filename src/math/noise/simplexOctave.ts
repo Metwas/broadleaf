@@ -163,13 +163,16 @@ export class Simplex_octave {
      */
     public noise(x: number = 0, y: number = 0, z: number = 0, w: number = 0): number {
 
-        /** Only supporting 2d noise for now */
-        if (isNumber(x) && isNumber(y)) {            
+        // 2d noise
+        if (arguments.length <= 2) {
             return this.noise2d(x, y);
         }
-        else {
-            return 0;
+        // 3d noise
+        else if (arguments.length === 3) {
+            return this.noise3d(x, y, z);
         }
+
+        return 0;
 
     }
 
@@ -207,8 +210,8 @@ export class Simplex_octave {
         // create triangle offsets
         let i1: number = 0;
         let j1: number = 1;
-        if (x0 > y0) { 
-            i1 = 1; j1 = 0; 
+        if (x0 > y0) {
+            i1 = 1; j1 = 0;
         }
 
         let x1: number = x0 - i1 + Simplex_octave.G2;
@@ -219,10 +222,10 @@ export class Simplex_octave {
         // calculate hashed gradient indices
         let ii: number = i & 255;
         let jj: number = j & 255;
-        let gi0: number = this.double_permutation_table_mod12[ii + this.double_permutation_table_mod12[jj]];
-        let gi1: number = this.double_permutation_table_mod12[ii + i1 + this.double_permutation_table_mod12[jj + j1]];
-        let gi2: number = this.double_permutation_table_mod12[ii + 1 + this.double_permutation_table_mod12[jj + 1]];
-        
+        let gi0: number = this.double_permutation_table_mod12[ii + this.double_permutation_table_mod12[jj]] % 12;
+        let gi1: number = this.double_permutation_table_mod12[ii + i1 + this.double_permutation_table_mod12[jj + j1]] % 12;
+        let gi2: number = this.double_permutation_table_mod12[ii + 1 + this.double_permutation_table_mod12[jj + 1]] % 12;
+
         /**
          * Calculate contribution from the three corners
          */
@@ -255,8 +258,8 @@ export class Simplex_octave {
          * Corner 3
          */
         let t2 = 0.5 - (x2 * x2) - (y2 * y2);
-        if (t2 < 0) { 
-            n2 = 0; 
+        if (t2 < 0) {
+            n2 = 0;
         }
         else {
 
@@ -264,9 +267,184 @@ export class Simplex_octave {
             n2 = t2 * t2 * GRAD_3D[gi2].dot(x2, y2);
 
         }
-        
+
         // finally, add constributions to get a final noise value between [-1,1]
         return 70 * (n0 + n1 + n2);
+
+    }
+
+    /**
+     * 3rd dimensional noise implementation
+     * 
+     * @public
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {Number}
+     */
+    public noise3d(x: number, y: number, z: number): number {
+
+        /**
+         * Get the noise contribution triangle corners (dimension + 1)
+         */
+        let n0: number = 0;
+        let n1: number = 0;
+        let n2: number = 0;
+        let n3: number = 0;
+
+        // skew factor
+        let s = (x + y + z) * Simplex_octave.F3;
+        let i = Math.floor(x + s);
+        let j = Math.floor(y + s);
+        let k = Math.floor(z + s);
+
+        // unskew
+        let t = (i + j + k) * Simplex_octave.G3;
+        let X0 = i - t;
+        let Y0 = j - t;
+        let Z0 = k - t;
+        // x,y,z distance from cell origin
+        let x0 = x - X0;
+        let y0 = y - Y0;
+        let z0 = z - Z0;
+
+        // second corner offset
+        let i1: number = 0;
+        let j1: number = 0;
+        let k1: number = 0;
+        // third corner offset
+        let i2: number = 0;
+        let j2: number = 0;
+        let k2: number = 0;
+
+        // get simplex within the 3d shape
+        if (x0 >= y0) {
+
+            if (y0 >= z0) {
+
+                // x, y, z order
+                i1 = 1;
+                j1 = 0;
+                k1 = 0;
+                i2 = 1;
+                j2 = 1;
+                k2 = 0;
+
+            } else if (x0 >= z0) {
+
+                // x, z, y order
+                i1 = 1;
+                j1 = 0;
+                k1 = 0;
+                i2 = 1;
+                j2 = 0;
+                k2 = 1;
+
+            }
+            else {
+
+                // y, x, z order
+                i1 = 0;
+                j1 = 0;
+                k1 = 1;
+                i2 = 1;
+                j2 = 0;
+                k2 = 1;
+
+            }
+
+        } else {
+
+            if (y0 < z0) {
+
+                // z, y, x order
+                i1 = 0;
+                j1 = 0;
+                k1 = 1;
+                i2 = 0;
+                j2 = 1;
+                k2 = 1;
+
+            } else if (x0 < z0) {
+
+                // y, z, x order
+                i1 = 0;
+                j1 = 1;
+                k1 = 0;
+                i2 = 0;
+                j2 = 1;
+                k2 = 1;
+
+            } else {
+
+                // y, x, z order
+                i1 = 0;
+                j1 = 1;
+                k1 = 0;
+                i2 = 1;
+                j2 = 1;
+                k2 = 0;
+
+            }
+
+        }
+
+        // second corner offset
+        let x1 = x0 + i1 + Simplex_octave.G3;
+        let y1 = y0 + j1 + Simplex_octave.G3;
+        let z1 = z0 + k1 + Simplex_octave.G3;
+        // third corner offset
+        let x2 = x0 + i2 + 2.0 * Simplex_octave.G3;
+        let y2 = y0 + j2 + 2.0 * Simplex_octave.G3;
+        let z2 = z0 + k2 + 2.0 * Simplex_octave.G3;
+        // final offset
+        let x3 = x0 - 1.0 + 3.0 * Simplex_octave.G3;
+        let y3 = y0 - 1.0 + 3.0 * Simplex_octave.G3;
+        let z3 = z0 - 1.0 + 3.0 * Simplex_octave.G3;
+
+        // gradients
+        let ii = i & 255;
+        let jj = j & 255;
+        let kk = k & 255;
+        let gi0 = this.double_permutation_table_mod12[ii + this.double_permutation_table[jj + this.double_permutation_table[kk]]] % 12;
+        let gi1 = this.double_permutation_table_mod12[ii + i1 + this.double_permutation_table[jj + j1 + this.double_permutation_table[kk + k1]]] % 12;
+        let gi2 = this.double_permutation_table_mod12[ii + i2 + this.double_permutation_table[jj + j2 + this.double_permutation_table[kk + k2]]] % 12;
+        let gi3 = this.double_permutation_table_mod12[ii + 1 + this.double_permutation_table[jj + 1 + this.double_permutation_table[kk + 1]]] % 12;
+
+        // corner contributions
+        let t0 = 0.5 - x0 * x0 - y0 * y0 - z0 * z0;
+        if (t0 < 0) {
+            n0 = 0.0;
+        } else {
+            t0 *= t0;
+            n0 = t0 * t0 * GRAD_3D[gi0].dot(x0, y0, z0);
+        }
+
+        let t1 = 0.5 - x1 * x1 - y1 * y1 - z1 * z1;
+        if (t1 < 0) {
+            n1 = 0.0;
+        } else {
+            t1 *= t1;
+            n1 = t1 * t1 * GRAD_3D[gi1].dot(x1, y1, z1);
+        }
+
+        let t2 = 0.5 - x2 * x2 - y2 * y2 - z2 * z2;
+        if (t2 < 0) {
+            n2 = 0.0;
+        } else {
+            t2 *= t2;
+            n2 = t2 * t2 * GRAD_3D[gi2].dot(x2, y2, z2);
+        }
+
+        let t3 = 0.5 - x3 * x3 - y3 * y3 - z3 * z3;
+        if (t3 < 0) {
+            n3 = 0.0;
+        } else {
+            t3 *= t3;
+            n3 = t3 * t3 * GRAD_3D[gi3].dot(x3, y3, z3);
+        }
+
+        // sum up the contributions (results between [-1, 1])
+        return 32.0 * (n0 + n1 + n2 + n3);
 
     }
 
@@ -279,8 +457,8 @@ export class Simplex_octave {
     private getPermutationTable(options?: PERMUTATION_OPTIONS): Array<number> {
 
         // Create a permutation table from the options specified
-        if (typeof options !== "undefined") { 
-            return PERMUTATION_CREATE(options.max, options.min, options.resolution, isNullOrUndefined(options.fixed) ? true : (!options.fixed)); 
+        if (typeof options !== "undefined") {
+            return PERMUTATION_CREATE(options.max, options.min, options.resolution, isNullOrUndefined(options.fixed) ? true : (!options.fixed));
         }
 
         // By default, return a pre-defined random 8-bit table

@@ -77,6 +77,15 @@ export declare class Simplex_octave {
      */
     private noise2d;
     /**
+     * 3rd dimensional noise implementation
+     *
+     * @public
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {Number}
+     */
+    noise3d(x: number, y: number, z: number): number;
+    /**
      * Gets a permutation table
      *
      * @param {PERMUTATION_OPTIONS} options
