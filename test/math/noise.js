@@ -26,8 +26,9 @@
 
 const { map, getMatrixIndex } = require("../../lib/math/math");
 const { test, printService } = require("../helpers/helper");
-const { Simplex_octave } = require("../../lib/math/noise/simplexOctave");
-const { PERMUTATION_FIXED_256, create } = require("../../lib/math/noise/permutations");
+
+// import simplex noise detail
+const { createNoise } = require("../../lib/math/noise/simplexNoise");
 
 //===================== End imports =====================//
 
@@ -40,7 +41,7 @@ log(header("#### Noise Testing ####"));
 /**
  * Initialize simplex noise with a random seed
  */
-var simplex = new Simplex_octave();
+var simplexNoise = createNoise();
 
 /**
  * Map dimensions
@@ -58,7 +59,7 @@ for (var y = 0; y < height; y++) {
 
     for (var x = 0; x < width; x++) {
 
-        const noise = simplex.noise(x, y, zoff);       
+        const noise = simplexNoise(x, y, zoff);       
         const index = getMatrixIndex(x, y, width);
         arrMap[index] = Math.floor(map(noise, -1, 1, 0, 255));
 

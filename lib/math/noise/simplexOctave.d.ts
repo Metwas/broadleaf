@@ -63,10 +63,9 @@ export declare class Simplex_octave {
      * @param {Number} x
      * @param {Number} y
      * @param {Number} z
-     * @param {Number} w
      * @returns {Number}
      */
-    noise(x: number, y: number, z: number, w: number): number;
+    noise(x: number, y: number, z: number): number;
     /**
      * 2nd dimensional noise implementation
      *

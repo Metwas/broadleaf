@@ -146,10 +146,9 @@ export class Simplex_octave {
      * @param {Number} x
      * @param {Number} y
      * @param {Number} z
-     * @param {Number} w 
      * @returns {Number}
      */
-    public noise(x: number, y: number, z: number, w: number): number
+    public noise(x: number, y: number, z: number): number
 
     /**
      * 4th dimensional noise definition
