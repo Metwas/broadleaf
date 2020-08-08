@@ -25,8 +25,8 @@
 //===================== Imports =====================//
 
 import * as utils from "../utils/utils";
-// import simplex noise
-import { Simplex_octave } from "./noise/simplexOctave";
+// simplex noise detail function
+import * as simplexNoise from "./noise/simplexNoise";
 
 //===================== End Imports =====================//
 
@@ -175,7 +175,7 @@ export const RADTODEG = 180 / Math.PI;
  */
 export const XOR_SWAP = function (x: number, y: number) {
 
-     if (x != y) { 
+     if (x != y) {
           x ^= y; y ^= x; x ^= y;
      }
 
@@ -190,9 +190,9 @@ export const XOR_SWAP = function (x: number, y: number) {
  * @param {Number} x
  * @returns {Number}
  */
-export const logistics_f = function(e: number = 1, x: number = 0): number {
+export const logistics_f = function (e: number = 1, x: number = 0): number {
      const p = Math.pow(e, x);
-     return (p/(p + 1));
+     return (p / (p + 1));
 };
 
 /**
@@ -349,8 +349,8 @@ export const random = function (min: any, max: number, round: boolean | number =
      /**
       * Round if parameter set to true
       */
-     if (round === true) { 
-          rnd = Math.round(rnd); 
+     if (round === true) {
+          rnd = Math.round(rnd);
      }
 
      return rnd;
@@ -447,14 +447,22 @@ export const radiansToDegrees = function (radian: number): number {
  * Simplex noise creator function
  * 
  * @param {Number} seed
- * @returns {Simplex_octave}
+ * @param {Number} detail
+ * @returns {Function} The noise detail function
  */
-export const createNoise = function(seed: number){
-     return new Simplex_octave(seed);
+export const createNoise = function (seed: number, detail: number): (x: number, y: number, z: number) => number {
+
+     const simplex = require("./noise/simplexNoise");
+     // update detail
+     simplex.noiseDetail(detail);
+     // return noise detail function
+     return simplex.createNoise(seed);
+
 };
 
 //===================== Exports =====================//
 
+export const simplex = simplexNoise;
 export { Vector2 } from "./vectors/vector2";
 export { LCG, RC4 } from "./random";
 
