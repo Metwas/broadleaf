@@ -28,7 +28,7 @@ const { map, getMatrixIndex } = require("../../lib/math/math");
 const { test, printService } = require("../helpers/helper");
 
 // import simplex noise detail
-const { createNoise } = require("../../lib/math/noise/simplexNoise");
+const { math } = require("../../lib/broadleaf");
 
 //===================== End imports =====================//
 
@@ -41,7 +41,7 @@ log(header("#### Noise Testing ####"));
 /**
  * Initialize simplex noise with a random seed
  */
-var simplexNoise = createNoise();
+var simplexNoise = math.simplex.createNoise();
 
 /**
  * Map dimensions
