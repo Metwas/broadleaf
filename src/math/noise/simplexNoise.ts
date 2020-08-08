@@ -47,7 +47,7 @@ let NOISE_DETAIL: number = 4;
 export function noiseDetail(value: number): void {
 
     if (!isNumber(value) || value <= 0) {
-        value = 1;
+        value = NOISE_DETAIL;
     }
 
     NOISE_DETAIL = value;
