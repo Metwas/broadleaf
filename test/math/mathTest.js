@@ -41,6 +41,12 @@ const lcg = new math.LCG();
 console.log(`RC4 test`);
 const rc4 = new math.RC4();
 
+let min_x = 0;
+let max_x = 50;
+console.log(`Prime numbers between ${min_x} - ${max_x}`);
+const primes = math.getPrimeNumbers(min_x, max_x);
+console.log(primes);
+
 const str = "hello world";
 let result = "";
 // encrypt using rc4 generate
@@ -52,7 +58,7 @@ for(var i = 0; i < str.length;i++){
 
 }
 
-console.log(`\nPlain: ${str}\nEncrypted${result}\n`);
+console.log(`\nPlain: ${str}\nEncrypted: ${result}\n`);
 console.log(`Generate: ${rc4.generate()}`);
 console.log(`Generate: ${rc4.generate(2)}`);
 console.log(`Generate: ${rc4.generate(12)}`);

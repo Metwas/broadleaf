@@ -196,6 +196,42 @@ export const logistics_f = function (e: number = 1, x: number = 0): number {
 };
 
 /**
+ * Gets all prime numbers between a given min and max values
+ * 
+ * @param {Number} min
+ * @param {Number} max
+ * @returns {Array<Number>}
+ */
+export const getPrimeNumbers = function (min: number, max: number): Array<Number> {
+
+     const min_x: number = Math.max(min, 2);
+     const results: Array<Number> = [];
+
+     for (let x = min_x; x < max; x++) {
+
+          const y_length: number = Math.sqrt(x) + 1;
+          let hasFactor: boolean = false;
+
+          for (let y = 2; y < y_length; y++) {
+
+               if (x % y === 0) {
+                    hasFactor = true;
+                    break;
+               }
+
+          }
+
+          if (!hasFactor) {
+               results.push(x);
+          }
+
+     }
+
+     return results;
+
+};
+
+/**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
  *
  * @public
