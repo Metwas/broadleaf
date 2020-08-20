@@ -138,6 +138,14 @@ export declare const XOR_SWAP: (x: number, y: number) => {
  */
 export declare const logistics_f: (e?: number, x?: number) => number;
 /**
+ * Gets all prime numbers between a given min and max values
+ *
+ * @param {Number} min
+ * @param {Number} max
+ * @returns {Array<Number>}
+ */
+export declare const getPrimeNumbers: (min: number, max: number) => Number[];
+/**
  * Linear interpolation allows for points to move to another point in a gradual linear progression
  *
  * @public
