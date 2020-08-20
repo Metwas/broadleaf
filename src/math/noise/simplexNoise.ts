@@ -79,7 +79,7 @@ export function createNoise(seed: number): (x: number, y: number, z: number) => 
         let factor = 1;
 
         for (let i = 2; i <= NOISE_DETAIL; i = (i * 2)) {
-            n += (factor = (factor / 2)) * simplex.noise(x * i, y * i, z * i);
+            n += (factor = (factor / 2)) * simplex.noise(x * i, y * i, z && z * i);
         }
 
         return n;
