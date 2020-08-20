@@ -388,13 +388,13 @@ export class Simplex_octave {
         }
 
         // second corner offset
-        let x1 = x0 + i1 + Simplex_octave.G3;
-        let y1 = y0 + j1 + Simplex_octave.G3;
-        let z1 = z0 + k1 + Simplex_octave.G3;
+        let x1 = x0 - i1 + Simplex_octave.G3;
+        let y1 = y0 - j1 + Simplex_octave.G3;
+        let z1 = z0 - k1 + Simplex_octave.G3;
         // third corner offset
-        let x2 = x0 + i2 + 2.0 * Simplex_octave.G3;
-        let y2 = y0 + j2 + 2.0 * Simplex_octave.G3;
-        let z2 = z0 + k2 + 2.0 * Simplex_octave.G3;
+        let x2 = x0 - i2 + 2.0 * Simplex_octave.G3;
+        let y2 = y0 - j2 + 2.0 * Simplex_octave.G3;
+        let z2 = z0 - k2 + 2.0 * Simplex_octave.G3;
         // final offset
         let x3 = x0 - 1.0 + 3.0 * Simplex_octave.G3;
         let y3 = y0 - 1.0 + 3.0 * Simplex_octave.G3;
