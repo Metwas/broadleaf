@@ -93,6 +93,15 @@ export class Vector2 {
      }
 
      /**
+      * Calculates the magnitude squared of the vector
+      * 
+      * @returns {Number}
+      */
+     magnitudeSquared(): number {
+          return this.x * this.x + this.y * this.y;
+     }
+
+     /**
       * Calculates the vectors coordinates based from the new magnitude value provided
       * 
       * @param {Number} value 
