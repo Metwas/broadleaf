@@ -30,9 +30,7 @@
  * @returns {String}
  */
 export function createGUID(random: boolean = true): string {
-
      return (random === true ? require("uuid").v4 : require("uuid").v1)();
-
 };
 
 /**
@@ -67,4 +65,20 @@ export function cut(target: string, source: string): stringCutSource | null {
       */
      return null;
 
+};
+
+/**
+ * Regular expression for matching GUIDs
+ * 
+ * @type {RegExp}
+ */
+export const GUID_REGEX: RegExp = /(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}/g;
+
+/**
+ * Attempts get all guids within a string
+ * 
+ * @param {String} value
+ */
+export function getGuid(value: string): RegExpMatchArray | null {
+     return value.match(GUID_REGEX);
 };
