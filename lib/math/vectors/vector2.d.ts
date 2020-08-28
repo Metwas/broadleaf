@@ -40,6 +40,12 @@ export declare class Vector2 {
      */
     magnitude(): number;
     /**
+     * Calculates the magnitude squared of the vector
+     *
+     * @returns {Number}
+     */
+    magnitudeSquared(): number;
+    /**
      * Calculates the vectors coordinates based from the new magnitude value provided
      *
      * @param {Number} value
