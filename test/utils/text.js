@@ -40,4 +40,6 @@ console.log(text.buffer.toString(buffer, "utf-8"));
 console.log(text.serialization.cut("#helloWorld#", "#helloWorld#Bye world"));
 
 console.log("From hex");
-console.log(text.conversions.fromHexidecimal("0x4453"));
+console.log(text.conversions.toHexidecimal(255));
+console.log("Guid test");
+console.log(text.serialization.getGuid("Hello 7ed48f4d-44e7-4455-a281-191830d249f8 7ed48f4d-44e7-4455-a281-191830d249E9 ,"))
