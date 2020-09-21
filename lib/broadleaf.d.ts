@@ -1,17 +1,17 @@
 import * as maths from "./math/math";
 import * as Task from "./tasks/helpers";
 import * as utilities from "./utils/utils";
-import { Queue } from "./collections/queue";
 import * as buffer from "./utils/text/buffers";
 import * as conversions from "./utils/text/conversions";
 import * as serialization from "./utils/text/serialization";
 import * as regexConstants from "./utils/text/regexConstants";
-import { Dictionary } from "./collections/dictionary";
 export { Task };
 export { Timer } from "./tasks/common/timer";
 export { Color } from "./graphics/drawing/colors/color";
 export { EventEmitter } from "./tasks/common/eventEmitter";
 export { Enumerator } from "./common/enumeration/Enumerator";
+export { Dictionary } from "./collections/dictionary";
+export { Queue } from "./collections/queue";
 /**
  * Text based helper functions
  */
@@ -20,13 +20,6 @@ export declare const text: {
     serialization: typeof serialization;
     regex: typeof regexConstants;
     buffer: typeof buffer;
-};
-/**
- * Collections/container classes
- */
-export declare const collections: {
-    Queue: typeof Queue;
-    Dictionary: typeof Dictionary;
 };
 /**
  * Commom math functions
